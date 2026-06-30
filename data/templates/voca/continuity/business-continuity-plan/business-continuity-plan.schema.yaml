@@ -1,0 +1,175 @@
+schema_version: '1'
+kind: form
+response_kind: text
+description: Your master plan for maintaining or restoring critical operations during
+  a disruption. Finalise it once objectives and strategies are agreed. Exercise it
+  regularly and keep contact lists current.
+sections:
+- level: h1
+  key: major_incident_crisis_planning
+  label: Major Incident / Crisis Planning
+  role: title
+  editable: false
+  field_type: textarea
+  required: false
+- level: h2
+  key: emergency_response_phase
+  label: Emergency Response Phase
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: crisis_management_phase
+  label: Crisis Management Phase
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: business_recovery_phase
+  label: Business Recovery Phase
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: how_and_when_to_invoke_this_plan
+  label: How and When to Invoke This Plan
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: incident_priority_levels
+  label: Incident Priority Levels
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: business_continuity_plan
+  label: Business Continuity Plan
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: establish_operational_comms
+  label: Establish Operational Comms
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: convene_the_crisis_management_team
+  label: Convene the Crisis Management Team
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: determine_what_happened
+  label: Determine what happened
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: assessment
+  label: Assessment
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: decide_objectives
+  label: Decide Objectives
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: assess_risks
+  label: Assess Risks
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: identify_resources
+  label: Identify Resources
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: communicate
+  label: Communicate
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: act_on_plans
+  label: ACT on Plans
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: scenario_plans
+  label: Scenario Plans
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: return_to_business_as_usual
+  label: Return to Business as Usual
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: appendix_a_guides
+  label: APPENDIX A – GUIDES
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: human_resources
+  label: Human Resources
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: communication
+  label: Communication
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: finance
+  label: Finance
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: buildings_and_premises
+  label: Buildings and Premises
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: it
+  label: IT
+  role: body
+  editable: true
+  field_type: textarea
+  required: false

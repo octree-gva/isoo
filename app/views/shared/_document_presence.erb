@@ -1,0 +1,9 @@
+<div id="document-presence" class="document-presence hidden mt-4" role="status" aria-live="polite"
+     data-document-presence
+     data-heartbeat-url="/projects/<%= slug %>/docs/<%= doc_id %>/presence"
+     data-leave-url="/projects/<%= slug %>/docs/<%= doc_id %>/presence/leave">
+  <div class="document-presence__inner">
+    <i class="ri-group-line document-presence__icon" aria-hidden="true"></i>
+    <span data-presence-message></span>
+  </div>
+</div>

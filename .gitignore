@@ -1,0 +1,16 @@
+.DS_Store
+.env
+.env.*
+# Template bundles live under data/templates/ (tracked in this repo).
+# Project instances + nested git repo default to tmp/data/ (see DATA_PATH).
+.bundle/
+vendor/bundle/
+node_modules/
+docker/zitadel/oidc.env
+!.env.example
+coverage/
+spec/tmp/
+tmp/
+website/node_modules/
+website/build/
+website/.docusaurus/

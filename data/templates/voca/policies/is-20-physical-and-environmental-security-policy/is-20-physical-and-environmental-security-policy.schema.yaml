@@ -1,0 +1,132 @@
+schema_version: '1'
+kind: text
+sections:
+- level: h1
+  key: physical_and_environmental_security_policy
+  label: Physical and Environmental Security Policy
+  role: title
+  editable: false
+  field_type: text
+  required: false
+- level: h2
+  key: purpose
+  label: Purpose
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: scope
+  label: Scope
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: principle
+  label: Principle
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: physical_security_perimeter
+  label: Physical Security Perimeter
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: secure_areas
+  label: Secure Areas
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: employee_access
+  label: Employee Access
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: visitor_access
+  label: Visitor Access
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: delivery_and_loading_areas
+  label: Delivery and Loading Areas
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: network_access_control
+  label: Network Access Control
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: cabling_security
+  label: Cabling Security
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: equipment_siting_and_protection
+  label: Equipment Siting and Protection
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: policy_compliance
+  label: Policy Compliance
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: compliance_measurement
+  label: Compliance Measurement
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: exceptions
+  label: Exceptions
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: non_compliance
+  label: Non-Compliance
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: continual_improvement
+  label: Continual Improvement
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: areas_of_the_iso27001_standard_addressed
+  label: Areas of the ISO27001 Standard Addressed
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+description: Protects offices, data centres, and equipment from unauthorised access
+  and environmental harm. Relevant for any on-premise or co-located assets. Coordinate
+  with facilities on access badges and visitor procedures.

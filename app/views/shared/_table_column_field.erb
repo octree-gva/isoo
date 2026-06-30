@@ -1,0 +1,71 @@
+<% field_type = col['type'] || 'text' %>
+<% required_attr = col['required'] ? 'required' : nil %>
+<% hint_id = col['description'] ? "#{input_id}-hint" : nil %>
+<% placeholder = col['label'].to_s.gsub(/\s+/, ' ').strip %>
+<% describedby = hint_id ? %( aria-describedby="#{hint_id}") : '' %>
+<% attrs = [required_attr, describedby].join %>
+
+<% case field_type %>
+<% when 'textarea' %>
+  <%= render('shared/_markdown_textarea', locals: {
+        input_id: input_id,
+        name: col['key'],
+        value: '',
+        rows: 5,
+        attrs: %( data-row-field="#{col['key']}" #{attrs}),
+        placeholder: placeholder
+      }) %>
+<% when 'date' %>
+  <input type="date" class="input input-bordered w-full" id="<%= input_id %>" name="<%= col['key'] %>"
+         data-row-field="<%= col['key'] %>" <%= attrs %>>
+  <%= render('shared/_table_date_shortcuts', locals: { input_id: input_id, include_today: true }) %>
+<% when 'review_date' %>
+  <% min_date = (Date.today + 1).iso8601 %>
+  <input type="date" class="input input-bordered w-full" id="<%= input_id %>" name="<%= col['key'] %>"
+         data-row-field="<%= col['key'] %>" data-review-date="true" min="<%= min_date %>"
+         data-future-date-message="<%= t('table.review_date_must_be_future') %>"
+         <%= attrs %>>
+  <%= render('shared/_table_date_shortcuts', locals: { input_id: input_id, include_today: false }) %>
+<% when 'number' %>
+  <input type="number" class="input input-bordered w-full" id="<%= input_id %>" name="<%= col['key'] %>"
+         data-row-field="<%= col['key'] %>" <%= attrs %>
+         placeholder="<%= placeholder %>">
+<% when 'link' %>
+  <input type="url" class="input input-bordered w-full" id="<%= input_id %>" name="<%= col['key'] %>"
+         data-row-field="<%= col['key'] %>" data-link-field="true"
+         inputmode="url" autocomplete="url"
+         pattern="https://.+"
+         title="<%= t('table.link_https_required') %>"
+         <%= attrs %>
+         placeholder="https://">
+<% when 'dropdown' %>
+  <select class="select select-bordered w-full" id="<%= input_id %>" name="<%= col['key'] %>"
+          data-row-field="<%= col['key'] %>" <%= attrs %>>
+    <option value=""><%= t('table.select_placeholder') %></option>
+    <% Array(col['options']).each do |opt| %>
+      <option value="<%= opt %>"><%= opt %></option>
+    <% end %>
+  </select>
+<% when 'switch' %>
+  <% default_on = ::TableSwitch.on?('', col) %>
+  <input type="hidden" name="<%= col['key'] %>" value="0">
+  <label class="label cursor-pointer justify-start gap-4 min-h-[2.75rem]">
+    <input type="checkbox" id="<%= input_id %>" name="<%= col['key'] %>" value="1"
+           data-row-field="<%= col['key'] %>" data-switch-default="<%= default_on ? '1' : '0' %>"
+           class="toggle toggle-success toggle-lg">
+    <span class="label-text text-lg"><%= col['label'] %></span>
+  </label>
+<% when 'checkbox' %>
+  <label class="label cursor-pointer justify-start gap-4 min-h-[2.75rem]">
+    <input type="checkbox" id="<%= input_id %>" name="<%= col['key'] %>" value="1"
+           data-row-field="<%= col['key'] %>" class="checkbox checkbox-primary checkbox-lg">
+    <span class="label-text text-lg"><%= col['label'] %></span>
+  </label>
+<% else %>
+  <input type="text" class="input input-bordered w-full" id="<%= input_id %>" name="<%= col['key'] %>"
+         data-row-field="<%= col['key'] %>" <%= attrs %>
+         placeholder="<%= placeholder %>">
+<% end %>
+<% if col['description'] && !%w[switch checkbox].include?(field_type) %>
+  <%= render('shared/_field_description', locals: { text: col['description'], id: hint_id }) %>
+<% end %>

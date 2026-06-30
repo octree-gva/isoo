@@ -1,0 +1,21 @@
+{
+  "name": "isoo",
+  "private": true,
+  "scripts": {
+    "build:css": "postcss assets/css/app.css -o public/css/app.css",
+    "build:editor": "node scripts/build-editor.mjs",
+    "build": "npm run build:css && npm run build:editor",
+    "watch:css": "postcss assets/css/app.css -o public/css/app.css --watch",
+    "lint:templates": "prettier --check \"data/templates/**/*.md\"",
+    "format:templates": "prettier --write \"data/templates/**/*.md\""
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.21",
+    "cssnano": "^7.0.7",
+    "esbuild": "^0.25.5",
+    "postcss": "^8.5.3",
+    "postcss-cli": "^11.0.1",
+    "prettier": "^3.9.1"
+  },
+  "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
+}

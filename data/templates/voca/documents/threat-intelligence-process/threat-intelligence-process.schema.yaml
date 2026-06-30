@@ -1,0 +1,126 @@
+---
+schema_version: '1'
+kind: text
+sections:
+- level: h1
+  key: threat_intelligence
+  label: Threat Intelligence
+  role: title
+  editable: false
+  field_type: text
+  required: false
+- level: h2
+  key: purpose
+  label: Purpose
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: scope
+  label: Scope
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: iso27001_annex_a_57_threat_intelligence
+  label: ISO27001 Annex A 5.7 Threat Intelligence
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: principles
+  label: Principles
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: objectives
+  label: Objectives
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: information_sources
+  label: Information Sources
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: internal
+  label: Internal
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: external
+  label: External
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: roles_and_responsibilities
+  label: Roles and Responsibilities
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: threat_intelligence_reporting
+  label: Threat Intelligence Reporting
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: threat_intelligence_report
+  label: Threat Intelligence Report
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: process_compliance
+  label: Process Compliance
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: compliance_measurement
+  label: Compliance Measurement
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: exceptions
+  label: Exceptions
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: non_compliance
+  label: Non-Compliance
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: continual_improvement
+  label: Continual Improvement
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+description: Describes how you collect, assess, and act on security threat information.
+  Establish it once monitoring and incident response basics are in place. Feed relevant
+  intel into risk reviews and patch prioritisation.

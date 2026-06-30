@@ -1,0 +1,31 @@
+<header id="doc-header" class="mb-8 border-b pb-6">
+  <% if @slug && @back_href %>
+    <%= render('shared/_back_nav', locals: { href: @back_href, label: @back_label }) %>
+  <% elsif @slug %>
+    <%= render('shared/_back_nav', locals: { href: "/projects/#{@slug}", label: t('a11y.back_to_project', name: @manifest&.name || @slug) }) %>
+  <% end %>
+  <h1 id="doc-heading" class="text-3xl sm:text-4xl leading-tight"><%= @header_title %></h1>
+  <% if @header_description && !@header_description.empty? %>
+    <%= render('shared/_markdown_description', locals: { text: @header_description, id: 'doc-description' }) %>
+  <% end %>
+  <dl class="font-caption mt-4 flex flex-wrap gap-6 text-base" aria-label="<%= t('a11y.document_metadata') %>">
+    <% if @header_version %>
+      <div class="flex items-center gap-2">
+        <dt class="sr-only"><%= t('docs.meta.version_label') %></dt>
+        <dd class="flex items-center gap-2">
+          <i class="ri-history-line" aria-hidden="true"></i>
+          <%= t('docs.meta.version', version: @header_version) %>
+        </dd>
+      </div>
+    <% end %>
+    <% if @header_classification %>
+      <div class="flex items-center gap-2">
+        <dt class="sr-only"><%= t('docs.meta.classification_label') %></dt>
+        <dd class="flex items-center gap-2">
+          <i class="ri-lock-line" aria-hidden="true"></i>
+          <%= t('docs.meta.classification', level: @header_classification) %>
+        </dd>
+      </div>
+    <% end %>
+  </dl>
+</header>

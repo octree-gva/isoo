@@ -1,0 +1,23 @@
+# i18n-tasks configuration for ISOO.
+# https://github.com/glebm/i18n-tasks
+
+base_locale: en
+locales: [en]
+
+data:
+  read:
+    - config/locales/%{locale}.yml
+
+search:
+  paths:
+    - app/
+  relative_roots:
+    - app/views
+  exclude:
+    - app/i18n.rb
+
+translation:
+  backend: :yaml
+
+ignore_unused:
+  - nav.login

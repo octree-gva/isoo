@@ -1,0 +1,79 @@
+---
+schema_version: '1'
+kind: text
+sections:
+- level: h1
+  key: legal_representative
+  label: Legal Representative
+  role: title
+  editable: false
+  field_type: textarea
+  required: false
+- level: h2
+  key: contact_with_authorities
+  label: Contact with Authorities
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: contact_with_special_interest_groups
+  label: Contact with Special Interest Groups
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: legal_regulatory_and_contractual_requirements
+  label: Legal, Regulatory and Contractual Requirements
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: applicable_standards
+  label: Applicable Standards
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: information_security_objectives
+  label: Information Security Objectives
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: framework_for_setting_objectives
+  label: Framework for setting objectives
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: risk_appetite_and_tolerance
+  label: Risk Appetite and Tolerance
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: roles_and_responsibilities
+  label: Roles and Responsibilities
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: sign_off_acceptance
+  label: Sign Off Acceptance
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+description: A concise narrative of how your ISMS works—policies, processes, roles,
+  and improvement loops. Share it with new staff and auditors as an orientation document.
+  Refresh it when you reorganise or materially change your control set.
+export_tags:
+- basic

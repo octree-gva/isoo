@@ -1,0 +1,132 @@
+schema_version: '1'
+kind: text
+sections:
+- level: h1
+  key: risk_management_policy
+  label: Risk Management Policy
+  role: title
+  editable: false
+  field_type: text
+  required: false
+- level: h2
+  key: purpose
+  label: Purpose
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: scope
+  label: Scope
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: principle
+  label: Principle
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: what_is_risk_management
+  label: What is risk Management
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: risk_appetite
+  label: Risk Appetite
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: risk_identification_and_assessment
+  label: Risk Identification and Assessment
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: risk_register
+  label: Risk Register
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: risk_reporting
+  label: Risk Reporting
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: risk_review
+  label: Risk Review
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: risk_treatment
+  label: Risk Treatment
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: risk_evaluation
+  label: Risk Evaluation
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: policy_compliance
+  label: Policy Compliance
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: compliance_measurement
+  label: Compliance Measurement
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: exceptions
+  label: Exceptions
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: non_compliance
+  label: Non-Compliance
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: continual_improvement
+  label: Continual Improvement
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: areas_of_the_iso27001_standard_addressed
+  label: Areas of the ISO27001 Standard Addressed
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+description: Establishes how you identify, assess, treat, and monitor information
+  security risks. Approve it before your first formal risk assessment. It frames acceptance
+  criteria and ties risk work to business objectives.

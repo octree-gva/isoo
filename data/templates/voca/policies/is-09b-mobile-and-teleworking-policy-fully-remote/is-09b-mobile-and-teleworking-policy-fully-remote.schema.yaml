@@ -1,0 +1,139 @@
+schema_version: '1'
+kind: text
+sections:
+- level: h1
+  key: mobile_and_teleworking_policy
+  label: Mobile and Teleworking Policy
+  role: title
+  editable: false
+  field_type: text
+  required: false
+- level: h2
+  key: purpose
+  label: Purpose
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: scope
+  label: Scope
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: principle
+  label: Principle
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: teleworking_remote_working_policy
+  label: Teleworking / Remote Working Policy
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: home_working_guidance
+  label: Home Working Guidance
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: mobile_policy
+  label: Mobile Policy
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: mobile_device_registration
+  label: Mobile Device Registration
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: mobile_device_assigned_owner_responsibilities
+  label: Mobile Device Assigned Owner Responsibilities
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: mobile_device_firewall
+  label: Mobile Device Firewall
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: mobile_remote_wipe
+  label: Mobile Remote Wipe
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: mobile_back_up
+  label: Mobile Back Up
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: bring_your_own_device_policy_byod
+  label: Bring Your Own Device Policy (BYOD)
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: policy_compliance
+  label: Policy Compliance
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: compliance_measurement
+  label: Compliance Measurement
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: exceptions
+  label: Exceptions
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: non_compliance
+  label: Non-Compliance
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: continual_improvement
+  label: Continual Improvement
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: areas_of_the_iso27001_standard_addressed
+  label: Areas of the ISO27001 Standard Addressed
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+description: Security rules for organisations where most staff work remotely. Use
+  this if remote-first is your operating model. Address home offices, travel, and
+  endpoint protection explicitly.

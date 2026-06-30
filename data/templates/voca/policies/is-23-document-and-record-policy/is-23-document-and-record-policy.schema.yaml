@@ -1,0 +1,139 @@
+schema_version: '1'
+kind: text
+sections:
+- level: h1
+  key: documents_and_records_policy
+  label: Documents and Records Policy
+  role: title
+  editable: false
+  field_type: text
+  required: false
+- level: h2
+  key: purpose
+  label: Purpose
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: scope
+  label: Scope
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: principle
+  label: Principle
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: creating_and_updating
+  label: Creating and Updating
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: availability_of_documents
+  label: Availability of documents
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: document_storage
+  label: Document Storage
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: version_control_and_approval
+  label: Version Control and Approval
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: example_of_records
+  label: Example of Records
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: preservation_of_legibility
+  label: Preservation of legibility
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: obsolete_documents_and_records
+  label: Obsolete documents and records
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: documents_of_external_origin
+  label: Documents of External Origin
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: document_classification
+  label: Document Classification
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: policy_compliance
+  label: Policy Compliance
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: compliance_measurement
+  label: Compliance Measurement
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: exceptions
+  label: Exceptions
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: non_compliance
+  label: Non-Compliance
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: continual_improvement
+  label: Continual Improvement
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: areas_of_the_iso27001_standard_addressed
+  label: Areas of the ISO27001 Standard Addressed
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+description: Rules for creating, approving, versioning, and retaining ISMS documents
+  and records. Implement early so your document tracker and change log have teeth.
+  Auditors check document control rigour closely.

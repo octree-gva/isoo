@@ -1,0 +1,45 @@
+---
+schema_version: '1'
+kind: table
+primary_key: session
+columns:
+- key: session
+  label: Session
+  type: text
+  description: Implementation session or phase.
+- key: documents
+  label: Documents
+  type: text
+  description: Related ISMS documents.
+- key: what_needs_to_be_done
+  label: What needs to be done
+  type: textarea
+  description: Task or activity description.
+- key: guidance
+  label: Guidance
+  type: textarea
+  description: Implementation guidance.
+- key: who
+  label: WHO
+  type: text
+  description: Person or role responsible.
+- key: when
+  label: WHEN?
+  type: date
+  description: Target completion date.
+- key: completed
+  label: Completed?
+  type: switch
+  default: false
+  description: Whether the task is complete.
+_internal:
+- key: _row_id
+  type: uuid
+- key: _deleted_at
+  type: datetime
+description: A step-by-step roadmap for building your ISMS from scratch. Work through
+  it in order during onboarding to avoid missing mandatory artefacts like scope, risk
+  assessment, and the Statement of Applicability. Tick items off as you publish documents
+  and gather evidence.
+export_tags:
+- basic

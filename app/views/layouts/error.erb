@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title><%= escape_html(@error_title) %> — <%= escape_html(t('app.name')) %></title>
+  <style>
+    :root {
+      color-scheme: light;
+      --text: #1a1a1a;
+      --muted: #555;
+      --accent: #ff661a;
+      --border: #e5e5e5;
+      --bg: #fff;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+      font-size: 1rem;
+      line-height: 1.5;
+      color: var(--text);
+      background: var(--bg);
+      display: flex;
+      flex-direction: column;
+    }
+    .error-header {
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 1.5rem;
+    }
+    .error-brand {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--text);
+      text-decoration: none;
+    }
+    .error-main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1.5rem;
+    }
+    .error-card {
+      width: 100%;
+      max-width: 32rem;
+      border: 1px solid var(--border);
+      border-radius: 0.75rem;
+      padding: 2rem;
+    }
+    .error-code {
+      font-size: 3rem;
+      font-weight: 700;
+      line-height: 1;
+      color: var(--accent);
+      margin: 0 0 0.5rem;
+    }
+    .error-title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin: 0 0 0.75rem;
+    }
+    .error-message {
+      margin: 0;
+      color: var(--muted);
+    }
+    .error-detail {
+      margin: 1rem 0 0;
+      padding: 0.75rem 1rem;
+      border-radius: 0.5rem;
+      background: #fff7f2;
+      border: 1px solid #ffd8c2;
+      color: var(--text);
+      font-size: 0.95rem;
+    }
+    .error-actions {
+      margin-top: 1.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+    .error-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 2.75rem;
+      padding: 0 1rem;
+      border-radius: 0.5rem;
+      border: 1px solid var(--border);
+      background: #fff;
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .error-btn--primary {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <header class="error-header">
+    <a href="/projects" class="error-brand"><%= escape_html(t('app.name')) %></a>
+  </header>
+  <main class="error-main">
+    <%= yield %>
+  </main>
+</body>
+</html>

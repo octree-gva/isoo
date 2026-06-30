@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+cd "$(dirname "$0")/.."
+
+echo "==> Building app image"
+docker compose build app
+
+run_app() {
+  docker compose run --rm --no-deps app "$@"
+}
+
+echo "==> Asset build"
+run_app npm ci
+run_app npm run build
+if ! git diff --quiet -- public/css/app.css public/js/markdown-editor.js; then
+  echo "Built assets are out of date — run: npm run build"
+  exit 1
+fi
+
+echo "==> Template markdown (Prettier)"
+run_app npm run lint:templates
+
+echo "==> ERB lint"
+run_app bundle exec erb_lint --lint-all
+
+echo "==> RuboCop"
+run_app bundle exec rubocop
+
+echo "==> Security (Brakeman + bundler-audit)"
+run_app bundle exec rake security:scan
+
+echo "==> RSpec"
+docker compose run --rm --no-deps -e AUTH_DISABLED=1 app bundle exec rspec
+
+echo "All checks passed."

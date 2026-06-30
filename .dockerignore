@@ -1,0 +1,8 @@
+node_modules
+coverage
+spec/tmp
+tmp
+.git
+.env
+.env.*
+docker/zitadel/oidc.env

@@ -1,0 +1,61 @@
+name: CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  erb-lint:
+    name: ERB lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build app image
+        run: docker compose build app
+      - name: ERB lint
+        run: docker compose run --rm --no-deps app bundle exec erb_lint --lint-all
+
+  lint:
+    name: RuboCop
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build app image
+        run: docker compose build app
+      - name: RuboCop
+        run: docker compose run --rm --no-deps app bundle exec rubocop
+
+  i18n:
+    name: i18n-tasks
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build app image
+        run: docker compose build app
+      - name: Check translations
+        run: docker compose run --rm --no-deps app bundle exec rake i18n:check
+
+  security:
+    name: Security
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build app image
+        run: docker compose build app
+      - name: Brakeman and bundler-audit
+        run: docker compose run --rm --no-deps app bundle exec rake security:scan
+
+  specs:
+    name: RSpec
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build app image
+        run: docker compose build app
+      - name: RSpec
+        run: docker compose run --rm --no-deps -e AUTH_DISABLED=1 app bundle exec rspec

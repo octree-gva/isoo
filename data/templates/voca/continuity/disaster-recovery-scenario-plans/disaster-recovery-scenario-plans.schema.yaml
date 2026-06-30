@@ -1,0 +1,55 @@
+schema_version: '1'
+kind: form
+response_kind: text
+sections:
+- level: h2
+  key: scenario_name
+  label: Scenario
+  role: title
+  editable: true
+  field_type: text
+  required: false
+  description: Short name identifying the disaster recovery scenario.
+- level: h2
+  key: description
+  label: Overview
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+  description: What could go wrong in this scenario.
+- level: h2
+  key: steps
+  label: Steps
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+  description: Steps taken or planned for this scenario.
+- level: h2
+  key: estimated_time
+  label: Estimated time
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+  description: Expected duration to complete recovery steps.
+- level: h2
+  key: rto
+  label: RTO
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+  description: Recovery time objective for this scenario.
+- level: h2
+  key: rpo
+  label: RPO
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+  description: Recovery point objective for this scenario.
+description: Technical recovery procedures for specific failure scenarios—site loss,
+  ransomware, etc. Develop them for systems identified in the BIA. Align RTO/RPO with
+  business continuity objectives.

@@ -1,0 +1,42 @@
+---
+schema_version: '1'
+kind: table
+primary_key: classification
+columns:
+- key: classification
+  label: CLASSIFICATION
+  type: dropdown
+  description: Information classification level.
+  options:
+  - Public
+  - Internal
+  - Confidential
+  - Restricted
+- key: guidance
+  label: GUIDANCE
+  type: textarea
+  description: Handling guidance for this classification.
+- key: gdpr_data_protection
+  label: GDPR / Data Protection
+  type: textarea
+  description: GDPR and data protection requirements.
+- key: document_marking
+  label: Document Marking
+  type: textarea
+  description: How documents at this level must be marked.
+- key: controls
+  label: Controls
+  type: textarea
+  description: Required controls for this classification.
+- key: destruction
+  label: Destruction
+  type: textarea
+  description: Secure destruction requirements.
+_internal:
+- key: _row_id
+  type: uuid
+- key: _deleted_at
+  type: datetime
+description: Explains your classification scheme—labels, handling rules, and examples.
+  Publish it after your classification policy is approved. Train staff to apply labels
+  consistently on documents, email, and systems.

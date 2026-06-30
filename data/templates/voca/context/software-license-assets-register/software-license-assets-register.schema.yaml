@@ -1,0 +1,63 @@
+---
+schema_version: '1'
+kind: table
+primary_key: software_name
+columns:
+- key: software_name
+  label: Software Name
+  type: text
+  description: Name of the software product.
+- key: version
+  label: Version
+  type: text
+  description: Installed or licensed version.
+  required: true
+- key: person_responsible
+  label: Person Responsible
+  type: text
+  description: Person accountable for this software licence.
+- key: paid_free
+  label: Licence
+  type: dropdown
+  description: Whether the software is paid or free.
+  options:
+  - Free
+  - Paid
+- key: number_of_licenses
+  label: Number Of Licenses
+  type: number
+  description: Total licences purchased.
+- key: number_of_licenses_in_use
+  label: Number of Licenses IN USE
+  type: number
+  description: Licences currently deployed.
+- key: location_of_the_actual_licences
+  label: Location of the actual Licences
+  type: textarea
+  description: Where licence keys, certificates, or purchase records are stored.
+- key: where_is_it_deployed
+  label: Where is it deployed
+  type: textarea
+  description: Systems, sites, or users where the software is deployed.
+- key: last_reviewed_date
+  label: Last Reviewed Date
+  type: date
+  description: Date the licence was last reviewed.
+- key: next_review_date
+  label: Next Review Date
+  type: review_date
+  description: Date of the next scheduled licence review.
+- key: reviewed_by
+  label: Reviewed By
+  type: text
+  description: Person who performed the last review.
+_internal:
+- key: _row_id
+  type: uuid
+- key: _deleted_at
+  type: datetime
+description: Tracks licensed software, versions, and responsible owners. Use it to
+  support patch management, access reviews, and vendor risk. Update it when you adopt,
+  renew, or retire applications.
+export_tags:
+- soi

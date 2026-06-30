@@ -1,0 +1,97 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+cd "$ROOT"
+
+ZITADEL_URL="${ZITADEL_URL:-http://localhost:8080}"
+PUBLIC_ISSUER="${OIDC_ISSUER:-http://localhost:8080}"
+PAT_FILE="${PAT_FILE:-docker/zitadel/bootstrap/admin.pat}"
+SMTP_HOST="${ZITADEL_SMTP_HOST:-mailcatcher:1025}"
+SMTP_FROM="${ZITADEL_SMTP_FROM:-zitadel@localhost}"
+SMTP_FROM_NAME="${ZITADEL_SMTP_FROM_NAME:-Zitadel}"
+SMTP_TLS="${ZITADEL_SMTP_TLS:-false}"
+
+instance_host=()
+zitadel_host="$(ruby -ruri -e 'puts URI(ARGV[0]).host' "$ZITADEL_URL")"
+if [[ "$zitadel_host" == "zitadel" ]]; then
+  public_host="$(ruby -ruri -e 'u=URI(ARGV[0]); puts u.port == u.default_port ? u.host : "#{u.host}:#{u.port}"' "$PUBLIC_ISSUER")"
+  instance_host=(-H "Host: ${public_host}")
+fi
+
+echo "Waiting for Zitadel at ${ZITADEL_URL}..."
+max_wait="${ZITADEL_MAX_WAIT:-60}"
+for _ in $(seq 1 "$max_wait"); do
+  if curl -sf "${ZITADEL_URL}/debug/ready" >/dev/null 2>&1; then
+    break
+  fi
+  sleep 1
+done
+
+if ! curl -sf "${ZITADEL_URL}/debug/ready" >/dev/null 2>&1; then
+  echo "Zitadel is not ready; skipping SMTP setup." >&2
+  exit 0
+fi
+
+if [[ ! -f "$PAT_FILE" ]]; then
+  echo "Missing PAT at ${PAT_FILE}; skipping SMTP setup." >&2
+  exit 0
+fi
+
+PAT="$(tr -d '[:space:]' < "$PAT_FILE")"
+if [[ -z "$PAT" ]]; then
+  echo "PAT file is empty; skipping SMTP setup." >&2
+  exit 0
+fi
+
+auth_header=("${instance_host[@]}" -H "Authorization: Bearer ${PAT}" -H "Content-Type: application/json")
+
+providers="$(curl -sf "${ZITADEL_URL}/admin/v1/email/_search" "${auth_header[@]}" -d '{}' || echo '{}')"
+read -r provider_id provider_state <<<"$(echo "$providers" | SMTP_HOST="$SMTP_HOST" ruby -rjson -e '
+  data = JSON.parse(STDIN.read)
+  host = ENV.fetch("SMTP_HOST", "mailcatcher:1025")
+  match = data.fetch("result", []).find do |entry|
+    entry.dig("smtp", "host") == host
+  end
+  if match
+    puts [match["id"], match["state"]].join(" ")
+  else
+    puts " "
+  end
+')"
+
+if [[ -n "$provider_id" && "$provider_state" == "EMAIL_PROVIDER_ACTIVE" ]]; then
+  echo "Zitadel SMTP already configured for ${SMTP_HOST}."
+  exit 0
+fi
+
+if [[ -n "$provider_id" ]]; then
+  echo "Activating existing Zitadel SMTP provider ${provider_id}..."
+  curl -sf -X POST "${ZITADEL_URL}/admin/v1/email/${provider_id}/_activate" "${auth_header[@]}" -d '{}' >/dev/null
+  echo "Zitadel SMTP provider activated (${SMTP_HOST})."
+  exit 0
+fi
+
+echo "Creating Zitadel SMTP provider for MailCatcher (${SMTP_HOST})..."
+created="$(curl -sf -X POST "${ZITADEL_URL}/admin/v1/email/smtp" "${auth_header[@]}" -d @- <<EOF
+{
+  "senderAddress": "${SMTP_FROM}",
+  "senderName": "${SMTP_FROM_NAME}",
+  "host": "${SMTP_HOST}",
+  "tls": ${SMTP_TLS},
+  "none": {}
+}
+EOF
+)"
+provider_id="$(echo "$created" | ruby -rjson -e 'puts JSON.parse(STDIN.read).fetch("id")')"
+curl -sf -X POST "${ZITADEL_URL}/admin/v1/email/${provider_id}/_activate" "${auth_header[@]}" -d '{}' >/dev/null
+
+cat <<EOF
+
+Zitadel SMTP ready for development mail.
+
+  SMTP host:  ${SMTP_HOST}
+  From:       ${SMTP_FROM_NAME} <${SMTP_FROM}>
+  Mail UI:    http://localhost:1080
+
+EOF

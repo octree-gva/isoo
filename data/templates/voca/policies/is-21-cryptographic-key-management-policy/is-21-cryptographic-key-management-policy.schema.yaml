@@ -1,0 +1,132 @@
+schema_version: '1'
+kind: text
+sections:
+- level: h1
+  key: cryptographic_key_management_policy
+  label: Cryptographic Key Management Policy
+  role: title
+  editable: false
+  field_type: text
+  required: false
+- level: h2
+  key: purpose
+  label: Purpose
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: scope
+  label: Scope
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: principle
+  label: Principle
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: generation
+  label: Generation
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: distribution
+  label: Distribution
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: storage
+  label: Storage
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: escrow_and_backup
+  label: Escrow and Backup
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: accountability_and_audit
+  label: Accountability and Audit
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: key_compromise_and_recovery
+  label: Key Compromise and Recovery
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: trust_stores
+  label: Trust Stores
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: cryptographic_key_management_libraries
+  label: Cryptographic Key Management Libraries
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: policy_compliance
+  label: Policy Compliance
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: compliance_measurement
+  label: Compliance Measurement
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: exceptions
+  label: Exceptions
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: non_compliance
+  label: Non-Compliance
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: continual_improvement
+  label: Continual Improvement
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: areas_of_the_iso27001_standard_addressed
+  label: Areas of the ISO27001 Standard Addressed
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+description: Governs generation, storage, rotation, and destruction of cryptographic
+  keys. Required when you manage encryption keys in-house. Prevents weak or orphaned
+  keys undermining encryption controls.

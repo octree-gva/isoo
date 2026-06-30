@@ -1,0 +1,106 @@
+schema_version: '1'
+kind: text
+sections:
+- level: h1
+  key: information_transfer_policy
+  label: Information Transfer Policy
+  role: title
+  editable: false
+  field_type: text
+  required: false
+- level: h2
+  key: purpose
+  label: Purpose
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: scope
+  label: Scope
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: principles
+  label: Principles
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: information_virus_checking
+  label: Information Virus Checking
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: information_encryption
+  label: Information Encryption
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: data_transfer_methods
+  label: Data Transfer Methods
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: lost_or_missing_information
+  label: Lost or missing information
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: policy_compliance
+  label: Policy Compliance
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: compliance_measurement
+  label: Compliance Measurement
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: exceptions
+  label: Exceptions
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: non_compliance
+  label: Non-Compliance
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: continual_improvement
+  label: Continual Improvement
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: areas_of_the_iso27001_standard_addressed
+  label: Areas of the ISO27001 Standard Addressed
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+description: Rules for sharing information inside and outside the organisation securely.
+  Apply before enabling file sharing, email encryption, or API integrations. Covers
+  physical media and electronic transfer alike.
+export_tags:
+- data_protection

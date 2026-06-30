@@ -1,0 +1,162 @@
+schema_version: '1'
+kind: text
+sections:
+- level: h1
+  key: introduction
+  label: Introduction
+  role: title
+  editable: false
+  field_type: textarea
+  required: false
+- level: h2
+  key: business_continuity_test
+  label: Business Continuity Test
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: disaster_recovery_test
+  label: Disaster Recovery Test
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: how_to_conduct_the_business_continuity_test
+  label: How to Conduct the Business Continuity Test
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: business_continuity_scenarios
+  label: Business Continuity Scenarios
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: frequency_of_testing
+  label: Frequency of Testing
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: time_required_for_test
+  label: Time Required for Test
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: who_should_attend_the_test
+  label: Who Should attend the test
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: how_to_record_the_test
+  label: How to record the test
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: scenario_walkthroughs_and_guidance
+  label: Scenario Walkthroughs and Guidance
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: stress_testing
+  label: Stress Testing
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: scenario_1_one_machine_is_infected_with_a_virus
+  label: 'Scenario 1: One Machine Is Infected with a Virus'
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: scenario_2_all_machines_are_infected_with_a_virus_and_you_suspect_ransomware_has_infected_the_company
+  label: 'Scenario 2: All machines are infected with a virus, and you suspect ransomware
+    has infected the company'
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: scenario_3_all_team_computers_are_infected_with_a_virus_and_ransomware_has_infected_production_systems
+  label: 'Scenario 3: All team computers are infected with a virus and ransomware
+    has infected production systems'
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: at_the_end_of_the_test
+  label: At the end of the test
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: capture_the_plus_delta
+  label: Capture the plus / delta
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: report_your_results
+  label: Report your results
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: implement_your_continual_improvement
+  label: Implement your continual improvement
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: rerun_the_test
+  label: Rerun the test
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: faq
+  label: FAQ
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: can_we_deviate_from_the_tests
+  label: Can we deviate from the tests?
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: if_we_hit_a_roadblock_can_we_make_an_assumption_and_continue
+  label: If we hit a roadblock, can we make an assumption and continue?
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+description: Practical guide for planning, running, and evaluating BC exercises. Follow
+  it before your first tabletop or live test. Helps facilitators keep tests realistic
+  and measurable.

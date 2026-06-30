@@ -1,0 +1,46 @@
+---
+schema_version: '1'
+kind: form
+response_kind: text
+sections:
+- level: h2
+  key: item
+  label: Item
+  role: title
+  editable: true
+  field_type: text
+  required: false
+  description: Short label for this report item.
+- level: h2
+  key: category
+  label: Category
+  role: body
+  editable: true
+  field_type: dropdown
+  required: false
+  description: Type of report item.
+  options:
+  - Finding
+  - Observation
+  - Risk
+  - Action required
+  - Attendee
+- level: h2
+  key: description
+  label: Description
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+  description: Detail of the finding, observation, risk, action, or attendee.
+- level: h2
+  key: reference
+  label: Reference
+  role: body
+  editable: true
+  field_type: text
+  required: false
+  description: Optional cross-reference (risk register ID, incident log, etc.).
+description: Detailed findings log from continuity tests—gaps, strengths, and priorities.
+  Attach or reference it from your formal test report. Track open findings until closed
+  in your corrective action process.

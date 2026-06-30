@@ -1,0 +1,274 @@
+schema_version: '1'
+kind: text
+sections:
+- level: h1
+  key: data_protection_policy
+  label: Data Protection Policy
+  role: title
+  editable: false
+  field_type: text
+  required: false
+- level: h2
+  key: purpose
+  label: Purpose
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: scope
+  label: Scope
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: principle
+  label: Principle
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: data_protection_policy_statement
+  label: Data Protection Policy Statement
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: legal_basis_for_processing
+  label: Legal Basis for Processing
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: data_protection_principles
+  label: Data protection principles
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: lawfulness_fairness_and_transparency
+  label: Lawfulness, Fairness and Transparency
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: purpose_limitation
+  label: Purpose Limitation
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: data_minimisation
+  label: Data Minimisation
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: accuracy
+  label: Accuracy
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: storage_period_limitation
+  label: Storage Period Limitation
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: personal_information_classification_and_handling
+  label: Personal Information Classification and Handling
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: personal_information_retention
+  label: Personal Information Retention
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: personal_information_transfer_transmit
+  label: Personal Information Transfer / Transmit
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: personal_information_storage
+  label: Personal Information Storage
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: breach
+  label: Breach
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: the_rights_of_data_subjects
+  label: The Rights of Data Subjects
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: the_right_to_be_informed
+  label: The right to be informed
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: the_right_of_access
+  label: The right of access
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: the_right_to_rectification
+  label: The right to rectification
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: the_right_to_erasure_the_right_to_be_forgotten
+  label: The right to erasure (the right to be forgotten)
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: the_right_to_restrict_processing
+  label: The right to restrict processing
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: the_right_to_data_portability
+  label: The right to data Portability
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: the_right_to_object
+  label: The right to object
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: rights_in_relation_to_automated_decision_making_and_profiling
+  label: Rights in relation to automated decision making and profiling
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: definitions
+  label: Definitions
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: personal_data
+  label: Personal Data
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: sensitive_personal_data
+  label: Sensitive Personal Data
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: data_controller
+  label: Data Controller
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: data_processor
+  label: Data Processor
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: processing
+  label: Processing
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: anonymization
+  label: Anonymization
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: policy_compliance
+  label: Policy Compliance
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: compliance_measurement
+  label: Compliance Measurement
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: exceptions
+  label: Exceptions
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: non_compliance
+  label: Non-Compliance
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: continual_improvement
+  label: Continual Improvement
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+description: Sets principles for lawful, fair processing of personal data under GDPR
+  and related law. Approve it before handling personal data at scale. Staff must acknowledge
+  it; align procedures and registers to its requirements.
+export_tags:
+- data_protection

@@ -1,0 +1,17 @@
+<% columns.each_with_index do |col, index| %>
+  <% input_id = "#{id_prefix}-#{col['key']}" %>
+  <% field_type = col['type'] || 'text' %>
+  <div class="mt-4" data-wizard-step="<%= index + 1 %>"<%= ' hidden' unless index.zero? %>>
+    <% if %w[switch checkbox].include?(field_type) %>
+      <%= render('shared/_table_column_field', locals: { col: col, input_id: input_id }) %>
+      <% if col['description'] %>
+        <%= render('shared/_field_description', locals: { text: col['description'], id: "#{input_id}-hint" }) %>
+      <% end %>
+    <% else %>
+      <label class="form-control w-full" for="<%= input_id %>">
+        <span class="label-text text-lg mb-2 whitespace-pre-line"><%= col['label'] %></span>
+        <%= render('shared/_table_column_field', locals: { col: col, input_id: input_id }) %>
+      </label>
+    <% end %>
+  </div>
+<% end %>

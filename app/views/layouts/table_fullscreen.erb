@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="isoo">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title><%= @header_title || @doc['doc_id'] %> — <%= t('app.name') %></title>
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.14/dist/full.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.css" rel="stylesheet">
+  <link href="/css/app.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="/js/markdown-editor.js" defer></script>
+  <script src="/js/modal-wizard.js" defer></script>
+  <script src="/js/table-fullscreen.js" defer></script>
+  <script src="/js/date-shortcuts.js" defer></script>
+  <script src="/js/toasts.js" defer></script>
+  <%= render('shared/_session_idle') %>
+</head>
+<body class="table-fullscreen-page bg-white">
+  <% if @flash %>
+    <% toast_type = @flash['type'] == 'error' ? 'error' : 'success' %>
+    <% toast_icon = toast_type == 'error' ? 'error-warning' : 'checkbox-circle' %>
+    <div class="toast toast-top toast-end z-[60] pointer-events-none" role="status" aria-live="polite" data-toast>
+      <div class="alert alert-<%= toast_type %> shadow-lg max-w-md pointer-events-auto flex items-start gap-3">
+        <i class="ri-<%= toast_icon %>-line text-xl shrink-0" aria-hidden="true"></i>
+        <span class="flex-1 text-base"><%= @flash['message'] %></span>
+        <button type="button" class="btn btn-ghost btn-xs btn-circle shrink-0" data-toast-dismiss
+                aria-label="<%= t('toast.dismiss') %>">
+          <i class="ri-close-line" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+  <% end %>
+  <%= yield %>
+</body>
+</html>

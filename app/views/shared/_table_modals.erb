@@ -1,0 +1,163 @@
+<%# locals: slug, doc_id, columns, show_new, show_save, document_title: nil, return_to: nil, save_form_id: nil %>
+<% new_row_title = document_title ? t('actions.new_row_named', name: document_title) : t('actions.new_row') %>
+<% edit_row_title = document_title ? t('actions.edit_row_named', name: document_title) : t('actions.edit_row') %>
+<% return_to_value = defined?(return_to) ? return_to : nil %>
+<% save_form = defined?(save_form_id) ? save_form_id : nil %>
+
+<% if show_new %>
+<dialog id="new_row_modal" class="modal" aria-labelledby="new_row_modal_title" aria-describedby="new_row_modal_desc">
+  <div class="modal-box bg-white">
+    <form id="new-row-form" method="post" action="/projects/<%= slug %>/docs/<%= doc_id %>/rows">
+      <% if return_to_value %><input type="hidden" name="return_to" value="<%= return_to_value %>"><% end %>
+      <div data-modal-wizard>
+        <%= render('shared/_wizard_header', locals: {
+              id: 'new_row_modal_title',
+              title: new_row_title,
+              title_base: new_row_title
+            }) %>
+        <p id="new_row_modal_desc" class="sr-only"><%= t('a11y.new_row_modal_desc') %></p>
+        <%= render('shared/_table_wizard_steps', locals: { columns: columns, id_prefix: 'new-row' }) %>
+        <%= render('shared/_wizard_actions', locals: {
+              dialog_id: 'new_row_modal',
+              form_id: nil,
+              submit_label: t('actions.new_row'),
+              submit_icon: 'ri-add-line'
+            }) %>
+      </div>
+    </form>
+  </div>
+  <form method="dialog" class="modal-backdrop" aria-label="<%= t('actions.cancel') %>">
+    <button type="submit"><%= t('actions.cancel') %></button>
+  </form>
+</dialog>
+<% end %>
+
+<dialog id="edit_row_modal" class="modal" aria-labelledby="edit_row_modal_title" aria-describedby="edit_row_modal_desc">
+  <div class="modal-box bg-white">
+    <form id="edit-row-form" method="post" action="/projects/<%= slug %>/docs/<%= doc_id %>/rows">
+      <input type="hidden" name="row_id" value="">
+      <input type="hidden" name="_method" value="patch">
+      <% if return_to_value %><input type="hidden" name="return_to" value="<%= return_to_value %>"><% end %>
+      <div data-modal-wizard>
+        <%= render('shared/_wizard_header', locals: {
+              id: 'edit_row_modal_title',
+              title: edit_row_title,
+              title_base: edit_row_title
+            }) %>
+        <p id="edit_row_modal_desc" class="sr-only"><%= t('a11y.edit_row_modal_desc') %></p>
+        <%= render('shared/_table_wizard_steps', locals: { columns: columns, id_prefix: 'edit-row' }) %>
+        <%= render('shared/_wizard_actions', locals: {
+              dialog_id: 'edit_row_modal',
+              form_id: nil,
+              submit_label: t('actions.save_row'),
+              submit_icon: 'ri-save-line'
+            }) %>
+      </div>
+    </form>
+  </div>
+  <form method="dialog" class="modal-backdrop" aria-label="<%= t('actions.cancel') %>">
+    <button type="submit"><%= t('actions.cancel') %></button>
+  </form>
+</dialog>
+
+<dialog id="delete_row_modal" class="modal" aria-labelledby="delete_row_modal_title" aria-describedby="delete_row_modal_desc">
+  <div class="modal-box bg-white">
+    <h2 id="delete_row_modal_title" class="font-bold text-2xl"><%= t('table.delete_row_title') %></h2>
+    <p id="delete_row_modal_desc" class="mt-4 text-lg"><%= t('table.delete_row_confirm') %></p>
+    <form id="delete-row-form" method="post" action="/projects/<%= slug %>/docs/<%= doc_id %>/rows" data-delete-row-form>
+      <input type="hidden" name="row_id" value="">
+      <input type="hidden" name="_method" value="delete">
+      <% if return_to_value %><input type="hidden" name="return_to" value="<%= return_to_value %>"><% end %>
+      <div class="modal-action flex-col-reverse sm:flex-row-reverse gap-2 mt-6">
+        <button class="btn btn-error w-full sm:w-auto" type="submit">
+          <i class="ri-delete-bin-line" aria-hidden="true"></i>
+          <%= t('actions.delete') %>
+        </button>
+        <button type="button" class="btn btn-ghost w-full sm:w-auto" onclick="delete_row_modal.close()">
+          <%= t('actions.cancel') %>
+        </button>
+      </div>
+    </form>
+  </div>
+  <form method="dialog" class="modal-backdrop" aria-label="<%= t('actions.cancel') %>">
+    <button type="submit"><%= t('actions.cancel') %></button>
+  </form>
+</dialog>
+
+<% if show_save %>
+<dialog id="save_table_modal" class="modal" aria-labelledby="save_table_modal_title" aria-describedby="save_table_modal_desc">
+  <div class="modal-box bg-white">
+    <% if save_form %>
+      <div data-modal-wizard>
+        <%= render('shared/_wizard_header', locals: {
+              id: 'save_table_modal_title',
+              title: t('save_modal.title'),
+              title_base: t('save_modal.title')
+            }) %>
+        <p id="save_table_modal_desc" class="sr-only"><%= t('save_modal.description') %></p>
+        <div class="mt-4" data-wizard-step="1">
+          <label class="form-control w-full" for="table-document-changes">
+            <span class="label-text text-lg mb-2"><%= t('save_modal.changes_label') %></span>
+            <textarea class="textarea textarea-bordered w-full" id="table-document-changes"
+                      name="document_changes" form="<%= save_form %>" rows="8" required
+                      placeholder="<%= t('save_modal.changes_placeholder') %>"></textarea>
+          </label>
+        </div>
+        <div class="mt-4" data-wizard-step="2" hidden>
+          <label class="label cursor-pointer justify-start gap-4 min-h-[2.75rem]">
+            <input type="checkbox" id="table-significant-change" name="significant_change" value="1"
+                   form="<%= save_form %>" class="checkbox checkbox-primary checkbox-lg">
+            <span class="label-text text-lg"><%= t('save_modal.significant') %></span>
+          </label>
+        </div>
+        <%= render('shared/_wizard_actions', locals: {
+              dialog_id: 'save_table_modal',
+              form_id: save_form,
+              submit_label: t('actions.save_table'),
+              submit_icon: 'ri-save-line'
+            }) %>
+      </div>
+    <% else %>
+    <form id="save-table-form" method="post" action="/projects/<%= slug %>/docs/<%= doc_id %>">
+      <div data-modal-wizard>
+        <%= render('shared/_wizard_header', locals: {
+              id: 'save_table_modal_title',
+              title: t('save_modal.title'),
+              title_base: t('save_modal.title')
+            }) %>
+        <p id="save_table_modal_desc" class="sr-only"><%= t('save_modal.description') %></p>
+        <div class="mt-4" data-wizard-step="1">
+          <label class="form-control w-full" for="table-document-changes">
+            <span class="label-text text-lg mb-2"><%= t('save_modal.changes_label') %></span>
+            <%= render('shared/_markdown_textarea', locals: {
+                  input_id: 'table-document-changes',
+                  name: 'document_changes',
+                  value: '',
+                  rows: 6,
+                  attrs: ' required',
+                  placeholder: t('save_modal.changes_placeholder')
+                }) %>
+          </label>
+        </div>
+        <div class="mt-4" data-wizard-step="2" hidden>
+          <label class="label cursor-pointer justify-start gap-4 min-h-[2.75rem]">
+            <input type="checkbox" id="table-significant-change" name="significant_change" value="1"
+                   class="checkbox checkbox-primary checkbox-lg">
+            <span class="label-text text-lg"><%= t('save_modal.significant') %></span>
+          </label>
+        </div>
+        <%= render('shared/_wizard_actions', locals: {
+              dialog_id: 'save_table_modal',
+              form_id: nil,
+              submit_label: t('actions.save_table'),
+              submit_icon: 'ri-save-line'
+            }) %>
+      </div>
+    </form>
+    <% end %>
+  </div>
+  <form method="dialog" class="modal-backdrop" aria-label="<%= t('actions.cancel') %>">
+    <button type="submit"><%= t('actions.cancel') %></button>
+  </form>
+</dialog>
+<% end %>

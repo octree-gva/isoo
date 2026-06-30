@@ -1,0 +1,36 @@
+---
+schema_version: '1'
+kind: table
+primary_key: user
+columns:
+- key: user
+  label: User
+  type: text
+  description: User or role name.
+- key: system
+  label: System
+  type: text
+  description: System or application.
+- key: environment
+  label: Environment
+  type: dropdown
+  description: Deployment environment.
+  options:
+  - Development
+  - Staging
+  - Production
+  - DR
+- key: review_audit
+  label: Review / Audit
+  type: date
+  description: Date of last access review or audit.
+_internal:
+- key: _row_id
+  type: uuid
+- key: _deleted_at
+  type: datetime
+description: Defines roles, permissions, and segregation-of-duties rules for your
+  systems. Design it before rolling out the access request process. Review it when
+  applications or organisational structure change.
+export_tags:
+- soi

@@ -1,0 +1,42 @@
+---
+schema_version: '1'
+kind: table
+primary_key: ref
+columns:
+- key: ref
+  label: Ref
+  type: text
+  description: Internal action reference.
+  required: true
+- key: action_date_and_time
+  label: Action Date and Time
+  type: date
+  description: Date of the action or decision.
+- key: who_performed_action
+  label: Who performed action
+  type: text
+  description: Person who took the action.
+- key: what_was_done_decision_made
+  label: What was done / decision made
+  type: textarea
+  description: Description of action or decision.
+- key: external_reference_number
+  label: External Reference Number
+  type: text
+  description: Ticket or external system reference.
+- key: corrective_action
+  label: Corrective Action
+  type: textarea
+  description: Corrective actions taken or planned.
+- key: risk
+  label: Risk
+  type: textarea
+  description: Associated risks.
+_internal:
+- key: _row_id
+  type: uuid
+- key: _deleted_at
+  type: datetime
+description: Running log of actions taken during a live continuity or crisis event.
+  Activate it when you invoke the BCP. Captures decisions and timestamps for post-incident
+  review.

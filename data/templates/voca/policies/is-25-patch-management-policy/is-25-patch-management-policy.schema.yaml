@@ -1,0 +1,111 @@
+schema_version: '1'
+kind: text
+sections:
+- level: h1
+  key: patch_management_policy
+  label: Patch Management Policy
+  role: title
+  editable: false
+  field_type: text
+  required: false
+- level: h2
+  key: purpose
+  label: Purpose
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: scope
+  label: Scope
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: principle
+  label: Principle
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: patching_controls_end_point_devices
+  label: Patching Controls – End Point Devices
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: patching_controls_production_systems
+  label: Patching Controls – Production Systems
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: patching_exceptions
+  label: Patching Exceptions
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: patching_schedule
+  label: Patching Schedule
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: patch_severity_rating_and_timeframes_to_deploy
+  label: Patch Severity Rating and Timeframes to Deploy
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: policy_compliance
+  label: Policy Compliance
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: compliance_measurement
+  label: Compliance Measurement
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: exceptions
+  label: Exceptions
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: non_compliance
+  label: Non-Compliance
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: continual_improvement
+  label: Continual Improvement
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: areas_of_the_iso27001_standard_addressed
+  label: Areas of the ISO27001 Standard Addressed
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+description: Commitment to timely patching of operating systems and applications.
+  Tie it to vulnerability scanning and change management. Track SLAs by severity and
+  evidence deployment.

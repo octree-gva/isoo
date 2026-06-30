@@ -1,0 +1,20 @@
+# frozen_string_literal: true
+
+require 'fileutils'
+require_relative '../app/data_layout'
+
+DataLayout.ensure!
+
+data = DataLayout::DATA_PATH
+FileUtils.mkdir_p(File.join(data, 'projects'))
+system('git', 'config', '--global', '--add', 'safe.directory', data)
+Dir.chdir(data) do
+  unless File.directory?('.git')
+    system('git', 'init', '-b', 'main')
+    system('git', 'config', 'user.email', ENV.fetch('GIT_AUTHOR_EMAIL', 'isoo@local'))
+    system('git', 'config', 'user.name', ENV.fetch('GIT_AUTHOR_NAME', 'ISOO'))
+    FileUtils.touch(File.join('projects', '.gitkeep')) unless Dir.glob('projects/*', File::FNM_DOTMATCH).any?
+    system('git', 'add', '-A')
+    system('git', 'commit', '-m', 'init data repo')
+  end
+end

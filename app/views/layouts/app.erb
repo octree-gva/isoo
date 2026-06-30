@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="isoo">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title><%= t('app.name') %></title>
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.14/dist/full.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.css" rel="stylesheet">
+  <link href="/css/app.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>window.I18n = <%= ::IsooI18n.js_payload.to_json %>;</script>
+  <script src="/js/document-presence.js" defer></script>
+  <script src="/js/markdown-editor.js" defer></script>
+  <script src="/js/modal-wizard.js" defer></script>
+  <script src="/js/date-shortcuts.js" defer></script>
+  <script src="/js/toasts.js" defer></script>
+  <script src="/js/copy-to-clipboard.js" defer></script>
+  <%= render('shared/_session_idle') %>
+</head>
+<body class="bg-white min-h-screen pb-[env(safe-area-inset-bottom)]">
+  <a href="#main-content" class="skip-link"><%= t('a11y.skip_to_content') %></a>
+  <% if @flash %>
+    <% toast_type = @flash['type'] == 'error' ? 'error' : 'success' %>
+    <% toast_icon = toast_type == 'error' ? 'error-warning' : 'checkbox-circle' %>
+    <div class="toast toast-top toast-end z-50 pointer-events-none" role="status" aria-live="polite" data-toast>
+      <div class="alert alert-<%= toast_type %> shadow-lg max-w-md pointer-events-auto flex items-start gap-3">
+        <i class="ri-<%= toast_icon %>-line text-xl shrink-0" aria-hidden="true"></i>
+        <span class="flex-1 text-base"><%= @flash['message'] %></span>
+        <button type="button" class="btn btn-ghost btn-xs btn-circle shrink-0" data-toast-dismiss
+                aria-label="<%= t('toast.dismiss') %>">
+          <i class="ri-close-line" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+  <% end %>
+  <header class="navbar bg-base-100 border-b px-4 sm:px-6 min-h-[3.5rem]" role="banner">
+    <nav class="flex-1 min-w-0" aria-label="<%= t('a11y.main_nav') %>">
+      <a href="/projects" class="font-display text-xl sm:text-2xl font-normal flex items-center gap-2 min-h-[2.75rem]">
+        <i class="ri-shield-check-line" aria-hidden="true"></i>
+        <%= t('app.name') %>
+      </a>
+    </nav>
+    <div class="flex-none gap-2 flex items-center shrink-0" role="navigation" aria-label="<%= t('a11y.user_nav') %>">
+      <% if GitService.remote_sync_enabled? %>
+        <form method="post" action="/git/sync" class="inline">
+          <button type="submit" class="btn btn-ghost btn-sm" aria-label="<%= t('git.sync_label') %>">
+            <i class="ri-refresh-line" aria-hidden="true"></i>
+            <%= t('git.sync') %>
+          </button>
+        </form>
+      <% end %>
+      <% if @doc_export %>
+        <button type="button" class="btn btn-ghost btn-sm navbar-export"
+                data-dialog-open="document_export_modal"
+                aria-haspopup="dialog" aria-controls="document_export_modal"
+                aria-label="<%= t('docs.export_named', name: @doc_export['title']) %>">
+          <i class="ri-download-line" aria-hidden="true"></i>
+          <%= t('docs.export') %>
+        </button>
+      <% elsif @navbar_export %>
+        <button type="button" class="btn btn-ghost btn-sm navbar-export"
+                data-dialog-open="export_modal"
+                aria-haspopup="dialog" aria-controls="export_modal"
+                aria-label="<%= t('projects.export_named', name: @manifest&.name || @slug) %>">
+          <i class="ri-download-line" aria-hidden="true"></i>
+          <%= t('projects.export') %>
+        </button>
+      <% end %>
+      <% unless ENV['AUTH_DISABLED'] == '1' %>
+        <% if current_user %>
+          <span class="text-sm sm:text-base opacity-70 max-w-[10rem] sm:max-w-xs truncate" id="current-user"><%= current_user['name'] || current_user['email'] %></span>
+          <a href="/auth/logout" class="btn btn-ghost btn-sm"><%= t('nav.logout') %></a>
+        <% end %>
+      <% end %>
+    </div>
+  </header>
+  <main id="main-content" class="<%= @content_class || 'max-w-3xl' %> mx-auto w-full px-4 py-6 sm:p-6 lg:p-8" tabindex="-1">
+    <%= yield %>
+  </main>
+  <% if @doc_export %>
+    <%= render('shared/_document_export_modal') %>
+  <% end %>
+</body>
+</html>

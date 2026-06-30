@@ -1,0 +1,36 @@
+<%= render('shared/_doc_header') %>
+<%= render('shared/_document_presence', locals: { slug: @slug, doc_id: @doc['doc_id'] }) %>
+
+<% columns = @data[:schema]['columns'] %>
+<% row_url = "/projects/#{@slug}/docs/#{@doc['doc_id']}/rows/#{@row['_row_id']}" %>
+
+<div data-table-row-show data-row-prefill="<%= ::JsonAttr.encode(@row) %>">
+  <p class="mt-4 text-base opacity-80">
+    <%= t('table.row_permalink') %>
+    <a href="<%= row_url %>" class="link link-primary break-all"><%= row_url %></a>
+  </p>
+
+  <%= render('shared/_table_row_readonly', locals: { columns: columns, row: @row }) %>
+</div>
+
+<%= render('shared/_table_modals', locals: {
+      slug: @slug,
+      doc_id: @doc['doc_id'],
+      columns: columns,
+      document_title: @header_title,
+      show_new: false,
+      show_save: false
+    }) %>
+
+<footer class="page-footer fixed bottom-0 inset-x-0 z-40 border-t border-neutral-200 bg-white/95 backdrop-blur-sm px-4 py-3"
+        role="toolbar" aria-label="<%= t('a11y.table_row_actions') %>">
+  <div class="mx-auto flex flex-wrap gap-3 justify-end max-w-3xl">
+    <button type="button" class="btn btn-primary w-full sm:w-auto"
+            data-wizard-open="edit_row_modal"
+            data-wizard-prefill="<%= ::JsonAttr.encode(@row) %>"
+            aria-haspopup="dialog" aria-controls="edit_row_modal">
+      <i class="ri-edit-line" aria-hidden="true"></i>
+      <%= t('actions.edit') %>
+    </button>
+  </div>
+</footer>

@@ -1,0 +1,50 @@
+---
+schema_version: '1'
+kind: form
+response_kind: text
+sections:
+- level: h1
+  key: attendees
+  label: 'ATTENDEES:'
+  role: title
+  editable: false
+  field_type: text
+  required: false
+- level: h2
+  key: agenda
+  label: Agenda
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: risk_review
+  label: RISK REVIEW
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: risk_identification
+  label: RISK IDENTIFICATION
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: risk_assessment
+  label: RISK ASSESSMENT
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: appendix_a_documents_relevant_to_meeting
+  label: APPENDIX A – DOCUMENTS RELEVANT TO MEETING
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+description: Structures the yearly session where leadership revises risks, treatment
+  plans, and ISMS performance. Schedule it before your management review or recertification
+  cycle. Capture decisions, owners, and dates so improvements are traceable.

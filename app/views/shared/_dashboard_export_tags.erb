@@ -1,0 +1,5 @@
+<% Array(locals[:tag_ids]).each do |tag_id| %>
+  <% label = dashboard_export_tag_labels([tag_id]).first %>
+  <% next if label.to_s.empty? %>
+  <span class="badge badge-outline badge-md shrink-0"><%= label %></span>
+<% end %>

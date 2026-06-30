@@ -1,0 +1,132 @@
+schema_version: '1'
+kind: text
+sections:
+- level: h1
+  key: secure_development_policy
+  label: Secure Development Policy
+  role: title
+  editable: false
+  field_type: text
+  required: false
+- level: h2
+  key: purpose
+  label: Purpose
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: scope
+  label: Scope
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: principle
+  label: Principle
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: segregation_of_environments
+  label: Segregation of Environments
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: secure_development_coding_guidelines
+  label: Secure Development Coding Guidelines
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: development_code_repositories
+  label: Development Code Repositories
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: development_code_reviews
+  label: Development Code Reviews
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: development_code_approval
+  label: Development Code Approval
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: testing
+  label: Testing
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: test_data
+  label: Test Data
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: promoting_code_to_production
+  label: Promoting Code to Production
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: policy_compliance
+  label: Policy Compliance
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: compliance_measurement
+  label: Compliance Measurement
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: exceptions
+  label: Exceptions
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: non_compliance
+  label: Non-Compliance
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: continual_improvement
+  label: Continual Improvement
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: areas_of_the_iso27001_standard_addressed
+  label: Areas of the ISO27001 Standard Addressed
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+description: Security requirements for software you build or materially customise.
+  Adopt it before SDLC hardening or DevSecOps tooling. Covers coding standards, testing,
+  and separation of environments.

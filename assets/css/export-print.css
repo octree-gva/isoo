@@ -1,0 +1,613 @@
+/* Print-ready export layout — single HTML file, all documents, print to PDF */
+
+:root {
+  --export-text: #1a1a1a;
+  --export-muted: #555;
+  --export-border: #ccc;
+  --export-accent: #ff661a;
+  font-family: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  font-size: 11pt;
+  line-height: 1.5;
+  color: var(--export-text);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: #fff;
+}
+
+.export-print-header,
+.export-print-footer {
+  display: none;
+}
+
+.export-print-header__logo {
+  height: 8.4mm;
+  width: auto;
+  object-fit: contain;
+}
+
+.export-version-control {
+  margin: 0 0 1.25rem;
+  break-inside: auto;
+}
+
+.export-version-control h2 {
+  font-size: 1rem;
+  margin: 0 0 0.5rem;
+}
+
+.export-version-table tr.export-version-row--current td {
+  font-weight: 600;
+}
+
+.version-control-row--current td {
+  font-weight: 600;
+}
+
+.export-annex-assets {
+  margin-top: 1.25rem;
+}
+
+.export-annex-assets h2 {
+  font-size: 1rem;
+  margin: 0 0 0.75rem;
+}
+
+.export-annex-figure {
+  margin: 0 0 1.25rem;
+  text-align: center;
+  break-inside: avoid;
+}
+
+.export-annex-figure img {
+  max-width: 100%;
+  max-height: 240mm;
+  height: auto;
+  object-fit: contain;
+}
+
+.export-annex-figure figcaption {
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--export-muted);
+}
+
+.export-cover {
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2rem 0;
+}
+
+.export-cover h1 {
+  font-size: 2rem;
+  margin: 0 0 0.5rem;
+  font-weight: 600;
+}
+
+.export-cover p {
+  margin: 0.25rem 0;
+  color: var(--export-muted);
+}
+
+.export-section-divider {
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2rem 0;
+}
+
+.export-section-divider h1 {
+  font-size: 2rem;
+  margin: 0 0 0.5rem;
+  font-weight: 600;
+}
+
+.export-section-divider__subtitle {
+  margin: 0.25rem 0;
+  color: var(--export-muted);
+  font-size: 1.1rem;
+}
+
+.export-toc {
+  margin: 2rem 0;
+}
+
+.export-toc h2 {
+  font-size: 1.35rem;
+  margin: 0 0 0.5rem;
+}
+
+.export-toc-summary {
+  margin: 0 0 1.25rem;
+  color: var(--export-muted);
+}
+
+.export-toc-group {
+  margin-bottom: 1.5rem;
+  break-inside: avoid;
+}
+
+.export-toc-group-title {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem;
+  color: var(--export-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.export-toc-list {
+  margin: 0;
+  padding-left: 1.5rem;
+  column-gap: 2rem;
+}
+
+.export-toc-list li {
+  margin: 0.3rem 0;
+  break-inside: avoid;
+}
+
+.export-toc-group-label {
+  font-size: 0.8rem;
+  color: var(--export-muted);
+  margin-left: 0.35rem;
+}
+
+.export-toc-list a {
+  color: var(--export-accent);
+  text-decoration: none;
+}
+
+.export-main {
+  margin-top: 2rem;
+}
+
+.export-doc {
+  margin-bottom: 3rem;
+}
+
+.export-doc-header {
+  border-bottom: 2px solid var(--export-accent);
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.75rem;
+  break-inside: avoid;
+  break-after: avoid;
+}
+
+.export-doc-header h1 {
+  font-size: 1.4rem;
+  margin: 0 0 0.35rem;
+}
+
+.export-doc-meta {
+  font-size: 0.85rem;
+  color: var(--export-muted);
+}
+
+.export-doc-meta span + span::before {
+  content: " · ";
+}
+
+.export-body {
+  orphans: 3;
+  widows: 3;
+}
+
+.export-body > * {
+  break-inside: avoid-page;
+  page-break-inside: avoid;
+}
+
+.export-body h1,
+.export-body h2,
+.export-body h3,
+.export-body h4 {
+  line-height: 1.25;
+  margin: 1.25rem 0 0.5rem;
+  break-after: avoid;
+  break-inside: avoid;
+}
+
+.export-body h1 { font-size: 1.35rem; }
+.export-body h2 { font-size: 1.15rem; }
+.export-body h3 { font-size: 1rem; }
+
+.export-body p {
+  margin: 0.5rem 0;
+  orphans: 3;
+  widows: 3;
+  break-inside: avoid-page;
+  page-break-inside: avoid;
+}
+
+.export-body ul {
+  margin: 1rem 0;
+  padding-left: 0;
+  list-style: none;
+}
+
+.export-body ol {
+  margin: 1rem 0;
+  padding-left: 1.5rem;
+}
+
+.export-body ul li {
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  column-gap: 0.35em;
+  row-gap: 0.25em;
+  align-items: start;
+  margin: 0.35rem 0;
+  padding-left: 0;
+  text-indent: 0;
+  break-inside: auto;
+}
+
+.export-body ul li::before {
+  content: "—";
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.export-body ul li > * {
+  grid-column: 2;
+  margin: 0;
+  min-width: 0;
+}
+
+.export-body ul li > ul,
+.export-body ul li > ol {
+  margin-top: 0.25rem;
+}
+
+.export-body ol li {
+  break-inside: avoid;
+  margin: 0.35rem 0;
+}
+.export-body blockquote {
+  margin: 0.75rem 0;
+  padding-left: 1rem;
+  border-left: 3px solid var(--export-border);
+  break-inside: avoid;
+}
+
+.export-body pre,
+.export-body code {
+  font-family: ui-monospace, "Cascadia Code", monospace;
+  font-size: 0.9em;
+}
+
+.export-body pre {
+  padding: 0.75rem;
+  background: #f4f6f8;
+  border: 1px solid var(--export-border);
+  overflow-x: auto;
+  break-inside: avoid;
+}
+
+.export-body a {
+  color: var(--export-accent);
+}
+
+.export-table-wrap {
+  margin-top: 1.25rem;
+  break-inside: auto;
+}
+
+.export-table-wrap h3 {
+  font-size: 1rem;
+  margin: 0 0 0.5rem;
+  break-after: avoid;
+}
+
+.export-table-legend {
+  margin: 0 0 1rem;
+  break-inside: avoid;
+  background: #fcffd5;
+  padding: 1rem;
+  border-radius: 10px;
+  font-size: 11px;
+  font-family: monospace;
+}
+
+
+.export-legend-list {
+  margin: 0;
+  display: grid;
+  grid-template-columns: minmax(8rem, 12rem) 1fr;
+  gap: 0.25rem 1rem;
+}
+
+.export-legend-list dt {
+  margin: 0;
+  font-weight: 600;
+}
+
+.export-legend-list dd {
+  margin: 0;
+  color: var(--export-muted);
+}
+
+.export-legend-undocumented {
+  font-style: italic;
+  color: var(--export-muted);
+}
+
+table.export-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+  break-inside: auto;
+}
+
+table.export-table thead {
+  display: table-header-group;
+}
+
+table.export-table th,
+table.export-table td {
+  border: 1px solid var(--export-border);
+  padding: 0.35rem 0.5rem;
+  text-align: left;
+  vertical-align: top;
+}
+
+table.export-table tr {
+  break-inside: avoid;
+}
+
+table.export-table th {
+  background: #f4f6f8;
+  font-weight: 600;
+}
+
+@media print {
+  @page export-portrait {
+    size: A4 portrait;
+    margin: 20mm 12mm 24mm;
+  }
+
+  @page export-landscape {
+    size: A4 landscape;
+    margin: 20mm 12mm 24mm;
+  }
+
+  @page {
+    size: A4 portrait;
+    margin: 20mm 12mm 24mm;
+  }
+
+  body {
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  body.export-pdf .export-print-header,
+  body.export-pdf .export-print-footer {
+    display: none !important;
+  }
+
+  .export-print-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 14mm;
+    padding: 3mm 12mm;
+    border-bottom: 1px solid var(--export-border);
+    font-size: 9pt;
+    color: var(--export-muted);
+    background: #fff;
+    z-index: 1;
+  }
+
+  .export-print-header__title {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding-right: 0.75rem;
+  }
+
+  .export-print-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.75rem;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 12mm;
+    padding: 2mm 12mm;
+    border-top: 1px solid var(--export-border);
+    font-size: 8pt;
+    color: var(--export-muted);
+    background: #fff;
+    z-index: 1;
+  }
+
+  .export-print-footer__page::after {
+    content: counter(page) "/" counter(pages);
+    white-space: nowrap;
+  }
+
+  .export-print-footer__title {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .export-print-footer__date {
+    white-space: nowrap;
+  }
+
+  .export-cover {
+    break-after: page;
+    min-height: auto;
+    padding-top: 16mm;
+    padding-bottom: 16mm;
+  }
+
+  .export-toc {
+    break-before: page;
+    break-after: page;
+    padding-top: 16mm;
+    padding-bottom: 16mm;
+  }
+
+  .export-section-divider {
+    break-before: page;
+    break-after: page;
+    min-height: auto;
+    padding-top: 16mm;
+    padding-bottom: 16mm;
+  }
+
+  .export-section-divider + .export-doc {
+    break-before: auto;
+  }
+
+  .export-toc-list {
+    column-count: 2;
+  }
+
+  .export-toc-group {
+    break-inside: avoid-page;
+  }
+
+  .export-toc-list a::after {
+    content: leader(".") target-counter(attr(href url), page);
+    float: right;
+  }
+
+  .export-main {
+    margin-top: 0;
+  }
+
+  /* Each document starts on a new page — single print job, many sections */
+  .export-doc {
+    break-before: page;
+    break-inside: auto;
+    margin-bottom: 0;
+    padding-top: 20mm;
+    padding-bottom: 18mm;
+  }
+
+  body.export-pdf .export-doc {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  body.export-pdf .export-cover,
+  body.export-pdf .export-toc,
+  body.export-pdf .export-section-divider {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  /* pdf_override block (injected for PDF export) sets the real spacing */
+
+  .export-doc-header {
+    break-inside: avoid;
+    break-after: avoid-page;
+    page-break-after: avoid;
+  }
+
+  .export-body h1,
+  .export-body h2,
+  .export-body h3,
+  .export-body h4 {
+    break-after: avoid-page;
+    page-break-after: avoid;
+  }
+
+  .export-body p {
+    orphans: 3;
+    widows: 3;
+    break-inside: avoid-page;
+    page-break-inside: avoid;
+  }
+
+  .export-body > * {
+    break-inside: avoid-page;
+    page-break-inside: avoid;
+  }
+
+  .export-body ol li {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .export-table-wrap > h3 {
+    break-after: avoid-page;
+  }
+
+  .export-table-wrap {
+    page: export-landscape;
+    break-before: page;
+    padding-top: 20mm;
+  }
+
+  body.export-pdf .export-table-wrap {
+    padding-top: 0;
+  }
+
+  table.export-table thead {
+    display: table-header-group;
+  }
+
+  table.export-table tr {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  a {
+    color: var(--export-text);
+    text-decoration: none;
+  }
+
+  a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.8em;
+    color: var(--export-muted);
+  }
+
+  a[href^="#"]::after {
+    content: "";
+  }
+}
+
+@media screen {
+  body {
+    max-width: 210mm;
+    margin: 0 auto;
+    padding: 1.5rem;
+  }
+
+  .export-toc-list {
+    column-count: 2;
+  }
+
+  @media (min-width: 900px) {
+    .export-toc-list {
+      column-count: 3;
+    }
+  }
+}

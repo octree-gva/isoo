@@ -1,0 +1,84 @@
+schema_version: '1'
+kind: form
+response_kind: text
+sections:
+- level: h1
+  key: what_happened
+  label: What Happened?
+  role: title
+  editable: false
+  field_type: textarea
+  required: false
+- level: h2
+  key: when_did_it_happen
+  label: When Did It Happen?
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: what_did_we_do
+  label: What Did We Do?
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: relevant_internal_and_external_ticket_references
+  label: Relevant Internal and External Ticket References
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: description_of_impact
+  label: Description of Impact
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: root_cause
+  label: Root Cause
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: risk_added_to_risk_register
+  label: Risk Added To Risk Register?
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: yes_no
+  label: Yes / No
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: risk_number
+  label: 'Risk Number:'
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: date_discussed_at_management_review_team
+  label: 'Date Discussed at Management Review Team:'
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: date_closed
+  label: 'Date Closed:'
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+description: Structured debrief after incidents or continuity activations. Complete
+  it within days of closure while memories are fresh. Drives corrective actions into
+  your improvement process.

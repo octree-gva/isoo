@@ -1,0 +1,37 @@
+<dialog id="document_export_modal" class="modal"
+        aria-labelledby="document_export_modal_title" aria-describedby="document_export_modal_desc">
+  <div class="modal-box bg-white">
+    <h2 id="document_export_modal_title" class="font-bold text-2xl"><%= t('docs.export_modal.title') %></h2>
+    <p id="document_export_modal_desc" class="mt-2 text-lg opacity-80"><%= t('docs.export_modal.description') %></p>
+    <form method="get" action="<%= @doc_export['action'] %>" class="mt-6 space-y-6">
+      <fieldset class="space-y-3">
+        <legend class="label-text text-lg font-medium mb-2"><%= t('projects.export_modal.format_label') %></legend>
+        <label class="label cursor-pointer justify-start gap-4 min-h-[2.75rem]">
+          <input type="radio" name="format" value="md" class="radio radio-primary" checked>
+          <span class="label-text text-lg"><%= t('projects.export_modal.format_md') %></span>
+        </label>
+        <label class="label cursor-pointer justify-start gap-4 min-h-[2.75rem]">
+          <input type="radio" name="format" value="html" class="radio radio-primary">
+          <span class="label-text text-lg"><%= t('projects.export_modal.format_html') %></span>
+        </label>
+        <label class="label cursor-pointer justify-start gap-4 min-h-[2.75rem]">
+          <input type="radio" name="format" value="pdf" class="radio radio-primary">
+          <span class="label-text text-lg"><%= t('projects.export_modal.format_pdf') %></span>
+        </label>
+      </fieldset>
+      <div class="modal-action flex-col-reverse sm:flex-row-reverse gap-2 mt-6">
+        <button type="submit" class="btn btn-primary w-full sm:w-auto">
+          <i class="ri-download-line" aria-hidden="true"></i>
+          <%= t('projects.export_modal.submit') %>
+        </button>
+        <button type="button" class="btn btn-ghost w-full sm:w-auto"
+                onclick="document_export_modal.close()">
+          <%= t('actions.cancel') %>
+        </button>
+      </div>
+    </form>
+  </div>
+  <form method="dialog" class="modal-backdrop" aria-label="<%= t('actions.cancel') %>">
+    <button type="submit"><%= t('actions.cancel') %></button>
+  </form>
+</dialog>

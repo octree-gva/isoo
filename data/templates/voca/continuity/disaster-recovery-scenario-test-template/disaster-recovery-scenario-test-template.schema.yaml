@@ -1,0 +1,62 @@
+schema_version: '1'
+kind: form
+response_kind: text
+sections:
+- level: h2
+  key: scenario_name
+  label: Scenario
+  role: title
+  editable: true
+  field_type: text
+  required: false
+  description: Short name identifying the disaster recovery scenario.
+- level: h2
+  key: date_of_test
+  label: Date of test
+  role: body
+  editable: true
+  field_type: date
+  required: false
+  description: Date the scenario test was performed.
+- level: h2
+  key: conducted_by
+  label: Conducted by
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+  description: Person or team who ran the test.
+- level: h2
+  key: overview
+  label: Overview
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+  description: Summary of the scenario and test approach.
+- level: h2
+  key: steps
+  label: Steps
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+  description: Steps taken or planned for this scenario.
+- level: h2
+  key: estimated_time
+  label: Estimated time
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+  description: Expected duration to complete recovery steps.
+- level: h2
+  key: result
+  label: Result
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+  description: Outcome of the test (success or failure).
+description: Plan and record a DR test for a chosen scenario. Schedule tests at least
+  annually for critical systems. Document results, gaps, and remediation owners.

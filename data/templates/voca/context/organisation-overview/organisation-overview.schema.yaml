@@ -1,0 +1,59 @@
+---
+schema_version: '1'
+kind: text
+sections:
+- level: h1
+  key: introduction
+  label: Introduction
+  role: title
+  editable: false
+  field_type: textarea
+  required: false
+- level: h2
+  key: about_us
+  label: About Us
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: our_products_and_services
+  label: Our Products and Services
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: our_locations
+  label: Our Locations
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: our_mission
+  label: Our Mission
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: our_values
+  label: Our Values
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: our_business_objectives
+  label: Our Business Objectives
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+description: Use this to capture who your organisation is, what it does, and how it
+  is structured. Complete it early in your ISMS journey so auditors and your team
+  share the same baseline. Update it when ownership, locations, or core services change.
+export_tags:
+- basic
+- soi

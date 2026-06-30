@@ -1,0 +1,140 @@
+---
+schema_version: '1'
+kind: text
+sections:
+- level: h1
+  key: ai_technology
+  label: AI Technology
+  role: title
+  editable: false
+  field_type: text
+  required: false
+- level: h2
+  key: purpose
+  label: Purpose
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: scope
+  label: Scope
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: principles
+  label: Principles
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: approved_ai_technology
+  label: Approved AI Technology
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: ai_licencing
+  label: AI Licencing
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: ai_technology_risk_management
+  label: AI technology Risk Management
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: ai_technology_supplier_selection
+  label: AI technology Supplier Selection
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: locally_installed_ai_technology
+  label: Locally Installed AI Technology
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: changes_to_ai_technology
+  label: Changes to AI technology
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: ai_usage
+  label: AI Usage
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: associated_policies
+  label: Associated Policies
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: ai_usage_process_policy
+  label: AI Usage Process Policy
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: ai_usage_table
+  label: AI Usage Table
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: policy_compliance
+  label: Policy Compliance
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: compliance_measurement
+  label: Compliance Measurement
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: exceptions
+  label: Exceptions
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: non_compliance
+  label: Non-Compliance
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: continual_improvement
+  label: Continual Improvement
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+description: Governs acceptable and secure use of AI tools and models in your organisation.
+  Adopt before widespread adoption of generative AI. Address data leakage, bias, vendor
+  risk, and human oversight.

@@ -1,0 +1,9 @@
+<% unless ENV['AUTH_DISABLED'] == '1' %>
+  <script>
+    window.IsooSessionIdle = {
+      timeoutMs: <%= ::SessionIdle.timeout_seconds * 1000 %>,
+      logoutUrl: '/auth/logout'
+    };
+  </script>
+  <script src="/js/session-idle.js" defer></script>
+<% end %>

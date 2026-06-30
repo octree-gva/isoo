@@ -1,0 +1,39 @@
+<% table_rows = defined?(rows) ? rows : [] %>
+<% current = defined?(current_version) ? current_version.to_s : '' %>
+<% links = defined?(version_links) ? version_links : {} %>
+<% table_heading_id = defined?(heading_id) ? heading_id : 'version-control-heading' %>
+<% if table_rows.any? %>
+  <section class="mt-6 overflow-x-auto" aria-labelledby="<%= table_heading_id %>">
+    <h2 id="<%= table_heading_id %>" class="text-2xl">
+      <%= t('docs.version_control.heading') %>
+    </h2>
+    <table class="table table-zebra mt-4 w-full">
+      <thead>
+        <tr>
+          <th><%= t('docs.version_control.version_col') %></th>
+          <th><%= t('docs.version_control.modified_col') %></th>
+          <th><%= t('docs.version_control.author_col') %></th>
+          <th><%= t('docs.version_control.changes_col') %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% table_rows.each do |row| %>
+          <% current_row = current != '' && row['version'] == current %>
+          <tr<%= ' class="version-control-row--current"' if current_row %>>
+            <td>
+              <% href = links[row['version']] %>
+              <% if href %>
+                <a class="link link-primary<%= ' font-semibold' if current_row %>" href="<%= href %>"><%= row['version'] %></a>
+              <% else %>
+                <span<%= ' class="font-semibold"' if current_row %>><%= row['version'] %></span>
+              <% end %>
+            </td>
+            <td<%= ' class="font-semibold"' if current_row %>><%= row['modified'] %></td>
+            <td<%= ' class="font-semibold"' if current_row %>><%= row['author'] %></td>
+            <td<%= ' class="font-semibold"' if current_row %>><%= row['changes'] %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </section>
+<% end %>

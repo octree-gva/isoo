@@ -1,0 +1,42 @@
+---
+schema_version: '1'
+kind: text
+sections:
+- level: h1
+  key: introduction
+  label: Introduction
+  role: title
+  editable: false
+  field_type: textarea
+  required: false
+- level: h2
+  key: business_impact_assessment_approach
+  label: Business Impact Assessment Approach
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: business_impact_assessment_business_impact_level_definitions
+  label: Business Impact Assessment Business Impact Level Definitions
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: last_business_impact_assessment
+  label: Last Business Impact Assessment
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: business_impact_analysis
+  label: Business Impact Analysis
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+description: Executive-readable summary of BIA results for leadership decisions and
+  funding. Produce it after the detailed BIA is complete. Use it in management review
+  to justify continuity investments.

@@ -1,0 +1,51 @@
+---
+schema_version: '1'
+kind: form
+response_kind: text
+sections:
+- level: h1
+  key: attendees
+  label: 'ATTENDEES:'
+  role: title
+  editable: false
+  field_type: text
+  required: false
+- level: h2
+  key: new_agenda_items
+  label: NEW AGENDA ITEMS
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: exiting_agenda_items
+  label: EXITING AGENDA ITEMS
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: agenda
+  label: AGENDA
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: information_security_objectives_measures
+  label: INFORMATION SECURITY OBJECTIVES MEASURES
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: documents_relevant_to_meeting
+  label: DOCUMENTS RELEVANT TO MEETING
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+description: Guides the formal management review required by ISO 27001 clause 9.3.
+  Use it at least once per year to assess ISMS suitability, adequacy, and effectiveness.
+  Record inputs like audit results, incidents, and KPIs, then document actions and
+  deadlines.

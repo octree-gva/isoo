@@ -1,0 +1,63 @@
+schema_version: '1'
+kind: form
+response_kind: text
+sections:
+- level: h2
+  key: scenario_name
+  label: Scenario
+  role: title
+  editable: true
+  field_type: text
+  required: false
+  description: Short name identifying the business continuity scenario.
+- level: h2
+  key: overview
+  label: Overview
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+  description: Summary of the scenario and test approach.
+- level: h2
+  key: steps
+  label: Steps
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+  description: Steps taken or planned for this scenario.
+- level: h2
+  key: estimated_time
+  label: Estimated time
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+  description: Expected duration to complete the scenario test.
+- level: h2
+  key: key_observations
+  label: Key observations
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+  description: Positive and negative observations from the test.
+- level: h2
+  key: improvements_needed
+  label: Improvements needed
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+  description: Improvements identified during the test.
+- level: h2
+  key: result
+  label: Result
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+  description: Outcome of the test (success or failure).
+description: Alternative or supplementary scenario material for continuity training
+  and tests. Rotate scenarios so teams do not rehearse only one event type. Update
+  when your threat landscape or dependencies change.

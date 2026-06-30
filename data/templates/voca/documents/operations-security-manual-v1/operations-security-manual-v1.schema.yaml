@@ -1,0 +1,218 @@
+schema_version: '1'
+kind: text
+sections:
+- level: h1
+  key: purpose
+  label: Purpose
+  role: title
+  editable: false
+  field_type: textarea
+  required: false
+- level: h2
+  key: secure_remote_it_a_security_by_design_based_approach
+  label: Secure Remote IT – A Security-by-Design Based Approach
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: new_employee_onboarding
+  label: New Employee Onboarding
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: employee_role_change
+  label: Employee Role Change
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: employee_offboarding
+  label: Employee Offboarding
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: security_stand_ups
+  label: Security Stand-Ups
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: password_security_key_secret_authentication_management_key_management
+  label: Password, Security Key, Secret Authentication Management, Key Management
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: management_of_software_access_subscriptions
+  label: Management of Software Access & Subscriptions
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: incident_management_security_alerts_escalation_process
+  label: 'Incident Management: Security Alerts & Escalation Process'
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: information_security_training_continuous_improvement
+  label: Information Security Training & Continuous Improvement
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: background_checks
+  label: Background Checks
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: third_party_supplier_onboarding_review
+  label: Third-Party Supplier Onboarding & Review
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: back_up_restore_process
+  label: Back-up & Restore Process
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: change_management_summary
+  label: Change Management Summary
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: capacity_management_process
+  label: Capacity Management Process
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: logging_and_monitoring_process
+  label: Logging and Monitoring Process
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: audit_management_scheduling
+  label: Audit Management & Scheduling
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: technical_vulnerability_management
+  label: Technical Vulnerability Management
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: software_installation_process_patch_management
+  label: Software Installation Process & Patch Management
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: information_transfer
+  label: Information Transfer
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: secure_project_management
+  label: Secure Project Management
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: asset_disposal
+  label: Asset Disposal
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: malware_management_process
+  label: Malware management process
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: clock_synchronisation
+  label: Clock synchronisation
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: secure_development_process
+  label: Secure Development Process
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: process_compliance
+  label: Process Compliance
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: compliance_measurement
+  label: Compliance Measurement
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: exceptions
+  label: Exceptions
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: non_compliance
+  label: Non-Compliance
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: continual_improvement
+  label: Continual Improvement
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+description: Day-to-day operational security guidance for IT and support teams. Implement
+  it once core policies exist and procedures are defined. Use it as the practical
+  companion to high-level policies during daily work.
+export_tags:
+- soi

@@ -1,0 +1,85 @@
+---
+schema_version: '1'
+kind: table
+primary_key: reference
+columns:
+- key: reference
+  label: "#"
+  type: number
+  description: Submission reference number.
+  required: true
+- key: request_type
+  label: Request type
+  type: dropdown
+  description: Starter, leaver, or mover access change.
+  required: true
+  options:
+  - Starter
+  - Leaver
+  - Mover
+- key: request_date
+  label: Request date
+  type: date
+  description: Date the access request was raised.
+  required: true
+- key: employee_name
+  label: Employee
+  type: text
+  description: Person whose access is being changed.
+  required: true
+- key: line_manager
+  label: Line manager
+  type: text
+  description: Line manager responsible for completing the form.
+  required: true
+- key: form_location_url
+  label: Form location (URL or network path)
+  type: link
+  description: Network path or URL to the location of the form or system.
+- key: systems_requiring_access
+  label: Systems requiring access change
+  type: textarea
+  description: Systems, applications, or resources affected by this request.
+  required: true
+- key: submission_method
+  label: How the request is submitted
+  type: textarea
+  description: Ticketing system URL, email address, or other submission route for
+    approval.
+- key: approver
+  label: Access approver
+  type: text
+  description: Person or role who approves the request (must differ from the requester).
+- key: access_actioned_by
+  label: Access actioned by
+  type: textarea
+  description: Person, role, or supplier who implements the approved access change.
+- key: rbac_updated
+  label: Role Based Access Control document updated
+  type: switch
+  description: RBAC document updated after access was actioned.
+  default: false
+- key: leaver_access_notes
+  label: Leaver access notes
+  type: textarea
+  description: Additional systems or mailbox retention notes for leaver requests.
+- key: status
+  label: Status
+  type: dropdown
+  description: Current stage of this access request.
+  required: true
+  options:
+  - Draft
+  - Submitted
+  - Approved
+  - Actioned
+  - Closed
+_internal:
+- key: _row_id
+  type: uuid
+- key: _deleted_at
+  type: datetime
+description: Log of access changes tied to HR events. Record each starter, leaver,
+  and mover action here. Review periodically to catch missed revocations.
+export_tags:
+- soi

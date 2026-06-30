@@ -1,0 +1,39 @@
+---
+schema_version: '1'
+kind: table
+primary_key: information_security_relevant_skills
+columns:
+- key: information_security_relevant_skills
+  label: Information Security Relevant Skills
+  type: text
+  description: Skill or competency area.
+- key: education
+  label: Education
+  type: dropdown
+  description: Required competency level for education.
+  options:
+  - None
+  - Basic
+  - Competent
+  - Proficient
+  - Expert
+- key: business_technology
+  label: Business Technology
+  type: dropdown
+  description: Required competency level for business technology.
+  options:
+  - None
+  - Basic
+  - Competent
+  - Proficient
+  - Expert
+_internal:
+- key: _row_id
+  type: uuid
+- key: _deleted_at
+  type: datetime
+description: Maps required security skills and training to roles across the organisation.
+  Build it after policies are drafted so you know who must understand what. Use it
+  to plan awareness sessions and to evidence competence at audit.
+export_tags:
+- soi

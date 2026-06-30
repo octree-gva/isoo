@@ -1,0 +1,44 @@
+---
+schema_version: '1'
+kind: table
+primary_key: what_message_we_will_communicate
+columns:
+- key: what_message_we_will_communicate
+  label: What message we will communicate
+  type: textarea
+  description: Message or topic to communicate.
+- key: when_will_we_communicate_it
+  label: When will we communicate it
+  type: date
+  description: Planned communication date.
+- key: how_the_text_document_or_link_we_will_communicate
+  label: How — text, document or link
+  type: textarea
+  description: Channel, document, or link used to communicate.
+- key: who_will_communicate_it
+  label: Who will communicate it
+  type: text
+  description: Person or role delivering the message.
+- key: who_will_they_communicate_it_to
+  label: Who will they communicate it to
+  type: text
+  description: Target audience.
+- key: did_we_communicate
+  label: Did we communicate?
+  type: dropdown
+  description: Whether the communication was completed.
+  options:
+  - 'Yes'
+  - 'No'
+- key: evidence_we_communicated
+  label: Evidence we communicated
+  type: link
+  description: HTTPS link to evidence that communication took place.
+_internal:
+- key: _row_id
+  type: uuid
+- key: _deleted_at
+  type: datetime
+description: Defines how you communicate ISMS matters internally and externally—awareness,
+  incidents, and regulatory contact. Finalise it alongside your top-level security
+  policy rollout. Ensures stakeholders hear the right message at the right time.

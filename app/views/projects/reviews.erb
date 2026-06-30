@@ -1,0 +1,121 @@
+<%= render('shared/_back_nav', locals: { href: "/projects/#{@slug}", label: t('a11y.back_to_project', name: @manifest.name) }) %>
+<h1 id="reviews-heading"><%= t('reviews.title') %></h1>
+<p class="mt-2 text-lg opacity-80"><%= t('reviews.subtitle') %></p>
+
+<section class="mt-10" aria-labelledby="oldest-documents-heading">
+  <h2 id="oldest-documents-heading" class="text-2xl font-semibold"><%= t('reviews.oldest_documents_heading') %></h2>
+  <p class="mt-1 opacity-70"><%= t('reviews.oldest_documents_hint') %></p>
+  <% if @oldest_documents.empty? %>
+    <p class="mt-4 text-lg" role="status"><%= t('reviews.oldest_documents_empty') %></p>
+  <% else %>
+    <div class="doc-table-panel rounded-lg border border-neutral-200 bg-white shadow-sm mt-4">
+      <table class="doc-data-table w-full text-sm sm:text-base" aria-labelledby="oldest-documents-heading">
+        <thead>
+          <tr>
+            <th scope="col"><%= t('reviews.columns.document') %></th>
+            <th scope="col"><%= t('reviews.columns.kind') %></th>
+            <th scope="col"><%= t('reviews.columns.last_updated') %></th>
+            <th scope="col"><%= t('reviews.columns.action') %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @oldest_documents.each do |item| %>
+            <tr>
+              <td><%= item.title %></td>
+              <td><%= item.kind %></td>
+              <td><%= item.last_updated.iso8601 %></td>
+              <td>
+                <a class="btn btn-outline btn-sm"
+                   href="/projects/<%= @slug %>/docs/<%= item.doc_id %>"
+                   aria-label="<%= t('actions.open_named', name: item.title) %>">
+                  <i class="ri-file-text-line" aria-hidden="true"></i>
+                  <%= t('actions.open') %>
+                </a>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  <% end %>
+</section>
+
+<section class="mt-12" aria-labelledby="stale-documents-heading">
+  <h2 id="stale-documents-heading" class="text-2xl font-semibold"><%= t('reviews.stale_documents_heading') %></h2>
+  <p class="mt-1 opacity-70"><%= t('reviews.stale_documents_hint', months: ProjectReview::STALE_AFTER_MONTHS) %></p>
+  <% if @stale_documents.empty? %>
+    <p class="mt-4 text-lg" role="status"><%= t('reviews.stale_documents_empty') %></p>
+  <% else %>
+    <div class="doc-table-panel rounded-lg border border-neutral-200 bg-white shadow-sm mt-4">
+        <table class="doc-data-table w-full text-sm sm:text-base" aria-labelledby="stale-documents-heading">
+          <thead>
+            <tr>
+              <th scope="col"><%= t('reviews.columns.document') %></th>
+              <th scope="col"><%= t('reviews.columns.kind') %></th>
+              <th scope="col"><%= t('reviews.columns.last_updated') %></th>
+              <th scope="col"><%= t('reviews.columns.action') %></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @stale_documents.each do |item| %>
+              <tr>
+                <td><%= item.title %></td>
+                <td><%= item.kind %></td>
+                <td><%= item.last_updated.iso8601 %></td>
+                <td>
+                  <a class="btn btn-outline btn-sm"
+                     href="/projects/<%= @slug %>/docs/<%= item.doc_id %>"
+                     aria-label="<%= t('actions.open_named', name: item.title) %>">
+                    <i class="ri-file-text-line" aria-hidden="true"></i>
+                    <%= t('actions.open') %>
+                  </a>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+    </div>
+  <% end %>
+</section>
+
+<section class="mt-12" aria-labelledby="expired-review-dates-heading">
+  <h2 id="expired-review-dates-heading" class="text-2xl font-semibold"><%= t('reviews.expired_review_dates_heading') %></h2>
+  <p class="mt-1 opacity-70"><%= t('reviews.expired_review_dates_hint') %></p>
+  <% if @expired_review_dates.empty? %>
+    <p class="mt-4 text-lg" role="status"><%= t('reviews.expired_review_dates_empty') %></p>
+  <% else %>
+    <div class="doc-table-panel rounded-lg border border-neutral-200 bg-white shadow-sm mt-4">
+        <table class="doc-data-table w-full text-sm sm:text-base" aria-labelledby="expired-review-dates-heading">
+          <thead>
+            <tr>
+              <th scope="col"><%= t('reviews.columns.document') %></th>
+              <th scope="col"><%= t('reviews.columns.field') %></th>
+              <th scope="col"><%= t('reviews.columns.row') %></th>
+              <th scope="col"><%= t('reviews.columns.review_date') %></th>
+              <th scope="col"><%= t('reviews.columns.overdue') %></th>
+              <th scope="col"><%= t('reviews.columns.action') %></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @expired_review_dates.each do |item| %>
+              <tr>
+                <td><%= item.title %></td>
+                <td class="whitespace-pre-line"><%= item.column_label %></td>
+                <td><%= item.row_label %></td>
+                <td><%= item.review_date.iso8601 %></td>
+                <td><%= t('reviews.days_overdue', count: item.days_overdue) %></td>
+                <td>
+                  <a class="btn btn-outline btn-sm"
+                     href="/projects/<%= @slug %>/docs/<%= item.doc_id %>"
+                     aria-label="<%= t('actions.open_named', name: item.title) %>">
+                    <i class="ri-file-text-line" aria-hidden="true"></i>
+                    <%= t('actions.open') %>
+                  </a>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+    </div>
+  <% end %>
+</section>

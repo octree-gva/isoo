@@ -1,0 +1,104 @@
+schema_version: '1'
+kind: text
+sections:
+- level: h1
+  key: backup_policy
+  label: Backup Policy
+  role: title
+  editable: false
+  field_type: text
+  required: false
+- level: h2
+  key: purpose
+  label: Purpose
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: scope
+  label: Scope
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: principle
+  label: Principle
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: backup_restoration_procedures
+  label: Backup Restoration Procedures
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: backup_security
+  label: Backup Security
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: backup_schedule
+  label: Backup Schedule
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: backup_testing_and_verification
+  label: Backup Testing and Verification
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: policy_compliance
+  label: Policy Compliance
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: compliance_measurement
+  label: Compliance Measurement
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: exceptions
+  label: Exceptions
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: non_compliance
+  label: Non-Compliance
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: continual_improvement
+  label: Continual Improvement
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: areas_of_the_iso27001_standard_addressed
+  label: Areas of the ISO27001 Standard Addressed
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+description: Defines what is backed up, how often, where copies live, and how restores
+  are tested. Implement with your backup tooling and DR plans. Failed restores are
+  a common audit finding—test regularly.

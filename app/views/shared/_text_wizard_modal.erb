@@ -1,0 +1,103 @@
+<%# locals: slug, doc_id, sections, document_title: nil, show_title_step: false, page_title: nil %>
+<% wizard_sections = sections.select { |sec| sec['editable'] != false } %>
+<% wizard_title = page_title.presence || t('forms.run_wizard') %>
+<dialog id="text_wizard_modal" class="modal" aria-labelledby="text_wizard_modal_title" aria-describedby="text_wizard_modal_desc">
+  <div class="modal-box bg-white">
+    <div data-modal-wizard data-text-wizard>
+      <%= render('shared/_wizard_header', locals: {
+            id: 'text_wizard_modal_title',
+            title: wizard_title,
+            title_base: wizard_title
+          }) %>
+      <p id="text_wizard_modal_desc" class="sr-only"><%= t('forms.wizard_modal_desc') %></p>
+      <% step = 0 %>
+      <% if show_title_step %>
+        <% step += 1 %>
+        <div class="mt-4" data-wizard-step="<%= step %>">
+          <label class="form-control w-full" for="wizard-document-title">
+            <span class="label-text text-lg mb-2"><%= t('forms.document_title_label') %></span>
+            <input class="input input-bordered w-full text-base" type="text" id="wizard-document-title"
+                   data-text-wizard-field="document_title" value="<%= document_title %>" required>
+          </label>
+        </div>
+      <% end %>
+      <% wizard_sections.each_with_index do |sec, index| %>
+        <% step += 1 %>
+        <% field_id = "wizard-field-#{sec['key']}" %>
+        <% visible = !show_title_step && index.zero? %>
+        <div class="mt-4" data-wizard-step="<%= step %>"<%= ' hidden' unless visible %>>
+          <label class="form-control w-full" for="<%= field_id %>">
+            <span class="label-text text-lg mb-2"><%= sec['label'] %></span>
+            <% if sec['description'] %>
+              <%= render('shared/_field_description', locals: { text: sec['description'], id: "#{field_id}-hint" }) %>
+            <% end %>
+            <% attrs = sec['description'] ? %( aria-describedby="#{field_id}-hint") : '' %>
+            <% field_type = sec['field_type'] || 'textarea' %>
+            <% case field_type %>
+            <% when 'dropdown' %>
+              <select class="select select-bordered w-full text-base" id="<%= field_id %>"
+                      data-text-wizard-field="<%= sec['key'] %>"<%= attrs %>>
+                <option value=""><%= t('table.select_placeholder') %></option>
+                <% Array(sec['options']).each do |option| %>
+                  <option value="<%= option %>"><%= option %></option>
+                <% end %>
+              </select>
+            <% when 'text' %>
+              <input class="input input-bordered w-full text-base" type="text" id="<%= field_id %>"
+                     data-text-wizard-field="<%= sec['key'] %>"<%= attrs %>>
+            <% when 'switch' %>
+              <input type="hidden" name="<%= sec['key'] %>" value="0" form="text_save_form">
+              <input type="checkbox" id="<%= field_id %>" name="<%= sec['key'] %>" value="1"
+                     data-text-wizard-field="<%= sec['key'] %>" form="text_save_form"
+                     class="toggle toggle-success toggle-lg"<%= attrs %>>
+            <% else %>
+              <textarea class="textarea textarea-bordered w-full" id="<%= field_id %>" rows="8"
+                        data-text-wizard-field="<%= sec['key'] %>" data-markdown-editor<%= attrs %>></textarea>
+            <% end %>
+          </label>
+        </div>
+      <% end %>
+      <% step += 1 %>
+        <div class="mt-4" data-wizard-step="<%= step %>" hidden>
+          <label class="form-control w-full" for="wizard-document-changes">
+            <span class="label-text text-lg mb-2"><%= t('save_modal.changes_label') %></span>
+            <%= render('shared/_markdown_textarea', locals: {
+                  input_id: 'wizard-document-changes',
+                  name: nil,
+                  value: '',
+                  rows: 6,
+                  attrs: %( data-text-wizard-field="document_changes" required),
+                  placeholder: t('save_modal.changes_placeholder')
+                }) %>
+          </label>
+        </div>
+      <% step += 1 %>
+      <div class="mt-4" data-wizard-step="<%= step %>" hidden>
+        <label class="label cursor-pointer justify-start gap-4 min-h-[2.75rem]">
+          <input type="checkbox" id="wizard-significant-change" data-text-wizard-field="significant_change"
+                 value="1" class="checkbox checkbox-primary checkbox-lg">
+          <span class="label-text text-lg"><%= t('save_modal.significant') %></span>
+        </label>
+      </div>
+      <div class="modal-action flex-col-reverse sm:flex-row-reverse gap-2 mt-6">
+        <button type="button" class="btn btn-primary w-full sm:w-auto" data-text-wizard-finish hidden>
+          <i class="ri-save-line" aria-hidden="true"></i>
+          <%= t('actions.save') %>
+        </button>
+        <button type="button" class="btn btn-primary w-full sm:w-auto" data-wizard-next>
+          <%= t('wizard.next') %>
+        </button>
+        <button type="button" class="btn btn-outline w-full sm:w-auto" data-wizard-prev hidden>
+          <%= t('wizard.prev') %>
+        </button>
+        <button type="button" class="btn btn-ghost w-full sm:w-auto" data-wizard-cancel
+                onclick="this.closest('dialog').close()">
+          <%= t('actions.cancel') %>
+        </button>
+      </div>
+    </div>
+  </div>
+  <form method="dialog" class="modal-backdrop" aria-label="<%= t('actions.cancel') %>">
+    <button type="submit"><%= t('actions.cancel') %></button>
+  </form>
+</dialog>

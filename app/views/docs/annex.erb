@@ -1,0 +1,299 @@
+<%= render('shared/_doc_header') %>
+
+<% if @annex_excluded %>
+  <div class="alert alert-warning mt-6" role="status">
+    <i class="ri-eye-off-line text-xl" aria-hidden="true"></i>
+    <span><%= t('annex.excluded_banner') %></span>
+  </div>
+<% end %>
+
+<% latest_file = @latest_annex_file || @annex_versions.last %>
+<% if @annex_id && latest_file %>
+  <section class="mt-6" aria-labelledby="annex-current-heading">
+    <h2 id="annex-current-heading" class="text-2xl"><%= t('annex.current_file') %></h2>
+    <p class="mt-2">
+      <a class="link link-primary text-lg"
+         href="/projects/<%= @slug %>/annexes/<%= @annex_id %>?version=<%= latest_file['version'] %>">
+        <%= @doc['doc_id'] %>
+      </a>
+      <span class="badge badge-outline ml-2"><%= t("annex.asset_kind.#{@asset_kind}") %></span>
+    </p>
+  </section>
+<% end %>
+
+<section class="mt-8" aria-labelledby="annex-share-heading">
+  <h2 id="annex-share-heading" class="text-2xl"><%= t('annex.share_heading') %></h2>
+  <dl class="mt-4 space-y-4">
+    <div>
+      <dt class="label-text text-lg font-medium mb-1"><%= t('annex.permalink_label') %></dt>
+      <dd>
+        <button type="button" class="link link-primary text-lg text-left break-all min-h-[2.75rem]"
+                data-copy="<%= @annex_permalink %>"
+                data-copy-toast="<%= t('annex.copied') %>"
+                data-copy-status="annex-copy-status"
+                aria-label="<%= t('annex.copy_permalink', url: @annex_permalink) %>">
+          <%= @annex_permalink %>
+        </button>
+      </dd>
+    </div>
+    <div>
+      <dt class="label-text text-lg font-medium mb-1"><%= t('annex.bbcode_label') %></dt>
+      <dd>
+        <button type="button"
+                class="block w-full max-w-xl text-left rounded-lg border border-base-300 bg-base-200/40 p-3
+                       hover:bg-base-200 transition-colors min-h-[2.75rem]"
+                data-copy="<%= @annex_bbcode %>"
+                data-copy-toast="<%= t('annex.copied') %>"
+                data-copy-status="annex-copy-status"
+                aria-label="<%= t('annex.copy_bbcode', code: @annex_bbcode) %>">
+          <pre class="text-base font-mono whitespace-pre-wrap m-0"><%= @annex_bbcode %></pre>
+        </button>
+      </dd>
+    </div>
+  </dl>
+  <p class="sr-only" role="status" aria-live="polite" id="annex-copy-status"></p>
+</section>
+
+<%= render('shared/_version_control_table', locals: {
+      rows: @version_control_rows,
+      version_links: @version_links || {},
+      current_version: @header_version,
+      heading_id: 'annex-version-control-heading'
+    }) %>
+
+<section class="mt-8" aria-labelledby="annex-referenced-in-heading">
+  <h2 id="annex-referenced-in-heading" class="text-2xl"><%= t('annex.referenced_in_heading') %></h2>
+  <% if @annex_referenced_in.empty? %>
+    <p class="mt-2 text-lg opacity-80"><%= t('annex.referenced_in_empty') %></p>
+  <% else %>
+    <div class="overflow-x-auto mt-4">
+      <table class="table table-zebra">
+        <thead>
+          <tr>
+            <th scope="col"><%= t('annex.referenced_in_document_col') %></th>
+            <th scope="col"><%= t('annex.referenced_in_kind_col') %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @annex_referenced_in.each do |ref| %>
+            <tr>
+              <td>
+                <a class="link link-primary text-lg"
+                   href="/projects/<%= @slug %>/docs/<%= ref['doc_id'] %>">
+                  <%= ref['title'] %>
+                </a>
+              </td>
+              <td><%= t("annex.referenced_in_kind.#{ref['kind']}") %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  <% end %>
+</section>
+
+<form id="annex-metadata-form" method="post" action="/projects/<%= @slug %>/docs/<%= @doc['doc_id'] %>"
+      class="mt-8 space-y-4" aria-labelledby="annex-metadata-heading">
+  <h2 id="annex-metadata-heading" class="text-2xl"><%= t('annex.metadata_heading') %></h2>
+  <label class="form-control w-full" for="annex-title">
+    <span class="label-text text-lg mb-2"><%= t('annex.title_label') %></span>
+    <input class="input input-bordered w-full text-base" type="text" id="annex-title" name="title"
+           value="<%= @header_title %>" required>
+  </label>
+  <label class="form-control w-full" for="annex-description">
+    <span class="label-text text-lg mb-2"><%= t('annex.description_label') %></span>
+    <%= render('shared/_markdown_textarea', locals: {
+          input_id: 'annex-description',
+          name: 'description',
+          value: @header_description.to_s,
+          rows: 4,
+          attrs: '',
+          placeholder: t('annex.description_placeholder')
+        }) %>
+  </label>
+  <%= render('shared/_export_tags_fieldset', locals: {
+        options: @export_tag_options,
+        selected: @doc_export_tags
+      }) %>
+</form>
+
+<dialog id="save_annex_metadata_modal" class="modal"
+          aria-labelledby="save_annex_metadata_modal_title" aria-describedby="save_annex_metadata_modal_desc">
+    <div class="modal-box bg-white">
+      <div data-modal-wizard>
+        <%= render('shared/_wizard_header', locals: {
+              id: 'save_annex_metadata_modal_title',
+              title: t('annex.save_metadata'),
+              title_base: t('annex.save_metadata')
+            }) %>
+        <p id="save_annex_metadata_modal_desc" class="sr-only"><%= t('save_modal.description') %></p>
+        <div class="mt-4" data-wizard-step="1">
+          <label class="form-control w-full" for="annex-metadata-changes">
+            <span class="label-text text-lg mb-2"><%= t('save_modal.changes_label') %></span>
+            <%= render('shared/_markdown_textarea', locals: {
+                  input_id: 'annex-metadata-changes',
+                  name: 'document_changes',
+                  value: '',
+                  rows: 6,
+                  attrs: %( form="annex-metadata-form" required aria-describedby="save_annex_metadata_modal_desc"),
+                  placeholder: t('save_modal.changes_placeholder')
+                }) %>
+          </label>
+        </div>
+        <div class="mt-4" data-wizard-step="2" hidden>
+          <label class="label cursor-pointer justify-start gap-4 min-h-[2.75rem]">
+            <input type="checkbox" id="annex-metadata-significant-change" name="significant_change" value="1"
+                   form="annex-metadata-form" class="checkbox checkbox-primary checkbox-lg">
+            <span class="label-text text-lg"><%= t('save_modal.significant') %></span>
+          </label>
+        </div>
+        <%= render('shared/_wizard_actions', locals: {
+              dialog_id: 'save_annex_metadata_modal',
+              form_id: 'annex-metadata-form',
+              submit_label: t('annex.save_metadata'),
+              submit_icon: 'ri-save-line'
+            }) %>
+      </div>
+    </div>
+    <form method="dialog" class="modal-backdrop" aria-label="<%= t('actions.cancel') %>">
+      <button type="submit"><%= t('actions.cancel') %></button>
+    </form>
+  </dialog>
+
+<% unless @annex_excluded %>
+<dialog id="upload_annex_modal" class="modal"
+        aria-labelledby="upload_annex_modal_title" aria-describedby="upload_annex_modal_desc">
+  <div class="modal-box bg-white">
+    <form id="annex-upload-form" method="post"
+          action="/projects/<%= @slug %>/docs/<%= @doc['doc_id'] %>/annex"
+          enctype="multipart/form-data">
+      <h2 id="upload_annex_modal_title" class="font-bold text-2xl"><%= t('annex.upload_heading') %></h2>
+      <p id="upload_annex_modal_desc" class="mt-2 text-lg opacity-80"><%= t('annex.file_label') %></p>
+      <label class="form-control w-full mt-4" for="annex-file">
+        <span class="label-text text-lg mb-2 sr-only"><%= t('annex.file_label') %></span>
+        <input type="file" id="annex-file" name="file" class="file-input file-input-bordered w-full" required>
+      </label>
+      <div class="modal-action flex-col-reverse sm:flex-row-reverse gap-2 mt-6">
+        <button type="submit" class="btn btn-primary w-full sm:w-auto">
+          <i class="ri-upload-line" aria-hidden="true"></i>
+          <%= t('annex.upload') %>
+        </button>
+        <button type="button" class="btn btn-ghost w-full sm:w-auto"
+                onclick="upload_annex_modal.close()">
+          <%= t('actions.cancel') %>
+        </button>
+      </div>
+    </form>
+  </div>
+  <form method="dialog" class="modal-backdrop" aria-label="<%= t('actions.cancel') %>">
+    <button type="submit"><%= t('actions.cancel') %></button>
+  </form>
+</dialog>
+<% end %>
+
+<% if @annex_excluded %>
+  <form id="annex-restore-form" method="post" action="/projects/<%= @slug %>/docs/<%= @doc['doc_id'] %>"
+        class="mt-8 border-t pt-8">
+    <input type="hidden" name="_method" value="patch">
+    <input type="hidden" name="restore" value="1">
+    <dialog id="restore_annex_modal" class="modal"
+            aria-labelledby="restore_annex_modal_title" aria-describedby="restore_annex_modal_desc">
+      <div class="modal-box bg-white">
+        <div data-modal-wizard>
+          <%= render('shared/_wizard_header', locals: {
+                id: 'restore_annex_modal_title',
+                title: t('annex.restore'),
+                title_base: t('annex.restore')
+              }) %>
+          <p id="restore_annex_modal_desc" class="sr-only"><%= t('annex.restore_hint') %></p>
+          <div class="mt-4" data-wizard-step="1">
+            <label class="form-control w-full" for="annex-restore-changes">
+              <span class="label-text text-lg mb-2"><%= t('save_modal.changes_label') %></span>
+              <%= render('shared/_markdown_textarea', locals: {
+                    input_id: 'annex-restore-changes',
+                    name: 'document_changes',
+                    value: '',
+                    rows: 6,
+                    attrs: %( form="annex-restore-form" required),
+                    placeholder: t('annex.restore_changes_placeholder')
+                  }) %>
+            </label>
+          </div>
+          <%= render('shared/_wizard_actions', locals: {
+                dialog_id: 'restore_annex_modal',
+                form_id: 'annex-restore-form',
+                submit_label: t('annex.restore'),
+                submit_icon: 'ri-eye-line'
+              }) %>
+        </div>
+      </div>
+      <form method="dialog" class="modal-backdrop" aria-label="<%= t('actions.cancel') %>">
+        <button type="submit"><%= t('actions.cancel') %></button>
+      </form>
+    </dialog>
+  </form>
+<% else %>
+  <dialog id="delete_annex_modal" class="modal"
+          aria-labelledby="delete_annex_modal_title" aria-describedby="delete_annex_modal_desc">
+    <div class="modal-box bg-white">
+      <h2 id="delete_annex_modal_title" class="font-bold text-2xl"><%= t('annex.delete_title') %></h2>
+      <p id="delete_annex_modal_desc" class="mt-4 text-lg"><%= t('annex.delete_confirm') %></p>
+      <form id="annex-delete-form" method="post" action="/projects/<%= @slug %>/docs/<%= @doc['doc_id'] %>">
+        <input type="hidden" name="_method" value="delete">
+        <label class="form-control w-full mt-4" for="annex-delete-changes">
+          <span class="label-text text-lg mb-2"><%= t('save_modal.changes_label') %></span>
+          <%= render('shared/_markdown_textarea', locals: {
+                input_id: 'annex-delete-changes',
+                name: 'document_changes',
+                value: '',
+                rows: 4,
+                attrs: ' required',
+                placeholder: t('save_modal.changes_placeholder')
+              }) %>
+        </label>
+        <div class="modal-action flex-col-reverse sm:flex-row-reverse gap-2 mt-6">
+          <button class="btn btn-error w-full sm:w-auto" type="submit">
+            <i class="ri-delete-bin-line" aria-hidden="true"></i>
+            <%= t('annex.delete') %>
+          </button>
+          <button type="button" class="btn btn-ghost w-full sm:w-auto"
+                  onclick="delete_annex_modal.close()">
+            <%= t('actions.cancel') %>
+          </button>
+        </div>
+      </form>
+    </div>
+    <form method="dialog" class="modal-backdrop" aria-label="<%= t('actions.cancel') %>">
+      <button type="submit"><%= t('actions.cancel') %></button>
+    </form>
+  </dialog>
+<% end %>
+
+<footer class="page-footer fixed bottom-0 inset-x-0 z-40 border-t border-neutral-200 bg-white/95 backdrop-blur-sm px-4 py-3"
+        role="toolbar" aria-label="<%= t('a11y.document_actions') %>">
+  <div class="mx-auto flex flex-wrap gap-3 justify-end max-w-3xl">
+    <button type="button" class="btn btn-outline w-full sm:w-auto" data-wizard-open="save_annex_metadata_modal"
+            aria-haspopup="dialog" aria-controls="save_annex_metadata_modal">
+      <i class="ri-save-line" aria-hidden="true"></i>
+      <%= t('annex.save_metadata') %>
+    </button>
+    <% unless @annex_excluded %>
+      <button type="button" class="btn btn-primary w-full sm:w-auto" data-dialog-open="upload_annex_modal"
+              aria-haspopup="dialog" aria-controls="upload_annex_modal">
+        <i class="ri-upload-line" aria-hidden="true"></i>
+        <%= t('annex.upload') %>
+      </button>
+      <button type="button" class="btn btn-outline btn-error w-full sm:w-auto" data-dialog-open="delete_annex_modal"
+              aria-haspopup="dialog" aria-controls="delete_annex_modal">
+        <i class="ri-delete-bin-line" aria-hidden="true"></i>
+        <%= t('annex.delete') %>
+      </button>
+    <% else %>
+      <button type="button" class="btn btn-outline w-full sm:w-auto" data-wizard-open="restore_annex_modal"
+              aria-haspopup="dialog" aria-controls="restore_annex_modal">
+        <i class="ri-eye-line" aria-hidden="true"></i>
+        <%= t('annex.restore') %>
+      </button>
+    <% end %>
+  </div>
+</footer>

@@ -1,0 +1,100 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://isoo.local/spec/document.schema.json",
+  "title": "ISOO document schema",
+  "type": "object",
+  "required": ["schema_version", "kind"],
+  "properties": {
+    "schema_version": { "type": "string", "const": "1" },
+    "kind": { "type": "string", "enum": ["text", "table", "file_annex", "form"] },
+    "description": { "type": "string" },
+    "export_tags": {
+      "type": "array",
+      "items": { "type": "string" },
+      "uniqueItems": true
+    },
+    "response_kind": { "type": "string", "enum": ["text", "table"] },
+    "annex_title": { "type": "string" },
+    "sections": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["level", "key", "label"],
+        "properties": {
+          "level": { "type": "string", "enum": ["h1", "h2", "h3"] },
+          "key": { "type": "string" },
+          "label": { "type": "string" },
+          "role": { "type": "string", "enum": ["title", "subtitle", "body"] },
+          "editable": { "type": "boolean" },
+          "field_type": {
+            "type": "string",
+            "enum": ["text", "textarea", "date", "checkbox", "switch", "dropdown"]
+          },
+          "required": { "type": "boolean" }
+        }
+      }
+    },
+    "primary_key": { "type": "string" },
+    "columns": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["key", "label", "type"],
+        "properties": {
+          "key": { "type": "string" },
+          "label": { "type": "string" },
+          "type": {
+            "type": "string",
+            "enum": ["text", "textarea", "date", "review_date", "number", "link", "checkbox", "switch", "dropdown"]
+          },
+          "required": { "type": "boolean" },
+          "default": { "type": ["boolean", "string", "number"] },
+          "options": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    },
+    "_internal": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["key", "type"],
+        "properties": {
+          "key": { "type": "string" },
+          "type": { "type": "string" }
+        }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "kind": { "const": "text" } } },
+      "then": { "required": ["sections"] }
+    },
+    {
+      "if": { "properties": { "kind": { "const": "table" } } },
+      "then": { "required": ["primary_key", "columns", "_internal"] }
+    },
+    {
+      "if": { "properties": { "kind": { "const": "form" } } },
+      "then": { "required": ["response_kind"] }
+    },
+    {
+      "if": {
+        "properties": {
+          "kind": { "const": "form" },
+          "response_kind": { "const": "text" }
+        }
+      },
+      "then": { "required": ["sections"] }
+    },
+    {
+      "if": {
+        "properties": {
+          "kind": { "const": "form" },
+          "response_kind": { "const": "table" }
+        }
+      },
+      "then": { "required": ["primary_key", "columns", "_internal"] }
+    }
+  ]
+}

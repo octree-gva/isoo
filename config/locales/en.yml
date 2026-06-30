@@ -1,0 +1,333 @@
+en:
+  app:
+    name: ISOO
+  common:
+    unknown: unknown
+  export:
+    markdown_suffix: export
+    page_title: "%{title} — %{date}"
+    cover:
+      exported_on: "Exported on %{at}"
+      confidential_line1: This document contains confidential information.
+      confidential_line2: Do not share it outside your organization.
+    toc:
+      heading: Table of contents
+      summary: "%{count} documents"
+    section:
+      annex_files: Annex files
+      annex_documents: Annex documents
+      annex_documents_subtitle: Meetings, Audits, Plans, Form Submissions
+    document:
+      version: "Version %{version}"
+      data_heading: Data
+    assets:
+      heading: Assets
+      referenced_heading: Referenced annex assets
+      document_asset: "Annex document: %{name}"
+      version_caption: "Version %{version} — %{name}"
+    legend:
+      undocumented: undocumented
+    logo_alt: Voca
+    groups:
+      annexes: Annexes
+      audit: Audit
+      context: Context
+      continuity: Continuity
+      docs: Documents
+      documents: Documents
+      meetings: Meetings
+      plans: Plans
+      policies: Policies
+      registers: Registers
+  a11y:
+    skip_to_content: Skip to main content
+    main_nav: Main navigation
+    user_nav: User menu
+    breadcrumb: Breadcrumb
+    back_to_project: "%{name}"
+    back_to_projects: Projects
+    project_documents: Project documents
+    document_metadata: Document metadata
+    table_caption: "Data table for %{title}"
+    table_actions: Table actions
+    document_actions: Document actions
+    page_actions: Page actions
+    new_row_modal_desc: Add a new row to this table
+    edit_row_modal_desc: Edit an existing row in this table
+    delete_row_modal_desc: Confirm permanent removal of a table row
+    row_actions: Row actions
+    table_row_number: "Row %{number}"
+    table_row_fields: Submission fields
+    table_row_actions: Submission actions
+  nav:
+    login: Log in
+    logout: Log out
+  auth:
+    dev_user_name: Developer
+  git:
+    sync: Sync
+    sync_label: Pull latest data from Git remote
+    sync_ok: "Synced from remote (now at %{revision})."
+    sync_ok_empty: Synced from remote (no changes on remote yet).
+    sync_dirty: Cannot sync — save or commit local changes first.
+    sync_disabled: Git remote sync is not configured.
+    sync_error: "Sync failed: %{message}"
+  projects:
+    title: Projects
+    open: Open
+    export: Export
+    export_named: "Export %{name}"
+    export_modal:
+      title: Export project
+      description: Download all project documents as a single file. HTML and PDF use the same print-ready layout.
+      format_label: Format
+      format_md: Markdown (.md)
+      format_html: HTML (.html, print-ready)
+      format_pdf: PDF (.pdf)
+      scope_label: Export scope
+      scope_full: Full export
+      submit: Download export
+    empty: No projects yet. Create one to get started.
+    documents_empty: No documents in this project yet.
+    new:
+      button: New project
+      title: New project
+      name_label: Project name
+      name_placeholder: Name
+      slug_label: URL slug
+      slug_placeholder: slug
+      slug_hint: Lowercase letters, numbers, and hyphens only.
+      template_hint: "Starts from the %{name} template (%{id}). Change with TEMPLATE_ID."
+      submit: New project
+    search:
+      label: Search project documents
+      placeholder: Search documents…
+      button: Search
+      results_heading: "%{count} result(s) for “%{query}”"
+      no_results: No documents match your search.
+  docs:
+    export: Export
+    export_named: "Export %{name}"
+    export_modal:
+      title: Export document
+      description: Download this document only. HTML and PDF use the same print-ready layout.
+    meta:
+      version: "Version %{version}"
+      version_label: Version
+      classification: "Classification: %{level}"
+      classification_label: Classification
+    version_control:
+      heading: Document Version Control
+      version_col: Version
+      modified_col: Last Modified
+      author_col: Last Modified By
+      changes_col: Document Changes
+      first_created: Document first created
+      updated: Updated
+  table:
+    empty: No rows yet. Use New row below to add your first entry.
+    select_placeholder: Select an option
+    date_shortcuts_label: Date shortcuts
+    date_shortcuts:
+      today: Today
+      three_months: 3 months
+      six_months: 6 months
+      one_year: 1 year
+    link_https_required: Enter a valid https URL
+    review_date_must_be_future: Choose a date after today
+    back_to_table: Back to table
+    view_row: View
+    view_row_named: "View submission %{name}"
+    row_permalink: "Permalink:"
+    switch:
+      'on': 'on'
+      'off': 'off'
+    delete_row_title: Delete row
+    delete_row_confirm: Are you sure you want to remove this line? This action cannot be undone.
+    expand_fullscreen: Expand fullscreen
+    expand_fullscreen_named: "Expand %{name} to fullscreen"
+  actions:
+    save: Save
+    cancel: Cancel
+    delete: Delete
+    delete_row_named: "Delete row %{name}"
+    new_row: New row
+    new_row_named: "New %{name}"
+    open_wizard: Open wizard
+    open_wizard_named: "Open wizard for %{name}"
+    save_row: Save row
+    edit: Edit
+    edit_row: Edit
+    edit_row_named: "Edit %{name}"
+    row_menu_named: "Actions for %{name}"
+    save_table: Save table
+    open: Open
+    open_named: "Open %{name}"
+  save_modal:
+    title: Save document
+    description: Describe your changes before saving the document.
+    changes_label: Document changes
+    changes_placeholder: What did you change?
+    significant: Significant change?
+  wizard:
+    next: Next
+    prev: Previous
+    progress: Wizard progress
+  editor:
+    preparing: Preparing editor…
+    click_to_type: Click in the editor to start typing
+    placeholder: Start typing…
+  annex:
+    default_title: "Annex %{number}"
+    upload_body: "Upload files for **%{title}**."
+    upload_changes: Uploaded new asset version
+    upload: Upload
+    upload_heading: Upload file
+    file_label: Choose file to upload
+    metadata_heading: Annex details
+    share_heading: Share
+    permalink_label: Permalink
+    bbcode_label: BBCode
+    copied: Copied to clipboard.
+    copy_permalink: "Copy permalink %{url}"
+    copy_bbcode: "Copy BBCode %{code}"
+    referenced_in_heading: Referenced in
+    referenced_in_empty: Not referenced by any document yet.
+    referenced_in_document_col: Document
+    referenced_in_kind_col: Type
+    referenced_in_kind:
+      document: Text document
+      table: Table
+      form_response: Form response
+    title_label: Title
+    description_label: Description
+    description_placeholder: Describe what this annex contains and when to update it
+    save_metadata: Save details
+    export_tags_label: Export tags
+    exclude: Exclude from exports
+    delete: Delete
+    delete_title: Delete asset
+    delete_confirm: This removes the asset from exports but keeps it in the project. You can restore it later.
+    exclude_heading: Export visibility
+    exclude_hint: Soft-delete this asset so it stays in the project but is omitted from all exports.
+    exclude_changes_placeholder: Why is this asset being excluded from exports?
+    excluded_banner: This asset is deleted from exports. Restore it below to include it again.
+    excluded_badge: Excluded
+    restore: Include in exports
+    restore_heading: Restore to exports
+    restore_hint: Make this asset visible in exports again.
+    restore_changes_placeholder: Why is this asset being restored to exports?
+    version_control: Document Version Control
+    version_col: Version
+    modified_col: Last Modified
+    author_col: Last Modified By
+    changes_col: Document Changes
+    current_file: Current file
+    asset_kind:
+      image: image
+      document: document
+  annexes:
+    label: annex
+    folder_label: Annexes
+    open: Open folder
+    open_named: "Open folder: %{name}"
+    open_slot: Open
+    new: New annex
+    hint: Upload files and create as many annex assets as you need.
+    slots_heading: Annexes
+    slot_count: "%{count} annexes"
+    empty: No annexes yet. Click New annex to create one.
+  forms:
+    label: form
+    open: Open folder
+    open_named: "Open folder: %{name}"
+    new: New response
+    responses_heading: Form responses
+    response_count: "%{count} responses"
+    empty: No responses yet. Click New to create one.
+    hint: Create as many responses as you need from this form.
+    run_wizard: Run wizard
+    run_wizard_named: "Run wizard for %{name}"
+    wizard_modal_desc: Step through each field to complete this response.
+    document_title_label: Document title
+  reviews:
+    button: Reviews
+    open_named: "Reviews for %{name}"
+    title: Reviews
+    subtitle: Documents and review dates that need attention.
+    oldest_documents_heading: 5 oldest documents
+    oldest_documents_hint: Editable text and table documents least recently updated.
+    oldest_documents_empty: No editable documents found.
+    stale_documents_heading: Stale documents
+    stale_documents_hint: Not updated in the last %{months} months.
+    stale_documents_empty: All documents were updated within the last 12 months.
+    expired_review_dates_heading: Expired review dates
+    expired_review_dates_hint: Table rows with a review date on or before today.
+    expired_review_dates_empty: No expired review dates found.
+    days_overdue:
+      one: "%{count} day overdue"
+      other: "%{count} days overdue"
+    columns:
+      document: Document
+      kind: Kind
+      last_updated: Last updated
+      field: Field
+      row: Row
+      review_date: Review date
+      overdue: Overdue
+      action: Action
+  loading: Loading
+  toast:
+    project_created: "Project %{name} created."
+    project_exists: "A project with slug “%{slug}” already exists. Choose a different slug."
+    template_missing: "Project template is missing. Contact an administrator."
+    document_saved: Document saved.
+    table_saved: Table saved.
+    row_added: Row added.
+    row_updated: Row updated.
+    row_deleted: Row deleted.
+    file_uploaded: File uploaded.
+    annex_created: Annex created.
+    annex_saved: Annex saved.
+    annex_excluded: Asset deleted from exports.
+    annex_restored: Asset restored to exports.
+    form_response_created: Form response created.
+    dismiss: Dismiss notification
+  presence:
+    editing_with_one: "%{name} is also viewing this document."
+    editing_with_many: "%{names} are also viewing this document."
+  errors:
+    actions:
+      home: Back to projects
+      login: Log in
+    details:
+      name_required: A project name is required.
+      slug_required: A project slug is required.
+      changes_required: Document changes are required before saving.
+      title_required: A title is required.
+      file_required: Choose a file to upload.
+      annex_excluded: Uploads are disabled while an asset is excluded from exports.
+      annex_already_excluded: This asset is already excluded from exports.
+      annex_not_excluded: This asset is not excluded from exports.
+      missing_code: The sign-in response did not include an authorization code.
+      invalid_state: The sign-in session expired or was invalid. Try again.
+      token_exchange_failed: Could not complete sign-in with the identity provider.
+      email_domain_forbidden: "Sign-in is limited to approved email domains. Your address (%{email}) is not allowed."
+    '400':
+      title: Bad request
+      message: The request could not be processed.
+    '401':
+      title: Unauthorized
+      message: Sign in is required to access this page.
+    '403':
+      title: Forbidden
+      message: You do not have permission to access this resource.
+    '404':
+      title: Not found
+      message: The page or resource you requested does not exist.
+    '500':
+      title: Server error
+      message: Something went wrong on our side. Try again later.
+    '502':
+      title: Bad gateway
+      message: A required upstream service is unavailable. Try again later.

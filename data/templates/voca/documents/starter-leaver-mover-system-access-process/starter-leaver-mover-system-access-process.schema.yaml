@@ -1,0 +1,100 @@
+---
+schema_version: '1'
+kind: text
+sections:
+- level: h1
+  key: starter_leaver_mover_process_system_access
+  label: Starter Leaver Mover Process – System Access
+  role: title
+  editable: false
+  field_type: textarea
+  required: false
+- level: h2
+  key: the_location_of_the_starter_leaver_mover_system_access_form
+  label: The location of the Starter Leaver Mover System Access Form
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: 1_complete_the_starter_leaver_mover_system_access_form
+  label: 1 Complete the Starter Leaver Mover System Access Form
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: 2_submit_the_access_request
+  label: 2 Submit the Access Request
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: 3_approve_access_request
+  label: 3 Approve Access Request
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: 4_access_actioned
+  label: 4 Access Actioned
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: 5_update_the_role_based_access_document
+  label: 5 Update the Role Based Access Document
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: 6_leavers
+  label: 6 Leavers
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: process_compliance
+  label: Process Compliance
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: compliance_measurement
+  label: Compliance Measurement
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: exceptions
+  label: Exceptions
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: non_compliance
+  label: Non-Compliance
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: continual_improvement
+  label: Continual Improvement
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+description: End-to-end workflow for joiners, leavers, and role changers. Implement
+  it with HR and IT from the first hire. Timely provisioning and deprovisioning is
+  one of the most scrutinised controls at audit.
+export_tags:
+- soi

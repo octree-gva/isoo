@@ -1,0 +1,100 @@
+---
+schema_version: '1'
+kind: text
+sections:
+- level: h1
+  key: data_retention_policy
+  label: Data Retention Policy
+  role: title
+  editable: false
+  field_type: text
+  required: false
+- level: h2
+  key: purpose
+  label: Purpose
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: scope
+  label: Scope
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: principle
+  label: Principle
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: agreement_of_retention_periods
+  label: Agreement of Retention Periods
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: record_of_retention_periods
+  label: Record of Retention Periods
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: expiry_of_retention_period
+  label: Expiry of Retention Period
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: suspension_of_record_disposal_in_the_event_of_litigation_or_claims
+  label: Suspension of Record Disposal in the event of litigation or claims
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: policy_compliance
+  label: Policy Compliance
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: compliance_measurement
+  label: Compliance Measurement
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: exceptions
+  label: Exceptions
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: non_compliance
+  label: Non-Compliance
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: continual_improvement
+  label: Continual Improvement
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+description: Defines how long you keep data and when you delete or anonymise it. Publish
+  it alongside your data inventory and retention schedules. Apply it to backups and
+  archives, not just live systems.
+export_tags:
+- data_protection

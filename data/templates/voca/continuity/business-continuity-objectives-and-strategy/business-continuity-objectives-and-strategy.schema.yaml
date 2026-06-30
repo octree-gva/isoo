@@ -1,0 +1,112 @@
+---
+schema_version: '1'
+kind: text
+sections:
+- level: h1
+  key: strategy
+  label: Strategy
+  role: title
+  editable: false
+  field_type: textarea
+  required: false
+- level: h2
+  key: standards_as_applied_to_business_continuity
+  label: Standards as applied to Business Continuity.
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: objectives
+  label: Objectives
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: what_will_be_done
+  label: What will be done?
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: what_resources_will_be_required
+  label: What resources will be required?
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: who_will_be_responsible
+  label: Who will be responsible?
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: when_will_it_be_completed
+  label: When will it be completed?
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: how_will_results_be_evaluated
+  label: How will results be evaluated?
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: business_continuity_strategy_people
+  label: Business Continuity Strategy People
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: business_continuity_strategy_systems
+  label: Business Continuity Strategy Systems
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: business_continuity_strategy_premises
+  label: Business Continuity Strategy Premises
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: business_continuity_strategy_data
+  label: Business Continuity Strategy Data
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: business_continuity_strategy_suppliers
+  label: Business Continuity Strategy Suppliers
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: business_continuity_strategy_communication
+  label: Business Continuity Strategy Communication
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: management_and_operation_of_business_continuity
+  label: Management and Operation of Business Continuity
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+description: Sets recovery objectives and strategic approach—prevention, response,
+  and recovery. Define it after your BIA so targets are evidence-based. Guides the
+  structure of your business continuity plan.

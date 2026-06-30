@@ -1,0 +1,77 @@
+---
+schema_version: '1'
+kind: table
+primary_key: ref
+columns:
+- key: ref
+  label: Ref
+  type: text
+  description: Internal incident reference.
+  required: true
+- key: identified
+  label: Identified
+  type: date
+  description: Date the incident was identified.
+- key: who_discovered_it
+  label: Who discovered it
+  type: text
+  description: Person or system that detected the incident.
+- key: what_type_of_incident_was_it
+  label: What type of incident was it
+  type: dropdown
+  description: Category of incident.
+  options:
+  - Security
+  - Privacy
+  - Availability
+  - Malware
+  - Phishing
+  - Data breach
+  - Other
+- key: description_of_incident
+  label: Description of incident
+  type: textarea
+  description: What happened.
+- key: external_reference_number
+  label: External Reference Number
+  type: text
+  description: Ticket or external system reference.
+- key: c_i_a
+  label: C I A
+  type: dropdown
+  description: Affected security objective(s).
+  options:
+  - Confidentiality
+  - Integrity
+  - Availability
+  - All
+  - None
+- key: severity
+  label: Severity
+  type: dropdown
+  description: Incident severity.
+  options:
+  - Low
+  - Medium
+  - High
+  - Critical
+- key: root_cause
+  label: Root Cause
+  type: textarea
+  description: Root cause analysis findings.
+- key: corrective_action
+  label: Corrective Action
+  type: textarea
+  description: Corrective actions taken or planned.
+- key: risk
+  label: Risk
+  type: textarea
+  description: Associated risks.
+_internal:
+- key: _row_id
+  type: uuid
+- key: _deleted_at
+  type: datetime
+description: Central register of incidents, root causes, actions taken, and closure
+  status. Log every reportable event here. Supports continual improvement and demonstrates
+  closed-loop handling at audit.

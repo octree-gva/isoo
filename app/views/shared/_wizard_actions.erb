@@ -1,0 +1,15 @@
+<div class="modal-action flex-col-reverse sm:flex-row-reverse gap-2 mt-6">
+  <button type="button" class="btn btn-primary w-full sm:w-auto" data-wizard-submit hidden<% if form_id %> form="<%= form_id %>"<% end %>>
+    <% if submit_icon %><i class="<%= submit_icon %>" aria-hidden="true"></i><% end %>
+    <%= submit_label %>
+  </button>
+  <button type="button" class="btn btn-primary w-full sm:w-auto" data-wizard-next>
+    <%= t('wizard.next') %>
+  </button>
+  <button type="button" class="btn btn-outline w-full sm:w-auto" data-wizard-prev hidden>
+    <%= t('wizard.prev') %>
+  </button>
+  <button type="button" class="btn btn-ghost w-full sm:w-auto" data-wizard-cancel onclick="this.closest('dialog').close()">
+    <%= t('actions.cancel') %>
+  </button>
+</div>

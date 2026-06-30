@@ -1,0 +1,49 @@
+schema_version: '1'
+kind: form
+response_kind: text
+sections:
+- level: h1
+  key: attendees
+  label: 'ATTENDEES:'
+  role: title
+  editable: false
+  field_type: text
+  required: false
+- level: h2
+  key: agenda
+  label: AGENDA
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: area_to_be_audited_scope
+  label: 'AREA TO BE AUDITED/ SCOPE:'
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: meeting_minutes
+  label: 'MEETING MINUTES:'
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: follow_up_actions
+  label: 'FOLLOW UP ACTIONS:'
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: documents_relevant_to_meeting
+  label: DOCUMENTS RELEVANT TO MEETING
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+description: Agenda and notes structure for opening and closing audit meetings with
+  auditees. Use at the start and end of each audit engagement. Sets expectations,
+  confirms scope, and communicates findings formally.

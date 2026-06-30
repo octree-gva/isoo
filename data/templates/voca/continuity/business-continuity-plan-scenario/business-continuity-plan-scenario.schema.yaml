@@ -1,0 +1,24 @@
+---
+schema_version: '1'
+kind: form
+response_kind: text
+sections:
+- level: h2
+  key: scenario_name
+  label: Scenario
+  role: title
+  editable: true
+  field_type: text
+  required: false
+  description: Short name identifying the continuity scenario.
+- level: h2
+  key: procedure
+  label: Procedure
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+  description: Steps to follow when this scenario occurs.
+description: A narrative scenario describing a disruption used to stress-test your
+  BCP. Develop scenarios that reflect plausible threats to your organisation. Use
+  them in tabletop exercises with leadership and IT.

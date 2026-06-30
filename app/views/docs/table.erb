@@ -1,0 +1,121 @@
+<%= render('shared/_doc_header') %>
+<%= render('shared/_document_presence', locals: { slug: @slug, doc_id: @doc['doc_id'] }) %>
+<%= render('shared/_version_control_table', locals: {
+      rows: @data[:version_control_rows],
+      current_version: @data[:meta].dig('iso27001', 'version')
+    }) %>
+
+<% table_id = "table-#{@doc['doc_id']}" %>
+<% columns = @data[:schema]['columns'] %>
+<% pk = @data[:schema]['primary_key'] %>
+
+<div class="flex justify-end mt-6">
+  <a class="btn btn-outline btn-sm"
+     href="/projects/<%= @slug %>/docs/<%= @doc['doc_id'] %>/fullscreen"
+     aria-label="<%= t('table.expand_fullscreen_named', name: @header_title || @doc['doc_id']) %>">
+    <i class="ri-fullscreen-line" aria-hidden="true"></i>
+    <%= t('table.expand_fullscreen') %>
+  </a>
+</div>
+
+<% if @data[:rows].empty? %>
+  <div id="<%= table_id %>-empty" class="doc-table-empty mt-6" role="status">
+    <p class="text-lg"><%= t('table.empty') %></p>
+  </div>
+<% else %>
+<div class="doc-table-panel rounded-lg border border-neutral-200 bg-white shadow-sm mt-6">
+    <table id="<%= table_id %>" class="doc-data-table w-full text-sm sm:text-base"
+           aria-labelledby="doc-heading" aria-describedby="<%= table_id %>-caption">
+      <caption id="<%= table_id %>-caption" class="sr-only">
+        <%= t('a11y.table_caption', title: @header_title || @doc['doc_id']) %>
+      </caption>
+      <thead>
+        <tr>
+          <% columns.each do |col| %>
+            <th scope="col" id="<%= table_id %>-col-<%= col['key'] %>" title="<%= col['description'] %>"
+                class="whitespace-pre-line"><%= col['label'] %></th>
+          <% end %>
+          <th scope="col"><%= t('a11y.row_actions') %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @data[:rows].each_with_index do |row, index| %>
+          <% row_label = row[pk] || t('a11y.table_row_number', number: index + 1) %>
+          <% row_path = "/projects/#{@slug}/docs/#{@doc['doc_id']}/rows/#{row['_row_id']}" %>
+          <tr>
+            <% columns.each do |col| %>
+              <td headers="<%= table_id %>-col-<%= col['key'] %>" title="<%= col['description'] %>"
+                  class="whitespace-pre-line<%= ' doc-table-cell--switch' if col['type'] == 'switch' %>">
+                <% if col['key'] == pk %>
+                  <a href="<%= row_path %>" class="link link-primary font-medium"
+                     aria-label="<%= t('table.view_row_named', name: row_label) %>"><%= row[col['key']] %></a>
+                <% else %>
+                  <%= render('shared/_table_cell', locals: { col: col, value: row[col['key']] }) %>
+                <% end %>
+              </td>
+            <% end %>
+            <td class="doc-data-table__actions">
+              <div class="doc-table-row-actions dropdown dropdown-end">
+                <button type="button" class="btn btn-ghost btn-sm btn-square"
+                        aria-label="<%= t('actions.row_menu_named', name: row_label) %>"
+                        aria-haspopup="menu">
+                  <i class="ri-more-2-line text-lg" aria-hidden="true"></i>
+                </button>
+                <ul tabindex="0" class="dropdown-content menu bg-white rounded-box z-50 w-52 p-2 shadow-lg border border-neutral-200"
+                    role="menu" aria-label="<%= t('actions.row_menu_named', name: row_label) %>">
+                  <li role="none">
+                    <a href="<%= row_path %>" role="menuitem">
+                      <i class="ri-eye-line" aria-hidden="true"></i>
+                      <%= t('table.view_row') %>
+                    </a>
+                  </li>
+                  <li role="none">
+                    <button type="button" role="menuitem"
+                            data-wizard-open="edit_row_modal"
+                            data-wizard-prefill="<%= ::JsonAttr.encode(row) %>">
+                      <i class="ri-edit-line" aria-hidden="true"></i>
+                      <%= t('actions.edit') %>
+                    </button>
+                  </li>
+                  <li role="none">
+                    <button type="button" role="menuitem"
+                            data-delete-row-open="delete_row_modal"
+                            data-delete-row-id="<%= row['_row_id'] %>">
+                      <i class="ri-delete-bin-line" aria-hidden="true"></i>
+                      <%= t('actions.delete') %>
+                    </button>
+                  </li>
+                </ul>
+              </div>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+</div>
+<% end %>
+
+<%= render('shared/_table_modals', locals: {
+      slug: @slug,
+      doc_id: @doc['doc_id'],
+      columns: columns,
+      document_title: @header_title,
+      show_new: true,
+      show_save: true
+    }) %>
+
+<footer class="page-footer fixed bottom-0 inset-x-0 z-40 border-t border-neutral-200 bg-white/95 backdrop-blur-sm px-4 py-3"
+        role="toolbar" aria-label="<%= t('a11y.table_actions') %>">
+  <div class="mx-auto flex flex-wrap gap-3 justify-end max-w-[96rem]">
+    <button type="button" class="btn btn-outline w-full sm:w-auto" data-wizard-open="new_row_modal"
+            aria-haspopup="dialog" aria-controls="new_row_modal">
+      <i class="ri-add-line" aria-hidden="true"></i>
+      <%= t('actions.new_row') %>
+    </button>
+    <button type="button" class="btn btn-primary w-full sm:w-auto" data-wizard-open="save_table_modal"
+            aria-haspopup="dialog" aria-controls="save_table_modal">
+      <i class="ri-save-line" aria-hidden="true"></i>
+      <%= t('actions.save_table') %>
+    </button>
+  </div>
+</footer>

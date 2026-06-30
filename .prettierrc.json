@@ -1,0 +1,12 @@
+{
+  "proseWrap": "preserve",
+  "tabWidth": 2,
+  "overrides": [
+    {
+      "files": "data/templates/**/*.md",
+      "options": {
+        "parser": "markdown"
+      }
+    }
+  ]
+}

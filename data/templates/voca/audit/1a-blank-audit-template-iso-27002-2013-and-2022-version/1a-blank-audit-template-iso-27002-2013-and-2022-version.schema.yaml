@@ -1,0 +1,70 @@
+---
+schema_version: '1'
+kind: form
+response_kind: table
+primary_key: level_of_compliance
+columns:
+- key: level_of_compliance
+  label: LEVEL OF COMPLIANCE
+  type: dropdown
+  description: Overall compliance level for this audit area.
+  options:
+  - Compliant
+  - Partially compliant
+  - Non-compliant
+  - Not applicable
+  - Not assessed
+- key: number_of_controls
+  label: NUMBER OF CONTROLS
+  type: number
+  description: Number of controls assessed.
+- key: level_of_compliance_2
+  label: LEVEL OF COMPLIANCE
+  type: dropdown
+  description: Compliance level (column 2).
+  options:
+  - Compliant
+  - Partially compliant
+  - Non-compliant
+  - Not applicable
+  - Not assessed
+- key: number_of_controls_2
+  label: NUMBER OF CONTROLS
+  type: number
+  description: Number of controls assessed (column 2).
+- key: level_of_compliance_3
+  label: LEVEL OF COMPLIANCE
+  type: dropdown
+  description: Compliance level (column 3).
+  options:
+  - Compliant
+  - Partially compliant
+  - Non-compliant
+  - Not applicable
+  - Not assessed
+- key: number_of_controls_3
+  label: NUMBER OF CONTROLS
+  type: number
+  description: Number of controls assessed (column 3).
+- key: level_of_compliance_4
+  label: LEVEL OF COMPLIANCE
+  type: dropdown
+  description: Compliance level (column 4).
+  options:
+  - Compliant
+  - Partially compliant
+  - Non-compliant
+  - Not applicable
+  - Not assessed
+- key: number_of_controls_4
+  label: NUMBER OF CONTROLS
+  type: number
+  description: Number of controls assessed (column 4).
+_internal:
+- key: _row_id
+  type: uuid
+- key: _deleted_at
+  type: datetime
+description: Empty checklist for planning and conducting internal audits against Annex
+  A controls. Use it when you want full flexibility to map questions yourself. Suitable
+  for experienced auditors tailoring scope per engagement.

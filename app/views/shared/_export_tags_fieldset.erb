@@ -1,0 +1,16 @@
+<fieldset class="space-y-3">
+  <legend class="label-text text-lg font-medium mb-2"><%= t('annex.export_tags_label') %></legend>
+  <% locals[:options].each do |tag| %>
+    <label class="label cursor-pointer justify-start gap-4 min-h-[2.75rem]">
+      <input type="checkbox" name="export_tags[]" value="<%= tag['id'] %>"
+             class="checkbox checkbox-primary"
+             <%= 'checked' if locals[:selected].include?(tag['id']) %>>
+      <span class="label-text text-lg">
+        <span class="font-medium"><%= tag['label'] %></span>
+        <% if tag['description'].to_s.strip != '' %>
+          <span class="block text-base opacity-70 whitespace-pre-line"><%= tag['description'] %></span>
+        <% end %>
+      </span>
+    </label>
+  <% end %>
+</fieldset>

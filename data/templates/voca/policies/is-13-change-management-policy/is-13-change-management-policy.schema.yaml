@@ -1,0 +1,160 @@
+schema_version: '1'
+kind: text
+sections:
+- level: h1
+  key: change_management_policy
+  label: Change Management Policy
+  role: title
+  editable: false
+  field_type: text
+  required: false
+- level: h2
+  key: purpose
+  label: Purpose
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: scope
+  label: Scope
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: a_request_for_change
+  label: A Request for Change
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: change_request_approval
+  label: Change Request Approval
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: change_register
+  label: Change Register
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: change_prioritisation_classification
+  label: Change Prioritisation / Classification
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: change_risk_assessment
+  label: Change Risk Assessment
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: change_impact_assessment
+  label: Change Impact Assessment
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: testing
+  label: Testing
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: version_control
+  label: Version Control
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: communicating_change
+  label: Communicating Change
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: roll_back
+  label: Roll Back
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: change_freeze
+  label: Change Freeze
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: emergency_change
+  label: Emergency Change
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: unauthorised_changes
+  label: Unauthorised Changes
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: policy_compliance
+  label: Policy Compliance
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: compliance_measurement
+  label: Compliance Measurement
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: exceptions
+  label: Exceptions
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: non_compliance
+  label: Non-Compliance
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: continual_improvement
+  label: Continual Improvement
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: areas_of_the_iso27001_standard_addressed
+  label: Areas of the ISO27001 Standard Addressed
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+description: Governs how changes to systems and infrastructure are requested, approved,
+  and recorded. Essential before production changes scale up. Pair with your change
+  log and CAB practices.

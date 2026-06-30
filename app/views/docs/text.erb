@@ -1,0 +1,100 @@
+<%= render('shared/_doc_header') %>
+<%= render('shared/_document_presence', locals: { slug: @slug, doc_id: @doc['doc_id'] }) %>
+<%= render('shared/_version_control_table', locals: {
+      rows: @data[:version_control_rows],
+      current_version: @data[:meta].dig('iso27001', 'version')
+    }) %>
+<% form_response = !@doc['form_id'].to_s.empty? %>
+<% wizard_sections = @data[:schema]['sections'].select { |sec| sec['editable'] != false } %>
+<form id="text_save_form" method="post" action="/projects/<%= @slug %>/docs/<%= @doc['doc_id'] %>" class="space-y-6 mt-8" aria-labelledby="doc-heading">
+  <% if form_response %>
+    <label class="form-control" for="document_title">
+      <span class="label-text text-lg mb-2"><%= t('forms.document_title_label') %></span>
+      <input class="input input-bordered w-full text-base" type="text" id="document_title"
+             name="document_title" value="<%= @doc['title'] %>" required>
+    </label>
+  <% end %>
+  <% @data[:schema]['sections'].each do |sec| %>
+    <% next if sec['editable'] == false %>
+    <% field_id = "field-#{sec['key']}" %>
+    <label class="form-control" for="<%= field_id %>">
+      <span class="label-text text-lg mb-2"><%= sec['label'] %></span>
+      <% if sec['description'] %>
+        <%= render('shared/_field_description', locals: { text: sec['description'], id: "#{field_id}-hint" }) %>
+      <% end %>
+      <%= render('shared/_text_section_field', locals: {
+            sec: sec,
+            value: @data[:fields][sec['key']],
+            input_id: field_id,
+            attrs: (sec['description'] ? %( aria-describedby="#{field_id}-hint") : '')
+          }) %>
+    </label>
+  <% end %>
+  <dialog id="save_modal" class="modal" aria-labelledby="save_modal_title" aria-describedby="save_modal_desc">
+    <div class="modal-box bg-white">
+      <div data-modal-wizard>
+        <%= render('shared/_wizard_header', locals: {
+              id: 'save_modal_title',
+              title: t('save_modal.title'),
+              title_base: t('save_modal.title')
+            }) %>
+        <p id="save_modal_desc" class="sr-only"><%= t('save_modal.description') %></p>
+        <div class="mt-4" data-wizard-step="1">
+          <label class="form-control" for="document_changes">
+            <span class="label-text text-lg mb-2"><%= t('save_modal.changes_label') %></span>
+            <%= render('shared/_markdown_textarea', locals: {
+                  input_id: 'document_changes',
+                  name: 'document_changes',
+                  value: '',
+                  rows: 6,
+                  attrs: %( form="text_save_form" required aria-describedby="save_modal_desc"),
+                  placeholder: t('save_modal.changes_placeholder')
+                }) %>
+          </label>
+        </div>
+        <div class="mt-4" data-wizard-step="2" hidden>
+          <label class="label cursor-pointer justify-start gap-4 min-h-[2.75rem]">
+            <input type="checkbox" id="significant_change" name="significant_change" value="1"
+                   form="text_save_form" class="checkbox checkbox-primary checkbox-lg">
+            <span class="label-text text-lg"><%= t('save_modal.significant') %></span>
+          </label>
+        </div>
+        <%= render('shared/_wizard_actions', locals: {
+              dialog_id: 'save_modal',
+              form_id: 'text_save_form',
+              submit_label: t('actions.save'),
+              submit_icon: 'ri-save-line'
+            }) %>
+      </div>
+    </div>
+  </dialog>
+</form>
+
+<% if wizard_sections.any? %>
+  <%= render('shared/_text_wizard_modal', locals: {
+        slug: @slug,
+        doc_id: @doc['doc_id'],
+        sections: @data[:schema]['sections'],
+        document_title: form_response ? @doc['title'] : nil,
+        show_title_step: form_response,
+        page_title: @header_title
+      }) %>
+<% end %>
+
+<footer class="page-footer fixed bottom-0 inset-x-0 z-40 border-t border-neutral-200 bg-white/95 backdrop-blur-sm px-4 py-3"
+        role="toolbar" aria-label="<%= t('a11y.document_actions') %>">
+  <div class="mx-auto flex flex-wrap gap-3 justify-end max-w-3xl">
+    <% if wizard_sections.any? %>
+      <button type="button" class="btn btn-outline w-full sm:w-auto" data-wizard-open="text_wizard_modal"
+              aria-haspopup="dialog" aria-controls="text_wizard_modal">
+        <i class="ri-magic-line" aria-hidden="true"></i>
+        <%= t('forms.run_wizard') %>
+      </button>
+    <% end %>
+    <button type="button" class="btn btn-primary w-full sm:w-auto" data-wizard-open="save_modal"
+            aria-haspopup="dialog" aria-controls="save_modal">
+      <i class="ri-save-line" aria-hidden="true"></i>
+      <%= t('actions.save') %>
+    </button>
+  </div>
+</footer>

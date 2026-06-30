@@ -1,0 +1,43 @@
+inherit_from: .rubocop_todo.yml
+
+AllCops:
+  NewCops: enable
+  SuggestExtensions: false
+  TargetRubyVersion: 3.4
+  Exclude:
+    - vendor/**/*
+    - coverage/**/*
+
+Metrics/MethodLength:
+  Max: 22
+
+Metrics/AbcSize:
+  Max: 36
+
+Metrics/ClassLength:
+  Max: 220
+
+Metrics/CyclomaticComplexity:
+  Max: 10
+
+Metrics/PerceivedComplexity:
+  Max: 10
+
+Metrics/BlockLength:
+  Max: 30
+  Exclude:
+    - spec/**/*
+    - lib/tasks/**/*
+
+Metrics/ParameterLists:
+  Max: 6
+
+Naming/MethodParameterName:
+  AllowedNames:
+    - r
+
+Style/Documentation:
+  Enabled: false
+
+Layout/LineLength:
+  Max: 120

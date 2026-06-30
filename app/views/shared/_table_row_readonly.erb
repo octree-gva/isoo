@@ -1,0 +1,36 @@
+<%# locals: columns, row %>
+<div class="doc-row-readonly" role="group" aria-label="<%= t('a11y.table_row_fields') %>">
+  <% columns.each do |col| %>
+    <% field_type = col['type'] || 'text' %>
+    <% value = row[col['key']] %>
+    <div class="doc-row-readonly__field">
+      <% if %w[switch checkbox].include?(field_type) %>
+        <div class="doc-row-readonly__switch">
+          <div class="shrink-0">
+            <%= render('shared/_table_cell', locals: { col: col, value: value }) %>
+          </div>
+          <div>
+            <span class="doc-row-readonly__label"><%= col['label'] %></span>
+            <% if col['description'] %>
+              <%= render('shared/_markdown_description', locals: {
+                    text: col['description'],
+                    description_class: 'markdown-description doc-row-readonly__hint'
+                  }) %>
+            <% end %>
+          </div>
+        </div>
+      <% else %>
+        <span class="doc-row-readonly__label"><%= col['label'] %></span>
+        <div class="doc-row-readonly__value">
+          <%= render('shared/_table_cell', locals: { col: col, value: value }) %>
+        </div>
+        <% if col['description'] %>
+          <%= render('shared/_markdown_description', locals: {
+                text: col['description'],
+                description_class: 'markdown-description doc-row-readonly__hint'
+              }) %>
+        <% end %>
+      <% end %>
+    </div>
+  <% end %>
+</div>

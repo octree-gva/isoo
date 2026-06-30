@@ -1,0 +1,132 @@
+schema_version: '1'
+kind: text
+sections:
+- level: h1
+  key: continual_improvement_policy
+  label: Continual Improvement Policy
+  role: title
+  editable: false
+  field_type: text
+  required: false
+- level: h2
+  key: purpose
+  label: Purpose
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: scope
+  label: Scope
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: principle
+  label: Principle
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: audit
+  label: Audit
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: incidents
+  label: Incidents
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: change_management
+  label: Change Management
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: management_review_team
+  label: Management Review Team
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: review_of_objectives
+  label: Review of Objectives
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: legal_regulatory_and_information_security_standards_change
+  label: Legal, Regulatory and Information Security Standards Change
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: improvement_as_a_result_of_non_conformity
+  label: Improvement as a result of Non-Conformity
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: management_of_improvement
+  label: Management of Improvement
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: policy_compliance
+  label: Policy Compliance
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: compliance_measurement
+  label: Compliance Measurement
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: exceptions
+  label: Exceptions
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: non_compliance
+  label: Non-Compliance
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: continual_improvement
+  label: Continual Improvement
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: areas_of_the_iso27001_standard_addressed
+  label: Areas of the ISO27001 Standard Addressed
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+description: Describes how you capture feedback, correct nonconformities, and improve
+  the ISMS. Activate it once audits and incidents begin producing actions. Links to
+  corrective action logs and management review.

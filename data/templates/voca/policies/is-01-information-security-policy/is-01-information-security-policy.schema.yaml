@@ -1,0 +1,149 @@
+---
+schema_version: '1'
+kind: text
+sections:
+- level: h1
+  key: information_security_policy
+  label: Information Security Policy
+  role: title
+  editable: false
+  field_type: text
+  required: false
+- level: h2
+  key: purpose
+  label: Purpose
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: scope
+  label: Scope
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: principle
+  label: Principle
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: chief_executives_statement_of_commitment
+  label: Chief Executives Statement of Commitment
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: introduction
+  label: Introduction
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: information_security_objectives
+  label: Information Security Objectives
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: information_security_defined
+  label: Information Security Defined
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: information_security_policy_framework
+  label: Information Security Policy Framework
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: information_security_roles_and_responsibilities
+  label: Information Security Roles and Responsibilities
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: monitoring
+  label: Monitoring
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: legal_and_regulatory_obligations
+  label: Legal and Regulatory Obligations
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: training_and_awareness
+  label: Training and awareness
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: continual_improvement_of_the_management_system
+  label: Continual Improvement of the Management System
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: policy_compliance
+  label: Policy Compliance
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: compliance_measurement
+  label: Compliance Measurement
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: exceptions
+  label: Exceptions
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: non_compliance
+  label: Non-Compliance
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: continual_improvement
+  label: Continual Improvement
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: areas_of_the_iso27001_standard_addressed
+  label: Areas of the ISO27001 Standard Addressed
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+description: Your top-level commitment to protecting information—scope, objectives,
+  and governance. Approve it first; all other IS policies should align with it. Communicate
+  it organisation-wide and review it at least annually.
+export_tags:
+- basic

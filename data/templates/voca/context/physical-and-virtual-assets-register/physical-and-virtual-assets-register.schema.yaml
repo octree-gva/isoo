@@ -1,0 +1,116 @@
+---
+schema_version: '1'
+kind: table
+primary_key: asset_no
+columns:
+- key: asset_no
+  label: Asset No.
+  type: text
+  description: Unique asset identifier.
+  required: true
+- key: serial_no
+  label: Serial No
+  type: text
+  description: Manufacturer serial number.
+- key: asset_owner
+  label: Asset Owner
+  type: text
+  description: Person or role responsible for the asset.
+- key: company_or_personal
+  label: Company Or Personal?
+  type: dropdown
+  description: Whether the asset is company-owned or personal (BYOD).
+  options:
+  - Company
+  - Personal
+- key: status
+  label: Status
+  type: dropdown
+  description: Current lifecycle status of the asset.
+  options:
+  - In use
+  - In storage
+  - Retired
+  - Lost
+  - Disposed
+- key: date_assigned
+  label: Date Assigned
+  type: date
+  description: Date the asset was assigned to the owner.
+- key: date_returned
+  label: Date Returned
+  type: date
+  description: Date the asset was returned, if applicable.
+- key: date_last_checked
+  label: Date last checked
+  type: date
+  description: Date security checks were last performed.
+- key: checked_by
+  label: Checked By
+  type: text
+  description: Person who performed the last check.
+- key: encryption_checked
+  label: Encryption Checked?
+  type: switch
+  default: false
+  description: Whether encryption was verified on last check.
+- key: anti_virus_checked
+  label: Anti Virus Checked?
+  type: switch
+  default: false
+  description: Whether anti-virus was verified on last check.
+- key: patching_checked
+  label: Patching Checked?
+  type: switch
+  default: false
+  description: Whether patching was verified on last check.
+- key: description_of_asset
+  label: Description of asset
+  type: textarea
+  description: Physical description and specifications.
+- key: what_does_the_asset_do
+  label: What does the asset do
+  type: textarea
+  description: Business function or role of the asset.
+- key: what_data_is_held_on_the_asset
+  label: What data is held on the asset
+  type: textarea
+  description: Types of information stored or processed.
+- key: importance
+  label: Importance
+  type: dropdown
+  description: Business criticality of the asset.
+  options:
+  - High
+  - Medium
+  - Low
+- key: classification
+  label: Classification
+  type: dropdown
+  description: Information classification of data on the asset.
+  options:
+  - Confidential
+  - Internal
+  - Public
+- key: location_of_asset
+  label: Location of Asset
+  type: text
+  description: Physical or logical location.
+- key: notes
+  label: NOTES
+  type: textarea
+  description: Additional notes.
+- key: destruction_certificate_number
+  label: Destruction Certificate Number
+  type: text
+  description: Certificate reference when asset is disposed.
+_internal:
+- key: _row_id
+  type: uuid
+- key: _deleted_at
+  type: datetime
+description: Lists hardware, cloud resources, and other infrastructure that supports
+  your business. Build it alongside asset discovery and keep owners assigned. Refer
+  to it when assessing risks, planning backups, and deciding what belongs in scope.
+export_tags:
+- soi

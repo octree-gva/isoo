@@ -1,0 +1,59 @@
+---
+schema_version: '1'
+kind: table
+primary_key: department_function
+columns:
+- key: department_function
+  label: Department / Function
+  type: text
+  description: Department or business function.
+- key: department_function_priority
+  label: Department / Function Priority
+  type: dropdown
+  description: Recovery priority for business continuity.
+  options:
+  - Critical
+  - High
+  - Medium
+  - Low
+- key: head_of_department_function
+  label: Head of Department / Function
+  type: text
+  description: Named head or accountable person.
+- key: number_of_full_time_staff
+  label: Number of Full Time Staff
+  type: number
+  description: Full-time staff count.
+- key: number_of_part_time_staff
+  label: Number of Part Time Staff
+  type: number
+  description: Part-time staff count.
+- key: number_of_contractors
+  label: Number of Contractors
+  type: number
+  description: Contractor count.
+- key: work_from_location
+  label: Work From Location
+  type: dropdown
+  description: Primary work location model.
+  options:
+  - Office
+  - Remote
+  - Hybrid
+  - Multiple sites
+- key: impact_over_time
+  label: Impact Over time
+  type: textarea
+  description: Impact at different time horizons (e.g. 4h, 24h, 1 week).
+- key: system_dependencies
+  label: System Dependencies
+  type: textarea
+  description: IT systems and dependencies required to operate.
+_internal:
+- key: _row_id
+  type: uuid
+- key: _deleted_at
+  type: datetime
+description: Analyses how disruptions affect critical activities, resources, and recovery
+  priorities. Conduct it before writing detailed continuity plans. Identifies maximum
+  tolerable downtime and dependencies.

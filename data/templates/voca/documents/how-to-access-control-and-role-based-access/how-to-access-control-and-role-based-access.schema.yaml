@@ -1,0 +1,58 @@
+---
+schema_version: '1'
+kind: text
+sections:
+- level: h1
+  key: how_to_manage_access_control
+  label: How to Manage Access Control
+  role: title
+  editable: false
+  field_type: textarea
+  required: false
+- level: h2
+  key: starter_leaver_mover
+  label: Starter Leaver Mover
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: recording_access_control
+  label: Recording Access Control
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: option_1_simplistic_access_list
+  label: Option 1- Simplistic Access List
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: option_2_role_based_access
+  label: Option 2 – Role Based Access
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: exceptions
+  label: Exceptions
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: reviewing_access_control
+  label: Reviewing Access Control
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+description: Walks administrators through granting, reviewing, and revoking access
+  using your RBAC model. Follow it when onboarding tools or training new admins. Keeps
+  access changes consistent with your access control policy.
+export_tags:
+- soi

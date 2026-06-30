@@ -1,0 +1,17 @@
+<% show_today = defined?(include_today) ? include_today : true %>
+<div class="flex flex-wrap gap-2 mt-3" role="group" aria-label="<%= t('table.date_shortcuts_label') %>">
+  <% if show_today %>
+    <button type="button" class="btn btn-outline btn-sm" data-date-shortcut="today" data-date-target="<%= input_id %>">
+      <%= t('table.date_shortcuts.today') %>
+    </button>
+  <% end %>
+  <button type="button" class="btn btn-outline btn-sm" data-date-shortcut="3months" data-date-target="<%= input_id %>">
+    <%= t('table.date_shortcuts.three_months') %>
+  </button>
+  <button type="button" class="btn btn-outline btn-sm" data-date-shortcut="6months" data-date-target="<%= input_id %>">
+    <%= t('table.date_shortcuts.six_months') %>
+  </button>
+  <button type="button" class="btn btn-outline btn-sm" data-date-shortcut="1year" data-date-target="<%= input_id %>">
+    <%= t('table.date_shortcuts.one_year') %>
+  </button>
+</div>

@@ -1,0 +1,40 @@
+---
+schema_version: '1'
+kind: table
+primary_key: risk_status
+columns:
+- key: risk_status
+  label: RISK STATUS
+  type: dropdown
+  description: Current status of the risk.
+  options:
+  - Open
+  - In treatment
+  - Treated
+  - Accepted
+  - Closed
+- key: risk_treatment
+  label: RISK TREATMENT
+  type: dropdown
+  description: How the risk is being treated.
+  options:
+  - Avoid
+  - Mitigate
+  - Transfer
+  - Accept
+- key: risks_when_first_identified
+  label: RISKS WHEN FIRST IDENTIFIED
+  type: textarea
+  description: Description of the risk when it was first logged.
+- key: residual_risk
+  label: RESIDUAL RISK
+  type: textarea
+  description: Remaining risk after controls are applied.
+_internal:
+- key: _row_id
+  type: uuid
+- key: _deleted_at
+  type: datetime
+description: Living list of identified risks, scores, owners, treatments, and residual
+  status. Populate it from your first risk assessment and review at least annually.
+  The SoA and audit evidence should trace back to entries here.

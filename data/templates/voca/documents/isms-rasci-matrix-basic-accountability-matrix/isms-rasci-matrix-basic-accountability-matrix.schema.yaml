@@ -1,0 +1,27 @@
+---
+schema_version: '1'
+kind: table
+primary_key: iso270012022_isms_accountability
+columns:
+- key: iso270012022_isms_accountability
+  label: ISO27001:2022 - ISMS Accountability
+  type: text
+  description: ISMS accountability area or activity.
+- key: responsible_named_person
+  label: Responsible Named Person
+  type: text
+  description: Person ultimately responsible for completion of the task.
+- key: accountable_named_person
+  label: Accountable Named Person
+  type: text
+  description: Person ultimately accountable for success or failure of the task.
+_internal:
+- key: _row_id
+  type: uuid
+- key: _deleted_at
+  type: datetime
+description: A lightweight view of who is Responsible, Accountable, Supported, Consulted,
+  or Informed for core ISMS activities. Fill it when roles are first assigned. Refer
+  to it to resolve ownership gaps before audits.
+export_tags:
+- basic

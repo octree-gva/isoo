@@ -1,0 +1,134 @@
+---
+schema_version: '1'
+kind: table
+primary_key: audit_area
+columns:
+- key: audit_area
+  label: Audit Area
+  type: text
+  description: Audit or management area.
+- key: '44927'
+  label: '2023-01-01'
+  type: dropdown
+  description: Status for 2023-01-01.
+  options:
+  - Planned
+  - In progress
+  - Complete
+  - N/A
+- key: '44958'
+  label: '2023-02-01'
+  type: dropdown
+  description: Status for 2023-02-01.
+  options:
+  - Planned
+  - In progress
+  - Complete
+  - N/A
+- key: '44986'
+  label: '2023-03-01'
+  type: dropdown
+  description: Status for 2023-03-01.
+  options:
+  - Planned
+  - In progress
+  - Complete
+  - N/A
+- key: '45017'
+  label: '2023-04-01'
+  type: dropdown
+  description: Status for 2023-04-01.
+  options:
+  - Planned
+  - In progress
+  - Complete
+  - N/A
+- key: '45047'
+  label: '2023-05-01'
+  type: dropdown
+  description: Status for 2023-05-01.
+  options:
+  - Planned
+  - In progress
+  - Complete
+  - N/A
+- key: '45078'
+  label: '2023-06-01'
+  type: dropdown
+  description: Status for 2023-06-01.
+  options:
+  - Planned
+  - In progress
+  - Complete
+  - N/A
+- key: '45108'
+  label: '2023-07-01'
+  type: dropdown
+  description: Status for 2023-07-01.
+  options:
+  - Planned
+  - In progress
+  - Complete
+  - N/A
+- key: '45139'
+  label: '2023-08-01'
+  type: dropdown
+  description: Status for 2023-08-01.
+  options:
+  - Planned
+  - In progress
+  - Complete
+  - N/A
+- key: '45170'
+  label: '2023-09-01'
+  type: dropdown
+  description: Status for 2023-09-01.
+  options:
+  - Planned
+  - In progress
+  - Complete
+  - N/A
+- key: '45200'
+  label: '2023-10-01'
+  type: dropdown
+  description: Status for 2023-10-01.
+  options:
+  - Planned
+  - In progress
+  - Complete
+  - N/A
+- key: '45231'
+  label: '2023-11-01'
+  type: dropdown
+  description: Status for 2023-11-01.
+  options:
+  - Planned
+  - In progress
+  - Complete
+  - N/A
+- key: '45261'
+  label: '2023-12-01'
+  type: dropdown
+  description: Status for 2023-12-01.
+  options:
+  - Planned
+  - In progress
+  - Complete
+  - N/A
+- key: '45292'
+  label: '2024-01-01'
+  type: dropdown
+  description: Status for 2024-01-01.
+  options:
+  - Planned
+  - In progress
+  - Complete
+  - N/A
+_internal:
+- key: _row_id
+  type: uuid
+- key: _deleted_at
+  type: datetime
+description: Your implementation and maintenance plan—milestones, resources, and priorities
+  for the ISMS. Draft it during project kick-off and refresh after management review.
+  Shows auditors you manage the programme deliberately.

@@ -1,0 +1,41 @@
+---
+schema_version: '1'
+kind: table
+primary_key: standard
+columns:
+- key: standard
+  label: Standard
+  type: text
+  description: Relevant standard, law, or regulation.
+- key: requirement
+  label: Requirement
+  type: textarea
+  description: Specific requirement text or summary.
+- key: applicability
+  label: Applicability
+  type: textarea
+  description: Whether and how this requirement applies to the organisation.
+- key: required
+  label: Required?
+  type: switch
+  default: false
+  description: Whether compliance is mandatory.
+- key: last_assessed_date
+  label: Last Assessed Date
+  type: date
+  description: Date of last assessment.
+- key: next_assessment_date
+  label: Next Assessment Date
+  type: review_date
+  description: Date of next scheduled assessment.
+_internal:
+- key: _row_id
+  type: uuid
+- key: _deleted_at
+  type: datetime
+description: Tracks laws, regulations, and customer contracts that impose security
+  or privacy obligations. Populate it during discovery and review it whenever you
+  enter new markets or sign major contracts. Use it to drive control selection and
+  prove compliance awareness.
+export_tags:
+- data_protection

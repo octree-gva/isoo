@@ -1,0 +1,18 @@
+---
+tags:
+- id: data_protection
+  label: Data Protection
+  description: Documents relevant for external data protection officers, such as customer DPOs.
+  scopes:
+  - document
+- id: soi
+  label: SOI
+  description: Organization and informatics officers — locations, infrastructure, and file annexes.
+  scopes:
+  - document
+  - asset
+- id: basic
+  label: Basic
+  description: High-level overview for CEOs or customers who want general service information.
+  scopes:
+  - document

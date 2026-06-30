@@ -1,0 +1,53 @@
+<%= render('shared/_back_nav', locals: { href: "/projects/#{@slug}", label: t('a11y.back_to_project', name: @manifest.name) }) %>
+
+<h1 id="form-heading"><%= @form['title'] || @form['doc_id'] %></h1>
+<% form_hint = @form_description.to_s.strip %>
+<% if form_hint.empty? %>
+  <p id="form-hint" class="opacity-80 mt-2 text-lg max-w-3xl"><%= t('forms.hint') %></p>
+<% else %>
+      <%= render('shared/_markdown_description', locals: {
+            text: form_hint,
+            id: 'form-hint',
+            description_class: 'markdown-description opacity-80 mt-2 text-lg max-w-3xl'
+          }) %>
+<% end %>
+
+<form class="mt-6" method="post"
+      action="/projects/<%= @slug %>/forms/<%= @form['doc_id'] %>/responses"
+      aria-describedby="form-hint">
+  <button class="btn btn-primary btn-sm w-full sm:w-auto" type="submit">
+    <i class="ri-add-line" aria-hidden="true"></i>
+    <%= t('forms.new') %>
+  </button>
+</form>
+
+<section class="mt-8" aria-labelledby="form-responses-heading">
+  <h2 id="form-responses-heading" class="text-2xl"><%= t('forms.responses_heading') %></h2>
+  <ul id="form-responses" class="mt-4 space-y-3">
+    <% responses = @form.fetch('responses', []) %>
+    <% if responses.empty? %>
+      <li class="opacity-80 py-4 text-lg" role="status"><%= t('forms.empty') %></li>
+    <% end %>
+    <% responses.each do |response| %>
+      <% response_title = response['title'] || response['doc_id'] %>
+      <% response_path = "/projects/#{@slug}/docs/#{response['doc_id']}" %>
+      <li class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3 border-b py-4">
+        <span id="response-label-<%= response['doc_id'] %>" class="text-lg sm:text-xl break-words"><%= response_title %></span>
+        <div class="flex flex-col sm:flex-row gap-2 w-full sm:w-auto shrink-0">
+          <a class="btn btn-outline btn-sm w-full sm:w-auto"
+             href="<%= response_path %>"
+             aria-label="<%= t('actions.open_named', name: response_title) %>">
+            <i class="ri-file-text-line" aria-hidden="true"></i>
+            <%= t('actions.open') %>
+          </a>
+          <a class="btn btn-primary btn-sm w-full sm:w-auto"
+             href="<%= response_path %>?wizard=1"
+             aria-label="<%= t('forms.run_wizard_named', name: response_title) %>">
+            <i class="ri-magic-line" aria-hidden="true"></i>
+            <%= t('forms.run_wizard') %>
+          </a>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+</section>

@@ -1,0 +1,146 @@
+schema_version: '1'
+kind: text
+sections:
+- level: h1
+  key: cryptographic_control_policy
+  label: Cryptographic Control Policy
+  role: title
+  editable: false
+  field_type: text
+  required: false
+- level: h2
+  key: purpose
+  label: Purpose
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: scope
+  label: Scope
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: principle
+  label: Principle
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: encryption_algorithm_requirements
+  label: Encryption Algorithm Requirement’s
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: mobile_laptop_and_removable_media_encryption
+  label: Mobile, Laptop and Removable Media Encryption
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: email_encryption
+  label: Email Encryption
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: web_cloud_services_encryption
+  label: Web / Cloud Services Encryption
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: wireless_encryption
+  label: Wireless Encryption
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: card_holder_data_encryption
+  label: Card Holder Data Encryption
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: backup_encryption
+  label: Backup Encryption
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: database_encryption
+  label: Database Encryption
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: data_in_motion_encryption
+  label: Data in Motion Encryption
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: bluetooth_encryption
+  label: Bluetooth Encryption
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: policy_compliance
+  label: Policy Compliance
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: compliance_measurement
+  label: Compliance Measurement
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: exceptions
+  label: Exceptions
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: non_compliance
+  label: Non-Compliance
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: continual_improvement
+  label: Continual Improvement
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: areas_of_the_iso27001_standard_addressed
+  label: Areas of the ISO27001 Standard Addressed
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+description: Specifies when and how encryption protects data in transit and at rest.
+  Align with legal requirements and classification levels. Document algorithms and
+  exceptions clearly for auditors.

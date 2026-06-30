@@ -1,0 +1,118 @@
+schema_version: '1'
+kind: text
+sections:
+- level: h1
+  key: third_party_supplier_security_policy
+  label: Third Party Supplier Security Policy
+  role: title
+  editable: false
+  field_type: text
+  required: false
+- level: h2
+  key: purpose
+  label: Purpose
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: scope
+  label: Scope
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: principle
+  label: Principle
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: third_party_supplier_register
+  label: Third Party Supplier Register
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: third_party_supplier_audit_and_review
+  label: Third Party Supplier Audit and Review
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: third_party_supplier_selection
+  label: Third Party Supplier Selection
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: third_party_supplier_contracts_agreements_and_data_processing_agreements
+  label: Third Party Supplier Contracts, Agreements and Data Processing Agreements
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: third_party_supplier_security_incident_management
+  label: Third Party Supplier Security Incident Management
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: third_party_supplier_end_of_contract
+  label: Third Party Supplier End of Contract
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: policy_compliance
+  label: Policy Compliance
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: compliance_measurement
+  label: Compliance Measurement
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: exceptions
+  label: Exceptions
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: non_compliance
+  label: Non-Compliance
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: continual_improvement
+  label: Continual Improvement
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: areas_of_the_iso27001_standard_addressed
+  label: Areas of the ISO27001 Standard Addressed
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+description: Sets security expectations for vendors who access your data or systems.
+  Use it in procurement and contract clauses. Drive supplier register reviews and
+  due diligence from this policy.

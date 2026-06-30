@@ -1,0 +1,131 @@
+---
+schema_version: '1'
+kind: table
+primary_key: document
+columns:
+- key: document
+  label: "#"
+  type: number
+  description: Row reference number.
+- key: identified_date
+  label: Identified Date
+  type: date
+  description: Date this processing activity was identified.
+- key: business_function_department_team
+  label: BUSINESS FUNCTION / DEPARTMENT / TEAM
+  type: text
+  description: Owning business function or team.
+- key: where_is_it_where_is_the_information_being_stored_name_of_application
+  label: Where is the information stored / Name of Application?
+  type: textarea
+  description: Storage location or application name.
+- key: what_is_it_description_of_the_information_held
+  label: Description of the information held
+  type: textarea
+  description: What personal or sensitive data is held.
+- key: why_do_we_have_it_data_asset_purpose_of_the_processing
+  label: Purpose of the Processing (Art. 30.b)
+  type: textarea
+  description: Why the data is processed.
+- key: who_here_owns_it_information_owner
+  label: Information Owner
+  type: text
+  description: Person accountable for this data asset.
+- key: name_of_the_controller
+  label: Name of the Controller (or Joint Controller)
+  type: text
+  description: Data controller name (Art. 30.a).
+- key: categories_of_data_subjects
+  label: Categories of Data Subjects
+  type: textarea
+  description: Types of individuals whose data is processed (Art. 30.c).
+- key: how_long_do_we_keep_it_information_retention_requirements
+  label: Information Retention Requirements
+  type: textarea
+  description: How long data is retained (Art. 30.f).
+- key: data_classification_public_internal_confidential
+  label: Data Classification
+  type: dropdown
+  description: Classification of the data held.
+  options:
+  - Public
+  - Internal
+  - Confidential
+- key: categories_of_personal_data
+  label: Categories of Personal Data
+  type: textarea
+  description: Types of personal data processed (Art. 30.c).
+- key: categories_of_recipients
+  label: Categories of recipients
+  type: textarea
+  description: Who receives the data (Art. 30.d).
+- key: if_international_transfers_take_place_describe_additional_security_measures
+  label: International transfers — additional security measures
+  type: textarea
+  description: Safeguards for international transfers (Art. 30.e).
+- key: description_of_the_technical_and_organisational_security_measures
+  label: Technical and organisational security measures
+  type: textarea
+  description: Security measures in place (Art. 30.g).
+- key: how_is_the_data_collected
+  label: How is the data collected?
+  type: textarea
+  description: Collection method and source.
+- key: lawful_basis_for_processing
+  label: Lawful basis for processing
+  type: dropdown
+  description: GDPR lawful basis.
+  options:
+  - Consent
+  - Contract
+  - Legal obligation
+  - Vital interests
+  - Public task
+  - Legitimate interests
+- key: if_lawful_basis_is_consent_how_is_this_obtained_and_evidenced_also_how_can_consent_be_withdrawn
+  label: Consent — how obtained, evidenced, and withdrawn
+  type: textarea
+  description: Required when lawful basis is Consent.
+- key: volume_of_data_number_of_records
+  label: Volume of Data (number of records)
+  type: number
+  description: Approximate number of records.
+- key: risks_to_data
+  label: Risks to Data Subjects
+  type: textarea
+  description: Identified risks to data subjects.
+- key: risk_impact_on_data_subject
+  label: Impact On Data Subject
+  type: dropdown
+  description: Assessed impact on data subjects.
+  options:
+  - Low
+  - Medium
+  - High
+- key: actions_to_be_taken_to_reduce_manage_risk
+  label: Actions to reduce / manage risk
+  type: textarea
+  description: Planned or completed risk treatment actions.
+- key: action_owner
+  label: Action Owner
+  type: text
+  description: Person responsible for risk actions.
+- key: date_to_be_completed
+  label: Date to be completed
+  type: date
+  description: Target completion date for actions.
+- key: date_last_assessed
+  label: Date last assessed
+  type: date
+  description: Date of last DPIA or ROPA review.
+_internal:
+- key: _row_id
+  type: uuid
+- key: _deleted_at
+  type: datetime
+description: Records personal and sensitive data you process, including lawful basis
+  and retention where GDPR applies. Create it when mapping data flows and privacy
+  impact. Link each entry to systems in your asset registers and to controls in your
+  SoA.
+export_tags:
+- data_protection

@@ -1,0 +1,441 @@
+---
+id: voca
+name: Voca
+okf_bundle: "."
+documents:
+- doc_id: organisation-overview
+  path: context/organisation-overview
+  kind: text
+  seq: 1
+  title: Organisation Overview
+- doc_id: context-of-organisation
+  path: context/context-of-organisation
+  kind: text
+  seq: 2
+  title: Context of Organisation
+- doc_id: 0c-iso-27001-implementation-checklist
+  path: documents/0c-iso-27001-implementation-checklist
+  kind: table
+  seq: 10
+  title: 0C - ISO 27001 Implementation Checklist
+- doc_id: documented-isms-scope
+  path: context/documented-isms-scope
+  kind: text
+  seq: 11
+  title: Documented ISMS Scope
+- doc_id: legal-and-contractual-requirements-register
+  path: context/legal-and-contractual-requirements-register
+  kind: table
+  seq: 12
+  title: Legal and Contractual Requirements Register
+- doc_id: physical-and-virtual-assets-register
+  path: context/physical-and-virtual-assets-register
+  kind: table
+  seq: 13
+  title: Physical and Virtual Assets Register
+- doc_id: data-asset-register-ropa
+  path: context/data-asset-register-ropa
+  kind: table
+  seq: 14
+  title: Data Asset Register - ROPA
+- doc_id: software-license-assets-register
+  path: context/software-license-assets-register
+  kind: table
+  seq: 15
+  title: Software License Assets Register
+- doc_id: statement-of-applicability-iso-27002-2022-and-2013
+  path: context/statement-of-applicability-iso-27002-2022-and-2013
+  kind: table
+  seq: 16
+  title: Statement of Applicability - ISO 27002 2022 and 2013
+- doc_id: annual-risk-review-meeting-template
+  path: meetings/annual-risk-review-meeting-template
+  kind: form
+  seq: 17
+  title: Annual Risk Review Meeting
+  response_kind: text
+- doc_id: managment-review-team-meeting-agenda-template
+  path: meetings/managment-review-team-meeting-agenda-template
+  kind: form
+  seq: 18
+  title: Managment Review Team Meeting Agenda
+  response_kind: text
+- doc_id: the-information-security-management-system-overview
+  path: documents/the-information-security-management-system-overview
+  kind: text
+  seq: 21
+  title: The Information Security Management System Overview
+- doc_id: information-security-manager-job-description
+  path: documents/information-security-manager-job-description
+  kind: text
+  seq: 22
+  title: Information Security Manager Job Description
+- doc_id: competency-matrix
+  path: documents/competency-matrix
+  kind: table
+  seq: 23
+  title: Competency Matrix
+- doc_id: isms-rasci-matrix-basic-accountability-matrix
+  path: documents/isms-rasci-matrix-basic-accountability-matrix
+  kind: table
+  seq: 24
+  title: ISMS RASCI Matrix - BASIC - Accountability Matrix
+- doc_id: isms-rasci-matrix-full
+  path: documents/isms-rasci-matrix-full
+  kind: table
+  seq: 25
+  title: ISMS RASCI Matrix - FULL
+- doc_id: information-classification-summary
+  path: documents/information-classification-summary
+  kind: table
+  seq: 26
+  title: Information Classification Summary
+- doc_id: information-security-management-system-document-tracker
+  path: documents/information-security-management-system-document-tracker
+  kind: table
+  seq: 27
+  title: Information Security Management System Document Tracker
+- doc_id: operations-security-manual-v1
+  path: documents/operations-security-manual-v1
+  kind: text
+  seq: 28
+  title: Operations Security Manual V1
+- doc_id: how-to-access-control-and-role-based-access
+  path: documents/how-to-access-control-and-role-based-access
+  kind: text
+  seq: 29
+  title: How To - Access Control and Role Based Access
+- doc_id: role-based-access-control
+  path: documents/role-based-access-control
+  kind: table
+  seq: 30
+  title: Role Based Access Control
+- doc_id: access-request-form
+  path: documents/access-request-form
+  kind: text
+  seq: 32
+  title: Access Request Form
+- doc_id: starter-leaver-mover-system-access-process
+  path: documents/starter-leaver-mover-system-access-process
+  kind: text
+  seq: 33
+  title: Starter Leaver Mover - System Access Process
+- doc_id: starter-leaver-mover-access-register
+  path: registers/starter-leaver-mover-access-register
+  kind: table
+  seq: 34
+  title: Starter Leaver Mover - Access Submissions
+- doc_id: threat-intelligence-process
+  path: documents/threat-intelligence-process
+  kind: text
+  seq: 34
+  title: Threat Intelligence Process
+- doc_id: threat-intelligence-report-template
+  path: documents/threat-intelligence-report-template
+  kind: form
+  seq: 35
+  title: Threat Intelligence Report
+  response_kind: text
+- doc_id: dp-01-data-protection-policy
+  path: policies/dp-01-data-protection-policy
+  kind: text
+  seq: 36
+  title: DP 01 Data Protection Policy
+- doc_id: dp-02-data-retention-policy
+  path: policies/dp-02-data-retention-policy
+  kind: text
+  seq: 37
+  title: DP 02 Data Retention Policy
+- doc_id: is-01-information-security-policy
+  path: policies/is-01-information-security-policy
+  kind: text
+  seq: 38
+  title: IS 01 Information Security Policy
+- doc_id: is-02-access-control-policy
+  path: policies/is-02-access-control-policy
+  kind: text
+  seq: 39
+  title: IS 02 Access Control Policy
+- doc_id: is-03-asset-management-policy
+  path: policies/is-03-asset-management-policy
+  kind: text
+  seq: 40
+  title: IS 03 Asset Management Policy
+- doc_id: is-04-risk-management-policy
+  path: policies/is-04-risk-management-policy
+  kind: text
+  seq: 41
+  title: IS 04 Risk Management Policy
+- doc_id: is-05-information-classification-and-handling-policy
+  path: policies/is-05-information-classification-and-handling-policy
+  kind: text
+  seq: 42
+  title: IS 05 Information Classification and Handling Policy
+- doc_id: is-06-information-security-awareness-and-training-policy
+  path: policies/is-06-information-security-awareness-and-training-policy
+  kind: text
+  seq: 43
+  title: IS 06 Information Security Awareness and Training Policy
+- doc_id: is-07-acceptable-use-policy
+  path: policies/is-07-acceptable-use-policy
+  kind: text
+  seq: 44
+  title: IS 07 Acceptable Use Policy
+- doc_id: is-08-clear-desk-and-clear-screen-policy
+  path: policies/is-08-clear-desk-and-clear-screen-policy
+  kind: text
+  seq: 45
+  title: IS 08 Clear Desk and Clear Screen Policy
+- doc_id: is-09a-mobile-and-teleworking-policy-office-based
+  path: policies/is-09a-mobile-and-teleworking-policy-office-based
+  kind: text
+  seq: 46
+  title: IS 09a Mobile and Teleworking Policy - office based
+- doc_id: is-09b-mobile-and-teleworking-policy-fully-remote
+  path: policies/is-09b-mobile-and-teleworking-policy-fully-remote
+  kind: text
+  seq: 47
+  title: IS 09b Mobile and Teleworking Policy - fully remote
+- doc_id: is-10-business-continuity-policy
+  path: policies/is-10-business-continuity-policy
+  kind: text
+  seq: 48
+  title: IS 10 Business Continuity Policy
+- doc_id: is-11-backup-policy
+  path: policies/is-11-backup-policy
+  kind: text
+  seq: 49
+  title: IS 11 Backup Policy
+- doc_id: is-12-protection-against-malware-policy
+  path: policies/is-12-protection-against-malware-policy
+  kind: text
+  seq: 50
+  title: IS 12 Protection Against Malware Policy
+- doc_id: is-13-change-management-policy
+  path: policies/is-13-change-management-policy
+  kind: text
+  seq: 51
+  title: IS 13 Change Management Policy
+- doc_id: is-14-third-party-supplier-security-policy
+  path: policies/is-14-third-party-supplier-security-policy
+  kind: text
+  seq: 52
+  title: IS 14 Third Party Supplier Security Policy
+- doc_id: is-15-continual-improvement-policy
+  path: policies/is-15-continual-improvement-policy
+  kind: text
+  seq: 53
+  title: IS 15 Continual Improvement Policy
+- doc_id: is-16-logging-and-monitoring-policy
+  path: policies/is-16-logging-and-monitoring-policy
+  kind: text
+  seq: 54
+  title: IS 16 Logging and Monitoring Policy
+- doc_id: is-17-network-security-management-policy
+  path: policies/is-17-network-security-management-policy
+  kind: text
+  seq: 55
+  title: IS 17 Network Security Management Policy
+- doc_id: is-18-information-transfer-policy
+  path: policies/is-18-information-transfer-policy
+  kind: text
+  seq: 56
+  title: IS 18 Information Transfer Policy
+- doc_id: is-19-secure-development-policy
+  path: policies/is-19-secure-development-policy
+  kind: text
+  seq: 57
+  title: IS 19 Secure Development Policy
+- doc_id: is-20-physical-and-environmental-security-policy
+  path: policies/is-20-physical-and-environmental-security-policy
+  kind: text
+  seq: 58
+  title: IS 20 Physical and Environmental Security Policy
+- doc_id: is-21-cryptographic-key-management-policy
+  path: policies/is-21-cryptographic-key-management-policy
+  kind: text
+  seq: 59
+  title: IS 21 Cryptographic Key Management Policy
+- doc_id: is-22-cryptographic-control-and-encryption-policy
+  path: policies/is-22-cryptographic-control-and-encryption-policy
+  kind: text
+  seq: 60
+  title: IS 22 Cryptographic Control and Encryption Policy
+- doc_id: is-23-document-and-record-policy
+  path: policies/is-23-document-and-record-policy
+  kind: text
+  seq: 61
+  title: IS 23 Document and Record Policy
+- doc_id: is-24-significant-incident-policy-and-collection-of-evidence
+  path: policies/is-24-significant-incident-policy-and-collection-of-evidence
+  kind: text
+  seq: 62
+  title: IS 24 Significant Incident Policy and Collection of Evidence
+- doc_id: is-25-patch-management-policy
+  path: policies/is-25-patch-management-policy
+  kind: text
+  seq: 63
+  title: IS 25 Patch Management Policy
+- doc_id: is-26-cloud-service-policy
+  path: policies/is-26-cloud-service-policy
+  kind: text
+  seq: 64
+  title: IS 26 Cloud Service Policy
+- doc_id: is-27-intellectual-property-rights-policy
+  path: policies/is-27-intellectual-property-rights-policy
+  kind: text
+  seq: 65
+  title: IS 27 Intellectual Property Rights Policy
+- doc_id: is-28-ai-policy
+  path: policies/is-28-ai-policy
+  kind: text
+  seq: 66
+  title: IS 28 AI Policy
+- doc_id: audit-plan-iso-27002-2013-and-2022-version
+  path: plans/audit-plan-iso-27002-2013-and-2022-version
+  kind: table
+  seq: 67
+  title: Audit Plan ISO 27002 2013 and 2022 Version
+- doc_id: change-log
+  path: plans/change-log
+  kind: table
+  seq: 68
+  title: Change Log
+- doc_id: communication-plan
+  path: plans/communication-plan
+  kind: table
+  seq: 69
+  title: Communication Plan
+- doc_id: isms-management-plan
+  path: plans/isms-management-plan
+  kind: table
+  seq: 70
+  title: ISMS Management Plan
+- doc_id: incident-and-breach-reporting-form
+  path: plans/incident-and-breach-reporting-form
+  kind: text
+  seq: 71
+  title: Incident and Breach Reporting Form
+- doc_id: incident-and-corrective-action-log
+  path: plans/incident-and-corrective-action-log
+  kind: table
+  seq: 72
+  title: Incident and Corrective Action Log
+- doc_id: ip-01-risk-management-procedure
+  path: registers/ip-01-risk-management-procedure
+  kind: text
+  seq: 73
+  title: IP 01 RIsk Management Procedure
+- doc_id: isms-risk-register
+  path: registers/isms-risk-register
+  kind: table
+  seq: 74
+  title: ISMS Risk Register
+- doc_id: third-party-supplier-register
+  path: registers/third-party-supplier-register
+  kind: table
+  seq: 75
+  title: Third Party Supplier Register
+- doc_id: 1a-blank-audit-template-iso-27002-2013-and-2022-version
+  path: audit/1a-blank-audit-template-iso-27002-2013-and-2022-version
+  kind: form
+  seq: 78
+  title: 1a. Audit ISO 27002 2013 and 2022 Version
+  response_kind: table
+- doc_id: 1b-audit-template-iso-27002-2013-and-2022-version-pre-mapped
+  path: audit/1b-audit-template-iso-27002-2013-and-2022-version-pre-mapped
+  kind: form
+  seq: 79
+  title: 1b. Audit ISO 27002 2013 and 2022 Version
+  response_kind: table
+- doc_id: audit-meeting-template
+  path: audit/audit-meeting-template
+  kind: form
+  seq: 80
+  title: Audit Meeting
+  response_kind: text
+- doc_id: audit-report-template
+  path: audit/audit-report-template
+  kind: form
+  seq: 81
+  title: Audit Report
+  response_kind: text
+- doc_id: business-impact-assessment
+  path: continuity/business-impact-assessment
+  kind: table
+  seq: 82
+  title: Business Impact Assessment
+- doc_id: business-impact-analysis-exec-summary
+  path: continuity/business-impact-analysis-exec-summary
+  kind: text
+  seq: 83
+  title: Business Impact Analysis Exec Summary
+- doc_id: business-continuity-objectives-and-strategy
+  path: continuity/business-continuity-objectives-and-strategy
+  kind: text
+  seq: 84
+  title: Business Continuity Objectives and Strategy
+- doc_id: business-continuity-plan
+  path: continuity/business-continuity-plan
+  kind: form
+  seq: 85
+  title: Business Continuity Plan
+  response_kind: text
+- doc_id: business-continuity-incident-action-log
+  path: continuity/business-continuity-incident-action-log
+  kind: table
+  seq: 86
+  title: Business Continuity Incident Action Log
+- doc_id: post-incident-review-form
+  path: continuity/post-incident-review-form
+  kind: form
+  seq: 87
+  title: Post Incident Review
+  response_kind: text
+- doc_id: disaster-recovery-scenario-plans
+  path: continuity/disaster-recovery-scenario-plans
+  kind: form
+  seq: 88
+  title: Disaster Recovery Scenario Plans
+  response_kind: text
+- doc_id: disaster-recovery-scenario-test-template
+  path: continuity/disaster-recovery-scenario-test-template
+  kind: form
+  seq: 89
+  title: Disaster Recovery Scenario Test
+  response_kind: text
+- doc_id: how-to-conduct-a-business-continuity-test
+  path: continuity/how-to-conduct-a-business-continuity-test
+  kind: text
+  seq: 91
+  title: How to conduct a Business Continuity Test
+- doc_id: business-continuity-test-template
+  path: continuity/business-continuity-test-template
+  kind: form
+  seq: 92
+  title: Business Continuity Test
+  response_kind: text
+- doc_id: business-continuity-test-report-template
+  path: continuity/business-continuity-test-report-template
+  kind: form
+  seq: 93
+  title: Business Continuity Test Report
+  response_kind: text
+- doc_id: business-continuity-plan-scenario
+  path: continuity/business-continuity-plan-scenario
+  kind: form
+  seq: 856
+  title: Business Continuity Plan Scenarios
+  response_kind: text
+- doc_id: business-continuity-scenario
+  path: continuity/business-continuity-scenario
+  kind: form
+  seq: 923
+  title: Business Continuity Scenarios
+  response_kind: text
+- doc_id: business-continuity-test-report-findings
+  path: continuity/business-continuity-test-report-findings
+  kind: form
+  seq: 934
+  title: Business Continuity Test Report Findings
+  response_kind: text

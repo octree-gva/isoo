@@ -1,0 +1,79 @@
+---
+schema_version: '1'
+kind: text
+sections:
+- level: h1
+  key: iso_27001_certification_scope_statement
+  label: ISO 27001 Certification Scope Statement
+  role: title
+  editable: false
+  field_type: textarea
+  required: false
+- level: h2
+  key: scope_overview_internal_view
+  label: Scope Overview – Internal View
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: products_and_services
+  label: Products and Services
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: locations
+  label: Locations
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: out_of_scope
+  label: Out of Scope
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: department_people
+  label: Department / People
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: in_scope
+  label: In scope
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: out_of_scope
+  label: Out of Scope
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: technology
+  label: Technology
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: network
+  label: Network
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+description: Defines exactly what your ISMS covers—locations, systems, teams, and
+  exclusions. Draft it once you understand your context and refine it before certification.
+  Keep it aligned with your risk register and SoA so auditors see a consistent boundary.
+export_tags:
+- basic

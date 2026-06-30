@@ -1,0 +1,51 @@
+<%# locals: col, value, name_prefix %>
+<% field_type = col['type'] || 'text' %>
+<% input_name = "#{name_prefix}[#{col['key']}]" %>
+<% field_id = "#{name_prefix.tr('[]', '-')}-#{col['key']}" %>
+<% cell_value = value.to_s %>
+
+<% case field_type %>
+<% when 'textarea' %>
+  <textarea class="textarea textarea-bordered textarea-xs w-full min-h-[2.5rem] leading-snug"
+            id="<%= field_id %>" name="<%= input_name %>" rows="2"><%= cell_value %></textarea>
+<% when 'date' %>
+  <input type="date" class="input input-bordered input-xs w-full min-w-[9rem]"
+         id="<%= field_id %>" name="<%= input_name %>" value="<%= cell_value %>">
+<% when 'review_date' %>
+  <% min_date = (Date.today + 1).iso8601 %>
+  <input type="date" class="input input-bordered input-xs w-full min-w-[9rem]"
+         id="<%= field_id %>" name="<%= input_name %>" value="<%= cell_value %>"
+         min="<%= min_date %>" data-review-date="true"
+         data-future-date-message="<%= t('table.review_date_must_be_future') %>">
+<% when 'number' %>
+  <input type="number" class="input input-bordered input-xs w-full min-w-[4rem]"
+         id="<%= field_id %>" name="<%= input_name %>" value="<%= cell_value %>">
+<% when 'link' %>
+  <input type="url" class="input input-bordered input-xs w-full min-w-[8rem]"
+         id="<%= field_id %>" name="<%= input_name %>" value="<%= cell_value %>"
+         inputmode="url" pattern="https://.+"
+         title="<%= t('table.link_https_required') %>" placeholder="https://">
+<% when 'dropdown' %>
+  <select class="select select-bordered select-xs w-full min-w-[6rem]"
+          id="<%= field_id %>" name="<%= input_name %>">
+    <option value=""><%= t('table.select_placeholder') %></option>
+    <% Array(col['options']).each do |opt| %>
+      <option value="<%= opt %>"<%= ' selected' if cell_value == opt %>><%= opt %></option>
+    <% end %>
+  </select>
+<% when 'switch' %>
+  <% on = ::TableSwitch.on?(cell_value, col) %>
+  <input type="hidden" name="<%= input_name %>" value="0">
+  <label class="table-fullscreen-switch cursor-pointer">
+    <input type="checkbox" id="<%= field_id %>" name="<%= input_name %>" value="1"
+           class="toggle toggle-success toggle-sm"<%= ' checked' if on %>>
+  </label>
+<% when 'checkbox' %>
+  <label class="table-fullscreen-switch cursor-pointer">
+    <input type="checkbox" id="<%= field_id %>" name="<%= input_name %>" value="1"
+           class="checkbox checkbox-primary checkbox-sm"<%= ' checked' if cell_value == '1' %>>
+  </label>
+<% else %>
+  <input type="text" class="input input-bordered input-xs w-full min-w-[6rem]"
+         id="<%= field_id %>" name="<%= input_name %>" value="<%= cell_value %>">
+<% end %>

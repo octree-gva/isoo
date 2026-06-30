@@ -1,0 +1,104 @@
+schema_version: '1'
+kind: text
+sections:
+- level: h1
+  key: purpose
+  label: Purpose
+  role: title
+  editable: false
+  field_type: textarea
+  required: false
+- level: h2
+  key: scope
+  label: Scope
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: risk_management_procedure
+  label: Risk Management Procedure
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: principle
+  label: Principle
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: risk_register
+  label: Risk Register
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: risk_identification
+  label: Risk Identification
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: risk_assessment
+  label: Risk assessment
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: risk_treatment
+  label: Risk Treatment
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: risk_monitoring_and_risk_review
+  label: Risk Monitoring and Risk Review
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: procedure_compliance
+  label: Procedure Compliance
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: compliance_measurement
+  label: Compliance Measurement
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: exceptions
+  label: Exceptions
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: non_compliance
+  label: Non-Compliance
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: continual_improvement
+  label: Continual Improvement
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+description: Step-by-step method for identifying assets, threats, vulnerabilities,
+  and treatments. Follow it for initial and periodic risk assessments. Outputs feed
+  your risk register and Statement of Applicability.

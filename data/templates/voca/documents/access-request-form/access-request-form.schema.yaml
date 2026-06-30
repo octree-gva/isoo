@@ -1,0 +1,55 @@
+schema_version: '1'
+kind: text
+sections:
+- level: h1
+  key: access_form
+  label: ACCESS FORM
+  role: title
+  editable: false
+  field_type: text
+  required: false
+- level: h2
+  key: date
+  label: 'Date:'
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: name_of_requestor
+  label: 'Name of Requestor:'
+  role: body
+  editable: true
+  field_type: text
+  required: false
+- level: h2
+  key: employee_requiring_access
+  label: 'Employee requiring ACCESS:'
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: line_manager_of_employee
+  label: 'Line Manager of Employee:'
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: access_authorised_by
+  label: 'Access Authorised by:'
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: access
+  label: ACCESS
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+description: Standard form for requesting new or changed system access with manager
+  approval. Use it for every access change instead of ad hoc tickets. Retain completed
+  forms as audit evidence.

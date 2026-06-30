@@ -1,0 +1,39 @@
+---
+schema_version: '1'
+kind: table
+primary_key: documents
+columns:
+- key: documents
+  label: Documents
+  type: text
+  description: Document name or reference.
+- key: who_owns_it
+  label: Who Owns It
+  type: text
+  description: Document owner.
+- key: current_version
+  label: Current Version
+  type: text
+  description: Current published version.
+- key: last_reviewed_date
+  label: Last Reviewed Date
+  type: date
+  description: Date of last review.
+- key: next_review_date
+  label: Next Review Date
+  type: review_date
+  description: Date of next scheduled review.
+- key: general_notes
+  label: General Notes
+  type: textarea
+  description: Additional notes.
+_internal:
+- key: _row_id
+  type: uuid
+- key: _deleted_at
+  type: datetime
+description: Your master index of ISMS documents—version, owner, review date, and
+  status. Maintain it from day one so nothing goes stale unnoticed. Auditors expect
+  to see controlled document management here.
+export_tags:
+- soi

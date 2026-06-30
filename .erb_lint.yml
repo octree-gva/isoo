@@ -1,0 +1,24 @@
+---
+EnableDefaultLinters: true
+
+glob: '**/*.erb'
+
+exclude:
+  - 'node_modules/**/*'
+  - 'vendor/**/*'
+  - 'coverage/**/*'
+  - 'spec/tmp/**/*'
+
+linters:
+  Rubocop:
+    enabled: false
+  PartialInstanceVariable:
+    enabled: false
+  NoJavascriptTagHelper:
+    enabled: false
+  RequireScriptNonce:
+    enabled: false
+  AllowedScriptType:
+    enabled: false
+  RequireInputAutocomplete:
+    enabled: false

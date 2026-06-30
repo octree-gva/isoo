@@ -1,0 +1,139 @@
+schema_version: '1'
+kind: text
+sections:
+- level: h1
+  key: logging_and_monitoring_policy
+  label: Logging and Monitoring Policy
+  role: title
+  editable: false
+  field_type: text
+  required: false
+- level: h2
+  key: purpose
+  label: Purpose
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: scope
+  label: Scope
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: principle
+  label: Principle
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: event_logging
+  label: Event Logging
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: event_logging_access_control
+  label: Event Logging Access Control
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: protection_of_event_log_information
+  label: Protection of Event Log Information
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: administrator_and_operator_logs
+  label: Administrator and operator logs
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: clock_synchronisation
+  label: Clock synchronisation
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: event_log_monitoring
+  label: Event Log Monitoring
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: event_log_retention
+  label: Event Log Retention
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: centralised_logging
+  label: Centralised Logging
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: personal_privacy
+  label: Personal Privacy
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: policy_compliance
+  label: Policy Compliance
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: compliance_measurement
+  label: Compliance Measurement
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: exceptions
+  label: Exceptions
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: non_compliance
+  label: Non-Compliance
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: continual_improvement
+  label: Continual Improvement
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: areas_of_the_iso27001_standard_addressed
+  label: Areas of the ISO27001 Standard Addressed
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+description: Defines what events you log, retention periods, and who reviews alerts.
+  Implement alongside SIEM or log aggregation. Supports incident detection and forensic
+  investigations.

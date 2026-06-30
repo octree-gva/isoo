@@ -1,0 +1,34 @@
+---
+schema_version: '1'
+kind: table
+primary_key: supplier_details
+columns:
+- key: supplier_details
+  label: Supplier Details
+  type: text
+  description: Supplier name and contact details.
+- key: certifications
+  label: Certifications
+  type: textarea
+  description: Relevant certifications (e.g. ISO 27001, SOC 2).
+- key: risk_score
+  label: Risk Score
+  type: dropdown
+  description: Assessed supplier risk level.
+  options:
+  - Low
+  - Medium
+  - High
+  - Critical
+- key: supplier_review
+  label: Supplier Review
+  type: review_date
+  description: Date of next supplier review.
+_internal:
+- key: _row_id
+  type: uuid
+- key: _deleted_at
+  type: datetime
+description: Inventory of vendors with access to your data or critical services, plus
+  risk tier and review dates. Build it during procurement onboarding. Reassess suppliers
+  when contracts renew or incidents occur.

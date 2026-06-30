@@ -1,0 +1,57 @@
+---
+schema_version: '1'
+kind: form
+response_kind: text
+sections:
+- level: h1
+  key: threat_summary
+  label: Threat Summary
+  role: title
+  editable: false
+  field_type: textarea
+  required: false
+- level: h2
+  key: threat_name
+  label: Threat Name
+  role: body
+  editable: true
+  field_type: text
+  required: false
+- level: h2
+  key: threat_source
+  label: 'Threat Source:'
+  role: body
+  editable: true
+  field_type: text
+  required: false
+- level: h2
+  key: initial_risk_and_impact_assessment
+  label: 'Initial Risk and Impact Assessment:'
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: recommended_next_steps
+  label: 'Recommended Next Steps:'
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: added_to_risk_register
+  label: 'Added to Risk Register:'
+  role: body
+  editable: true
+  field_type: switch
+  required: false
+- level: h2
+  key: risk_register_reference
+  label: 'Risk Register Reference:'
+  role: body
+  editable: true
+  field_type: text
+  required: false
+description: Format for documenting periodic threat landscape summaries for leadership.
+  Complete it on your defined cadence—monthly or quarterly. Link findings to risks
+  or controls that need adjustment.

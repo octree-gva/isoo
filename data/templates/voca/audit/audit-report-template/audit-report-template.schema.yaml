@@ -1,0 +1,105 @@
+schema_version: '1'
+kind: form
+response_kind: text
+sections:
+- level: h1
+  key: introduction
+  label: Introduction
+  role: title
+  editable: false
+  field_type: textarea
+  required: false
+- level: h2
+  key: key_findings_summary
+  label: Key Findings - Summary
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: key_findings_information_security_management_system
+  label: Key Findings – Information Security Management System
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: summary
+  label: Summary
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: isms_audit_results_table
+  label: ISMS Audit Results Table
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: key_findings_annex_a_controls
+  label: Key Findings – Annex A Controls
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: summary
+  label: Summary
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: annex_a_audit_results_table
+  label: Annex A Audit Results Table
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: key_observations
+  label: Key Observations
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: key_risks
+  label: Key Risks
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: what_needs_to_be_done
+  label: What needs to be done
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: to_consider
+  label: To consider
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: appendix_a_interviewees
+  label: APPENDIX A – Interviewees
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: appendix_b_documents_relevant_to_the_audit
+  label: APPENDIX B – Documents Relevant to the Audit
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+description: Standard format for documenting audit scope, methodology, findings, and
+  recommendations. Complete it after each internal or supplier audit. Management review
+  and certification bodies rely on clear, actionable reports.

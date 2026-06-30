@@ -1,0 +1,15 @@
+<%# locals: col, value %>
+<% field_type = col['type'] || 'text' %>
+<% case field_type %>
+<% when 'switch' %>
+  <% on = ::TableSwitch.on?(value, col) %>
+  <span class="doc-table-switch <%= on ? 'doc-table-switch--on' : 'doc-table-switch--off' %>">
+    <%= on ? t('table.switch.on') : t('table.switch.off') %>
+  </span>
+<% when 'link' %>
+  <% if value.to_s.strip != '' %>
+    <a href="<%= value %>" class="link link-primary break-all" target="_blank" rel="noopener noreferrer"><%= value %></a>
+  <% end %>
+<% else %>
+  <%= value %>
+<% end %>

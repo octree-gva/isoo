@@ -1,0 +1,118 @@
+schema_version: '1'
+kind: text
+sections:
+- level: h1
+  key: information_security_awareness_and_training_policy
+  label: Information Security Awareness and Training Policy
+  role: title
+  editable: false
+  field_type: text
+  required: false
+- level: h2
+  key: purpose
+  label: Purpose
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: scope
+  label: Scope
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: principle
+  label: Principle
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: information_security_awareness_and_training_topics
+  label: Information Security Awareness and Training Topics
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: new_starters
+  label: New Starters
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: in_role_employees
+  label: In Role Employees
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: training_and_competency_register
+  label: Training and Competency Register
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: training_and_awareness_plan
+  label: Training and Awareness Plan
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: assessment_and_acceptance
+  label: Assessment and Acceptance
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: policy_compliance
+  label: Policy Compliance
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: compliance_measurement
+  label: Compliance Measurement
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: exceptions
+  label: Exceptions
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: non_compliance
+  label: Non-Compliance
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: continual_improvement
+  label: Continual Improvement
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: areas_of_the_iso27001_standard_addressed
+  label: Areas of the ISO27001 Standard Addressed
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+description: Commits to educating staff on security responsibilities and measuring
+  effectiveness. Launch it with your awareness programme. Track completion and refresh
+  training when threats or policies change.

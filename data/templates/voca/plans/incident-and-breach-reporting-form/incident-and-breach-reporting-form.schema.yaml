@@ -1,0 +1,9 @@
+---
+schema_version: '1'
+kind: text
+sections: []
+description: Standard form for staff to report security events and suspected breaches.
+  Make it easy to find and train everyone to use it. Triggers your incident process
+  and evidence collection.
+export_tags:
+- data_protection

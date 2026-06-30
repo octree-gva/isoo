@@ -1,0 +1,141 @@
+schema_version: '1'
+kind: text
+sections:
+- level: h1
+  key: information_classification_and_handling_policy
+  label: Information Classification and Handling Policy
+  role: title
+  editable: false
+  field_type: text
+  required: false
+- level: h2
+  key: purpose
+  label: Purpose
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: scope
+  label: Scope
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: principle
+  label: Principle
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: information_storage
+  label: Information Storage
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: confidential_information_storage
+  label: Confidential Information Storage
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: control_of_devices_and_media_containing_information
+  label: Control of Devices and Media Containing Information
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: information_back_up
+  label: Information Back Up
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: information_destruction
+  label: Information Destruction
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: information_classification
+  label: Information Classification
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: confidential_information
+  label: Confidential Information
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: internal_information
+  label: Internal Information
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: public_information
+  label: Public Information
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: policy_compliance
+  label: Policy Compliance
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: compliance_measurement
+  label: Compliance Measurement
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: exceptions
+  label: Exceptions
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: non_compliance
+  label: Non-Compliance
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: continual_improvement
+  label: Continual Improvement
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: areas_of_the_iso27001_standard_addressed
+  label: Areas of the ISO27001 Standard Addressed
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+description: Defines classification levels and handling rules for information at rest
+  and in transit. Issue it before rolling out labelling and secure sharing practices.
+  Pair it with your classification summary and awareness training.
+export_tags:
+- data_protection

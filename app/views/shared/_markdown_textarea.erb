@@ -1,0 +1,4 @@
+<% optional_placeholder = defined?(placeholder) ? placeholder : nil %>
+<% optional_name = defined?(name) && !name.nil? %>
+<textarea class="textarea textarea-bordered w-full" id="<%= input_id %>"<% if optional_name %> name="<%= name %>"<% end %>
+          data-markdown-editor rows="<%= rows || 11 %>"<%= attrs %><% if optional_placeholder && !optional_placeholder.to_s.empty? %> placeholder="<%= optional_placeholder %>"<% end %>><%= value %></textarea>

@@ -1,0 +1,30 @@
+---
+schema_version: '1'
+kind: text
+sections:
+- level: h1
+  key: information_security_manager
+  label: Information Security Manager
+  role: title
+  editable: false
+  field_type: textarea
+  required: false
+- level: h2
+  key: key_duties_include
+  label: Key duties include
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: key_requirements
+  label: Key Requirements
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+description: Defines the ISMS owner’s responsibilities, authority, and reporting line.
+  Assign or hire against this role before you claim ISO 27001 leadership accountability.
+  Review it when governance structures change.
+export_tags:
+- basic

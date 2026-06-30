@@ -1,0 +1,77 @@
+---
+schema_version: '1'
+kind: table
+primary_key: ref
+columns:
+- key: ref
+  label: Ref
+  type: text
+  description: Internal change reference.
+  required: true
+- key: external_reference_number
+  label: External Reference Number
+  type: text
+  description: Ticket or external system reference.
+- key: raised
+  label: Raised
+  type: date
+  description: Date the change was raised.
+- key: change_raised_by
+  label: Change Raised By
+  type: text
+  description: Person who raised the change.
+- key: change_authorised_by
+  label: Change Authorised By
+  type: text
+  description: Person who authorised the change.
+- key: change_description
+  label: Change Description
+  type: textarea
+  description: Summary of the proposed change.
+- key: priority
+  label: Priority
+  type: dropdown
+  description: Change priority.
+  options:
+  - Low
+  - Medium
+  - High
+  - Emergency
+- key: impact
+  label: Impact
+  type: dropdown
+  description: Expected impact if the change fails.
+  options:
+  - Low
+  - Medium
+  - High
+- key: risk
+  label: Risk
+  type: textarea
+  description: Risks associated with the change.
+- key: c_i_a
+  label: C I A
+  type: dropdown
+  description: Affected security objective(s).
+  options:
+  - Confidentiality
+  - Integrity
+  - Availability
+  - All
+  - None
+- key: change_action
+  label: Change Action
+  type: textarea
+  description: Actions taken or planned.
+- key: risk_2
+  label: Residual Risk
+  type: textarea
+  description: Remaining risk after controls.
+_internal:
+- key: _row_id
+  type: uuid
+- key: _deleted_at
+  type: datetime
+description: Records material changes to ISMS documents and key system configurations.
+  Update it whenever you revise policies or implement significant technical change.
+  Provides traceability auditors expect.

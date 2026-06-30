@@ -1,0 +1,111 @@
+schema_version: '1'
+kind: text
+sections:
+- level: h1
+  key: intellectual_property_rights_policy
+  label: Intellectual Property Rights Policy
+  role: title
+  editable: false
+  field_type: text
+  required: false
+- level: h2
+  key: purpose
+  label: Purpose
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: scope
+  label: Scope
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: principles
+  label: Principles
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: software_licencing
+  label: Software Licencing
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: software_license_assets_register
+  label: Software License Assets Register
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: software_risk_management
+  label: Software Risk Management
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: cloud_service_supplier_selection
+  label: Cloud Service Supplier Selection
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: changes_to_software
+  label: Changes to Software
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: policy_compliance
+  label: Policy Compliance
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: compliance_measurement
+  label: Compliance Measurement
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: exceptions
+  label: Exceptions
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: non_compliance
+  label: Non-Compliance
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: continual_improvement
+  label: Continual Improvement
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+- level: h2
+  key: areas_of_the_iso27001_standard_addressed
+  label: Areas of the ISO27001 Standard Addressed
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+description: Protects company IP and respects third-party licences and copyrights.
+  Important for teams handling code, designs, or licensed content. Supports contractual
+  and legal compliance beyond pure security.

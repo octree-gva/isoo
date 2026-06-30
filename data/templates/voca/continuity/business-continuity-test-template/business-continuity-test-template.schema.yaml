@@ -1,0 +1,21 @@
+schema_version: '1'
+kind: form
+response_kind: text
+sections:
+- level: h1
+  key: introduction
+  label: Introduction
+  role: title
+  editable: false
+  field_type: textarea
+  required: false
+- level: h2
+  key: list_of_attendees
+  label: List of Attendees
+  role: body
+  editable: true
+  field_type: textarea
+  required: false
+description: Checklist and script for executing a continuity exercise. Use it to standardise
+  test preparation and execution. Ensures roles, injects, and success criteria are
+  defined upfront.

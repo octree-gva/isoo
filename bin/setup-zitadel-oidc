@@ -1,0 +1,118 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+cd "$ROOT"
+
+ZITADEL_URL="${ZITADEL_URL:-http://localhost:8080}"
+PUBLIC_ISSUER="${OIDC_ISSUER:-http://localhost:8080}"
+PAT_FILE="${PAT_FILE:-docker/zitadel/bootstrap/admin.pat}"
+REDIRECT_URI="${OIDC_REDIRECT_URI:-http://localhost:9292/auth/callback}"
+ENV_FILE="${ENV_FILE:-docker/zitadel/oidc.env}"
+
+instance_host=()
+zitadel_host="$(ruby -ruri -e 'puts URI(ARGV[0]).host' "$ZITADEL_URL")"
+if [[ "$zitadel_host" == "zitadel" ]]; then
+  public_host="$(ruby -ruri -e 'u=URI(ARGV[0]); puts u.port == u.default_port ? u.host : "#{u.host}:#{u.port}"' "$PUBLIC_ISSUER")"
+  instance_host=(-H "Host: ${public_host}")
+fi
+
+echo "Waiting for Zitadel at ${ZITADEL_URL}..."
+max_wait="${ZITADEL_MAX_WAIT:-60}"
+for _ in $(seq 1 "$max_wait"); do
+  if curl -sf "${ZITADEL_URL}/debug/ready" >/dev/null 2>&1; then
+    break
+  fi
+  sleep 1
+done
+
+if ! curl -sf "${ZITADEL_URL}/debug/ready" >/dev/null 2>&1; then
+  echo "Zitadel is not ready. Start it with: docker compose up -d zitadel zitadel-db" >&2
+  exit 0
+fi
+
+if [[ ! -f "$PAT_FILE" ]]; then
+  echo "Missing PAT at ${PAT_FILE}. Re-create Zitadel data or check bootstrap volume." >&2
+  exit 1
+fi
+
+PAT="$(tr -d '[:space:]' < "$PAT_FILE")"
+if [[ -z "$PAT" ]]; then
+  echo "PAT file is empty: ${PAT_FILE}" >&2
+  exit 1
+fi
+
+auth_header=("${instance_host[@]}" -H "Authorization: Bearer ${PAT}" -H "Content-Type: application/json")
+
+echo "Creating ISOO project (if needed)..."
+PROJECTS="$(curl -sf "${ZITADEL_URL}/management/v1/projects/_search" "${auth_header[@]}" -d '{"queries":[]}')" || {
+  echo "Zitadel management API failed at ${ZITADEL_URL} (check Host header / instance readiness)" >&2
+  exit 1
+}
+PROJECT_ID="$(echo "$PROJECTS" | ruby -rjson -e 'puts JSON.parse(STDIN.read).fetch("result", []).find { |p| p["name"] == "ISOO" }&.fetch("id", "") || ""')"
+
+if [[ -z "$PROJECT_ID" ]]; then
+  CREATED="$(curl -sf -X POST "${ZITADEL_URL}/management/v1/projects" "${auth_header[@]}" -d '{"name":"ISOO"}')"
+  PROJECT_ID="$(echo "$CREATED" | ruby -rjson -e 'puts JSON.parse(STDIN.read).fetch("id")')"
+fi
+
+echo "Creating OIDC application..."
+APPS="$(curl -sf -X POST "${ZITADEL_URL}/management/v1/projects/${PROJECT_ID}/apps/_search" "${auth_header[@]}" -d '{"queries":[]}')"
+EXISTING_APP_ID="$(echo "$APPS" | ruby -rjson -e 'puts JSON.parse(STDIN.read).fetch("result", []).find { |a| a["name"] == "ISOO" }&.fetch("id", "") || ""')"
+if [[ -n "$EXISTING_APP_ID" ]]; then
+  curl -sf -X DELETE "${ZITADEL_URL}/management/v1/projects/${PROJECT_ID}/apps/${EXISTING_APP_ID}" "${auth_header[@]}" >/dev/null
+fi
+
+APP_JSON="$(curl -sf -X POST "${ZITADEL_URL}/management/v1/projects/${PROJECT_ID}/apps/oidc" "${auth_header[@]}" -d @- <<EOF
+{
+  "name": "ISOO",
+  "redirectUris": ["${REDIRECT_URI}"],
+  "responseTypes": ["OIDC_RESPONSE_TYPE_CODE"],
+  "grantTypes": ["OIDC_GRANT_TYPE_AUTHORIZATION_CODE", "OIDC_GRANT_TYPE_REFRESH_TOKEN"],
+  "appType": "OIDC_APP_TYPE_WEB",
+  "authMethodType": "OIDC_AUTH_METHOD_TYPE_BASIC",
+  "postLogoutRedirectUris": ["http://localhost:9292/"],
+  "version": "OIDC_VERSION_1_0",
+  "devMode": true,
+  "accessTokenType": "OIDC_TOKEN_TYPE_BEARER"
+}
+EOF
+)"
+
+CLIENT_ID="$(echo "$APP_JSON" | ruby -rjson -e 'puts JSON.parse(STDIN.read).fetch("clientId")')"
+CLIENT_SECRET="$(echo "$APP_JSON" | ruby -rjson -e 'puts JSON.parse(STDIN.read).fetch("clientSecret")')"
+
+upsert_env() {
+  local key="$1"
+  local value="$2"
+  if [[ -f "$ENV_FILE" ]] && grep -q "^${key}=" "$ENV_FILE"; then
+    sed -i "s|^${key}=.*|${key}=${value}|" "$ENV_FILE"
+  else
+    echo "${key}=${value}" >> "$ENV_FILE"
+  fi
+}
+
+touch "$ENV_FILE"
+upsert_env OIDC_ISSUER "http://localhost:8080"
+upsert_env OIDC_ISSUER_INTERNAL "http://zitadel:8080"
+upsert_env OIDC_REDIRECT_URI "$REDIRECT_URI"
+upsert_env OIDC_CLIENT_ID "$CLIENT_ID"
+upsert_env OIDC_CLIENT_SECRET "$CLIENT_SECRET"
+
+if [[ "$ENV_FILE" == ".env" ]]; then
+  upsert_env SESSION_SECRET "$(ruby -rsecurerandom -e 'puts SecureRandom.hex(32)')"
+  upsert_env AUTH_DISABLED 0
+fi
+
+cat <<EOF
+
+Zitadel OIDC application ready.
+
+  Client ID:     ${CLIENT_ID}
+  Redirect URI:  ${REDIRECT_URI}
+  Zitadel login: ${ZITADEL_URL}
+  Admin user:    admin@zitadel.localhost / Password1!
+
+Wrote OIDC settings to ${ENV_FILE}.
+
+EOF

@@ -1,0 +1,169 @@
+<%= render('shared/_back_nav', locals: { href: '/projects', label: t('a11y.back_to_projects') }) %>
+<% search_query = @search_query.to_s %>
+<% search_results = @search_results || [] %>
+<div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+  <h1 id="project-heading" class="min-w-0"><%= @manifest.name %></h1>
+  <a class="btn btn-outline btn-sm w-full sm:w-auto shrink-0"
+     href="/projects/<%= @slug %>/reviews"
+     aria-label="<%= t('reviews.open_named', name: @manifest.name) %>">
+    <i class="ri-calendar-check-line" aria-hidden="true"></i>
+    <%= t('reviews.button') %>
+  </a>
+</div>
+
+<form method="get" action="/projects/<%= @slug %>" class="mt-6" role="search">
+  <label for="project-search" class="sr-only"><%= t('projects.search.label') %></label>
+  <div class="join w-full flex-col sm:flex-row">
+    <input type="search" id="project-search" name="q" value="<%= search_query %>"
+           class="input input-bordered join-item w-full sm:flex-1 text-lg"
+           placeholder="<%= t('projects.search.placeholder') %>"
+           autocomplete="off">
+    <button type="submit" class="btn btn-primary join-item w-full sm:w-auto">
+      <i class="ri-search-line" aria-hidden="true"></i>
+      <%= t('projects.search.button') %>
+    </button>
+  </div>
+</form>
+
+<% unless search_query.empty? %>
+  <section class="mt-6" aria-labelledby="search-results-heading">
+    <h2 id="search-results-heading" class="text-xl font-semibold">
+      <%= t('projects.search.results_heading', query: search_query, count: search_results.size) %>
+    </h2>
+    <% if search_results.empty? %>
+      <p class="mt-3 text-lg opacity-80" role="status"><%= t('projects.search.no_results') %></p>
+    <% else %>
+      <ul id="project-search-results" class="mt-4 space-y-3">
+        <% search_results.each do |hit| %>
+          <li class="border border-neutral-200 rounded-lg p-4">
+            <a class="font-medium text-lg link link-primary break-words" href="<%= hit.url %>">
+              <%= hit.title %>
+            </a>
+            <span class="opacity-70 text-base"> (<%= hit.kind %>)</span>
+            <% if hit.snippet %>
+              <p class="mt-2 text-base opacity-80"><%= hit.snippet %></p>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
+  </section>
+<% end %>
+
+<section class="mt-8" aria-labelledby="project-documents-heading">
+  <h2 id="project-documents-heading" class="sr-only"><%= t('a11y.project_documents') %></h2>
+  <ul id="project-documents" class="space-y-3">
+    <% if @project_empty %>
+      <li id="project-documents-empty" class="py-8 text-lg opacity-80" role="status">
+        <%= t('projects.documents_empty') %>
+      </li>
+    <% end %>
+    <% (@dashboard_items || []).each do |item| %>
+      <% if item.kind == :document %>
+        <% doc = item.doc %>
+        <% doc_title = doc['title'] || doc['doc_id'] %>
+        <li class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3 border-b py-4">
+          <div class="min-w-0 flex-1 flex flex-wrap items-center gap-2">
+            <i class="<%= dashboard_doc_icon(doc['kind']) %> text-xl opacity-60 shrink-0" aria-hidden="true"></i>
+            <div class="ml-2 flex flex-wrap gap-0 flex-col">
+              <span id="doc-label-<%= doc['doc_id'] %>" class="text-lg sm:text-xl break-words"><%= doc_title %></span>
+              <div>
+                <%= render('shared/_dashboard_export_tags', locals: { tag_ids: doc['export_tags'] }) %>
+              </div>
+            </div>
+          </div>
+          <a class="btn btn-outline btn-sm w-full sm:w-auto shrink-0"
+             href="/projects/<%= @slug %>/docs/<%= doc['doc_id'] %>"
+             aria-label="<%= t('actions.open_named', name: doc_title) %>">
+            <i class="ri-arrow-right-line" aria-hidden="true"></i>
+            <%= t('actions.open') %>
+          </a>
+        </li>
+      <% elsif item.kind == :annexes %>
+        <li class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3 border-b py-4">
+          <div class="min-w-0 flex-1 flex flex-wrap items-center gap-2">
+            <i class="ri-folder-line text-xl opacity-60 shrink-0" aria-hidden="true"></i>
+            <span id="annexes-folder-label" class="text-lg sm:text-xl break-words"><%= t('annexes.folder_label') %></span>
+          </div>
+          <a class="btn btn-outline btn-sm w-full sm:w-auto shrink-0"
+             href="/projects/<%= @slug %>/annexes"
+             aria-label="<%= t('annexes.open_named', name: t('annexes.folder_label')) %>">
+            <i class="ri-folder-open-line" aria-hidden="true"></i>
+            <%= t('annexes.open') %>
+          </a>
+        </li>
+      <% elsif item.kind == :form %>
+        <% form = item.doc %>
+        <% form_title = form['title'] || form['doc_id'] %>
+        <li class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3 border-b py-4">
+          <div class="min-w-0 flex-1 flex flex-wrap items-center gap-2">
+            <i class="ri-folder-line text-xl opacity-60 shrink-0" aria-hidden="true"></i>
+            <span id="form-label-<%= form['doc_id'] %>" class="text-lg sm:text-xl break-words"><%= form_title %></span>
+            <%= render('shared/_dashboard_export_tags', locals: { tag_ids: form['export_tags'] }) %>
+          </div>
+          <a class="btn btn-outline btn-sm w-full sm:w-auto shrink-0"
+             href="/projects/<%= @slug %>/forms/<%= form['doc_id'] %>"
+             aria-label="<%= t('forms.open_named', name: form_title) %>">
+            <i class="ri-folder-open-line" aria-hidden="true"></i>
+            <%= t('forms.open') %>
+          </a>
+        </li>
+      <% end %>
+    <% end %>
+  </ul>
+</section>
+
+<dialog id="export_modal" class="modal" aria-labelledby="export_modal_title" aria-describedby="export_modal_desc">
+  <div class="modal-box bg-white">
+    <h2 id="export_modal_title" class="font-bold text-2xl"><%= t('projects.export_modal.title') %></h2>
+    <p id="export_modal_desc" class="mt-2 text-lg opacity-80"><%= t('projects.export_modal.description') %></p>
+    <form method="get" action="/projects/<%= @slug %>/export" class="mt-6 space-y-6">
+      <fieldset class="space-y-3">
+        <legend class="label-text text-lg font-medium mb-2"><%= t('projects.export_modal.scope_label') %></legend>
+        <label class="label cursor-pointer justify-start gap-4 min-h-[2.75rem]">
+          <input type="radio" name="scope" value="full" class="radio radio-primary" checked>
+          <span class="label-text text-lg"><%= t('projects.export_modal.scope_full') %></span>
+        </label>
+        <% @export_tag_registry.tags_for('document', 'asset').each do |tag| %>
+          <label class="label cursor-pointer justify-start gap-4 min-h-[2.75rem]">
+            <input type="radio" name="scope" value="<%= tag['id'] %>" class="radio radio-primary">
+            <span class="label-text text-lg">
+              <span class="font-medium"><%= tag['label'] %></span>
+              <% if tag['description'].to_s.strip != '' %>
+                <span class="block text-base opacity-70 whitespace-pre-line"><%= tag['description'] %></span>
+              <% end %>
+            </span>
+          </label>
+        <% end %>
+      </fieldset>
+      <fieldset class="space-y-3">
+        <legend class="label-text text-lg font-medium mb-2"><%= t('projects.export_modal.format_label') %></legend>
+        <label class="label cursor-pointer justify-start gap-4 min-h-[2.75rem]">
+          <input type="radio" name="format" value="md" class="radio radio-primary" checked>
+          <span class="label-text text-lg"><%= t('projects.export_modal.format_md') %></span>
+        </label>
+        <label class="label cursor-pointer justify-start gap-4 min-h-[2.75rem]">
+          <input type="radio" name="format" value="html" class="radio radio-primary">
+          <span class="label-text text-lg"><%= t('projects.export_modal.format_html') %></span>
+        </label>
+        <label class="label cursor-pointer justify-start gap-4 min-h-[2.75rem]">
+          <input type="radio" name="format" value="pdf" class="radio radio-primary">
+          <span class="label-text text-lg"><%= t('projects.export_modal.format_pdf') %></span>
+        </label>
+      </fieldset>
+      <div class="modal-action flex-col-reverse sm:flex-row-reverse gap-2 mt-6">
+        <button type="submit" class="btn btn-primary w-full sm:w-auto">
+          <i class="ri-download-line" aria-hidden="true"></i>
+          <%= t('projects.export_modal.submit') %>
+        </button>
+        <button type="button" class="btn btn-ghost w-full sm:w-auto"
+                onclick="this.closest('dialog').close()">
+          <%= t('actions.cancel') %>
+        </button>
+      </div>
+    </form>
+  </div>
+  <form method="dialog" class="modal-backdrop">
+    <button type="submit" aria-label="<%= t('actions.cancel') %>"><%= t('actions.cancel') %></button>
+  </form>
+</dialog>
