@@ -40,7 +40,7 @@ erb-lint:
     - .development_rules
   stage: check
   script:
-    - docker compose run --rm --no-deps app bundle exec erb_lint --lint-all
+    - docker compose run --rm --no-deps -e AUTH_DISABLED=1 app bundle exec erb_lint --lint-all
 
 rubocop:
   extends:
@@ -48,7 +48,7 @@ rubocop:
     - .development_rules
   stage: check
   script:
-    - docker compose run --rm --no-deps app bundle exec rubocop
+    - docker compose run --rm --no-deps -e AUTH_DISABLED=1 app bundle exec rubocop
 
 brakeman:
   extends:
@@ -56,7 +56,7 @@ brakeman:
     - .development_rules
   stage: check
   script:
-    - docker compose run --rm --no-deps app bundle exec rake security:scan
+    - docker compose run --rm --no-deps -e AUTH_DISABLED=1 app bundle exec rake security:scan
 
 rspec:
   extends:
@@ -64,6 +64,7 @@ rspec:
     - .development_rules
   stage: check
   script:
+    - docker compose up -d memcached
     - docker compose run --rm --no-deps -e AUTH_DISABLED=1 app bundle exec rspec
 
 i18n:
@@ -72,7 +73,7 @@ i18n:
     - .development_rules
   stage: check
   script:
-    - docker compose run --rm --no-deps app bundle exec rake i18n:check
+    - docker compose run --rm --no-deps -e AUTH_DISABLED=1 app bundle exec rake i18n:check
 
 publish:
   extends: .publish_rules

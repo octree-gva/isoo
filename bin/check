@@ -7,7 +7,7 @@ echo "==> Building app image"
 docker compose build app
 
 run_app() {
-  docker compose run --rm --no-deps app "$@"
+  docker compose run --rm --no-deps -e AUTH_DISABLED=1 app "$@"
 }
 
 echo "==> Asset build"
@@ -31,6 +31,7 @@ echo "==> Security (Brakeman + bundler-audit)"
 run_app bundle exec rake security:scan
 
 echo "==> RSpec"
+docker compose up -d memcached
 docker compose run --rm --no-deps -e AUTH_DISABLED=1 app bundle exec rspec
 
 echo "All checks passed."

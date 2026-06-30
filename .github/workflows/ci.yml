@@ -18,7 +18,7 @@ jobs:
       - name: Build app image
         run: docker compose build app
       - name: ERB lint
-        run: docker compose run --rm --no-deps app bundle exec erb_lint --lint-all
+        run: docker compose run --rm --no-deps -e AUTH_DISABLED=1 app bundle exec erb_lint --lint-all
 
   lint:
     name: RuboCop
@@ -28,7 +28,7 @@ jobs:
       - name: Build app image
         run: docker compose build app
       - name: RuboCop
-        run: docker compose run --rm --no-deps app bundle exec rubocop
+        run: docker compose run --rm --no-deps -e AUTH_DISABLED=1 app bundle exec rubocop
 
   i18n:
     name: i18n-tasks
@@ -38,7 +38,7 @@ jobs:
       - name: Build app image
         run: docker compose build app
       - name: Check translations
-        run: docker compose run --rm --no-deps app bundle exec rake i18n:check
+        run: docker compose run --rm --no-deps -e AUTH_DISABLED=1 app bundle exec rake i18n:check
 
   security:
     name: Security
@@ -48,7 +48,7 @@ jobs:
       - name: Build app image
         run: docker compose build app
       - name: Brakeman and bundler-audit
-        run: docker compose run --rm --no-deps app bundle exec rake security:scan
+        run: docker compose run --rm --no-deps -e AUTH_DISABLED=1 app bundle exec rake security:scan
 
   specs:
     name: RSpec
@@ -57,5 +57,7 @@ jobs:
       - uses: actions/checkout@v4
       - name: Build app image
         run: docker compose build app
+      - name: Start Memcached
+        run: docker compose up -d memcached
       - name: RSpec
         run: docker compose run --rm --no-deps -e AUTH_DISABLED=1 app bundle exec rspec

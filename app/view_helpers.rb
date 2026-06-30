@@ -1,13 +1,8 @@
 # frozen_string_literal: true
 
 require 'cgi'
+require_relative 'isoo_html'
 require_relative 'services/markdown_renderer'
-
-class IsooHtml < String
-  def html_safe?
-    true
-  end
-end
 
 module ViewHelpers
   def t(key, **)

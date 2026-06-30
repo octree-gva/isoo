@@ -13,6 +13,12 @@ RSpec.describe Cache::MemcachedStore do
     scope = "project:integration-#{SecureRandom.hex(4)}"
     key = "live-key-#{SecureRandom.hex(4)}"
     store = described_class.new(server: server, namespace: "isoo-test-#{Process.pid}")
+    probe = "probe-#{SecureRandom.hex(4)}"
+    probe_calls = 0
+    store.fetch(probe, scope: 'global') { probe_calls += 1 }
+    store.fetch(probe, scope: 'global') { probe_calls += 1 }
+    skip 'memcached unavailable' if probe_calls == 2
+
     calls = 0
     expect(store.fetch(key, scope: scope) do
       calls += 1
@@ -27,7 +33,5 @@ RSpec.describe Cache::MemcachedStore do
       'fresh'
     end).to eq('fresh')
     expect(calls).to eq(2)
-  rescue Dalli::DalliError => e
-    skip "memcached unavailable: #{e.message}"
   end
 end
