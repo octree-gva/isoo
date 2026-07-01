@@ -36,6 +36,7 @@ Each page describes **one capability** from an operator and power-user perspecti
 2. [Configuration](./configuration.md) — environment variables reference
 3. [Templates](./templates.md) — create template bundles and set `TEMPLATE_ID`
 4. [Authentication](./authentication.md) — OIDC, sessions, domain restrictions
+5. [Zitadel (example IdP)](./zitadel.md) — configure Zitadel + ISOO (reference setup)
 5. [Seeding](./seeding.md) — demo project for smoke tests
 6. [Text documents](./text-documents.md)
 7. [Table documents](./table-documents.md)

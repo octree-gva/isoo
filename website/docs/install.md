@@ -49,7 +49,7 @@ No remote is required. See [Git integration](./git-integration.md) for optional 
 ## Production notes
 
 - Set strong `SESSION_SECRET` (64+ bytes) and `ENCRYPTION_SECRET` — see [Configuration](./configuration.md).
-- Keep `AUTH_DISABLED=0` and configure corporate OIDC or the bundled Zitadel — see [Authentication](./authentication.md).
+- Keep `AUTH_DISABLED=0` and configure corporate OIDC or the bundled Zitadel — see [Authentication](./authentication.md) and [Zitadel (example IdP)](./zitadel.md).
 - Mount `data/` on persistent storage.
 - Health checks: `GET /health/live`, `GET /health/ready`, metrics at `GET /metrics` (unauthenticated).
 

@@ -6,6 +6,7 @@ const sidebars: SidebarsConfig = {
     'install',
     'configuration',
     'authentication',
+    'zitadel',
     'templates',
     'seeding',
     'text-documents',

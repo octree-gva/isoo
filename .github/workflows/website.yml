@@ -23,9 +23,6 @@ jobs:
   build:
     name: Build Docusaurus
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: website
     steps:
       - uses: actions/checkout@v4
 
@@ -36,12 +33,15 @@ jobs:
           cache-dependency-path: website/package-lock.json
 
       - name: Install dependencies
+        working-directory: website
         run: npm ci
 
       - name: Typecheck
+        working-directory: website
         run: npm run typecheck
 
       - name: Build site
+        working-directory: website
         run: npm run build
 
       - uses: actions/upload-pages-artifact@v3

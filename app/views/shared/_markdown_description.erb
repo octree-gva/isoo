@@ -1,5 +1,5 @@
 <%# locals: text:, id: nil, description_class: %>
 <% description_class = 'markdown-description mt-2 text-lg opacity-80' if description_class.nil? %>
 <% if text.to_s.strip != '' %>
-<div<% if id %> id="<%= id %>"<% end %> class="<%= description_class %>"><%= markdown_html(text) %></div>
+<div<% if defined?(id) && id %> id="<%= id %>"<% end %> class="<%= description_class %>"><%= markdown_html(text) %></div>
 <% end %>

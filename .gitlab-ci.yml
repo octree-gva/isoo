@@ -2,10 +2,6 @@ stages:
   - check
   - publish
 
-variables:
-  DOCKER_HOST: tcp://docker:2375
-  DOCKER_TLS_CERTDIR: ""
-
 .development_rules:
   rules:
     - if: '$CI_PIPELINE_SOURCE == "schedule"'
@@ -27,10 +23,9 @@ variables:
       when: always
 
 .docker:
-  image: docker:24-cli
-  services:
-    - name: docker:24-dind
-      alias: docker
+  image: docker:25.0.5-git
+  tags:
+    - vocacity
   before_script:
     - docker compose build app
 
@@ -78,15 +73,14 @@ i18n:
 publish:
   extends: .publish_rules
   stage: publish
-  image: docker:24-cli
-  services:
-    - name: docker:24-dind
-      alias: docker
+  image: docker:25.0.5-git
+  tags:
+    - vocacity
   before_script:
-    - mkdir -p /root/.docker
+    - mkdir -p ~/.docker
     - |
       echo "{\"auths\":{\"$CI_REGISTRY\":{\"username\":\"$CI_REGISTRY_USER\",\"password\":\"$CI_REGISTRY_PASSWORD\"}}}" \
-        > /root/.docker/config.json
+        > ~/.docker/config.json
   script:
     - |
       if [ -n "$CI_COMMIT_TAG" ]; then

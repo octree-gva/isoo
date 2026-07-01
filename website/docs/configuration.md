@@ -32,7 +32,7 @@ Copy `.env.example` to `.env` and adjust. Docker Compose reads these variables f
 | `SESSION_SECRET` | yes (prod) | dev default in Compose | Rack session signing secret. Use 64+ random bytes in production. |
 | `SESSION_IDLE_TIMEOUT_SECONDS` | no | `7200` | Idle session expiry; expired users redirect to login. |
 
-Details: [Authentication](./authentication.md).
+Details: [Authentication](./authentication.md). Step-by-step Zitadel example: [Zitadel (example IdP)](./zitadel.md).
 
 ## OIDC (OpenID Connect)
 

@@ -23,7 +23,7 @@ Discovery document is fetched from `{issuer}/.well-known/openid-configuration` (
 
 ### Docker Compose default
 
-Zitadel runs as the bundled IdP. The app entrypoint waits for Zitadel, creates the OIDC application if needed, and writes `docker/zitadel/oidc.env`. Override `OIDC_*` in `.env` to use an external provider (Azure AD, Keycloak, etc.) with the same variable names.
+Zitadel runs as the bundled IdP. The app entrypoint waits for Zitadel, creates the OIDC application if needed, and writes `docker/zitadel/oidc.env`. See [Zitadel (example IdP)](./zitadel.md) for a full walkthrough and production hardening. Override `OIDC_*` in `.env` to use an external provider (Azure AD, Keycloak, etc.) with the same variable names.
 
 ### Required variables (production)
 
@@ -94,4 +94,5 @@ User-facing copy is in `config/locales/en.yml` under `errors.*`.
 ## See also
 
 - [Configuration](./configuration.md)
+- [Zitadel (example IdP)](./zitadel.md)
 - [Install](./install.md)
