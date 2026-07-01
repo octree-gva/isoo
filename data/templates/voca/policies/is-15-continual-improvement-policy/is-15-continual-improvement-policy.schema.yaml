@@ -127,6 +127,19 @@ sections:
   editable: true
   field_type: textarea
   required: false
-description: Describes how you capture feedback, correct nonconformities, and improve
-  the ISMS. Activate it once audits and incidents begin producing actions. Links to
-  corrective action logs and management review.
+description: |
+  #### What you use this for
+  How feedback, nonconformities, and lessons become tracked improvements.
+  
+  #### When it counts
+  When audits and incidents start producing actions.
+  
+  #### Connected artefacts
+  - `incident-and-corrective-action-log`
+  - `managment-review-team-meeting-agenda-template`
+  
+  #### Review rhythm
+  **Annual**.
+  
+  #### First move
+  Link to the log where actions must land — no orphan findings.

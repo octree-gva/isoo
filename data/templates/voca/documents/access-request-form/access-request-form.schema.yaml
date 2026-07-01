@@ -50,6 +50,20 @@ sections:
   editable: true
   field_type: textarea
   required: false
-description: Standard form for requesting new or changed system access with manager
-  approval. Use it for every access change instead of ad hoc tickets. Retain completed
-  forms as audit evidence.
+description: |
+  #### What you use this for
+  Standard request + approval trail for new or changed system access.
+  
+  #### When it counts
+  Every access change — replaces ad hoc chat approvals.
+  
+  #### Connected artefacts
+  - `is-02-access-control-policy`
+  - `role-based-access-control`
+  - `starter-leaver-mover-access-register`
+  
+  #### Review rhythm
+  Template **annual**; each submission kept per records policy.
+  
+  #### First move
+  Publish the form where people already ask for access (ticket template, intranet).

@@ -1,24 +1,22 @@
 ---
 type: ISO27001 Procedure
 title: Threat Intelligence Report Template
-description:
-  Format for documenting periodic threat landscape summaries for leadership.
-  Complete it on your defined cadence—monthly or quarterly. Link findings to risks
-  or controls that need adjustment.
-okf_version: "0.1"
-tags:
-  - iso27001
-timestamp: 2026-01-01 00:00:00.000000000 Z
-iso27001:
-  doc_id: threat-intelligence-report-template
-  seq: 35
-  version: 0.1.0
-  kind: form
-  response_kind: text
-  classification: Confidential
-  schema: threat-intelligence-report-template.schema.yaml
-  data:
-resource:
+description: |
+  #### What you use this for
+  Periodic briefing format for leadership on threat trends and actions taken.
+  
+  #### When it counts
+  Monthly or quarterly rhythm depending on exposure.
+  
+  #### Connected artefacts
+  - `threat-intelligence-process`
+  - `managment-review-team-meeting-agenda-template`
+  
+  #### Review rhythm
+  **Monthly or quarterly** issues; template **annual**.
+  
+  #### First move
+  One page: three headlines, two risks touched, one action ordered.
 ---
 
 # Threat Summary

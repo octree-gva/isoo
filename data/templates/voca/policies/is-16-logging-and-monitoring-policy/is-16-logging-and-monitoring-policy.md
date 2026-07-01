@@ -1,23 +1,22 @@
 ---
 type: ISO27001 Policy
 title: IS 16 Logging and Monitoring Policy
-description:
-  Defines what events you log, retention periods, and who reviews alerts.
-  Implement alongside SIEM or log aggregation. Supports incident detection and forensic
-  investigations.
-okf_version: "0.1"
-tags:
-  - iso27001
-timestamp: 2026-01-01 00:00:00.000000000 Z
-iso27001:
-  doc_id: is-16-logging-and-monitoring-policy
-  seq: 54
-  version: 0.1.0
-  kind: text
-  classification: Confidential
-  schema: is-16-logging-and-monitoring-policy.schema.yaml
-  data:
-resource:
+description: |
+  #### What you use this for
+  What you log, how long you keep it, who watches alerts.
+  
+  #### When it counts
+  With SIEM/log stack design.
+  
+  #### Connected artefacts
+  - `operations-security-manual-v1`
+  - `threat-intelligence-process`
+  
+  #### Review rhythm
+  **Annual**; tune retention when storage costs bite.
+  
+  #### First move
+  List three events you must be able to reconstruct after an incident.
 ---
 
 # Logging and Monitoring Policy

@@ -52,7 +52,7 @@ RSpec.describe 'document export', type: :request do
     get "/projects/#{slug}/docs/#{doc_id}/export", { format: 'md' }
     expect(last_response.status).to eq(200)
     expect(last_response.headers['Content-Type']).to include('text/markdown')
-    expect(last_response.headers['Content-Disposition']).to include("#{slug}-#{doc_id}.md")
+    expect(last_response.headers['Content-Disposition']).to include('doc-export-test-v0.0.0-organisation-overview.md')
     expect(last_response.body).to include('# Organisation Overview')
     expect(last_response.body.scan(/^# /).size).to eq(1)
   end
@@ -62,7 +62,7 @@ RSpec.describe 'document export', type: :request do
     get "/projects/#{slug}/docs/#{doc_id}/export", { format: 'html' }
     expect(last_response.status).to eq(200)
     expect(last_response.headers['Content-Type']).to include('text/html')
-    expect(last_response.headers['Content-Disposition']).to include("#{slug}-#{doc_id}.html")
+    expect(last_response.headers['Content-Disposition']).to include('doc-export-test-v0.0.0-organisation-overview.html')
     expect(last_response.body).to include('data-export="isoo-html-v3"', 'class="export-doc"')
     expect(last_response.body.scan('class="export-doc"').size).to eq(1)
   end
@@ -76,7 +76,7 @@ RSpec.describe 'document export', type: :request do
 
     expect(last_response.status).to eq(200)
     expect(last_response.headers['Content-Type']).to include('application/pdf')
-    expect(last_response.headers['Content-Disposition']).to include("#{slug}-#{doc_id}.pdf")
+    expect(last_response.headers['Content-Disposition']).to include('doc-export-test-v0.0.0-organisation-overview.pdf')
     expect(ExportPdfRenderer).to have_received(:render) do |html, display_url:, title:, export_date:, **|
       expect(html.scan('class="export-doc"').size).to eq(1)
       expect(display_url).to include("/projects/#{slug}/docs/#{doc_id}/export?format=html")

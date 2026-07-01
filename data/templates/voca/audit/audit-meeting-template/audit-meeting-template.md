@@ -1,23 +1,22 @@
 ---
 type: ISO27001 Document
 title: Audit Meeting
-description:
-  Agenda and notes structure for opening and closing audit meetings with
-  auditees. Use at the start and end of each audit engagement. Sets expectations,
-  confirms scope, and communicates findings formally.
-okf_version: "0.1"
-tags:
-  - iso27001
-timestamp: 2026-01-01 00:00:00.000000000 Z
-iso27001:
-  doc_id: audit-meeting-template
-  seq: 80
-  version: 0.1.0
-  kind: text
-  classification: Confidential
-  schema: audit-meeting-template.schema.yaml
-  data:
-resource:
+description: |
+  #### What you use this for
+  Opening and closing meeting notes with auditees.
+  
+  #### When it counts
+  Start and end of each audit engagement.
+  
+  #### Connected artefacts
+  - `audit-report-template`
+  - `1b-audit-template-iso-27002-2013-and-2022-version-pre-mapped`
+  
+  #### Review rhythm
+  **Per engagement**.
+  
+  #### First move
+  Confirm scope and evidence expectations in the opening meeting.
 ---
 
 # ATTENDEES:

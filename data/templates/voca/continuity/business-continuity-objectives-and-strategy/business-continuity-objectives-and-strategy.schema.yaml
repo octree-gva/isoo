@@ -107,6 +107,19 @@ sections:
   editable: true
   field_type: textarea
   required: false
-description: Sets recovery objectives and strategic approach—prevention, response,
-  and recovery. Define it after your BIA so targets are evidence-based. Guides the
-  structure of your business continuity plan.
+description: |
+  #### What you use this for
+  Recovery targets and strategic choices (prevent, respond, recover).
+  
+  #### When it counts
+  After BIA numbers exist — guides plan structure.
+  
+  #### Connected artefacts
+  - `business-impact-assessment`
+  - `is-10-business-continuity-policy`
+  
+  #### Review rhythm
+  **Annual**.
+  
+  #### First move
+  Agree RTO/RPO for one service, not the entire catalogue.

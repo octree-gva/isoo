@@ -45,6 +45,20 @@ sections:
   editable: true
   field_type: textarea
   required: false
-description: Structures the yearly session where leadership revises risks, treatment
-  plans, and ISMS performance. Schedule it before your management review or recertification
-  cycle. Capture decisions, owners, and dates so improvements are traceable.
+description: |
+  #### What you use this for
+  Agenda shell for leadership to revisit risk appetite, treatments, and open exposures.
+  
+  #### When it counts
+  Once per year before management review or recertification planning.
+  
+  #### Connected artefacts
+  - `isms-risk-register`
+  - `managment-review-team-meeting-agenda-template`
+  - `ip-01-risk-management-procedure`
+  
+  #### Review rhythm
+  **Per meeting** (archive notes); template itself **annual**.
+  
+  #### First move
+  Attach the current risk register and only discuss rows that moved since last time.

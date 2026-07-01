@@ -92,6 +92,19 @@ sections:
   editable: true
   field_type: textarea
   required: false
-description: Defines major incidents, escalation, and forensic evidence handling.
-  Publish before your incident forms and playbooks go live. Ensures legal admissibility
-  and regulatory notification where required.
+description: |
+  #### What you use this for
+  Major incident criteria, escalation, and forensic evidence handling.
+  
+  #### When it counts
+  Before incident forms and playbooks go live.
+  
+  #### Connected artefacts
+  - `incident-and-breach-reporting-form`
+  - `post-incident-review-form`
+  
+  #### Review rhythm
+  **Annual**; after any serious event.
+  
+  #### First move
+  Define “significant” with examples your exec team recognises.

@@ -1,24 +1,23 @@
 ---
 type: ISO27001 Document
 title: Annual Risk Review Meeting
-description:
-  Structures the yearly session where leadership revises risks, treatment
-  plans, and ISMS performance. Schedule it before your management review or recertification
-  cycle. Capture decisions, owners, and dates so improvements are traceable.
-okf_version: "0.1"
-tags:
-  - iso27001
-timestamp: 2026-01-01 00:00:00.000000000 Z
-iso27001:
-  doc_id: annual-risk-review-meeting-template
-  seq: 17
-  version: 0.1.0
-  kind: form
-  response_kind: text
-  classification: Confidential
-  schema: annual-risk-review-meeting-template.schema.yaml
-  data:
-resource:
+description: |
+  #### What you use this for
+  Agenda shell for leadership to revisit risk appetite, treatments, and open exposures.
+  
+  #### When it counts
+  Once per year before management review or recertification planning.
+  
+  #### Connected artefacts
+  - `isms-risk-register`
+  - `managment-review-team-meeting-agenda-template`
+  - `ip-01-risk-management-procedure`
+  
+  #### Review rhythm
+  **Per meeting** (archive notes); template itself **annual**.
+  
+  #### First move
+  Attach the current risk register and only discuss rows that moved since last time.
 ---
 
 # ATTENDEES:

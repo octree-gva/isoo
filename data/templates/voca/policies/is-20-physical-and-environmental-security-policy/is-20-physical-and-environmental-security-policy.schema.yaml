@@ -127,6 +127,18 @@ sections:
   editable: true
   field_type: textarea
   required: false
-description: Protects offices, data centres, and equipment from unauthorised access
-  and environmental harm. Relevant for any on-premise or co-located assets. Coordinate
-  with facilities on access badges and visitor procedures.
+description: |
+  #### What you use this for
+  Protect premises, equipment, and environment (access, power, fire, etc.).
+  
+  #### When it counts
+  Any office, closet, or co-lo you control.
+  
+  #### Connected artefacts
+  - `physical-and-virtual-assets-register`
+  
+  #### Review rhythm
+  **Annual**; walk-through after office moves.
+  
+  #### First move
+  Document how visitors get in and who escorts them.

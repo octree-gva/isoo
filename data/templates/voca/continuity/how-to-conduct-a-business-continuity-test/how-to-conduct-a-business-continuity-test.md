@@ -1,23 +1,22 @@
 ---
 type: ISO27001 Document
 title: How to conduct a Business Continuity Test
-description:
-  Practical guide for planning, running, and evaluating BC exercises. Follow
-  it before your first tabletop or live test. Helps facilitators keep tests realistic
-  and measurable.
-okf_version: "0.1"
-tags:
-  - iso27001
-timestamp: 2026-01-01 00:00:00.000000000 Z
-iso27001:
-  doc_id: how-to-conduct-a-business-continuity-test
-  seq: 91
-  version: 0.1.0
-  kind: text
-  classification: Confidential
-  schema: how-to-conduct-a-business-continuity-test.schema.yaml
-  data:
-resource:
+description: |
+  #### What you use this for
+  Facilitator guide: plan, run, and score continuity exercises.
+  
+  #### When it counts
+  Before your first tabletop or technical drill.
+  
+  #### Connected artefacts
+  - `business-continuity-test-template`
+  - `business-continuity-plan-scenario`
+  
+  #### Review rhythm
+  **Annual** refresh of the guide.
+  
+  #### First move
+  Run a 60-minute tabletop with coffee — low stakes, real learning.
 ---
 
 # Introduction

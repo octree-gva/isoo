@@ -1,23 +1,22 @@
 ---
 type: ISO27001 Policy
 title: IS 28 AI Policy
-description:
-  Governs acceptable and secure use of AI tools and models in your organisation.
-  Adopt before widespread adoption of generative AI. Address data leakage, bias, vendor
-  risk, and human oversight.
-okf_version: "0.1"
-tags:
-  - iso27001
-timestamp: 2026-01-01 00:00:00.000000000 Z
-iso27001:
-  doc_id: is-28-ai-policy
-  seq: 66
-  version: 0.1.0
-  kind: text
-  classification: Confidential
-  schema: is-28-ai-policy.schema.yaml
-  data:
-resource:
+description: |
+  #### What you use this for
+  Acceptable use of AI tools: data boundaries, oversight, vendor risk.
+  
+  #### When it counts
+  Before generative AI is everywhere in workflows.
+  
+  #### Connected artefacts
+  - `is-07-acceptable-use-policy`
+  - `dp-01-data-protection-policy`
+  
+  #### Review rhythm
+  **Annual** minimum; **quarterly** while tooling shifts fast.
+  
+  #### First move
+  Ban pasting customer/employee data into public models — say it plainly.
 ---
 
 # AI Technology

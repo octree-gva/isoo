@@ -1,23 +1,23 @@
 ---
 type: ISO27001 Procedure
 title: Access Request Form
-description:
-  Standard form for requesting new or changed system access with manager
-  approval. Use it for every access change instead of ad hoc tickets. Retain completed
-  forms as audit evidence.
-okf_version: "0.1"
-tags:
-  - iso27001
-timestamp: 2026-01-01 00:00:00.000000000 Z
-iso27001:
-  doc_id: access-request-form
-  seq: 32
-  version: 0.1.0
-  kind: text
-  classification: Confidential
-  schema: access-request-form.schema.yaml
-  data:
-resource:
+description: |
+  #### What you use this for
+  Standard request + approval trail for new or changed system access.
+  
+  #### When it counts
+  Every access change — replaces ad hoc chat approvals.
+  
+  #### Connected artefacts
+  - `is-02-access-control-policy`
+  - `role-based-access-control`
+  - `starter-leaver-mover-access-register`
+  
+  #### Review rhythm
+  Template **annual**; each submission kept per records policy.
+  
+  #### First move
+  Publish the form where people already ask for access (ticket template, intranet).
 ---
 
 # ACCESS FORM

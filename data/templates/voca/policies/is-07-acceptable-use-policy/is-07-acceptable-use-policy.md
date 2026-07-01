@@ -1,23 +1,22 @@
 ---
 type: ISO27001 Policy
 title: IS 07 Acceptable Use Policy
-description:
-  Sets expectations for appropriate use of company systems, data, and devices.
-  Require acknowledgement from all users at onboarding. Enforce consistently; it underpins
-  disciplinary and monitoring controls.
-okf_version: "0.1"
-tags:
-  - iso27001
-timestamp: 2026-01-01 00:00:00.000000000 Z
-iso27001:
-  doc_id: is-07-acceptable-use-policy
-  seq: 44
-  version: 0.1.0
-  kind: text
-  classification: Confidential
-  schema: is-07-acceptable-use-policy.schema.yaml
-  data:
-resource:
+description: |
+  #### What you use this for
+  Expectations for using company devices, networks, and data.
+  
+  #### When it counts
+  Onboarding; requires acknowledgement.
+  
+  #### Connected artefacts
+  - `is-08-clear-desk-and-clear-screen-policy`
+  - `is-28-ai-policy`
+  
+  #### Review rhythm
+  **Annual**; update when tooling (AI, BYOD) changes.
+  
+  #### First move
+  Cover what is obviously forbidden and what to do when unsure.
 ---
 
 # Acceptable Use of Assets Policy

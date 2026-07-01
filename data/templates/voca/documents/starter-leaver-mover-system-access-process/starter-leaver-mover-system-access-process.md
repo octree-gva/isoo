@@ -1,23 +1,23 @@
 ---
 type: ISO27001 Procedure
 title: Starter Leaver Mover - System Access Process
-description:
-  End-to-end workflow for joiners, leavers, and role changers. Implement
-  it with HR and IT from the first hire. Timely provisioning and deprovisioning is
-  one of the most scrutinised controls at audit.
-okf_version: "0.1"
-tags:
-  - iso27001
-timestamp: 2026-01-01 00:00:00.000000000 Z
-iso27001:
-  doc_id: starter-leaver-mover-system-access-process
-  seq: 33
-  version: 0.1.0
-  kind: text
-  classification: Confidential
-  schema: starter-leaver-mover-system-access-process.schema.yaml
-  data:
-resource:
+description: |
+  #### What you use this for
+  Workflow when people **join, leave, or change role** — HR signal to IT action.
+  
+  #### When it counts
+  From first hire; late offboarding is one of the most tested controls.
+  
+  #### Connected artefacts
+  - `starter-leaver-mover-access-register`
+  - `access-request-form`
+  - `is-02-access-control-policy`
+  
+  #### Review rhythm
+  **Annual** process review; execute **per HR event**.
+  
+  #### First move
+  Time how long deprovisioning takes today — set a target.
 ---
 
 # Starter Leaver Mover Process – System Access

@@ -32,8 +32,21 @@ _internal:
   type: uuid
 - key: _deleted_at
   type: datetime
-description: Maps required security skills and training to roles across the organisation.
-  Build it after policies are drafted so you know who must understand what. Use it
-  to plan awareness sessions and to evidence competence at audit.
+description: |
+  #### What you use this for
+  Maps security knowledge and training needs to job families.
+  
+  #### When it counts
+  After core policies exist — shows who must understand what.
+  
+  #### Connected artefacts
+  - `is-06-information-security-awareness-and-training-policy`
+  - `information-classification-summary`
+  
+  #### Review rhythm
+  **Annual**; update when roles or tooling change.
+  
+  #### First move
+  Pick three roles and list the one skill each must prove.
 export_tags:
 - soi

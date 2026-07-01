@@ -127,6 +127,19 @@ sections:
   editable: true
   field_type: textarea
   required: false
-description: Security requirements for software you build or materially customise.
-  Adopt it before SDLC hardening or DevSecOps tooling. Covers coding standards, testing,
-  and separation of environments.
+description: |
+  #### What you use this for
+  Security expectations for software you build or heavily customise.
+  
+  #### When it counts
+  Before SDLC gates, CI security checks, or prod access for developers.
+  
+  #### Connected artefacts
+  - `operations-security-manual-v1`
+  - `is-13-change-management-policy`
+  
+  #### Review rhythm
+  **Annual**.
+  
+  #### First move
+  Require security review on one class of change (auth, payments, PII).

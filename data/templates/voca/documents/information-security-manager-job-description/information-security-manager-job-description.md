@@ -1,23 +1,22 @@
 ---
 type: ISO27001 Document
 title: Information Security Manager Job Description
-description:
-  Defines the ISMS owner’s responsibilities, authority, and reporting line.
-  Assign or hire against this role before you claim ISO 27001 leadership accountability.
-  Review it when governance structures change.
-okf_version: "0.1"
-tags:
-  - iso27001
-timestamp: 2026-01-01 00:00:00.000000000 Z
-iso27001:
-  doc_id: information-security-manager-job-description
-  seq: 22
-  version: 0.1.0
-  kind: text
-  classification: Confidential
-  schema: information-security-manager-job-description.schema.yaml
-  data:
-resource:
+description: |
+  #### What you use this for
+  Defines authority and duties of the person accountable for the management system.
+  
+  #### When it counts
+  Before claiming formal ISMS ownership; revisit when reporting lines change.
+  
+  #### Connected artefacts
+  - `isms-rasci-matrix-basic-accountability-matrix`
+  - `the-information-security-management-system-overview`
+  
+  #### Review rhythm
+  **Annual** or on restructure.
+  
+  #### First move
+  Name the role holder and one escalation path to the board.
 ---
 
 # Information Security Manager

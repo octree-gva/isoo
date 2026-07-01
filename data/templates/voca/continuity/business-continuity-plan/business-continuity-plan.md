@@ -1,23 +1,23 @@
 ---
 type: ISO27001 Document
 title: Business Continuity Plan
-description:
-  Your master plan for maintaining or restoring critical operations during
-  a disruption. Finalise it once objectives and strategies are agreed. Exercise it
-  regularly and keep contact lists current.
-okf_version: "0.1"
-tags:
-  - iso27001
-timestamp: 2026-01-01 00:00:00.000000000 Z
-iso27001:
-  doc_id: business-continuity-plan
-  seq: 85
-  version: 0.1.0
-  kind: text
-  classification: Confidential
-  schema: business-continuity-plan.schema.yaml
-  data:
-resource:
+description: |
+  #### What you use this for
+  Master playbook for keeping or restoring critical operations in a crisis.
+  
+  #### When it counts
+  After objectives set; exercise regularly.
+  
+  #### Connected artefacts
+  - `business-continuity-objectives-and-strategy`
+  - `business-impact-assessment`
+  - `communication-plan`
+  
+  #### Review rhythm
+  **Annual** review; **≥1 exercise/year**.
+  
+  #### First move
+  Verify contact tree dials real numbers — today.
 ---
 
 # Major Incident / Crisis Planning

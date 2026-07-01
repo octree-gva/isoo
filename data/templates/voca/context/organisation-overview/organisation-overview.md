@@ -1,23 +1,22 @@
 ---
 type: ISO27001 Document
 title: Organisation Overview
-description:
-  Use this to capture who your organisation is, what it does, and how it
-  is structured. Complete it early in your ISMS journey so auditors and your team
-  share the same baseline. Update it when ownership, locations, or core services change.
-okf_version: "0.1"
-tags:
-  - iso27001
-timestamp: 2026-01-01 00:00:00.000000000 Z
-iso27001:
-  doc_id: organisation-overview
-  seq: 1
-  version: 0.1.0
-  kind: text
-  classification: Confidential
-  schema: organisation-overview.schema.yaml
-  data:
-resource:
+description: |
+  #### What you use this for
+  A short portrait of the organisation: what you do, where you operate, and how teams fit together.
+  
+  #### When it counts
+  Fill this in before scope, risk work, or policies — everyone should share the same picture of the business.
+  
+  #### Connected artefacts
+  - `context-of-organisation`
+  - `documented-isms-scope`
+  
+  #### Review rhythm
+  **Yearly**, or when ownership, sites, or core services change.
+  
+  #### First move
+  Answer “what would a new director need to know in ten minutes?” and stop there.
 ---
 
 # Introduction

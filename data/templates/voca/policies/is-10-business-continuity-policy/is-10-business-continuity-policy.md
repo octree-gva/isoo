@@ -1,23 +1,22 @@
 ---
 type: ISO27001 Policy
 title: IS 10 Business Continuity Policy
-description:
-  Commits to maintaining critical services during disruptions. Approve
-  it before detailed BCP and BIA work. Sets recovery objectives that your continuity
-  plans must meet.
-okf_version: "0.1"
-tags:
-  - iso27001
-timestamp: 2026-01-01 00:00:00.000000000 Z
-iso27001:
-  doc_id: is-10-business-continuity-policy
-  seq: 48
-  version: 0.1.0
-  kind: text
-  classification: Confidential
-  schema: is-10-business-continuity-policy.schema.yaml
-  data:
-resource:
+description: |
+  #### What you use this for
+  Executive commitment to keep critical activities running through disruption.
+  
+  #### When it counts
+  Before detailed continuity planning and impact analysis.
+  
+  #### Connected artefacts
+  - `business-continuity-plan`
+  - `business-impact-assessment`
+  
+  #### Review rhythm
+  **Annual**.
+  
+  #### First move
+  Name the activities that must survive a bad week — three max.
 ---
 
 # Business Continuity Policy

@@ -142,8 +142,21 @@ sections:
   editable: true
   field_type: textarea
   required: false
-description: Your top-level commitment to protecting information—scope, objectives,
-  and governance. Approve it first; all other IS policies should align with it. Communicate
-  it organisation-wide and review it at least annually.
+description: |
+  #### What you use this for
+  Board-level commitment: objectives, scope, and governance for protecting information.
+  
+  #### When it counts
+  Approve before other security policies; communicate to all staff.
+  
+  #### Connected artefacts
+  - `the-information-security-management-system-overview`
+  - `managment-review-team-meeting-agenda-template`
+  
+  #### Review rhythm
+  **Annual** sign-off; sooner after major incident or reorg.
+  
+  #### First move
+  One page maximum — link detail out to topic policies.
 export_tags:
 - basic

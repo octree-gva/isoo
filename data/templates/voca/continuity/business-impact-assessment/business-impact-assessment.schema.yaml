@@ -54,6 +54,19 @@ _internal:
   type: uuid
 - key: _deleted_at
   type: datetime
-description: Analyses how disruptions affect critical activities, resources, and recovery
-  priorities. Conduct it before writing detailed continuity plans. Identifies maximum
-  tolerable downtime and dependencies.
+description: |
+  #### What you use this for
+  Analyse how outages hit activities, dependencies, and recovery priorities.
+  
+  #### When it counts
+  Before writing detailed continuity and DR material.
+  
+  #### Connected artefacts
+  - `business-continuity-plan`
+  - `physical-and-virtual-assets-register`
+  
+  #### Review rhythm
+  **Annual**; after major product or vendor change.
+  
+  #### First move
+  Interview owners of three critical activities — not IT first.

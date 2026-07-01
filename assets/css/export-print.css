@@ -241,25 +241,21 @@ body {
 }
 
 .export-body ul li {
-  display: grid;
-  grid-template-columns: max-content minmax(0, 1fr);
-  column-gap: 0.35em;
-  row-gap: 0.25em;
-  align-items: start;
+  position: relative;
   margin: 0.35rem 0;
-  padding-left: 0;
+  padding-left: 1.2em;
   text-indent: 0;
   break-inside: auto;
+  overflow-wrap: anywhere;
 }
 
 .export-body ul li::before {
   content: "—";
-  grid-column: 1;
-  grid-row: 1;
+  position: absolute;
+  left: 0;
 }
 
 .export-body ul li > * {
-  grid-column: 2;
   margin: 0;
   min-width: 0;
 }

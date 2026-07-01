@@ -93,8 +93,22 @@ sections:
   editable: true
   field_type: textarea
   required: false
-description: End-to-end workflow for joiners, leavers, and role changers. Implement
-  it with HR and IT from the first hire. Timely provisioning and deprovisioning is
-  one of the most scrutinised controls at audit.
+description: |
+  #### What you use this for
+  Workflow when people **join, leave, or change role** — HR signal to IT action.
+  
+  #### When it counts
+  From first hire; late offboarding is one of the most tested controls.
+  
+  #### Connected artefacts
+  - `starter-leaver-mover-access-register`
+  - `access-request-form`
+  - `is-02-access-control-policy`
+  
+  #### Review rhythm
+  **Annual** process review; execute **per HR event**.
+  
+  #### First move
+  Time how long deprovisioning takes today — set a target.
 export_tags:
 - soi

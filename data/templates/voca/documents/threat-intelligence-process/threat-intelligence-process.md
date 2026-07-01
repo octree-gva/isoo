@@ -1,23 +1,23 @@
 ---
 type: ISO27001 Procedure
 title: Threat Intelligence Process
-description:
-  Describes how you collect, assess, and act on security threat information.
-  Establish it once monitoring and incident response basics are in place. Feed relevant
-  intel into risk reviews and patch prioritisation.
-okf_version: "0.1"
-tags:
-  - iso27001
-timestamp: 2026-01-01 00:00:00.000000000 Z
-iso27001:
-  doc_id: threat-intelligence-process
-  seq: 34
-  version: 0.1.0
-  kind: text
-  classification: Confidential
-  schema: threat-intelligence-process.schema.yaml
-  data:
-resource:
+description: |
+  #### What you use this for
+  How you collect, judge, and act on relevant threat information.
+  
+  #### When it counts
+  Once monitoring and incident basics exist.
+  
+  #### Connected artefacts
+  - `threat-intelligence-report-template`
+  - `is-16-logging-and-monitoring-policy`
+  - `isms-risk-register`
+  
+  #### Review rhythm
+  **Annual** process; intake **ongoing**.
+  
+  #### First move
+  Subscribe to two free feeds your stack actually cares about (vendor + sector).
 ---
 
 # Threat Intelligence

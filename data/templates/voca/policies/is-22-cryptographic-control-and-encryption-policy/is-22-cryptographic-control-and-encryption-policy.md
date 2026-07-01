@@ -1,23 +1,22 @@
 ---
 type: ISO27001 Policy
 title: IS 22 Cryptographic Control and Encryption Policy
-description:
-  Specifies when and how encryption protects data in transit and at rest.
-  Align with legal requirements and classification levels. Document algorithms and
-  exceptions clearly for auditors.
-okf_version: "0.1"
-tags:
-  - iso27001
-timestamp: 2026-01-01 00:00:00.000000000 Z
-iso27001:
-  doc_id: is-22-cryptographic-control-and-encryption-policy
-  seq: 60
-  version: 0.1.0
-  kind: text
-  classification: Confidential
-  schema: is-22-cryptographic-control-and-encryption-policy.schema.yaml
-  data:
-resource:
+description: |
+  #### What you use this for
+  When encryption is required in transit and at rest, and which standards apply.
+  
+  #### When it counts
+  Align with classification and regulatory minima.
+  
+  #### Connected artefacts
+  - `is-21-cryptographic-key-management-policy`
+  - `is-18-information-transfer-policy`
+  
+  #### Review rhythm
+  **Annual**.
+  
+  #### First move
+  State defaults (TLS 1.2+, AES-256) and how to request an exception.
 ---
 
 # Cryptographic Control Policy

@@ -1,23 +1,22 @@
 ---
 type: ISO27001 Policy
 title: IS 14 Third Party Supplier Security Policy
-description:
-  Sets security expectations for vendors who access your data or systems.
-  Use it in procurement and contract clauses. Drive supplier register reviews and
-  due diligence from this policy.
-okf_version: "0.1"
-tags:
-  - iso27001
-timestamp: 2026-01-01 00:00:00.000000000 Z
-iso27001:
-  doc_id: is-14-third-party-supplier-security-policy
-  seq: 52
-  version: 0.1.0
-  kind: text
-  classification: Confidential
-  schema: is-14-third-party-supplier-security-policy.schema.yaml
-  data:
-resource:
+description: |
+  #### What you use this for
+  Security expectations for vendors who touch your data or operations.
+  
+  #### When it counts
+  Procurement and contract negotiation.
+  
+  #### Connected artefacts
+  - `third-party-supplier-register`
+  - `is-26-cloud-service-policy`
+  
+  #### Review rhythm
+  **Annual**; reassess on renewal or incident.
+  
+  #### First move
+  Tier your top five vendors by data access — review deepest tier first.
 ---
 
 # Third Party Supplier Security Policy

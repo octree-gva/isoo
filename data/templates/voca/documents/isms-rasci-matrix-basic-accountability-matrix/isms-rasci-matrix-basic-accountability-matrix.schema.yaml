@@ -20,8 +20,24 @@ _internal:
   type: uuid
 - key: _deleted_at
   type: datetime
-description: A lightweight view of who is Responsible, Accountable, Supported, Consulted,
-  or Informed for core ISMS activities. Fill it when roles are first assigned. Refer
-  to it to resolve ownership gaps before audits.
+description: |
+  #### What you use this for
+  Lightweight “who owns what” grid for core programme activities.
+  
+  #### When it counts
+  When roles are first assigned; resolves “that’s not my job” before reviews.
+  
+  #### Connected artefacts
+  - `information-security-manager-job-description`
+  - `isms-rasci-matrix-full`
+  
+  #### Review rhythm
+  **Annual**; patch when someone leaves or outsourcing shifts work.
+  
+  #### First move
+  Fill accountability for risk, incidents, and document control only — expand later.
+
+  ![Explanation of RASCI matrix](/img/isoo_rasci_table.png)
+
 export_tags:
 - basic

@@ -37,6 +37,19 @@ _internal:
   type: uuid
 - key: _deleted_at
   type: datetime
-description: Running log of actions taken during a live continuity or crisis event.
-  Activate it when you invoke the BCP. Captures decisions and timestamps for post-incident
-  review.
+description: |
+  #### What you use this for
+  Timestamped actions during a live continuity event.
+  
+  #### When it counts
+  When the plan is activated.
+  
+  #### Connected artefacts
+  - `business-continuity-plan`
+  - `post-incident-review-form`
+  
+  #### Review rhythm
+  **Per activation**; review entries in debrief.
+  
+  #### First move
+  Assign a scribe role before the next tabletop.

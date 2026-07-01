@@ -141,6 +141,19 @@ sections:
   editable: true
   field_type: textarea
   required: false
-description: Specifies when and how encryption protects data in transit and at rest.
-  Align with legal requirements and classification levels. Document algorithms and
-  exceptions clearly for auditors.
+description: |
+  #### What you use this for
+  When encryption is required in transit and at rest, and which standards apply.
+  
+  #### When it counts
+  Align with classification and regulatory minima.
+  
+  #### Connected artefacts
+  - `is-21-cryptographic-key-management-policy`
+  - `is-18-information-transfer-policy`
+  
+  #### Review rhythm
+  **Annual**.
+  
+  #### First move
+  State defaults (TLS 1.2+, AES-256) and how to request an exception.

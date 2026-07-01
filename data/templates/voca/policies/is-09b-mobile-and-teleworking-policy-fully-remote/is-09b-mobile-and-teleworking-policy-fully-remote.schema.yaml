@@ -134,6 +134,19 @@ sections:
   editable: true
   field_type: textarea
   required: false
-description: Security rules for organisations where most staff work remotely. Use
-  this if remote-first is your operating model. Address home offices, travel, and
-  endpoint protection explicitly.
+description: |
+  #### What you use this for
+  Security expectations when distributed work is the default.
+  
+  #### When it counts
+  Remote-first teams — home office, travel, and endpoint rules explicit.
+  
+  #### Connected artefacts
+  - `is-09a-mobile-and-teleworking-policy-office-based`
+  - `is-20-physical-and-environmental-security-policy`
+  
+  #### Review rhythm
+  **Annual**.
+  
+  #### First move
+  Define minimum home network and device posture without over-policing.

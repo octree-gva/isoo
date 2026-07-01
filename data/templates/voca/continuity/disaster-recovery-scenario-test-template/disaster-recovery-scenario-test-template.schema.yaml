@@ -58,5 +58,19 @@ sections:
   field_type: textarea
   required: false
   description: Outcome of the test (success or failure).
-description: Plan and record a DR test for a chosen scenario. Schedule tests at least
-  annually for critical systems. Document results, gaps, and remediation owners.
+description: |
+  #### What you use this for
+  Plan and record a DR exercise for a chosen scenario.
+  
+  #### When it counts
+  At least yearly for critical systems.
+  
+  #### Connected artefacts
+  - `disaster-recovery-scenario-plans`
+  - `business-continuity-test-report-template`
+  
+  #### Review rhythm
+  **Annual** per critical scenario; rotate coverage.
+  
+  #### First move
+  Schedule before the next busy season — or it will slip.

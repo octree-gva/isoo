@@ -1,23 +1,22 @@
 ---
 type: ISO27001 Document
 title: Business Continuity Test
-description:
-  Checklist and script for executing a continuity exercise. Use it to standardise
-  test preparation and execution. Ensures roles, injects, and success criteria are
-  defined upfront.
-okf_version: "0.1"
-tags:
-  - iso27001
-timestamp: 2026-01-01 00:00:00.000000000 Z
-iso27001:
-  doc_id: business-continuity-test-template
-  seq: 92
-  version: 0.1.0
-  kind: text
-  classification: Confidential
-  schema: business-continuity-test-template.schema.yaml
-  data:
-resource:
+description: |
+  #### What you use this for
+  Checklist and script so exercises run the same way each time.
+  
+  #### When it counts
+  Every planned exercise.
+  
+  #### Connected artefacts
+  - `how-to-conduct-a-business-continuity-test`
+  - `business-continuity-plan`
+  
+  #### Review rhythm
+  **Per exercise**; template **annual**.
+  
+  #### First move
+  Define success criteria before sending calendar invites.
 ---
 
 # Introduction

@@ -106,6 +106,18 @@ sections:
   editable: true
   field_type: textarea
   required: false
-description: Protects company IP and respects third-party licences and copyrights.
-  Important for teams handling code, designs, or licensed content. Supports contractual
-  and legal compliance beyond pure security.
+description: |
+  #### What you use this for
+  Protect company IP; respect licences and third-party copyrights.
+  
+  #### When it counts
+  Teams shipping code, design, or licensed media.
+  
+  #### Connected artefacts
+  - `is-07-acceptable-use-policy`
+  
+  #### Review rhythm
+  **Annual**.
+  
+  #### First move
+  Clarify who owns code written on company time — one paragraph.

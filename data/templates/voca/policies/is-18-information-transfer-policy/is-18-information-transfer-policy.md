@@ -1,23 +1,22 @@
 ---
 type: ISO27001 Policy
 title: IS 18 Information Transfer Policy
-description:
-  Rules for sharing information inside and outside the organisation securely.
-  Apply before enabling file sharing, email encryption, or API integrations. Covers
-  physical media and electronic transfer alike.
-okf_version: "0.1"
-tags:
-  - iso27001
-timestamp: 2026-01-01 00:00:00.000000000 Z
-iso27001:
-  doc_id: is-18-information-transfer-policy
-  seq: 56
-  version: 0.1.0
-  kind: text
-  classification: Confidential
-  schema: is-18-information-transfer-policy.schema.yaml
-  data:
-resource:
+description: |
+  #### What you use this for
+  Secure exchange of information inside and outside the organisation.
+  
+  #### When it counts
+  Before wide file sharing, APIs, or removable media use.
+  
+  #### Connected artefacts
+  - `is-05-information-classification-and-handling-policy`
+  - `is-22-cryptographic-control-and-encryption-policy`
+  
+  #### Review rhythm
+  **Annual**.
+  
+  #### First move
+  Ban “which channel for confidential data?” — pick approved tools.
 ---
 
 # Information Transfer Policy

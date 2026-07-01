@@ -58,6 +58,19 @@ sections:
   field_type: textarea
   required: false
   description: Outcome of the test (success or failure).
-description: Alternative or supplementary scenario material for continuity training
-  and tests. Rotate scenarios so teams do not rehearse only one event type. Update
-  when your threat landscape or dependencies change.
+description: |
+  #### What you use this for
+  Additional scenario material for training and tests.
+  
+  #### When it counts
+  Supplement primary scenarios; variety builds muscle memory.
+  
+  #### Connected artefacts
+  - `business-continuity-test-template`
+  - `business-continuity-plan-scenario`
+  
+  #### Review rhythm
+  **When threat landscape shifts**.
+  
+  #### First move
+  Adapt a recent industry incident into a tabletop inject.

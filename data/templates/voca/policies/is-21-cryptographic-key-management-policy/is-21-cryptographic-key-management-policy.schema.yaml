@@ -127,6 +127,18 @@ sections:
   editable: true
   field_type: textarea
   required: false
-description: Governs generation, storage, rotation, and destruction of cryptographic
-  keys. Required when you manage encryption keys in-house. Prevents weak or orphaned
-  keys undermining encryption controls.
+description: |
+  #### What you use this for
+  Generation, storage, rotation, and destruction of cryptographic keys.
+  
+  #### When it counts
+  When you operate keys in-house (not only cloud-managed).
+  
+  #### Connected artefacts
+  - `is-22-cryptographic-control-and-encryption-policy`
+  
+  #### Review rhythm
+  **Annual**.
+  
+  #### First move
+  Inventory where keys live — KMS, HSM, `.env`, password managers.

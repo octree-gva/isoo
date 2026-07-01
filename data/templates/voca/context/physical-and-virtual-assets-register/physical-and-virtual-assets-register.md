@@ -1,22 +1,21 @@
 ---
 type: ISO27001 Register
 title: Physical and Virtual Assets Register
-description:
-  Lists hardware, cloud resources, and other infrastructure that supports
-  your business. Build it alongside asset discovery and keep owners assigned. Refer
-  to it when assessing risks, planning backups, and deciding what belongs in scope.
-okf_version: "0.1"
-tags:
-  - iso27001
-  - register
-timestamp: 2026-01-01 00:00:00.000000000 Z
-iso27001:
-  doc_id: physical-and-virtual-assets-register
-  seq: 13
-  version: 0.1.0
-  kind: table
-  classification: Confidential
-  schema: physical-and-virtual-assets-register.schema.yaml
-  data: physical-and-virtual-assets-register.csv
-resource:
+description: |
+  #### What you use this for
+  Inventory of infrastructure (on‑prem, cloud, SaaS) with owners and business use.
+  
+  #### When it counts
+  Alongside first risk pass; keep current as you adopt or retire systems.
+  
+  #### Connected artefacts
+  - `is-03-asset-management-policy`
+  - `software-license-assets-register`
+  - `isms-risk-register`
+  
+  #### Review rhythm
+  **Quarterly** owner check; **monthly** for production-critical rows.
+  
+  #### First move
+  Export what IT already knows (CMDB, cloud console) — do not start from a blank grid.
 ---

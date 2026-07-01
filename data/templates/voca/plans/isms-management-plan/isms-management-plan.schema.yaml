@@ -129,6 +129,19 @@ _internal:
   type: uuid
 - key: _deleted_at
   type: datetime
-description: Your implementation and maintenance plan—milestones, resources, and priorities
-  for the ISMS. Draft it during project kick-off and refresh after management review.
-  Shows auditors you manage the programme deliberately.
+description: |
+  #### What you use this for
+  Programme plan: milestones, resources, priorities for building and running the ISMS.
+  
+  #### When it counts
+  Kick-off; refresh after management review.
+  
+  #### Connected artefacts
+  - `0c-iso-27001-implementation-checklist`
+  - `managment-review-team-meeting-agenda-template`
+  
+  #### Review rhythm
+  **Annual**; **quarterly** during initial certification push.
+  
+  #### First move
+  Pick a target certification window and work backwards.

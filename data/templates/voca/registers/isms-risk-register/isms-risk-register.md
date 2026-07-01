@@ -1,22 +1,21 @@
 ---
 type: ISO27001 Register
 title: ISMS Risk Register
-description:
-  Living list of identified risks, scores, owners, treatments, and residual
-  status. Populate it from your first risk assessment and review at least annually.
-  The SoA and audit evidence should trace back to entries here.
-okf_version: "0.1"
-tags:
-  - iso27001
-  - register
-timestamp: 2026-01-01 00:00:00.000000000 Z
-iso27001:
-  doc_id: isms-risk-register
-  seq: 74
-  version: 0.1.0
-  kind: table
-  classification: Confidential
-  schema: isms-risk-register.schema.yaml
-  data: isms-risk-register.csv
-resource:
+description: |
+  #### What you use this for
+  Living list of risks, scores, owners, treatments, and residual status.
+  
+  #### When it counts
+  Output of risk assessment; input to control selection and reviews.
+  
+  #### Connected artefacts
+  - `ip-01-risk-management-procedure`
+  - `statement-of-applicability-iso-27002-2022-and-2013`
+  - `annual-risk-review-meeting-template`
+  
+  #### Review rhythm
+  **Quarterly** touch; **annual** formal review.
+  
+  #### First move
+  Ten honest risks beat fifty boilerplate rows.
 ---

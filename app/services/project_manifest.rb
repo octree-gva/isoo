@@ -2,6 +2,8 @@
 
 require 'yaml'
 
+require_relative 'project_version_bump'
+
 class ProjectManifest
   FORM_KIND = 'form'
   FILE_ANNEX_KIND = 'file_annex'
@@ -18,7 +20,9 @@ class ProjectManifest
            else
              YAML.safe_load_file(path) || {}
            end
-    new(path, data)
+    manifest = new(path, data)
+    manifest.ensure_version!
+    manifest
   end
 
   def self.project_scope(path)
@@ -39,6 +43,33 @@ class ProjectManifest
 
   def name
     data['name']
+  end
+
+  def version
+    ProjectVersionBump.normalize_version(data['version'])
+  end
+
+  def ensure_version!
+    normalized = ProjectVersionBump.normalize_version(data['version'])
+    current = data['version']
+    return if current.is_a?(String) && current == normalized
+
+    data['version'] = normalized
+    save!
+  end
+
+  def export_title
+    "#{name} v#{version}"
+  end
+
+  def export_basename
+    "#{slugify_name(name)}-v#{version}"
+  end
+
+  def bump_version!(significant:)
+    data['version'] = ProjectVersionBump.next_version(version, significant: significant)
+    save!
+    data['version']
   end
 
   def documents
@@ -65,6 +96,7 @@ class ProjectManifest
   end
 
   def save!
+    data['version'] = ProjectVersionBump.normalize_version(data['version'])
     File.write(path, data.to_yaml)
     Container.cache.bump(self.class.project_scope(path)) if Container.cache.enabled?
   end
@@ -171,5 +203,9 @@ class ProjectManifest
 
   def normalize_form(form)
     form.merge('responses' => Array(form['responses']))
+  end
+
+  def slugify_name(value)
+    value.to_s.strip.downcase.gsub(/[^a-z0-9]+/, '-').gsub(/\A-+|-+\z/, '')
   end
 end

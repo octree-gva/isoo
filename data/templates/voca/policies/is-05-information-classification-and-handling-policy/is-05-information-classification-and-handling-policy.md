@@ -1,23 +1,22 @@
 ---
 type: ISO27001 Policy
 title: IS 05 Information Classification and Handling Policy
-description:
-  Defines classification levels and handling rules for information at rest
-  and in transit. Issue it before rolling out labelling and secure sharing practices.
-  Pair it with your classification summary and awareness training.
-okf_version: "0.1"
-tags:
-  - iso27001
-timestamp: 2026-01-01 00:00:00.000000000 Z
-iso27001:
-  doc_id: is-05-information-classification-and-handling-policy
-  seq: 42
-  version: 0.1.0
-  kind: text
-  classification: Confidential
-  schema: is-05-information-classification-and-handling-policy.schema.yaml
-  data:
-resource:
+description: |
+  #### What you use this for
+  Defines sensitivity levels and handling rules in transit and at rest.
+  
+  #### When it counts
+  Before labelling, DLP, or secure sharing rollouts.
+  
+  #### Connected artefacts
+  - `information-classification-summary`
+  - `is-18-information-transfer-policy`
+  
+  #### Review rhythm
+  **Annual**.
+  
+  #### First move
+  Choose three labels maximum for a small team.
 ---
 
 # Information Classification and Handling Policy

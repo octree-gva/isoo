@@ -1,24 +1,23 @@
 ---
 type: ISO27001 Document
 title: Context of Organisation
-description:
-  Document the internal and external issues that affect your information
-  security goals, as ISO 27001 clause 4.1 requires. Use it during initial scoping
-  and revisit it at least annually or after major market, regulatory, or technology
-  shifts. List stakeholders, trends, and constraints that shape your risk decisions.
-okf_version: "0.1"
-tags:
-  - iso27001
-timestamp: 2026-01-01 00:00:00.000000000 Z
-iso27001:
-  doc_id: context-of-organisation
-  seq: 2
-  version: 0.1.0
-  kind: text
-  classification: Confidential
-  schema: context-of-organisation.schema.yaml
-  data:
-resource:
+description: |
+  #### What you use this for
+  Capture internal and external factors that shape security priorities (clause 4.1 context).
+  
+  #### When it counts
+  Initial scoping, then whenever the market, regulation, or tech stack shifts materially.
+  
+  #### Connected artefacts
+  - `organisation-overview`
+  - `legal-and-contractual-requirements-register`
+  - `isms-risk-register`
+  
+  #### Review rhythm
+  **At least annually**; add an extra pass after major change (funding, product pivot, new jurisdiction).
+  
+  #### First move
+  List three external pressures and three internal constraints — that is enough to start.
 ---
 
 # Introduction

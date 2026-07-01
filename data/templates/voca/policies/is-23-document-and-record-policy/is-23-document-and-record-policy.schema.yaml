@@ -134,6 +134,19 @@ sections:
   editable: true
   field_type: textarea
   required: false
-description: Rules for creating, approving, versioning, and retaining ISMS documents
-  and records. Implement early so your document tracker and change log have teeth.
-  Auditors check document control rigour closely.
+description: |
+  #### What you use this for
+  Creation, approval, versioning, distribution, and retention of ISMS records.
+  
+  #### When it counts
+  Early — gives teeth to the document tracker and change log.
+  
+  #### Connected artefacts
+  - `information-security-management-system-document-tracker`
+  - `change-log`
+  
+  #### Review rhythm
+  **Annual**.
+  
+  #### First move
+  Define who may approve a policy version — one role, one backup.

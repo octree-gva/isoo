@@ -16,7 +16,7 @@ RSpec.describe DocumentDescription do
 
     text = DocumentDescription.resolve(meta, doc, data_root: App::DATA_PATH)
 
-    expect(text).to include('step-by-step roadmap')
+    expect(text).to include('phased workplan')
     expect(text).not_to eq(doc['title'])
   end
 
@@ -33,7 +33,7 @@ RSpec.describe DocumentDescription do
 
     text = DocumentDescription.resolve(meta, doc, data_root: App::DATA_PATH)
 
-    expect(text).to include('Statement of Applicability')
+    expect(text).to include('phased workplan')
   end
 
   it 'prefers project schema description over template guidance' do

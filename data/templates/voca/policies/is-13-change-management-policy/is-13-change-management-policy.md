@@ -1,23 +1,22 @@
 ---
 type: ISO27001 Policy
 title: IS 13 Change Management Policy
-description:
-  Governs how changes to systems and infrastructure are requested, approved,
-  and recorded. Essential before production changes scale up. Pair with your change
-  log and CAB practices.
-okf_version: "0.1"
-tags:
-  - iso27001
-timestamp: 2026-01-01 00:00:00.000000000 Z
-iso27001:
-  doc_id: is-13-change-management-policy
-  seq: 51
-  version: 0.1.0
-  kind: text
-  classification: Confidential
-  schema: is-13-change-management-policy.schema.yaml
-  data:
-resource:
+description: |
+  #### What you use this for
+  How production changes are requested, reviewed, deployed, and recorded.
+  
+  #### When it counts
+  Before change volume makes informal fixes dangerous.
+  
+  #### Connected artefacts
+  - `change-log`
+  - `operations-security-manual-v1`
+  
+  #### Review rhythm
+  **Annual**.
+  
+  #### First move
+  Define what counts as emergency change and who may approve it.
 ---
 
 # Change Management Policy

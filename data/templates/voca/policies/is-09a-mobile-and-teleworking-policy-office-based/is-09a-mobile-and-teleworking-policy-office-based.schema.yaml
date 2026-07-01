@@ -134,6 +134,19 @@ sections:
   editable: true
   field_type: textarea
   required: false
-description: Security rules for staff who mainly work on-site but may work remotely
-  occasionally. Choose this variant if hybrid is your norm. Cover device use, VPN,
-  and home network expectations.
+description: |
+  #### What you use this for
+  Security expectations when most work happens on-site with occasional remote days.
+  
+  #### When it counts
+  Hybrid workplaces — pick this or the remote-first variant, not both.
+  
+  #### Connected artefacts
+  - `is-09b-mobile-and-teleworking-policy-fully-remote`
+  - `is-17-network-security-management-policy`
+  
+  #### Review rhythm
+  **Annual**.
+  
+  #### First move
+  State VPN, device, and visitor rules for “work from home Friday”.

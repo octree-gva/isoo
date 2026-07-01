@@ -32,8 +32,21 @@ _internal:
   type: uuid
 - key: _deleted_at
   type: datetime
-description: Your master index of ISMS documents—version, owner, review date, and
-  status. Maintain it from day one so nothing goes stale unnoticed. Auditors expect
-  to see controlled document management here.
+description: |
+  #### What you use this for
+  Master index of controlled docs: version, owner, review date, status.
+  
+  #### When it counts
+  From day one — stale documents are a common review finding.
+  
+  #### Connected artefacts
+  - `is-23-document-and-record-policy`
+  - `change-log`
+  
+  #### Review rhythm
+  **Monthly** glance; **quarterly** owner confirmations.
+  
+  #### First move
+  Register every policy you already have, even if version is “draft”.
 export_tags:
 - soi

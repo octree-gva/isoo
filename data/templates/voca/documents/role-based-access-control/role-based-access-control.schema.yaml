@@ -29,8 +29,22 @@ _internal:
   type: uuid
 - key: _deleted_at
   type: datetime
-description: Defines roles, permissions, and segregation-of-duties rules for your
-  systems. Design it before rolling out the access request process. Review it when
-  applications or organisational structure change.
+description: |
+  #### What you use this for
+  Defines application roles, permissions, and separation-of-duties rules.
+  
+  #### When it counts
+  Before rolling out self-service access; revisit when org or apps change.
+  
+  #### Connected artefacts
+  - `is-02-access-control-policy`
+  - `access-request-form`
+  - `starter-leaver-mover-system-access-process`
+  
+  #### Review rhythm
+  **Quarterly** for privileged roles; **annual** full pass.
+  
+  #### First move
+  List admin roles and who may hold them — defer fine-grained app roles.
 export_tags:
 - soi

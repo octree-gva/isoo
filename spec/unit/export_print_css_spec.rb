@@ -25,6 +25,7 @@ RSpec.describe ExportPrintCss do
     it 'allows list items to wrap without orphaning the em dash marker' do
       expect(css).to include('body.export-pdf .export-body ul li')
       expect(css).to include('overflow-wrap: anywhere')
+      expect(css).to include('word-break: break-word')
     end
   end
 

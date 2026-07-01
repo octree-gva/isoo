@@ -1,22 +1,20 @@
 ---
 type: ISO27001 Register
 title: Information Security Management System Document Tracker
-description:
-  Your master index of ISMS documents—version, owner, review date, and
-  status. Maintain it from day one so nothing goes stale unnoticed. Auditors expect
-  to see controlled document management here.
-okf_version: "0.1"
-tags:
-  - iso27001
-  - register
-timestamp: 2026-01-01 00:00:00.000000000 Z
-iso27001:
-  doc_id: information-security-management-system-document-tracker
-  seq: 27
-  version: 0.1.0
-  kind: table
-  classification: Confidential
-  schema: information-security-management-system-document-tracker.schema.yaml
-  data: information-security-management-system-document-tracker.csv
-resource:
+description: |
+  #### What you use this for
+  Master index of controlled docs: version, owner, review date, status.
+  
+  #### When it counts
+  From day one — stale documents are a common review finding.
+  
+  #### Connected artefacts
+  - `is-23-document-and-record-policy`
+  - `change-log`
+  
+  #### Review rhythm
+  **Monthly** glance; **quarterly** owner confirmations.
+  
+  #### First move
+  Register every policy you already have, even if version is “draft”.
 ---

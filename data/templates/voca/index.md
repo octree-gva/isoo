@@ -1,3 +1,3 @@
-# Voca template bundle
+# ISO 27001 standard template bundle
 
-OKF bundle generated from ISO27001 source templates.
+OKF document bundle for small teams building an information security management system.

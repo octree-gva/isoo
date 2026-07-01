@@ -1,23 +1,22 @@
 ---
 type: ISO27001 Policy
 title: IS 03 Asset Management Policy
-description:
-  Requirements for identifying, owning, and protecting information assets
-  throughout their lifecycle. Adopt it when you stand up asset registers. Ensures
-  inventory, classification, and disposal are handled consistently.
-okf_version: "0.1"
-tags:
-  - iso27001
-timestamp: 2026-01-01 00:00:00.000000000 Z
-iso27001:
-  doc_id: is-03-asset-management-policy
-  seq: 40
-  version: 0.1.0
-  kind: text
-  classification: Confidential
-  schema: is-03-asset-management-policy.schema.yaml
-  data:
-resource:
+description: |
+  #### What you use this for
+  Lifecycle rules for information assets: identify, own, protect, dispose.
+  
+  #### When it counts
+  When standing up asset registers.
+  
+  #### Connected artefacts
+  - `physical-and-virtual-assets-register`
+  - `software-license-assets-register`
+  
+  #### Review rhythm
+  **Annual**.
+  
+  #### First move
+  Require an owner field on every new system request.
 ---
 
 # Asset Management Policy

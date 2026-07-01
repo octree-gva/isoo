@@ -1,23 +1,22 @@
 ---
 type: ISO27001 Policy
 title: IS 04 Risk Management Policy
-description:
-  Establishes how you identify, assess, treat, and monitor information
-  security risks. Approve it before your first formal risk assessment. It frames acceptance
-  criteria and ties risk work to business objectives.
-okf_version: "0.1"
-tags:
-  - iso27001
-timestamp: 2026-01-01 00:00:00.000000000 Z
-iso27001:
-  doc_id: is-04-risk-management-policy
-  seq: 41
-  version: 0.1.0
-  kind: text
-  classification: Confidential
-  schema: is-04-risk-management-policy.schema.yaml
-  data:
-resource:
+description: |
+  #### What you use this for
+  Method and appetite for identifying, analysing, treating, and monitoring risk.
+  
+  #### When it counts
+  Before first formal risk assessment.
+  
+  #### Connected artefacts
+  - `ip-01-risk-management-procedure`
+  - `isms-risk-register`
+  
+  #### Review rhythm
+  **Annual**; after major risk events.
+  
+  #### First move
+  Write how management accepts residual risk — one paragraph.
 ---
 
 # Risk Management Policy

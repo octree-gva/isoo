@@ -1,23 +1,23 @@
 ---
 type: ISO27001 Procedure
 title: Operations Security Manual V1
-description:
-  Day-to-day operational security guidance for IT and support teams. Implement
-  it once core policies exist and procedures are defined. Use it as the practical
-  companion to high-level policies during daily work.
-okf_version: "0.1"
-tags:
-  - iso27001
-timestamp: 2026-01-01 00:00:00.000000000 Z
-iso27001:
-  doc_id: operations-security-manual-v1
-  seq: 28
-  version: 0.1.0
-  kind: text
-  classification: Confidential
-  schema: operations-security-manual-v1.schema.yaml
-  data:
-resource:
+description: |
+  #### What you use this for
+  Runbook for IT/support: how controls actually work day to day.
+  
+  #### When it counts
+  After policies exist — bridges “what we said” and “what we do”.
+  
+  #### Connected artefacts
+  - `is-16-logging-and-monitoring-policy`
+  - `is-11-backup-policy`
+  - `is-13-change-management-policy`
+  
+  #### Review rhythm
+  **Annual**; patch after tooling or on-call process changes.
+  
+  #### First move
+  Document one routine (backup restore, access grant) exactly as performed today.
 ---
 
 # Purpose

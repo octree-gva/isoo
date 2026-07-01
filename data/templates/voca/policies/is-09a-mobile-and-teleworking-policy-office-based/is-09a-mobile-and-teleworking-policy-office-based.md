@@ -1,23 +1,22 @@
 ---
 type: ISO27001 Policy
 title: IS 09a Mobile and Teleworking Policy - office based
-description:
-  Security rules for staff who mainly work on-site but may work remotely
-  occasionally. Choose this variant if hybrid is your norm. Cover device use, VPN,
-  and home network expectations.
-okf_version: "0.1"
-tags:
-  - iso27001
-timestamp: 2026-01-01 00:00:00.000000000 Z
-iso27001:
-  doc_id: is-09a-mobile-and-teleworking-policy-office-based
-  seq: 46
-  version: 0.1.0
-  kind: text
-  classification: Confidential
-  schema: is-09a-mobile-and-teleworking-policy-office-based.schema.yaml
-  data:
-resource:
+description: |
+  #### What you use this for
+  Security expectations when most work happens on-site with occasional remote days.
+  
+  #### When it counts
+  Hybrid workplaces — pick this or the remote-first variant, not both.
+  
+  #### Connected artefacts
+  - `is-09b-mobile-and-teleworking-policy-fully-remote`
+  - `is-17-network-security-management-policy`
+  
+  #### Review rhythm
+  **Annual**.
+  
+  #### First move
+  State VPN, device, and visitor rules for “work from home Friday”.
 ---
 
 # Mobile and Teleworking Policy

@@ -1,6 +1,7 @@
 ---
 id: voca
-name: Voca
+name: ISO 27001 Standard
+version: '0.0.0'
 okf_bundle: "."
 documents:
 - doc_id: organisation-overview

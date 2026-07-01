@@ -1,23 +1,22 @@
 ---
 type: ISO27001 Register
 title: Starter Leaver Mover - Access Submissions
-description:
-  Log of access changes tied to HR events. Record each starter, leaver,
-  and mover action here. Review periodically to catch missed revocations.
-okf_version: "0.1"
-tags:
-  - iso27001
-  - register
-timestamp: 2026-01-01 00:00:00.000000000 Z
-iso27001:
-  doc_id: starter-leaver-mover-access-register
-  seq: 34
-  version: 0.1.0
-  kind: table
-  classification: Confidential
-  schema: starter-leaver-mover-access-register.schema.yaml
-  data: starter-leaver-mover-access-register.csv
-resource:
+description: |
+  #### What you use this for
+  Evidence log tying HR lifecycle events to access changes.
+  
+  #### When it counts
+  Each join/leave/role change; proves timely provisioning and removal.
+  
+  #### Connected artefacts
+  - `starter-leaver-mover-system-access-process`
+  - `is-02-access-control-policy`
+  
+  #### Review rhythm
+  **Per event** entry; **quarterly** reconciliation against HRIS.
+  
+  #### First move
+  Backfill the last three leavers and verify accounts are gone.
 ---
 
 # Starter Leaver Mover - Access Submissions

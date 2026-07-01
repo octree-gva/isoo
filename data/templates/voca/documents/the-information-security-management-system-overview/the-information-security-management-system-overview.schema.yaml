@@ -72,8 +72,22 @@ sections:
   editable: true
   field_type: textarea
   required: false
-description: A concise narrative of how your ISMS works—policies, processes, roles,
-  and improvement loops. Share it with new staff and auditors as an orientation document.
-  Refresh it when you reorganise or materially change your control set.
+description: |
+  #### What you use this for
+  Plain-language tour of how security is governed: policies, loops, roles, and improvement.
+  
+  #### When it counts
+  Onboarding staff, briefing leadership, orienting external reviewers.
+  
+  #### Connected artefacts
+  - `is-01-information-security-policy`
+  - `documented-isms-scope`
+  - `0c-iso-27001-implementation-checklist`
+  
+  #### Review rhythm
+  **Annual**; after reorganisation or major control set change.
+  
+  #### First move
+  Explain the system in one page as if to a smart colleague outside IT.
 export_tags:
 - basic

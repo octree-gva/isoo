@@ -1,25 +1,23 @@
 ---
 type: ISO27001 Document
 title: Managment Review Team Meeting Agenda
-description:
-  Guides the formal management review required by ISO 27001 clause 9.3.
-  Use it at least once per year to assess ISMS suitability, adequacy, and effectiveness.
-  Record inputs like audit results, incidents, and KPIs, then document actions and
-  deadlines.
-okf_version: "0.1"
-tags:
-  - iso27001
-timestamp: 2026-01-01 00:00:00.000000000 Z
-iso27001:
-  doc_id: managment-review-team-meeting-agenda-template
-  seq: 18
-  version: 0.1.0
-  kind: form
-  response_kind: text
-  classification: Confidential
-  schema: managment-review-team-meeting-agenda-template.schema.yaml
-  data:
-resource:
+description: |
+  #### What you use this for
+  Structured inputs and outputs for top management’s ISMS review (clause 9.3).
+  
+  #### When it counts
+  At least once per year; extra session after serious incidents or scope changes.
+  
+  #### Connected artefacts
+  - `is-01-information-security-policy`
+  - `audit-report-template`
+  - `incident-and-corrective-action-log`
+  
+  #### Review rhythm
+  **Annual** minimum; year one often **quarterly**.
+  
+  #### First move
+  Pre-fill incident, audit, and KPI sections — the meeting should decide actions, not hunt data.
 ---
 
 # ATTENDEES:

@@ -1,23 +1,22 @@
 ---
 type: ISO27001 Policy
 title: IS 17 Network Security Management Policy
-description:
-  Controls for segmentation, firewalls, wireless, and remote access. Align
-  it with your network diagram and architecture. Review when infrastructure or cloud
-  footprint changes.
-okf_version: "0.1"
-tags:
-  - iso27001
-timestamp: 2026-01-01 00:00:00.000000000 Z
-iso27001:
-  doc_id: is-17-network-security-management-policy
-  seq: 55
-  version: 0.1.0
-  kind: text
-  classification: Confidential
-  schema: is-17-network-security-management-policy.schema.yaml
-  data:
-resource:
+description: |
+  #### What you use this for
+  Segmentation, perimeter, wireless, and remote access principles.
+  
+  #### When it counts
+  Align with network diagrams and cloud security groups.
+  
+  #### Connected artefacts
+  - `operations-security-manual-v1`
+  - `is-26-cloud-service-policy`
+  
+  #### Review rhythm
+  **Annual**; after architecture migrations.
+  
+  #### First move
+  Sketch trust zones on one whiteboard photo — policy follows diagram.
 ---
 
 # Network Security Management Policy

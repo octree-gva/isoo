@@ -79,6 +79,19 @@ sections:
   editable: true
   field_type: textarea
   required: false
-description: Structured debrief after incidents or continuity activations. Complete
-  it within days of closure while memories are fresh. Drives corrective actions into
-  your improvement process.
+description: |
+  #### What you use this for
+  Blameless debrief after incidents or plan activations.
+  
+  #### When it counts
+  Within days of stand-down while facts are fresh.
+  
+  #### Connected artefacts
+  - `incident-and-corrective-action-log`
+  - `is-15-continual-improvement-policy`
+  
+  #### Review rhythm
+  **Per event**.
+  
+  #### First move
+  Capture timeline before debating root cause.

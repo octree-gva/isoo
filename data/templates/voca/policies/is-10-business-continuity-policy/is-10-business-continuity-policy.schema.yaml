@@ -120,6 +120,19 @@ sections:
   editable: true
   field_type: textarea
   required: false
-description: Commits to maintaining critical services during disruptions. Approve
-  it before detailed BCP and BIA work. Sets recovery objectives that your continuity
-  plans must meet.
+description: |
+  #### What you use this for
+  Executive commitment to keep critical activities running through disruption.
+  
+  #### When it counts
+  Before detailed continuity planning and impact analysis.
+  
+  #### Connected artefacts
+  - `business-continuity-plan`
+  - `business-impact-assessment`
+  
+  #### Review rhythm
+  **Annual**.
+  
+  #### First move
+  Name the activities that must survive a bad week — three max.

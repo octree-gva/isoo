@@ -1,22 +1,20 @@
 ---
 type: ISO27001 Register
 title: Third Party Supplier Register
-description:
-  Inventory of vendors with access to your data or critical services, plus
-  risk tier and review dates. Build it during procurement onboarding. Reassess suppliers
-  when contracts renew or incidents occur.
-okf_version: "0.1"
-tags:
-  - iso27001
-  - register
-timestamp: 2026-01-01 00:00:00.000000000 Z
-iso27001:
-  doc_id: third-party-supplier-register
-  seq: 75
-  version: 0.1.0
-  kind: table
-  classification: Confidential
-  schema: third-party-supplier-register.schema.yaml
-  data: third-party-supplier-register.csv
-resource:
+description: |
+  #### What you use this for
+  Vendors with data or operational dependency — tier, owner, review dates.
+  
+  #### When it counts
+  Onboarding suppliers; renewals and incidents trigger reassessment.
+  
+  #### Connected artefacts
+  - `is-14-third-party-supplier-security-policy`
+  - `legal-and-contractual-requirements-register`
+  
+  #### Review rhythm
+  **Annual** minimum; **quarterly** for tier‑1.
+  
+  #### First move
+  Your CRM, finance, and SSO vendor lists are the seed data.
 ---

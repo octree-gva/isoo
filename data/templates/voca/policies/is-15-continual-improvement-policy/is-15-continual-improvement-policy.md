@@ -1,23 +1,22 @@
 ---
 type: ISO27001 Policy
 title: IS 15 Continual Improvement Policy
-description:
-  Describes how you capture feedback, correct nonconformities, and improve
-  the ISMS. Activate it once audits and incidents begin producing actions. Links to
-  corrective action logs and management review.
-okf_version: "0.1"
-tags:
-  - iso27001
-timestamp: 2026-01-01 00:00:00.000000000 Z
-iso27001:
-  doc_id: is-15-continual-improvement-policy
-  seq: 53
-  version: 0.1.0
-  kind: text
-  classification: Confidential
-  schema: is-15-continual-improvement-policy.schema.yaml
-  data:
-resource:
+description: |
+  #### What you use this for
+  How feedback, nonconformities, and lessons become tracked improvements.
+  
+  #### When it counts
+  When audits and incidents start producing actions.
+  
+  #### Connected artefacts
+  - `incident-and-corrective-action-log`
+  - `managment-review-team-meeting-agenda-template`
+  
+  #### Review rhythm
+  **Annual**.
+  
+  #### First move
+  Link to the log where actions must land — no orphan findings.
 ---
 
 # Continual Improvement Policy

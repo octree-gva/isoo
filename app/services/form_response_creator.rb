@@ -22,6 +22,7 @@ class FormResponseCreator
     response = build_response(manifest, form, form_id, author)
     write_response(project_root, form, response, form_id, author, record_version: record_version)
     manifest.add_response!(form_id, response.slice('doc_id', 'path', 'title'))
+    manifest.bump_version!(significant: false)
     encrypt_confidential(project_root, response['path'], author)
     @git&.commit("#{form_id}: create response #{response['doc_id']}")
     response['doc_id']

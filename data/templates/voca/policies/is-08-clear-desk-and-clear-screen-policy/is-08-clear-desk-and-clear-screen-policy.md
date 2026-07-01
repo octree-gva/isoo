@@ -1,23 +1,22 @@
 ---
 type: ISO27001 Policy
 title: IS 08 Clear Desk and Clear Screen Policy
-description:
-  Requires physical and screen privacy to reduce unauthorised disclosure.
-  Roll it out in office and remote settings. Simple to audit visually—make sure facilities
-  and culture support compliance.
-okf_version: "0.1"
-tags:
-  - iso27001
-timestamp: 2026-01-01 00:00:00.000000000 Z
-iso27001:
-  doc_id: is-08-clear-desk-and-clear-screen-policy
-  seq: 45
-  version: 0.1.0
-  kind: text
-  classification: Confidential
-  schema: is-08-clear-desk-and-clear-screen-policy.schema.yaml
-  data:
-resource:
+description: |
+  #### What you use this for
+  Reduce casual exposure: tidy desks, locked screens, clean shared spaces.
+  
+  #### When it counts
+  Office and remote — easy to observe, easy to neglect.
+  
+  #### Connected artefacts
+  - `is-07-acceptable-use-policy`
+  - `is-09a-mobile-and-teleworking-policy-office-based`
+  
+  #### Review rhythm
+  **Annual**.
+  
+  #### First move
+  Set auto-lock timeout and tell people in plain language.
 ---
 
 # Clear Desk and Clear Screen Policy

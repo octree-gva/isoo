@@ -109,8 +109,22 @@ _internal:
   type: uuid
 - key: _deleted_at
   type: datetime
-description: Lists hardware, cloud resources, and other infrastructure that supports
-  your business. Build it alongside asset discovery and keep owners assigned. Refer
-  to it when assessing risks, planning backups, and deciding what belongs in scope.
+description: |
+  #### What you use this for
+  Inventory of infrastructure (on‑prem, cloud, SaaS) with owners and business use.
+  
+  #### When it counts
+  Alongside first risk pass; keep current as you adopt or retire systems.
+  
+  #### Connected artefacts
+  - `is-03-asset-management-policy`
+  - `software-license-assets-register`
+  - `isms-risk-register`
+  
+  #### Review rhythm
+  **Quarterly** owner check; **monthly** for production-critical rows.
+  
+  #### First move
+  Export what IT already knows (CMDB, cloud console) — do not start from a blank grid.
 export_tags:
 - soi

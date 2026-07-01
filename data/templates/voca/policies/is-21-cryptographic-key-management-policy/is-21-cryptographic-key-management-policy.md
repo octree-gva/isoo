@@ -1,23 +1,21 @@
 ---
 type: ISO27001 Policy
 title: IS 21 Cryptographic Key Management Policy
-description:
-  Governs generation, storage, rotation, and destruction of cryptographic
-  keys. Required when you manage encryption keys in-house. Prevents weak or orphaned
-  keys undermining encryption controls.
-okf_version: "0.1"
-tags:
-  - iso27001
-timestamp: 2026-01-01 00:00:00.000000000 Z
-iso27001:
-  doc_id: is-21-cryptographic-key-management-policy
-  seq: 59
-  version: 0.1.0
-  kind: text
-  classification: Confidential
-  schema: is-21-cryptographic-key-management-policy.schema.yaml
-  data:
-resource:
+description: |
+  #### What you use this for
+  Generation, storage, rotation, and destruction of cryptographic keys.
+  
+  #### When it counts
+  When you operate keys in-house (not only cloud-managed).
+  
+  #### Connected artefacts
+  - `is-22-cryptographic-control-and-encryption-policy`
+  
+  #### Review rhythm
+  **Annual**.
+  
+  #### First move
+  Inventory where keys live — KMS, HSM, `.env`, password managers.
 ---
 
 # Cryptographic Key Management Policy

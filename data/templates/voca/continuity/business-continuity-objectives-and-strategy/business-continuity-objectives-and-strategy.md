@@ -1,23 +1,22 @@
 ---
 type: ISO27001 Document
 title: Business Continuity Objectives and Strategy
-description:
-  Sets recovery objectives and strategic approach—prevention, response,
-  and recovery. Define it after your BIA so targets are evidence-based. Guides the
-  structure of your business continuity plan.
-okf_version: "0.1"
-tags:
-  - iso27001
-timestamp: 2026-01-01 00:00:00.000000000 Z
-iso27001:
-  doc_id: business-continuity-objectives-and-strategy
-  seq: 84
-  version: 0.1.0
-  kind: text
-  classification: Confidential
-  schema: business-continuity-objectives-and-strategy.schema.yaml
-  data:
-resource:
+description: |
+  #### What you use this for
+  Recovery targets and strategic choices (prevent, respond, recover).
+  
+  #### When it counts
+  After BIA numbers exist — guides plan structure.
+  
+  #### Connected artefacts
+  - `business-impact-assessment`
+  - `is-10-business-continuity-policy`
+  
+  #### Review rhythm
+  **Annual**.
+  
+  #### First move
+  Agree RTO/RPO for one service, not the entire catalogue.
 ---
 
 # Strategy

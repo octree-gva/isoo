@@ -1,23 +1,22 @@
 ---
 type: ISO27001 Policy
 title: IS 26 Cloud Service Policy
-description:
-  Security requirements for adopting and operating cloud services. Use
-  when moving workloads to SaaS, PaaS, or IaaS. Covers shared responsibility, configuration,
-  and exit planning.
-okf_version: "0.1"
-tags:
-  - iso27001
-timestamp: 2026-01-01 00:00:00.000000000 Z
-iso27001:
-  doc_id: is-26-cloud-service-policy
-  seq: 64
-  version: 0.1.0
-  kind: text
-  classification: Confidential
-  schema: is-26-cloud-service-policy.schema.yaml
-  data:
-resource:
+description: |
+  #### What you use this for
+  Adopting and operating SaaS, PaaS, and IaaS securely (shared responsibility).
+  
+  #### When it counts
+  Cloud migrations and new SaaS approvals.
+  
+  #### Connected artefacts
+  - `third-party-supplier-register`
+  - `is-14-third-party-supplier-security-policy`
+  
+  #### Review rhythm
+  **Annual**.
+  
+  #### First move
+  List configuration baselines for your primary cloud account.
 ---
 
 # Cloud Service Policy

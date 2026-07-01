@@ -1,23 +1,21 @@
 ---
 type: ISO27001 Policy
 title: IS 27 Intellectual Property Rights Policy
-description:
-  Protects company IP and respects third-party licences and copyrights.
-  Important for teams handling code, designs, or licensed content. Supports contractual
-  and legal compliance beyond pure security.
-okf_version: "0.1"
-tags:
-  - iso27001
-timestamp: 2026-01-01 00:00:00.000000000 Z
-iso27001:
-  doc_id: is-27-intellectual-property-rights-policy
-  seq: 65
-  version: 0.1.0
-  kind: text
-  classification: Confidential
-  schema: is-27-intellectual-property-rights-policy.schema.yaml
-  data:
-resource:
+description: |
+  #### What you use this for
+  Protect company IP; respect licences and third-party copyrights.
+  
+  #### When it counts
+  Teams shipping code, design, or licensed media.
+  
+  #### Connected artefacts
+  - `is-07-acceptable-use-policy`
+  
+  #### Review rhythm
+  **Annual**.
+  
+  #### First move
+  Clarify who owns code written on company time — one paragraph.
 ---
 
 # Intellectual Property Rights Policy

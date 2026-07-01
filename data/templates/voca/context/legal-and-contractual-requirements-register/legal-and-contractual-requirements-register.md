@@ -1,23 +1,21 @@
 ---
 type: ISO27001 Register
 title: Legal and Contractual Requirements Register
-description:
-  Tracks laws, regulations, and customer contracts that impose security
-  or privacy obligations. Populate it during discovery and review it whenever you
-  enter new markets or sign major contracts. Use it to drive control selection and
-  prove compliance awareness.
-okf_version: "0.1"
-tags:
-  - iso27001
-  - register
-timestamp: 2026-01-01 00:00:00.000000000 Z
-iso27001:
-  doc_id: legal-and-contractual-requirements-register
-  seq: 12
-  version: 0.1.0
-  kind: table
-  classification: Confidential
-  schema: legal-and-contractual-requirements-register.schema.yaml
-  data: legal-and-contractual-requirements-register.csv
-resource:
+description: |
+  #### What you use this for
+  A living index of laws, regulators, and contract clauses that impose security or privacy duties.
+  
+  #### When it counts
+  Discovery phase; update when you enter a new country or sign enterprise terms.
+  
+  #### Connected artefacts
+  - `context-of-organisation`
+  - `dp-01-data-protection-policy`
+  - `third-party-supplier-register`
+  
+  #### Review rhythm
+  **Quarterly** scan; immediate entry when legal or sales closes a new obligation.
+  
+  #### First move
+  Add the three obligations you already know you must meet — GDPR, customer DPA, sector rule, etc.
 ---

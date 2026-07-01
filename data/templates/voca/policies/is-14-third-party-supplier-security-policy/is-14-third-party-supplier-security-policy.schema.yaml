@@ -113,6 +113,19 @@ sections:
   editable: true
   field_type: textarea
   required: false
-description: Sets security expectations for vendors who access your data or systems.
-  Use it in procurement and contract clauses. Drive supplier register reviews and
-  due diligence from this policy.
+description: |
+  #### What you use this for
+  Security expectations for vendors who touch your data or operations.
+  
+  #### When it counts
+  Procurement and contract negotiation.
+  
+  #### Connected artefacts
+  - `third-party-supplier-register`
+  - `is-26-cloud-service-policy`
+  
+  #### Review rhythm
+  **Annual**; reassess on renewal or incident.
+  
+  #### First move
+  Tier your top five vendors by data access — review deepest tier first.

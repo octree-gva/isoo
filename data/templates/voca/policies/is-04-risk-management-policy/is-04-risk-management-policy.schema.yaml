@@ -127,6 +127,19 @@ sections:
   editable: true
   field_type: textarea
   required: false
-description: Establishes how you identify, assess, treat, and monitor information
-  security risks. Approve it before your first formal risk assessment. It frames acceptance
-  criteria and ties risk work to business objectives.
+description: |
+  #### What you use this for
+  Method and appetite for identifying, analysing, treating, and monitoring risk.
+  
+  #### When it counts
+  Before first formal risk assessment.
+  
+  #### Connected artefacts
+  - `ip-01-risk-management-procedure`
+  - `isms-risk-register`
+  
+  #### Review rhythm
+  **Annual**; after major risk events.
+  
+  #### First move
+  Write how management accepts residual risk — one paragraph.

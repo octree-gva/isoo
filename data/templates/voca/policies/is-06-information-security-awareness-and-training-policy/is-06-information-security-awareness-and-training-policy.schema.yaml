@@ -113,6 +113,19 @@ sections:
   editable: true
   field_type: textarea
   required: false
-description: Commits to educating staff on security responsibilities and measuring
-  effectiveness. Launch it with your awareness programme. Track completion and refresh
-  training when threats or policies change.
+description: |
+  #### What you use this for
+  Commitment to train staff and measure whether security culture sticks.
+  
+  #### When it counts
+  Launch with awareness programme; track completion.
+  
+  #### Connected artefacts
+  - `competency-matrix`
+  - `communication-plan`
+  
+  #### Review rhythm
+  **Annual**; refresh content when threats or policies change.
+  
+  #### First move
+  Schedule one mandatory 30-minute session with attendance proof.

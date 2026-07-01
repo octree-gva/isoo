@@ -1,23 +1,23 @@
 ---
 type: ISO27001 Policy
 title: DP 01 Data Protection Policy
-description:
-  Sets principles for lawful, fair processing of personal data under GDPR
-  and related law. Approve it before handling personal data at scale. Staff must acknowledge
-  it; align procedures and registers to its requirements.
-okf_version: "0.1"
-tags:
-  - iso27001
-timestamp: 2026-01-01 00:00:00.000000000 Z
-iso27001:
-  doc_id: dp-01-data-protection-policy
-  seq: 36
-  version: 0.1.0
-  kind: text
-  classification: Confidential
-  schema: dp-01-data-protection-policy.schema.yaml
-  data:
-resource:
+description: |
+  #### What you use this for
+  Organisation-wide rules for lawful, fair, transparent personal data processing.
+  
+  #### When it counts
+  Before processing at scale; staff acknowledgement required.
+  
+  #### Connected artefacts
+  - `data-asset-register-ropa`
+  - `dp-02-data-retention-policy`
+  - `is-05-information-classification-and-handling-policy`
+  
+  #### Review rhythm
+  **Annual**; immediate review when law or processing model changes.
+  
+  #### First move
+  State lawful bases you actually rely on — do not copy a generic list.
 ---
 
 # Data Protection Policy

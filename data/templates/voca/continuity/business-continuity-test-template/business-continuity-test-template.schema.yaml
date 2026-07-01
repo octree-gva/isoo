@@ -16,6 +16,19 @@ sections:
   editable: true
   field_type: textarea
   required: false
-description: Checklist and script for executing a continuity exercise. Use it to standardise
-  test preparation and execution. Ensures roles, injects, and success criteria are
-  defined upfront.
+description: |
+  #### What you use this for
+  Checklist and script so exercises run the same way each time.
+  
+  #### When it counts
+  Every planned exercise.
+  
+  #### Connected artefacts
+  - `how-to-conduct-a-business-continuity-test`
+  - `business-continuity-plan`
+  
+  #### Review rhythm
+  **Per exercise**; template **annual**.
+  
+  #### First move
+  Define success criteria before sending calendar invites.

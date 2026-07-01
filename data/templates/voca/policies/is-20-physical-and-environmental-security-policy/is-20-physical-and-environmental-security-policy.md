@@ -1,23 +1,21 @@
 ---
 type: ISO27001 Policy
 title: IS 20 Physical and Environmental Security Policy
-description:
-  Protects offices, data centres, and equipment from unauthorised access
-  and environmental harm. Relevant for any on-premise or co-located assets. Coordinate
-  with facilities on access badges and visitor procedures.
-okf_version: "0.1"
-tags:
-  - iso27001
-timestamp: 2026-01-01 00:00:00.000000000 Z
-iso27001:
-  doc_id: is-20-physical-and-environmental-security-policy
-  seq: 58
-  version: 0.1.0
-  kind: text
-  classification: Confidential
-  schema: is-20-physical-and-environmental-security-policy.schema.yaml
-  data:
-resource:
+description: |
+  #### What you use this for
+  Protect premises, equipment, and environment (access, power, fire, etc.).
+  
+  #### When it counts
+  Any office, closet, or co-lo you control.
+  
+  #### Connected artefacts
+  - `physical-and-virtual-assets-register`
+  
+  #### Review rhythm
+  **Annual**; walk-through after office moves.
+  
+  #### First move
+  Document how visitors get in and who escorts them.
 ---
 
 # Physical and Environmental Security Policy

@@ -1,23 +1,23 @@
 ---
 type: ISO27001 Procedure
 title: How To - Access Control and Role Based Access
-description:
-  Walks administrators through granting, reviewing, and revoking access
-  using your RBAC model. Follow it when onboarding tools or training new admins. Keeps
-  access changes consistent with your access control policy.
-okf_version: "0.1"
-tags:
-  - iso27001
-timestamp: 2026-01-01 00:00:00.000000000 Z
-iso27001:
-  doc_id: how-to-access-control-and-role-based-access
-  seq: 29
-  version: 0.1.0
-  kind: text
-  classification: Confidential
-  schema: how-to-access-control-and-role-based-access.schema.yaml
-  data:
-resource:
+description: |
+  #### What you use this for
+  Step-by-step for admins: grant, review, and revoke access using your role model.
+  
+  #### When it counts
+  When onboarding tools or training new administrators.
+  
+  #### Connected artefacts
+  - `is-02-access-control-policy`
+  - `role-based-access-control`
+  - `access-request-form`
+  
+  #### Review rhythm
+  **Annual**; update when IdP or ticketing changes.
+  
+  #### First move
+  Walk through a fictional new hire with your real tools.
 ---
 
 # How to Manage Access Control

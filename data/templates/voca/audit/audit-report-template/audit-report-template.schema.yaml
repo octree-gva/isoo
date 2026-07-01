@@ -100,6 +100,19 @@ sections:
   editable: true
   field_type: textarea
   required: false
-description: Standard format for documenting audit scope, methodology, findings, and
-  recommendations. Complete it after each internal or supplier audit. Management review
-  and certification bodies rely on clear, actionable reports.
+description: |
+  #### What you use this for
+  Formal report: scope, method, findings, recommendations.
+  
+  #### When it counts
+  After each internal or supplier audit.
+  
+  #### Connected artefacts
+  - `incident-and-corrective-action-log`
+  - `managment-review-team-meeting-agenda-template`
+  
+  #### Review rhythm
+  **Per audit**; classify findings consistently.
+  
+  #### First move
+  Write executive summary first — five bullets max.

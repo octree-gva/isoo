@@ -93,8 +93,22 @@ sections:
   editable: true
   field_type: textarea
   required: false
-description: Defines how long you keep data and when you delete or anonymise it. Publish
-  it alongside your data inventory and retention schedules. Apply it to backups and
-  archives, not just live systems.
+description: |
+  #### What you use this for
+  How long categories of data are kept and how deletion/anonymisation works.
+  
+  #### When it counts
+  Alongside privacy inventory; applies to backups and archives too.
+  
+  #### Connected artefacts
+  - `data-asset-register-ropa`
+  - `dp-01-data-protection-policy`
+  - `is-11-backup-policy`
+  
+  #### Review rhythm
+  **Annual**; update when product retention or law shifts.
+  
+  #### First move
+  Pick customer data and employee data — set realistic retention per category.
 export_tags:
 - data_protection

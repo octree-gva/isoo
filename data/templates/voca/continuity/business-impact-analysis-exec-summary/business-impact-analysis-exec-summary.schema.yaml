@@ -37,6 +37,19 @@ sections:
   editable: true
   field_type: textarea
   required: false
-description: Executive-readable summary of BIA results for leadership decisions and
-  funding. Produce it after the detailed BIA is complete. Use it in management review
-  to justify continuity investments.
+description: |
+  #### What you use this for
+  Leadership-friendly summary of impact analysis for funding and priorities.
+  
+  #### When it counts
+  After detailed BIA — input to management review.
+  
+  #### Connected artefacts
+  - `business-impact-assessment`
+  - `business-continuity-objectives-and-strategy`
+  
+  #### Review rhythm
+  **Annual** with BIA.
+  
+  #### First move
+  One slide: worst plausible outage, cost of downtime, top dependency.

@@ -1,23 +1,22 @@
 ---
 type: ISO27001 Document
 title: Audit Report
-description:
-  Standard format for documenting audit scope, methodology, findings, and
-  recommendations. Complete it after each internal or supplier audit. Management review
-  and certification bodies rely on clear, actionable reports.
-okf_version: "0.1"
-tags:
-  - iso27001
-timestamp: 2026-01-01 00:00:00.000000000 Z
-iso27001:
-  doc_id: audit-report-template
-  seq: 81
-  version: 0.1.0
-  kind: text
-  classification: Confidential
-  schema: audit-report-template.schema.yaml
-  data:
-resource:
+description: |
+  #### What you use this for
+  Formal report: scope, method, findings, recommendations.
+  
+  #### When it counts
+  After each internal or supplier audit.
+  
+  #### Connected artefacts
+  - `incident-and-corrective-action-log`
+  - `managment-review-team-meeting-agenda-template`
+  
+  #### Review rhythm
+  **Per audit**; classify findings consistently.
+  
+  #### First move
+  Write executive summary first — five bullets max.
 ---
 
 # Introduction

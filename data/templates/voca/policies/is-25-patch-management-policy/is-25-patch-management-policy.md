@@ -1,23 +1,22 @@
 ---
 type: ISO27001 Policy
 title: IS 25 Patch Management Policy
-description:
-  Commitment to timely patching of operating systems and applications.
-  Tie it to vulnerability scanning and change management. Track SLAs by severity and
-  evidence deployment.
-okf_version: "0.1"
-tags:
-  - iso27001
-timestamp: 2026-01-01 00:00:00.000000000 Z
-iso27001:
-  doc_id: is-25-patch-management-policy
-  seq: 63
-  version: 0.1.0
-  kind: text
-  classification: Confidential
-  schema: is-25-patch-management-policy.schema.yaml
-  data:
-resource:
+description: |
+  #### What you use this for
+  Timelines for patching OS and applications by severity.
+  
+  #### When it counts
+  With vulnerability scanning and change management.
+  
+  #### Connected artefacts
+  - `is-12-protection-against-malware-policy`
+  - `software-license-assets-register`
+  
+  #### Review rhythm
+  **Annual**; SLAs reviewed **quarterly** against scan results.
+  
+  #### First move
+  Set critical patch days — realistic for a small ops team.
 ---
 
 # Patch Management Policy

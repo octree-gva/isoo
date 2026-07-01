@@ -1,23 +1,23 @@
 ---
 type: ISO27001 Policy
 title: DP 02 Data Retention Policy
-description:
-  Defines how long you keep data and when you delete or anonymise it. Publish
-  it alongside your data inventory and retention schedules. Apply it to backups and
-  archives, not just live systems.
-okf_version: "0.1"
-tags:
-  - iso27001
-timestamp: 2026-01-01 00:00:00.000000000 Z
-iso27001:
-  doc_id: dp-02-data-retention-policy
-  seq: 37
-  version: 0.1.0
-  kind: text
-  classification: Confidential
-  schema: dp-02-data-retention-policy.schema.yaml
-  data:
-resource:
+description: |
+  #### What you use this for
+  How long categories of data are kept and how deletion/anonymisation works.
+  
+  #### When it counts
+  Alongside privacy inventory; applies to backups and archives too.
+  
+  #### Connected artefacts
+  - `data-asset-register-ropa`
+  - `dp-01-data-protection-policy`
+  - `is-11-backup-policy`
+  
+  #### Review rhythm
+  **Annual**; update when product retention or law shifts.
+  
+  #### First move
+  Pick customer data and employee data — set realistic retention per category.
 ---
 
 # Data Retention Policy

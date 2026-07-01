@@ -2,10 +2,10 @@
   "name": "isoo",
   "private": true,
   "scripts": {
-    "build:css": "postcss assets/css/app.css -o public/css/app.css",
+    "build:css": "postcss assets/css/app.css -o public/css/app.css --config assets/postcss.config.js",
     "build:editor": "node scripts/build-editor.mjs",
     "build": "npm run build:css && npm run build:editor",
-    "watch:css": "postcss assets/css/app.css -o public/css/app.css --watch",
+    "watch:css": "postcss assets/css/app.css -o public/css/app.css --config assets/postcss.config.js --watch",
     "lint:templates": "prettier --check \"data/templates/**/*.md\"",
     "format:templates": "prettier --write \"data/templates/**/*.md\""
   },

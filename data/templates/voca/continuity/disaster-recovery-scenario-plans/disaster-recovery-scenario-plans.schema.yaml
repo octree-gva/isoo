@@ -50,6 +50,20 @@ sections:
   field_type: textarea
   required: false
   description: Recovery point objective for this scenario.
-description: Technical recovery procedures for specific failure scenarios—site loss,
-  ransomware, etc. Develop them for systems identified in the BIA. Align RTO/RPO with
-  business continuity objectives.
+description: |
+  #### What you use this for
+  Technical recovery steps for named failure modes (site loss, ransomware, etc.).
+  
+  #### When it counts
+  For systems the BIA marked critical.
+  
+  #### Connected artefacts
+  - `is-11-backup-policy`
+  - `business-continuity-plan`
+  - `disaster-recovery-scenario-test-template`
+  
+  #### Review rhythm
+  **Annual**; after infra changes.
+  
+  #### First move
+  One scenario for your single most important database.

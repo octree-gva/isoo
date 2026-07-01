@@ -1,23 +1,22 @@
 ---
 type: ISO27001 Policy
 title: IS 23 Document and Record Policy
-description:
-  Rules for creating, approving, versioning, and retaining ISMS documents
-  and records. Implement early so your document tracker and change log have teeth.
-  Auditors check document control rigour closely.
-okf_version: "0.1"
-tags:
-  - iso27001
-timestamp: 2026-01-01 00:00:00.000000000 Z
-iso27001:
-  doc_id: is-23-document-and-record-policy
-  seq: 61
-  version: 0.1.0
-  kind: text
-  classification: Confidential
-  schema: is-23-document-and-record-policy.schema.yaml
-  data:
-resource:
+description: |
+  #### What you use this for
+  Creation, approval, versioning, distribution, and retention of ISMS records.
+  
+  #### When it counts
+  Early — gives teeth to the document tracker and change log.
+  
+  #### Connected artefacts
+  - `information-security-management-system-document-tracker`
+  - `change-log`
+  
+  #### Review rhythm
+  **Annual**.
+  
+  #### First move
+  Define who may approve a policy version — one role, one backup.
 ---
 
 # Documents and Records Policy

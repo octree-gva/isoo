@@ -67,9 +67,6 @@ class ExportPrintCss
         body.export-pdf .export-body ul li {
           break-inside: auto;
           page-break-inside: auto;
-        }
-
-        body.export-pdf .export-body ul li > * {
           overflow-wrap: anywhere;
           word-break: break-word;
         }

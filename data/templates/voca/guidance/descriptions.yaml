@@ -1,257 +1,1449 @@
+# Dashboard and document header copy for the ISOO standard template bundle.
+# Markdown supported. Keep voice original — do not mirror third-party catalogue wording.
+
 organisation-overview: |
-  Use this to capture who your organisation is, what it does, and how it is structured. Complete it early in your ISMS journey so auditors and your team share the same baseline. Update it when ownership, locations, or core services change.
+  #### What you use this for
+  A short portrait of the organisation: what you do, where you operate, and how teams fit together.
+  
+  #### When it counts
+  Fill this in before scope, risk work, or policies — everyone should share the same picture of the business.
+  
+  #### Connected artefacts
+  - `context-of-organisation`
+  - `documented-isms-scope`
+  
+  #### Review rhythm
+  **Yearly**, or when ownership, sites, or core services change.
+  
+  #### First move
+  Answer “what would a new director need to know in ten minutes?” and stop there.
 
 context-of-organisation: |
-  Document the internal and external issues that affect your information security goals, as ISO 27001 clause 4.1 requires. Use it during initial scoping and revisit it at least annually or after major market, regulatory, or technology shifts. List stakeholders, trends, and constraints that shape your risk decisions.
+  #### What you use this for
+  Capture internal and external factors that shape security priorities (clause 4.1 context).
+  
+  #### When it counts
+  Initial scoping, then whenever the market, regulation, or tech stack shifts materially.
+  
+  #### Connected artefacts
+  - `organisation-overview`
+  - `legal-and-contractual-requirements-register`
+  - `isms-risk-register`
+  
+  #### Review rhythm
+  **At least annually**; add an extra pass after major change (funding, product pivot, new jurisdiction).
+  
+  #### First move
+  List three external pressures and three internal constraints — that is enough to start.
 
 0c-iso-27001-implementation-checklist: |
-  A step-by-step roadmap for building your ISMS from scratch. Work through it in order during onboarding to avoid missing mandatory artefacts like scope, risk assessment, and the Statement of Applicability. Tick items off as you publish documents and gather evidence.
+  #### What you use this for
+  A phased workplan so a small team does not skip scope, risk treatment, or control justification.
+  
+  #### When it counts
+  First months of building the management system; revisit before stage‑1 / stage‑2 audits.
+  
+  #### Connected artefacts
+  - `isms-management-plan`
+  - `the-information-security-management-system-overview`
+  
+  #### Review rhythm
+  **During build** (tick as you go); refresh the checklist itself when you rebaseline the programme.
+  
+  #### First move
+  Pick the next open row and assign a name + date — not the whole sheet at once.
 
 documented-isms-scope: |
-  Defines exactly what your ISMS covers—locations, systems, teams, and exclusions. Draft it once you understand your context and refine it before certification. Keep it aligned with your risk register and SoA so auditors see a consistent boundary.
+  #### What you use this for
+  The signed boundary of what the management system covers: sites, services, teams, and explicit exclusions.
+  
+  #### When it counts
+  Before certification and whenever you add a product line, region, or major outsource.
+  
+  #### Connected artefacts
+  - `context-of-organisation`
+  - `statement-of-applicability-iso-27002-2022-and-2013`
+  - `isms-risk-register`
+  
+  #### Review rhythm
+  **Annual** sign-off; out-of-cycle when scope arguments change.
+  
+  #### First move
+  Write one paragraph a regulator could quote — then list exclusions with reasons.
 
 legal-and-contractual-requirements-register: |
-  Tracks laws, regulations, and customer contracts that impose security or privacy obligations. Populate it during discovery and review it whenever you enter new markets or sign major contracts. Use it to drive control selection and prove compliance awareness.
+  #### What you use this for
+  A living index of laws, regulators, and contract clauses that impose security or privacy duties.
+  
+  #### When it counts
+  Discovery phase; update when you enter a new country or sign enterprise terms.
+  
+  #### Connected artefacts
+  - `context-of-organisation`
+  - `dp-01-data-protection-policy`
+  - `third-party-supplier-register`
+  
+  #### Review rhythm
+  **Quarterly** scan; immediate entry when legal or sales closes a new obligation.
+  
+  #### First move
+  Add the three obligations you already know you must meet — GDPR, customer DPA, sector rule, etc.
 
 physical-and-virtual-assets-register: |
-  Lists hardware, cloud resources, and other infrastructure that supports your business. Build it alongside asset discovery and keep owners assigned. Refer to it when assessing risks, planning backups, and deciding what belongs in scope.
+  #### What you use this for
+  Inventory of infrastructure (on‑prem, cloud, SaaS) with owners and business use.
+  
+  #### When it counts
+  Alongside first risk pass; keep current as you adopt or retire systems.
+  
+  #### Connected artefacts
+  - `is-03-asset-management-policy`
+  - `software-license-assets-register`
+  - `isms-risk-register`
+  
+  #### Review rhythm
+  **Quarterly** owner check; **monthly** for production-critical rows.
+  
+  #### First move
+  Export what IT already knows (CMDB, cloud console) — do not start from a blank grid.
 
 data-asset-register-ropa: |
-  Records personal and sensitive data you process, including lawful basis and retention where GDPR applies. Create it when mapping data flows and privacy impact. Link each entry to systems in your asset registers and to controls in your SoA.
+  #### What you use this for
+  Record what personal data you process, why, where it lives, and how long you keep it (privacy inventory / ROPA).
+  
+  #### When it counts
+  Before scaling processing; update when you launch features that touch identity or health/financial data.
+  
+  #### Connected artefacts
+  - `dp-01-data-protection-policy`
+  - `dp-02-data-retention-policy`
+  - `physical-and-virtual-assets-register`
+  
+  #### Review rhythm
+  **Quarterly** with product/legal; **within 30 days** of a new processing purpose.
+  
+  #### First move
+  Document one real customer or employee data flow end to end.
 
 software-license-assets-register: |
-  Tracks licensed software, versions, and responsible owners. Use it to support patch management, access reviews, and vendor risk. Update it when you adopt, renew, or retire applications.
+  #### What you use this for
+  Track applications, versions, licence posture, and who answers for each tool.
+  
+  #### When it counts
+  Supports patching, access reviews, and vendor risk — start when the stack stops fitting in one spreadsheet.
+  
+  #### Connected artefacts
+  - `physical-and-virtual-assets-register`
+  - `is-25-patch-management-policy`
+  
+  #### Review rhythm
+  **Quarterly**; on every major upgrade or renewal.
+  
+  #### First move
+  List your top ten SaaS tools with an owner — expand later.
 
 statement-of-applicability-iso-27002-2022-and-2013: |
-  Your central record of which Annex A controls apply, are implemented, or are excluded—with justification. Complete it after your risk assessment and treat it as a living document. Auditors will cross-check it against policies, procedures, and evidence.
+  #### What you use this for
+  Your control selection record: which Annex A safeguards apply, how they are implemented, and why anything is out of scope.
+  
+  #### When it counts
+  After risk treatment; this is the map reviewers use to test controls.
+  
+  #### Connected artefacts
+  - `isms-risk-register`
+  - `ip-01-risk-management-procedure`
+  - `is-01-information-security-policy`
+  
+  #### Review rhythm
+  **Quarterly** recommended; **annual** minimum; **30 days** after major control or risk change.
+  
+  #### First move
+  Mark implementation status honestly on five controls you already know you have.
 
 annual-risk-review-meeting-template: |
-  Structures the yearly session where leadership revises risks, treatment plans, and ISMS performance. Schedule it before your management review or recertification cycle. Capture decisions, owners, and dates so improvements are traceable.
+  #### What you use this for
+  Agenda shell for leadership to revisit risk appetite, treatments, and open exposures.
+  
+  #### When it counts
+  Once per year before management review or recertification planning.
+  
+  #### Connected artefacts
+  - `isms-risk-register`
+  - `managment-review-team-meeting-agenda-template`
+  - `ip-01-risk-management-procedure`
+  
+  #### Review rhythm
+  **Per meeting** (archive notes); template itself **annual**.
+  
+  #### First move
+  Attach the current risk register and only discuss rows that moved since last time.
 
 managment-review-team-meeting-agenda-template: |
-  Guides the formal management review required by ISO 27001 clause 9.3. Use it at least once per year to assess ISMS suitability, adequacy, and effectiveness. Record inputs like audit results, incidents, and KPIs, then document actions and deadlines.
+  #### What you use this for
+  Structured inputs and outputs for top management’s ISMS review (clause 9.3).
+  
+  #### When it counts
+  At least once per year; extra session after serious incidents or scope changes.
+  
+  #### Connected artefacts
+  - `is-01-information-security-policy`
+  - `audit-report-template`
+  - `incident-and-corrective-action-log`
+  
+  #### Review rhythm
+  **Annual** minimum; year one often **quarterly**.
+  
+  #### First move
+  Pre-fill incident, audit, and KPI sections — the meeting should decide actions, not hunt data.
 
 the-information-security-management-system-overview: |
-  A concise narrative of how your ISMS works—policies, processes, roles, and improvement loops. Share it with new staff and auditors as an orientation document. Refresh it when you reorganise or materially change your control set.
+  #### What you use this for
+  Plain-language tour of how security is governed: policies, loops, roles, and improvement.
+  
+  #### When it counts
+  Onboarding staff, briefing leadership, orienting external reviewers.
+  
+  #### Connected artefacts
+  - `is-01-information-security-policy`
+  - `documented-isms-scope`
+  - `0c-iso-27001-implementation-checklist`
+  
+  #### Review rhythm
+  **Annual**; after reorganisation or major control set change.
+  
+  #### First move
+  Explain the system in one page as if to a smart colleague outside IT.
 
 information-security-manager-job-description: |
-  Defines the ISMS owner’s responsibilities, authority, and reporting line. Assign or hire against this role before you claim ISO 27001 leadership accountability. Review it when governance structures change.
+  #### What you use this for
+  Defines authority and duties of the person accountable for the management system.
+  
+  #### When it counts
+  Before claiming formal ISMS ownership; revisit when reporting lines change.
+  
+  #### Connected artefacts
+  - `isms-rasci-matrix-basic-accountability-matrix`
+  - `the-information-security-management-system-overview`
+  
+  #### Review rhythm
+  **Annual** or on restructure.
+  
+  #### First move
+  Name the role holder and one escalation path to the board.
 
 competency-matrix: |
-  Maps required security skills and training to roles across the organisation. Build it after policies are drafted so you know who must understand what. Use it to plan awareness sessions and to evidence competence at audit.
+  #### What you use this for
+  Maps security knowledge and training needs to job families.
+  
+  #### When it counts
+  After core policies exist — shows who must understand what.
+  
+  #### Connected artefacts
+  - `is-06-information-security-awareness-and-training-policy`
+  - `information-classification-summary`
+  
+  #### Review rhythm
+  **Annual**; update when roles or tooling change.
+  
+  #### First move
+  Pick three roles and list the one skill each must prove.
 
 isms-rasci-matrix-basic-accountability-matrix: |
-  A lightweight view of who is Responsible, Accountable, Supported, Consulted, or Informed for core ISMS activities. Fill it when roles are first assigned. Refer to it to resolve ownership gaps before audits.
+  #### What you use this for
+  Lightweight “who owns what” grid for core programme activities.
+  
+  #### When it counts
+  When roles are first assigned; resolves “that’s not my job” before reviews.
+  
+  #### Connected artefacts
+  - `information-security-manager-job-description`
+  - `isms-rasci-matrix-full`
+  
+  #### Review rhythm
+  **Annual**; patch when someone leaves or outsourcing shifts work.
+  
+  #### First move
+  Fill accountability for risk, incidents, and document control only — expand later.
 
 isms-rasci-matrix-full: |
-  An expanded RACI covering detailed ISMS tasks and control ownership. Develop it once basic accountability is clear and you need finer delegation. Keep it synced with job descriptions and process documents.
+  #### What you use this for
+  Detailed responsibility map across controls and recurring tasks.
+  
+  #### When it counts
+  When the basic matrix is too coarse for delegation and evidence collection.
+  
+  #### Connected artefacts
+  - `isms-rasci-matrix-basic-accountability-matrix`
+  - `competency-matrix`
+  
+  #### Review rhythm
+  **Quarterly** spot-check against reality.
+  
+  #### First move
+  Import rows from the basic matrix before adding new lines.
 
 information-classification-summary: |
-  Explains your classification scheme—labels, handling rules, and examples. Publish it after your classification policy is approved. Train staff to apply labels consistently on documents, email, and systems.
+  #### What you use this for
+  Staff-facing cheat sheet: labels, handling rules, and everyday examples.
+  
+  #### When it counts
+  After the classification policy is approved — training handout, not a policy repeat.
+  
+  #### Connected artefacts
+  - `is-05-information-classification-and-handling-policy`
+  
+  #### Review rhythm
+  **Annual**; refresh when labels or tooling change.
+  
+  #### First move
+  Give one real example per label (email subject, folder name, channel).
 
 information-security-management-system-document-tracker: |
-  Your master index of ISMS documents—version, owner, review date, and status. Maintain it from day one so nothing goes stale unnoticed. Auditors expect to see controlled document management here.
+  #### What you use this for
+  Master index of controlled docs: version, owner, review date, status.
+  
+  #### When it counts
+  From day one — stale documents are a common review finding.
+  
+  #### Connected artefacts
+  - `is-23-document-and-record-policy`
+  - `change-log`
+  
+  #### Review rhythm
+  **Monthly** glance; **quarterly** owner confirmations.
+  
+  #### First move
+  Register every policy you already have, even if version is “draft”.
 
 operations-security-manual-v1: |
-  Day-to-day operational security guidance for IT and support teams. Implement it once core policies exist and procedures are defined. Use it as the practical companion to high-level policies during daily work.
+  #### What you use this for
+  Runbook for IT/support: how controls actually work day to day.
+  
+  #### When it counts
+  After policies exist — bridges “what we said” and “what we do”.
+  
+  #### Connected artefacts
+  - `is-16-logging-and-monitoring-policy`
+  - `is-11-backup-policy`
+  - `is-13-change-management-policy`
+  
+  #### Review rhythm
+  **Annual**; patch after tooling or on-call process changes.
+  
+  #### First move
+  Document one routine (backup restore, access grant) exactly as performed today.
 
 how-to-access-control-and-role-based-access: |
-  Walks administrators through granting, reviewing, and revoking access using your RBAC model. Follow it when onboarding tools or training new admins. Keeps access changes consistent with your access control policy.
+  #### What you use this for
+  Step-by-step for admins: grant, review, and revoke access using your role model.
+  
+  #### When it counts
+  When onboarding tools or training new administrators.
+  
+  #### Connected artefacts
+  - `is-02-access-control-policy`
+  - `role-based-access-control`
+  - `access-request-form`
+  
+  #### Review rhythm
+  **Annual**; update when IdP or ticketing changes.
+  
+  #### First move
+  Walk through a fictional new hire with your real tools.
 
 role-based-access-control: |
-  Defines roles, permissions, and segregation-of-duties rules for your systems. Design it before rolling out the access request process. Review it when applications or organisational structure change.
+  #### What you use this for
+  Defines application roles, permissions, and separation-of-duties rules.
+  
+  #### When it counts
+  Before rolling out self-service access; revisit when org or apps change.
+  
+  #### Connected artefacts
+  - `is-02-access-control-policy`
+  - `access-request-form`
+  - `starter-leaver-mover-system-access-process`
+  
+  #### Review rhythm
+  **Quarterly** for privileged roles; **annual** full pass.
+  
+  #### First move
+  List admin roles and who may hold them — defer fine-grained app roles.
 
 access-request-form: |
-  Standard form for requesting new or changed system access with manager approval. Use it for every access change instead of ad hoc tickets. Retain completed forms as audit evidence.
+  #### What you use this for
+  Standard request + approval trail for new or changed system access.
+  
+  #### When it counts
+  Every access change — replaces ad hoc chat approvals.
+  
+  #### Connected artefacts
+  - `is-02-access-control-policy`
+  - `role-based-access-control`
+  - `starter-leaver-mover-access-register`
+  
+  #### Review rhythm
+  Template **annual**; each submission kept per records policy.
+  
+  #### First move
+  Publish the form where people already ask for access (ticket template, intranet).
 
 starter-leaver-mover-system-access-process: |
-  End-to-end workflow for joiners, leavers, and role changers. Implement it with HR and IT from the first hire. Timely provisioning and deprovisioning is one of the most scrutinised controls at audit.
+  #### What you use this for
+  Workflow when people **join, leave, or change role** — HR signal to IT action.
+  
+  #### When it counts
+  From first hire; late offboarding is one of the most tested controls.
+  
+  #### Connected artefacts
+  - `starter-leaver-mover-access-register`
+  - `access-request-form`
+  - `is-02-access-control-policy`
+  
+  #### Review rhythm
+  **Annual** process review; execute **per HR event**.
+  
+  #### First move
+  Time how long deprovisioning takes today — set a target.
 
 starter-leaver-mover-access-register: |
-  Log of access changes tied to HR events. Record each starter, leaver, and mover action here. Review periodically to catch missed revocations.
+  #### What you use this for
+  Evidence log tying HR lifecycle events to access changes.
+  
+  #### When it counts
+  Each join/leave/role change; proves timely provisioning and removal.
+  
+  #### Connected artefacts
+  - `starter-leaver-mover-system-access-process`
+  - `is-02-access-control-policy`
+  
+  #### Review rhythm
+  **Per event** entry; **quarterly** reconciliation against HRIS.
+  
+  #### First move
+  Backfill the last three leavers and verify accounts are gone.
 
 threat-intelligence-process: |
-  Describes how you collect, assess, and act on security threat information. Establish it once monitoring and incident response basics are in place. Feed relevant intel into risk reviews and patch prioritisation.
+  #### What you use this for
+  How you collect, judge, and act on relevant threat information.
+  
+  #### When it counts
+  Once monitoring and incident basics exist.
+  
+  #### Connected artefacts
+  - `threat-intelligence-report-template`
+  - `is-16-logging-and-monitoring-policy`
+  - `isms-risk-register`
+  
+  #### Review rhythm
+  **Annual** process; intake **ongoing**.
+  
+  #### First move
+  Subscribe to two free feeds your stack actually cares about (vendor + sector).
 
 threat-intelligence-report-template: |
-  Format for documenting periodic threat landscape summaries for leadership. Complete it on your defined cadence—monthly or quarterly. Link findings to risks or controls that need adjustment.
+  #### What you use this for
+  Periodic briefing format for leadership on threat trends and actions taken.
+  
+  #### When it counts
+  Monthly or quarterly rhythm depending on exposure.
+  
+  #### Connected artefacts
+  - `threat-intelligence-process`
+  - `managment-review-team-meeting-agenda-template`
+  
+  #### Review rhythm
+  **Monthly or quarterly** issues; template **annual**.
+  
+  #### First move
+  One page: three headlines, two risks touched, one action ordered.
 
 dp-01-data-protection-policy: |
-  Sets principles for lawful, fair processing of personal data under GDPR and related law. Approve it before handling personal data at scale. Staff must acknowledge it; align procedures and registers to its requirements.
+  #### What you use this for
+  Organisation-wide rules for lawful, fair, transparent personal data processing.
+  
+  #### When it counts
+  Before processing at scale; staff acknowledgement required.
+  
+  #### Connected artefacts
+  - `data-asset-register-ropa`
+  - `dp-02-data-retention-policy`
+  - `is-05-information-classification-and-handling-policy`
+  
+  #### Review rhythm
+  **Annual**; immediate review when law or processing model changes.
+  
+  #### First move
+  State lawful bases you actually rely on — do not copy a generic list.
 
 dp-02-data-retention-policy: |
-  Defines how long you keep data and when you delete or anonymise it. Publish it alongside your data inventory and retention schedules. Apply it to backups and archives, not just live systems.
+  #### What you use this for
+  How long categories of data are kept and how deletion/anonymisation works.
+  
+  #### When it counts
+  Alongside privacy inventory; applies to backups and archives too.
+  
+  #### Connected artefacts
+  - `data-asset-register-ropa`
+  - `dp-01-data-protection-policy`
+  - `is-11-backup-policy`
+  
+  #### Review rhythm
+  **Annual**; update when product retention or law shifts.
+  
+  #### First move
+  Pick customer data and employee data — set realistic retention per category.
 
 is-01-information-security-policy: |
-  Your top-level commitment to protecting information—scope, objectives, and governance. Approve it first; all other IS policies should align with it. Communicate it organisation-wide and review it at least annually.
+  #### What you use this for
+  Board-level commitment: objectives, scope, and governance for protecting information.
+  
+  #### When it counts
+  Approve before other security policies; communicate to all staff.
+  
+  #### Connected artefacts
+  - `the-information-security-management-system-overview`
+  - `managment-review-team-meeting-agenda-template`
+  
+  #### Review rhythm
+  **Annual** sign-off; sooner after major incident or reorg.
+  
+  #### First move
+  One page maximum — link detail out to topic policies.
 
 is-02-access-control-policy: |
-  Rules for who may access information and systems, and under what conditions. Finalise it before implementing RBAC and access workflows. Auditors will test whether daily practice matches these rules.
+  #### What you use this for
+  Rules for physical and logical access: who may see what, and how requests are approved.
+  
+  #### When it counts
+  Before RBAC tables and access workflows go live.
+  
+  #### Connected artefacts
+  - `role-based-access-control`
+  - `access-request-form`
+  - `starter-leaver-mover-system-access-process`
+  
+  #### Review rhythm
+  **Annual**; review after access-related incidents.
+  
+  #### First move
+  Define “privileged access” in one sentence your team recognises.
 
 is-03-asset-management-policy: |
-  Requirements for identifying, owning, and protecting information assets throughout their lifecycle. Adopt it when you stand up asset registers. Ensures inventory, classification, and disposal are handled consistently.
+  #### What you use this for
+  Lifecycle rules for information assets: identify, own, protect, dispose.
+  
+  #### When it counts
+  When standing up asset registers.
+  
+  #### Connected artefacts
+  - `physical-and-virtual-assets-register`
+  - `software-license-assets-register`
+  
+  #### Review rhythm
+  **Annual**.
+  
+  #### First move
+  Require an owner field on every new system request.
 
 is-04-risk-management-policy: |
-  Establishes how you identify, assess, treat, and monitor information security risks. Approve it before your first formal risk assessment. It frames acceptance criteria and ties risk work to business objectives.
+  #### What you use this for
+  Method and appetite for identifying, analysing, treating, and monitoring risk.
+  
+  #### When it counts
+  Before first formal risk assessment.
+  
+  #### Connected artefacts
+  - `ip-01-risk-management-procedure`
+  - `isms-risk-register`
+  
+  #### Review rhythm
+  **Annual**; after major risk events.
+  
+  #### First move
+  Write how management accepts residual risk — one paragraph.
 
 is-05-information-classification-and-handling-policy: |
-  Defines classification levels and handling rules for information at rest and in transit. Issue it before rolling out labelling and secure sharing practices. Pair it with your classification summary and awareness training.
+  #### What you use this for
+  Defines sensitivity levels and handling rules in transit and at rest.
+  
+  #### When it counts
+  Before labelling, DLP, or secure sharing rollouts.
+  
+  #### Connected artefacts
+  - `information-classification-summary`
+  - `is-18-information-transfer-policy`
+  
+  #### Review rhythm
+  **Annual**.
+  
+  #### First move
+  Choose three labels maximum for a small team.
 
 is-06-information-security-awareness-and-training-policy: |
-  Commits to educating staff on security responsibilities and measuring effectiveness. Launch it with your awareness programme. Track completion and refresh training when threats or policies change.
+  #### What you use this for
+  Commitment to train staff and measure whether security culture sticks.
+  
+  #### When it counts
+  Launch with awareness programme; track completion.
+  
+  #### Connected artefacts
+  - `competency-matrix`
+  - `communication-plan`
+  
+  #### Review rhythm
+  **Annual**; refresh content when threats or policies change.
+  
+  #### First move
+  Schedule one mandatory 30-minute session with attendance proof.
 
 is-07-acceptable-use-policy: |
-  Sets expectations for appropriate use of company systems, data, and devices. Require acknowledgement from all users at onboarding. Enforce consistently; it underpins disciplinary and monitoring controls.
+  #### What you use this for
+  Expectations for using company devices, networks, and data.
+  
+  #### When it counts
+  Onboarding; requires acknowledgement.
+  
+  #### Connected artefacts
+  - `is-08-clear-desk-and-clear-screen-policy`
+  - `is-28-ai-policy`
+  
+  #### Review rhythm
+  **Annual**; update when tooling (AI, BYOD) changes.
+  
+  #### First move
+  Cover what is obviously forbidden and what to do when unsure.
 
 is-08-clear-desk-and-clear-screen-policy: |
-  Requires physical and screen privacy to reduce unauthorised disclosure. Roll it out in office and remote settings. Simple to audit visually—make sure facilities and culture support compliance.
+  #### What you use this for
+  Reduce casual exposure: tidy desks, locked screens, clean shared spaces.
+  
+  #### When it counts
+  Office and remote — easy to observe, easy to neglect.
+  
+  #### Connected artefacts
+  - `is-07-acceptable-use-policy`
+  - `is-09a-mobile-and-teleworking-policy-office-based`
+  
+  #### Review rhythm
+  **Annual**.
+  
+  #### First move
+  Set auto-lock timeout and tell people in plain language.
 
 is-09a-mobile-and-teleworking-policy-office-based: |
-  Security rules for staff who mainly work on-site but may work remotely occasionally. Choose this variant if hybrid is your norm. Cover device use, VPN, and home network expectations.
+  #### What you use this for
+  Security expectations when most work happens on-site with occasional remote days.
+  
+  #### When it counts
+  Hybrid workplaces — pick this or the remote-first variant, not both.
+  
+  #### Connected artefacts
+  - `is-09b-mobile-and-teleworking-policy-fully-remote`
+  - `is-17-network-security-management-policy`
+  
+  #### Review rhythm
+  **Annual**.
+  
+  #### First move
+  State VPN, device, and visitor rules for “work from home Friday”.
 
 is-09b-mobile-and-teleworking-policy-fully-remote: |
-  Security rules for organisations where most staff work remotely. Use this if remote-first is your operating model. Address home offices, travel, and endpoint protection explicitly.
+  #### What you use this for
+  Security expectations when distributed work is the default.
+  
+  #### When it counts
+  Remote-first teams — home office, travel, and endpoint rules explicit.
+  
+  #### Connected artefacts
+  - `is-09a-mobile-and-teleworking-policy-office-based`
+  - `is-20-physical-and-environmental-security-policy`
+  
+  #### Review rhythm
+  **Annual**.
+  
+  #### First move
+  Define minimum home network and device posture without over-policing.
 
 is-10-business-continuity-policy: |
-  Commits to maintaining critical services during disruptions. Approve it before detailed BCP and BIA work. Sets recovery objectives that your continuity plans must meet.
+  #### What you use this for
+  Executive commitment to keep critical activities running through disruption.
+  
+  #### When it counts
+  Before detailed continuity planning and impact analysis.
+  
+  #### Connected artefacts
+  - `business-continuity-plan`
+  - `business-impact-assessment`
+  
+  #### Review rhythm
+  **Annual**.
+  
+  #### First move
+  Name the activities that must survive a bad week — three max.
 
 is-11-backup-policy: |
-  Defines what is backed up, how often, where copies live, and how restores are tested. Implement with your backup tooling and DR plans. Failed restores are a common audit finding—test regularly.
+  #### What you use this for
+  What is backed up, how often, where copies live, and how restores are proven.
+  
+  #### When it counts
+  Pair with backup tooling and DR playbooks.
+  
+  #### Connected artefacts
+  - `disaster-recovery-scenario-plans`
+  - `is-13-change-management-policy`
+  
+  #### Review rhythm
+  **Annual** policy; **restore tests** at least yearly for critical data.
+  
+  #### First move
+  Run one restore drill and write down what broke.
 
 is-12-protection-against-malware-policy: |
-  Requires anti-malware controls on endpoints, email, and servers. Align it with your chosen tooling and patch process. Verify coverage and update signatures or EDR policies continuously.
+  #### What you use this for
+  Requirements for endpoint, email, and server malware defences.
+  
+  #### When it counts
+  Align with EDR/AV actually deployed.
+  
+  #### Connected artefacts
+  - `is-25-patch-management-policy`
+  - `operations-security-manual-v1`
+  
+  #### Review rhythm
+  **Annual**; check coverage when fleet changes.
+  
+  #### First move
+  List platforms without protection — fix or justify.
 
 is-13-change-management-policy: |
-  Governs how changes to systems and infrastructure are requested, approved, and recorded. Essential before production changes scale up. Pair with your change log and CAB practices.
+  #### What you use this for
+  How production changes are requested, reviewed, deployed, and recorded.
+  
+  #### When it counts
+  Before change volume makes informal fixes dangerous.
+  
+  #### Connected artefacts
+  - `change-log`
+  - `operations-security-manual-v1`
+  
+  #### Review rhythm
+  **Annual**.
+  
+  #### First move
+  Define what counts as emergency change and who may approve it.
 
 is-14-third-party-supplier-security-policy: |
-  Sets security expectations for vendors who access your data or systems. Use it in procurement and contract clauses. Drive supplier register reviews and due diligence from this policy.
+  #### What you use this for
+  Security expectations for vendors who touch your data or operations.
+  
+  #### When it counts
+  Procurement and contract negotiation.
+  
+  #### Connected artefacts
+  - `third-party-supplier-register`
+  - `is-26-cloud-service-policy`
+  
+  #### Review rhythm
+  **Annual**; reassess on renewal or incident.
+  
+  #### First move
+  Tier your top five vendors by data access — review deepest tier first.
 
 is-15-continual-improvement-policy: |
-  Describes how you capture feedback, correct nonconformities, and improve the ISMS. Activate it once audits and incidents begin producing actions. Links to corrective action logs and management review.
+  #### What you use this for
+  How feedback, nonconformities, and lessons become tracked improvements.
+  
+  #### When it counts
+  When audits and incidents start producing actions.
+  
+  #### Connected artefacts
+  - `incident-and-corrective-action-log`
+  - `managment-review-team-meeting-agenda-template`
+  
+  #### Review rhythm
+  **Annual**.
+  
+  #### First move
+  Link to the log where actions must land — no orphan findings.
 
 is-16-logging-and-monitoring-policy: |
-  Defines what events you log, retention periods, and who reviews alerts. Implement alongside SIEM or log aggregation. Supports incident detection and forensic investigations.
+  #### What you use this for
+  What you log, how long you keep it, who watches alerts.
+  
+  #### When it counts
+  With SIEM/log stack design.
+  
+  #### Connected artefacts
+  - `operations-security-manual-v1`
+  - `threat-intelligence-process`
+  
+  #### Review rhythm
+  **Annual**; tune retention when storage costs bite.
+  
+  #### First move
+  List three events you must be able to reconstruct after an incident.
 
 is-17-network-security-management-policy: |
-  Controls for segmentation, firewalls, wireless, and remote access. Align it with your network diagram and architecture. Review when infrastructure or cloud footprint changes.
+  #### What you use this for
+  Segmentation, perimeter, wireless, and remote access principles.
+  
+  #### When it counts
+  Align with network diagrams and cloud security groups.
+  
+  #### Connected artefacts
+  - `operations-security-manual-v1`
+  - `is-26-cloud-service-policy`
+  
+  #### Review rhythm
+  **Annual**; after architecture migrations.
+  
+  #### First move
+  Sketch trust zones on one whiteboard photo — policy follows diagram.
 
 is-18-information-transfer-policy: |
-  Rules for sharing information inside and outside the organisation securely. Apply before enabling file sharing, email encryption, or API integrations. Covers physical media and electronic transfer alike.
+  #### What you use this for
+  Secure exchange of information inside and outside the organisation.
+  
+  #### When it counts
+  Before wide file sharing, APIs, or removable media use.
+  
+  #### Connected artefacts
+  - `is-05-information-classification-and-handling-policy`
+  - `is-22-cryptographic-control-and-encryption-policy`
+  
+  #### Review rhythm
+  **Annual**.
+  
+  #### First move
+  Ban “which channel for confidential data?” — pick approved tools.
 
 is-19-secure-development-policy: |
-  Security requirements for software you build or materially customise. Adopt it before SDLC hardening or DevSecOps tooling. Covers coding standards, testing, and separation of environments.
+  #### What you use this for
+  Security expectations for software you build or heavily customise.
+  
+  #### When it counts
+  Before SDLC gates, CI security checks, or prod access for developers.
+  
+  #### Connected artefacts
+  - `operations-security-manual-v1`
+  - `is-13-change-management-policy`
+  
+  #### Review rhythm
+  **Annual**.
+  
+  #### First move
+  Require security review on one class of change (auth, payments, PII).
 
 is-20-physical-and-environmental-security-policy: |
-  Protects offices, data centres, and equipment from unauthorised access and environmental harm. Relevant for any on-premise or co-located assets. Coordinate with facilities on access badges and visitor procedures.
+  #### What you use this for
+  Protect premises, equipment, and environment (access, power, fire, etc.).
+  
+  #### When it counts
+  Any office, closet, or co-lo you control.
+  
+  #### Connected artefacts
+  - `physical-and-virtual-assets-register`
+  
+  #### Review rhythm
+  **Annual**; walk-through after office moves.
+  
+  #### First move
+  Document how visitors get in and who escorts them.
 
 is-21-cryptographic-key-management-policy: |
-  Governs generation, storage, rotation, and destruction of cryptographic keys. Required when you manage encryption keys in-house. Prevents weak or orphaned keys undermining encryption controls.
+  #### What you use this for
+  Generation, storage, rotation, and destruction of cryptographic keys.
+  
+  #### When it counts
+  When you operate keys in-house (not only cloud-managed).
+  
+  #### Connected artefacts
+  - `is-22-cryptographic-control-and-encryption-policy`
+  
+  #### Review rhythm
+  **Annual**.
+  
+  #### First move
+  Inventory where keys live — KMS, HSM, `.env`, password managers.
 
 is-22-cryptographic-control-and-encryption-policy: |
-  Specifies when and how encryption protects data in transit and at rest. Align with legal requirements and classification levels. Document algorithms and exceptions clearly for auditors.
+  #### What you use this for
+  When encryption is required in transit and at rest, and which standards apply.
+  
+  #### When it counts
+  Align with classification and regulatory minima.
+  
+  #### Connected artefacts
+  - `is-21-cryptographic-key-management-policy`
+  - `is-18-information-transfer-policy`
+  
+  #### Review rhythm
+  **Annual**.
+  
+  #### First move
+  State defaults (TLS 1.2+, AES-256) and how to request an exception.
 
 is-23-document-and-record-policy: |
-  Rules for creating, approving, versioning, and retaining ISMS documents and records. Implement early so your document tracker and change log have teeth. Auditors check document control rigour closely.
+  #### What you use this for
+  Creation, approval, versioning, distribution, and retention of ISMS records.
+  
+  #### When it counts
+  Early — gives teeth to the document tracker and change log.
+  
+  #### Connected artefacts
+  - `information-security-management-system-document-tracker`
+  - `change-log`
+  
+  #### Review rhythm
+  **Annual**.
+  
+  #### First move
+  Define who may approve a policy version — one role, one backup.
 
 is-24-significant-incident-policy-and-collection-of-evidence: |
-  Defines major incidents, escalation, and forensic evidence handling. Publish before your incident forms and playbooks go live. Ensures legal admissibility and regulatory notification where required.
+  #### What you use this for
+  Major incident criteria, escalation, and forensic evidence handling.
+  
+  #### When it counts
+  Before incident forms and playbooks go live.
+  
+  #### Connected artefacts
+  - `incident-and-breach-reporting-form`
+  - `post-incident-review-form`
+  
+  #### Review rhythm
+  **Annual**; after any serious event.
+  
+  #### First move
+  Define “significant” with examples your exec team recognises.
 
 is-25-patch-management-policy: |
-  Commitment to timely patching of operating systems and applications. Tie it to vulnerability scanning and change management. Track SLAs by severity and evidence deployment.
+  #### What you use this for
+  Timelines for patching OS and applications by severity.
+  
+  #### When it counts
+  With vulnerability scanning and change management.
+  
+  #### Connected artefacts
+  - `is-12-protection-against-malware-policy`
+  - `software-license-assets-register`
+  
+  #### Review rhythm
+  **Annual**; SLAs reviewed **quarterly** against scan results.
+  
+  #### First move
+  Set critical patch days — realistic for a small ops team.
 
 is-26-cloud-service-policy: |
-  Security requirements for adopting and operating cloud services. Use when moving workloads to SaaS, PaaS, or IaaS. Covers shared responsibility, configuration, and exit planning.
+  #### What you use this for
+  Adopting and operating SaaS, PaaS, and IaaS securely (shared responsibility).
+  
+  #### When it counts
+  Cloud migrations and new SaaS approvals.
+  
+  #### Connected artefacts
+  - `third-party-supplier-register`
+  - `is-14-third-party-supplier-security-policy`
+  
+  #### Review rhythm
+  **Annual**.
+  
+  #### First move
+  List configuration baselines for your primary cloud account.
 
 is-27-intellectual-property-rights-policy: |
-  Protects company IP and respects third-party licences and copyrights. Important for teams handling code, designs, or licensed content. Supports contractual and legal compliance beyond pure security.
+  #### What you use this for
+  Protect company IP; respect licences and third-party copyrights.
+  
+  #### When it counts
+  Teams shipping code, design, or licensed media.
+  
+  #### Connected artefacts
+  - `is-07-acceptable-use-policy`
+  
+  #### Review rhythm
+  **Annual**.
+  
+  #### First move
+  Clarify who owns code written on company time — one paragraph.
 
 is-28-ai-policy: |
-  Governs acceptable and secure use of AI tools and models in your organisation. Adopt before widespread adoption of generative AI. Address data leakage, bias, vendor risk, and human oversight.
+  #### What you use this for
+  Acceptable use of AI tools: data boundaries, oversight, vendor risk.
+  
+  #### When it counts
+  Before generative AI is everywhere in workflows.
+  
+  #### Connected artefacts
+  - `is-07-acceptable-use-policy`
+  - `dp-01-data-protection-policy`
+  
+  #### Review rhythm
+  **Annual** minimum; **quarterly** while tooling shifts fast.
+  
+  #### First move
+  Ban pasting customer/employee data into public models — say it plainly.
 
 audit-plan-iso-27002-2013-and-2022-version: |
-  Schedules internal audits—scope, criteria, auditors, and timing—for the certification cycle. Build it after your ISMS is operational enough to audit. ISO 27001 expects a risk-based audit programme covering all requirements over time.
+  #### What you use this for
+  Schedule internal audits: scope, criteria, auditors, timing across the cycle.
+  
+  #### When it counts
+  Once the ISMS is operable enough to test.
+  
+  #### Connected artefacts
+  - `1a-blank-audit-template-iso-27002-2013-and-2022-version`
+  - `1b-audit-template-iso-27002-2013-and-2022-version-pre-mapped`
+  - `statement-of-applicability-iso-27002-2022-and-2013`
+  
+  #### Review rhythm
+  **Annual** programme; high-risk areas **more often**.
+  
+  #### First move
+  Plan one audit quarter that covers clauses 4–10, not only Annex A.
 
 change-log: |
-  Records material changes to ISMS documents and key system configurations. Update it whenever you revise policies or implement significant technical change. Provides traceability auditors expect.
+  #### What you use this for
+  Trace material changes to ISMS documents and critical configurations.
+  
+  #### When it counts
+  Every significant policy or infrastructure change.
+  
+  #### Connected artefacts
+  - `is-13-change-management-policy`
+  - `information-security-management-system-document-tracker`
+  
+  #### Review rhythm
+  **Per change** entry; **quarterly** review in management meeting.
+  
+  #### First move
+  Log the last three production changes you remember — backfill.
 
 communication-plan: |
-  Defines how you communicate ISMS matters internally and externally—awareness, incidents, and regulatory contact. Finalise it alongside your top-level security policy rollout. Ensures stakeholders hear the right message at the right time.
+  #### What you use this for
+  Who hears what about security: awareness, incidents, regulators, customers.
+  
+  #### When it counts
+  Rollout with top policy; update when comms channels change.
+  
+  #### Connected artefacts
+  - `is-06-information-security-awareness-and-training-policy`
+  - `is-01-information-security-policy`
+  
+  #### Review rhythm
+  **Annual**.
+  
+  #### First move
+  Name spokesperson for incidents — one primary, one backup.
 
 isms-management-plan: |
-  Your implementation and maintenance plan—milestones, resources, and priorities for the ISMS. Draft it during project kick-off and refresh after management review. Shows auditors you manage the programme deliberately.
+  #### What you use this for
+  Programme plan: milestones, resources, priorities for building and running the ISMS.
+  
+  #### When it counts
+  Kick-off; refresh after management review.
+  
+  #### Connected artefacts
+  - `0c-iso-27001-implementation-checklist`
+  - `managment-review-team-meeting-agenda-template`
+  
+  #### Review rhythm
+  **Annual**; **quarterly** during initial certification push.
+  
+  #### First move
+  Pick a target certification window and work backwards.
 
 incident-and-breach-reporting-form: |
-  Standard form for staff to report security events and suspected breaches. Make it easy to find and train everyone to use it. Triggers your incident process and evidence collection.
+  #### What you use this for
+  Simple channel for staff to report odd events and suspected breaches.
+  
+  #### When it counts
+  Always available — training beats fine print.
+  
+  #### Connected artefacts
+  - `is-24-significant-incident-policy-and-collection-of-evidence`
+  - `incident-and-corrective-action-log`
+  
+  #### Review rhythm
+  Template **annual**; submissions **per event**.
+  
+  #### First move
+  Put the link in onboarding and the office wiki — test it monthly.
 
 incident-and-corrective-action-log: |
-  Central register of incidents, root causes, actions taken, and closure status. Log every reportable event here. Supports continual improvement and demonstrates closed-loop handling at audit.
+  #### What you use this for
+  Central record of incidents, causes, fixes, and closure.
+  
+  #### When it counts
+  Every reportable event — demonstrates closed-loop improvement.
+  
+  #### Connected artefacts
+  - `is-15-continual-improvement-policy`
+  - `post-incident-review-form`
+  
+  #### Review rhythm
+  **Per incident**; **quarterly** trend review.
+  
+  #### First move
+  Log the last near-miss even if it felt too small — practice the habit.
 
 ip-01-risk-management-procedure: |
-  Step-by-step method for identifying assets, threats, vulnerabilities, and treatments. Follow it for initial and periodic risk assessments. Outputs feed your risk register and Statement of Applicability.
+  #### What you use this for
+  Repeatable steps to find assets, threats, weaknesses, and treatments.
+  
+  #### When it counts
+  Initial and periodic risk assessments.
+  
+  #### Connected artefacts
+  - `is-04-risk-management-policy`
+  - `isms-risk-register`
+  - `statement-of-applicability-iso-27002-2022-and-2013`
+  
+  #### Review rhythm
+  **Annual** full pass; **ad hoc** when context shifts.
+  
+  #### First move
+  Run the procedure on one business process, not the entire company.
 
 isms-risk-register: |
-  Living list of identified risks, scores, owners, treatments, and residual status. Populate it from your first risk assessment and review at least annually. The SoA and audit evidence should trace back to entries here.
+  #### What you use this for
+  Living list of risks, scores, owners, treatments, and residual status.
+  
+  #### When it counts
+  Output of risk assessment; input to control selection and reviews.
+  
+  #### Connected artefacts
+  - `ip-01-risk-management-procedure`
+  - `statement-of-applicability-iso-27002-2022-and-2013`
+  - `annual-risk-review-meeting-template`
+  
+  #### Review rhythm
+  **Quarterly** touch; **annual** formal review.
+  
+  #### First move
+  Ten honest risks beat fifty boilerplate rows.
 
 third-party-supplier-register: |
-  Inventory of vendors with access to your data or critical services, plus risk tier and review dates. Build it during procurement onboarding. Reassess suppliers when contracts renew or incidents occur.
+  #### What you use this for
+  Vendors with data or operational dependency — tier, owner, review dates.
+  
+  #### When it counts
+  Onboarding suppliers; renewals and incidents trigger reassessment.
+  
+  #### Connected artefacts
+  - `is-14-third-party-supplier-security-policy`
+  - `legal-and-contractual-requirements-register`
+  
+  #### Review rhythm
+  **Annual** minimum; **quarterly** for tier‑1.
+  
+  #### First move
+  Your CRM, finance, and SSO vendor lists are the seed data.
 
 1a-blank-audit-template-iso-27002-2013-and-2022-version: |
-  Empty checklist for planning and conducting internal audits against Annex A controls. Use it when you want full flexibility to map questions yourself. Suitable for experienced auditors tailoring scope per engagement.
+  #### What you use this for
+  Blank audit worksheet — you map questions to controls yourself.
+  
+  #### When it counts
+  Custom engagements or experienced auditors who bring their own structure.
+  
+  #### Connected artefacts
+  - `audit-plan-iso-27002-2013-and-2022-version`
+  - `audit-report-template`
+  
+  #### Review rhythm
+  **Per audit**; template **annual**.
+  
+  #### First move
+  Copy the sheet per audit and name the lead auditor upfront.
 
 1b-audit-template-iso-27002-2013-and-2022-version-pre-mapped: |
-  Audit checklist with ISO 27002 control references pre-filled for faster fieldwork. Choose this for routine internal audits or pre-certification dry runs. Record findings and link them to corrective actions.
+  #### What you use this for
+  Audit worksheet with Annex A references prefilled to speed fieldwork.
+  
+  #### When it counts
+  Routine internal audits and certification dry-runs.
+  
+  #### Connected artefacts
+  - `audit-plan-iso-27002-2013-and-2022-version`
+  - `statement-of-applicability-iso-27002-2022-and-2013`
+  
+  #### Review rhythm
+  **Per audit**; update mapping when standard or SoA changes.
+  
+  #### First move
+  Filter to controls you marked “implemented” in the SoA — audit those first.
 
 audit-meeting-template: |
-  Agenda and notes structure for opening and closing audit meetings with auditees. Use at the start and end of each audit engagement. Sets expectations, confirms scope, and communicates findings formally.
+  #### What you use this for
+  Opening and closing meeting notes with auditees.
+  
+  #### When it counts
+  Start and end of each audit engagement.
+  
+  #### Connected artefacts
+  - `audit-report-template`
+  - `1b-audit-template-iso-27002-2013-and-2022-version-pre-mapped`
+  
+  #### Review rhythm
+  **Per engagement**.
+  
+  #### First move
+  Confirm scope and evidence expectations in the opening meeting.
 
 audit-report-template: |
-  Standard format for documenting audit scope, methodology, findings, and recommendations. Complete it after each internal or supplier audit. Management review and certification bodies rely on clear, actionable reports.
+  #### What you use this for
+  Formal report: scope, method, findings, recommendations.
+  
+  #### When it counts
+  After each internal or supplier audit.
+  
+  #### Connected artefacts
+  - `incident-and-corrective-action-log`
+  - `managment-review-team-meeting-agenda-template`
+  
+  #### Review rhythm
+  **Per audit**; classify findings consistently.
+  
+  #### First move
+  Write executive summary first — five bullets max.
 
 business-impact-assessment: |
-  Analyses how disruptions affect critical activities, resources, and recovery priorities. Conduct it before writing detailed continuity plans. Identifies maximum tolerable downtime and dependencies.
+  #### What you use this for
+  Analyse how outages hit activities, dependencies, and recovery priorities.
+  
+  #### When it counts
+  Before writing detailed continuity and DR material.
+  
+  #### Connected artefacts
+  - `business-continuity-plan`
+  - `physical-and-virtual-assets-register`
+  
+  #### Review rhythm
+  **Annual**; after major product or vendor change.
+  
+  #### First move
+  Interview owners of three critical activities — not IT first.
 
 business-impact-analysis-exec-summary: |
-  Executive-readable summary of BIA results for leadership decisions and funding. Produce it after the detailed BIA is complete. Use it in management review to justify continuity investments.
+  #### What you use this for
+  Leadership-friendly summary of impact analysis for funding and priorities.
+  
+  #### When it counts
+  After detailed BIA — input to management review.
+  
+  #### Connected artefacts
+  - `business-impact-assessment`
+  - `business-continuity-objectives-and-strategy`
+  
+  #### Review rhythm
+  **Annual** with BIA.
+  
+  #### First move
+  One slide: worst plausible outage, cost of downtime, top dependency.
 
 business-continuity-objectives-and-strategy: |
-  Sets recovery objectives and strategic approach—prevention, response, and recovery. Define it after your BIA so targets are evidence-based. Guides the structure of your business continuity plan.
+  #### What you use this for
+  Recovery targets and strategic choices (prevent, respond, recover).
+  
+  #### When it counts
+  After BIA numbers exist — guides plan structure.
+  
+  #### Connected artefacts
+  - `business-impact-assessment`
+  - `is-10-business-continuity-policy`
+  
+  #### Review rhythm
+  **Annual**.
+  
+  #### First move
+  Agree RTO/RPO for one service, not the entire catalogue.
 
 business-continuity-plan: |
-  Your master plan for maintaining or restoring critical operations during a disruption. Finalise it once objectives and strategies are agreed. Exercise it regularly and keep contact lists current.
+  #### What you use this for
+  Master playbook for keeping or restoring critical operations in a crisis.
+  
+  #### When it counts
+  After objectives set; exercise regularly.
+  
+  #### Connected artefacts
+  - `business-continuity-objectives-and-strategy`
+  - `business-impact-assessment`
+  - `communication-plan`
+  
+  #### Review rhythm
+  **Annual** review; **≥1 exercise/year**.
+  
+  #### First move
+  Verify contact tree dials real numbers — today.
 
 business-continuity-incident-action-log: |
-  Running log of actions taken during a live continuity or crisis event. Activate it when you invoke the BCP. Captures decisions and timestamps for post-incident review.
+  #### What you use this for
+  Timestamped actions during a live continuity event.
+  
+  #### When it counts
+  When the plan is activated.
+  
+  #### Connected artefacts
+  - `business-continuity-plan`
+  - `post-incident-review-form`
+  
+  #### Review rhythm
+  **Per activation**; review entries in debrief.
+  
+  #### First move
+  Assign a scribe role before the next tabletop.
 
 post-incident-review-form: |
-  Structured debrief after incidents or continuity activations. Complete it within days of closure while memories are fresh. Drives corrective actions into your improvement process.
+  #### What you use this for
+  Blameless debrief after incidents or plan activations.
+  
+  #### When it counts
+  Within days of stand-down while facts are fresh.
+  
+  #### Connected artefacts
+  - `incident-and-corrective-action-log`
+  - `is-15-continual-improvement-policy`
+  
+  #### Review rhythm
+  **Per event**.
+  
+  #### First move
+  Capture timeline before debating root cause.
 
 disaster-recovery-scenario-plans: |
-  Technical recovery procedures for specific failure scenarios—site loss, ransomware, etc. Develop them for systems identified in the BIA. Align RTO/RPO with business continuity objectives.
+  #### What you use this for
+  Technical recovery steps for named failure modes (site loss, ransomware, etc.).
+  
+  #### When it counts
+  For systems the BIA marked critical.
+  
+  #### Connected artefacts
+  - `is-11-backup-policy`
+  - `business-continuity-plan`
+  - `disaster-recovery-scenario-test-template`
+  
+  #### Review rhythm
+  **Annual**; after infra changes.
+  
+  #### First move
+  One scenario for your single most important database.
 
 disaster-recovery-scenario-test-template: |
-  Plan and record a DR test for a chosen scenario. Schedule tests at least annually for critical systems. Document results, gaps, and remediation owners.
+  #### What you use this for
+  Plan and record a DR exercise for a chosen scenario.
+  
+  #### When it counts
+  At least yearly for critical systems.
+  
+  #### Connected artefacts
+  - `disaster-recovery-scenario-plans`
+  - `business-continuity-test-report-template`
+  
+  #### Review rhythm
+  **Annual** per critical scenario; rotate coverage.
+  
+  #### First move
+  Schedule before the next busy season — or it will slip.
 
 how-to-conduct-a-business-continuity-test: |
-  Practical guide for planning, running, and evaluating BC exercises. Follow it before your first tabletop or live test. Helps facilitators keep tests realistic and measurable.
+  #### What you use this for
+  Facilitator guide: plan, run, and score continuity exercises.
+  
+  #### When it counts
+  Before your first tabletop or technical drill.
+  
+  #### Connected artefacts
+  - `business-continuity-test-template`
+  - `business-continuity-plan-scenario`
+  
+  #### Review rhythm
+  **Annual** refresh of the guide.
+  
+  #### First move
+  Run a 60-minute tabletop with coffee — low stakes, real learning.
 
 business-continuity-test-template: |
-  Checklist and script for executing a continuity exercise. Use it to standardise test preparation and execution. Ensures roles, injects, and success criteria are defined upfront.
+  #### What you use this for
+  Checklist and script so exercises run the same way each time.
+  
+  #### When it counts
+  Every planned exercise.
+  
+  #### Connected artefacts
+  - `how-to-conduct-a-business-continuity-test`
+  - `business-continuity-plan`
+  
+  #### Review rhythm
+  **Per exercise**; template **annual**.
+  
+  #### First move
+  Define success criteria before sending calendar invites.
 
 business-continuity-test-report-template: |
-  Format for summarising test objectives, outcomes, and improvement actions. Complete it immediately after each exercise. Share with management review as evidence of preparedness.
+  #### What you use this for
+  Executive summary of test goals, results, and follow-ups.
+  
+  #### When it counts
+  Immediately after each exercise.
+  
+  #### Connected artefacts
+  - `business-continuity-test-template`
+  - `managment-review-team-meeting-agenda-template`
+  
+  #### Review rhythm
+  **Per exercise**.
+  
+  #### First move
+  List what surprised the room — that is the valuable part.
 
 business-continuity-plan-scenario: |
-  A narrative scenario describing a disruption used to stress-test your BCP. Develop scenarios that reflect plausible threats to your organisation. Use them in tabletop exercises with leadership and IT.
+  #### What you use this for
+  Narrative disruption story to stress-test the master plan.
+  
+  #### When it counts
+  Tabletops with leadership and IT.
+  
+  #### Connected artefacts
+  - `business-continuity-plan`
+  - `how-to-conduct-a-business-continuity-test`
+  
+  #### Review rhythm
+  **Rotate yearly** — avoid repeating the same fire drill.
+  
+  #### First move
+  Pick a scenario your team worries about but has not rehearsed.
 
 business-continuity-scenario: |
-  Alternative or supplementary scenario material for continuity training and tests. Rotate scenarios so teams do not rehearse only one event type. Update when your threat landscape or dependencies change.
+  #### What you use this for
+  Additional scenario material for training and tests.
+  
+  #### When it counts
+  Supplement primary scenarios; variety builds muscle memory.
+  
+  #### Connected artefacts
+  - `business-continuity-test-template`
+  - `business-continuity-plan-scenario`
+  
+  #### Review rhythm
+  **When threat landscape shifts**.
+  
+  #### First move
+  Adapt a recent industry incident into a tabletop inject.
 
 business-continuity-test-report-findings: |
-  Detailed findings log from continuity tests—gaps, strengths, and priorities. Attach or reference it from your formal test report. Track open findings until closed in your corrective action process.
-
-architectural-schema: |
-  High-level diagram of applications, data stores, integrations, and trust boundaries. Maintain it as systems evolve; link it to asset registers and network diagrams. Auditors use it to understand scope and control placement.
-
-network-diagram: |
-  Visual map of networks, subnets, firewalls, and key connectivity. Keep it current after infrastructure changes. Supports network security policy reviews and incident response.
+  #### What you use this for
+  Detailed gap list from continuity tests — strengths and fixes.
+  
+  #### When it counts
+  Attach to formal test report; track until closed.
+  
+  #### Connected artefacts
+  - `business-continuity-test-report-template`
+  - `incident-and-corrective-action-log`
+  
+  #### Review rhythm
+  **Per test**; open items **monthly** until done.
+  
+  #### First move
+  Assign an owner and date to every finding before the room disperses.

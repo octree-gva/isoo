@@ -1,23 +1,22 @@
 ---
 type: ISO27001 Policy
 title: IS 11 Backup Policy
-description:
-  Defines what is backed up, how often, where copies live, and how restores
-  are tested. Implement with your backup tooling and DR plans. Failed restores are
-  a common audit finding—test regularly.
-okf_version: "0.1"
-tags:
-  - iso27001
-timestamp: 2026-01-01 00:00:00.000000000 Z
-iso27001:
-  doc_id: is-11-backup-policy
-  seq: 49
-  version: 0.1.0
-  kind: text
-  classification: Confidential
-  schema: is-11-backup-policy.schema.yaml
-  data:
-resource:
+description: |
+  #### What you use this for
+  What is backed up, how often, where copies live, and how restores are proven.
+  
+  #### When it counts
+  Pair with backup tooling and DR playbooks.
+  
+  #### Connected artefacts
+  - `disaster-recovery-scenario-plans`
+  - `is-13-change-management-policy`
+  
+  #### Review rhythm
+  **Annual** policy; **restore tests** at least yearly for critical data.
+  
+  #### First move
+  Run one restore drill and write down what broke.
 ---
 
 # Backup Policy

@@ -1,23 +1,23 @@
 ---
 type: ISO27001 Document
 title: Documented ISMS Scope
-description:
-  Defines exactly what your ISMS covers—locations, systems, teams, and
-  exclusions. Draft it once you understand your context and refine it before certification.
-  Keep it aligned with your risk register and SoA so auditors see a consistent boundary.
-okf_version: "0.1"
-tags:
-  - iso27001
-timestamp: 2026-01-01 00:00:00.000000000 Z
-iso27001:
-  doc_id: documented-isms-scope
-  seq: 11
-  version: 0.1.0
-  kind: text
-  classification: Confidential
-  schema: documented-isms-scope.schema.yaml
-  data:
-resource:
+description: |
+  #### What you use this for
+  The signed boundary of what the management system covers: sites, services, teams, and explicit exclusions.
+  
+  #### When it counts
+  Before certification and whenever you add a product line, region, or major outsource.
+  
+  #### Connected artefacts
+  - `context-of-organisation`
+  - `statement-of-applicability-iso-27002-2022-and-2013`
+  - `isms-risk-register`
+  
+  #### Review rhythm
+  **Annual** sign-off; out-of-cycle when scope arguments change.
+  
+  #### First move
+  Write one paragraph a regulator could quote — then list exclusions with reasons.
 ---
 
 # ISO 27001 Certification Scope Statement

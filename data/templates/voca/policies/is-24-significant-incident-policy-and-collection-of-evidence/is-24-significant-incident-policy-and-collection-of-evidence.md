@@ -1,23 +1,22 @@
 ---
 type: ISO27001 Policy
 title: IS 24 Significant Incident Policy and Collection of Evidence
-description:
-  Defines major incidents, escalation, and forensic evidence handling.
-  Publish before your incident forms and playbooks go live. Ensures legal admissibility
-  and regulatory notification where required.
-okf_version: "0.1"
-tags:
-  - iso27001
-timestamp: 2026-01-01 00:00:00.000000000 Z
-iso27001:
-  doc_id: is-24-significant-incident-policy-and-collection-of-evidence
-  seq: 62
-  version: 0.1.0
-  kind: text
-  classification: Confidential
-  schema: is-24-significant-incident-policy-and-collection-of-evidence.schema.yaml
-  data:
-resource:
+description: |
+  #### What you use this for
+  Major incident criteria, escalation, and forensic evidence handling.
+  
+  #### When it counts
+  Before incident forms and playbooks go live.
+  
+  #### Connected artefacts
+  - `incident-and-breach-reporting-form`
+  - `post-incident-review-form`
+  
+  #### Review rhythm
+  **Annual**; after any serious event.
+  
+  #### First move
+  Define “significant” with examples your exec team recognises.
 ---
 
 # Significant Incident and Collection of Evidence Policy

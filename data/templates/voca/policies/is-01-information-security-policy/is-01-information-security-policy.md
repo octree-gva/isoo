@@ -1,23 +1,22 @@
 ---
 type: ISO27001 Policy
 title: IS 01 Information Security Policy
-description:
-  Your top-level commitment to protecting information—scope, objectives,
-  and governance. Approve it first; all other IS policies should align with it. Communicate
-  it organisation-wide and review it at least annually.
-okf_version: "0.1"
-tags:
-  - iso27001
-timestamp: 2026-01-01 00:00:00.000000000 Z
-iso27001:
-  doc_id: is-01-information-security-policy
-  seq: 38
-  version: 0.1.0
-  kind: text
-  classification: Confidential
-  schema: is-01-information-security-policy.schema.yaml
-  data:
-resource:
+description: |
+  #### What you use this for
+  Board-level commitment: objectives, scope, and governance for protecting information.
+  
+  #### When it counts
+  Approve before other security policies; communicate to all staff.
+  
+  #### Connected artefacts
+  - `the-information-security-management-system-overview`
+  - `managment-review-team-meeting-agenda-template`
+  
+  #### Review rhythm
+  **Annual** sign-off; sooner after major incident or reorg.
+  
+  #### First move
+  One page maximum — link detail out to topic policies.
 ---
 
 # Information Security Policy

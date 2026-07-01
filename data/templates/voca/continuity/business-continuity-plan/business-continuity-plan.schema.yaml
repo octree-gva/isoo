@@ -1,9 +1,23 @@
 schema_version: '1'
 kind: form
 response_kind: text
-description: Your master plan for maintaining or restoring critical operations during
-  a disruption. Finalise it once objectives and strategies are agreed. Exercise it
-  regularly and keep contact lists current.
+description: |
+  #### What you use this for
+  Master playbook for keeping or restoring critical operations in a crisis.
+  
+  #### When it counts
+  After objectives set; exercise regularly.
+  
+  #### Connected artefacts
+  - `business-continuity-objectives-and-strategy`
+  - `business-impact-assessment`
+  - `communication-plan`
+  
+  #### Review rhythm
+  **Annual** review; **≥1 exercise/year**.
+  
+  #### First move
+  Verify contact tree dials real numbers — today.
 sections:
 - level: h1
   key: major_incident_crisis_planning

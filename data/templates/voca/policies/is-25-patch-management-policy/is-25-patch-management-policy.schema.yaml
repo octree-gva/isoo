@@ -106,6 +106,19 @@ sections:
   editable: true
   field_type: textarea
   required: false
-description: Commitment to timely patching of operating systems and applications.
-  Tie it to vulnerability scanning and change management. Track SLAs by severity and
-  evidence deployment.
+description: |
+  #### What you use this for
+  Timelines for patching OS and applications by severity.
+  
+  #### When it counts
+  With vulnerability scanning and change management.
+  
+  #### Connected artefacts
+  - `is-12-protection-against-malware-policy`
+  - `software-license-assets-register`
+  
+  #### Review rhythm
+  **Annual**; SLAs reviewed **quarterly** against scan results.
+  
+  #### First move
+  Set critical patch days — realistic for a small ops team.

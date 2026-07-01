@@ -79,7 +79,21 @@ _internal:
   type: uuid
 - key: _deleted_at
   type: datetime
-description: Log of access changes tied to HR events. Record each starter, leaver,
-  and mover action here. Review periodically to catch missed revocations.
+description: |
+  #### What you use this for
+  Evidence log tying HR lifecycle events to access changes.
+  
+  #### When it counts
+  Each join/leave/role change; proves timely provisioning and removal.
+  
+  #### Connected artefacts
+  - `starter-leaver-mover-system-access-process`
+  - `is-02-access-control-policy`
+  
+  #### Review rhythm
+  **Per event** entry; **quarterly** reconciliation against HRIS.
+  
+  #### First move
+  Backfill the last three leavers and verify accounts are gone.
 export_tags:
 - soi

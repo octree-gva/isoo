@@ -134,8 +134,21 @@ sections:
   editable: true
   field_type: textarea
   required: false
-description: Defines classification levels and handling rules for information at rest
-  and in transit. Issue it before rolling out labelling and secure sharing practices.
-  Pair it with your classification summary and awareness training.
+description: |
+  #### What you use this for
+  Defines sensitivity levels and handling rules in transit and at rest.
+  
+  #### When it counts
+  Before labelling, DLP, or secure sharing rollouts.
+  
+  #### Connected artefacts
+  - `information-classification-summary`
+  - `is-18-information-transfer-policy`
+  
+  #### Review rhythm
+  **Annual**.
+  
+  #### First move
+  Choose three labels maximum for a small team.
 export_tags:
 - data_protection

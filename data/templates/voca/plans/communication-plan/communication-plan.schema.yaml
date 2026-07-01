@@ -39,6 +39,19 @@ _internal:
   type: uuid
 - key: _deleted_at
   type: datetime
-description: Defines how you communicate ISMS matters internally and externally—awareness,
-  incidents, and regulatory contact. Finalise it alongside your top-level security
-  policy rollout. Ensures stakeholders hear the right message at the right time.
+description: |
+  #### What you use this for
+  Who hears what about security: awareness, incidents, regulators, customers.
+  
+  #### When it counts
+  Rollout with top policy; update when comms channels change.
+  
+  #### Connected artefacts
+  - `is-06-information-security-awareness-and-training-policy`
+  - `is-01-information-security-policy`
+  
+  #### Review rhythm
+  **Annual**.
+  
+  #### First move
+  Name spokesperson for incidents — one primary, one backup.

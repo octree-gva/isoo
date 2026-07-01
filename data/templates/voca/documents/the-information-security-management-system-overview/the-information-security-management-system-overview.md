@@ -1,23 +1,23 @@
 ---
 type: ISO27001 Document
 title: The Information Security Management System Overview
-description:
-  A concise narrative of how your ISMS works—policies, processes, roles,
-  and improvement loops. Share it with new staff and auditors as an orientation document.
-  Refresh it when you reorganise or materially change your control set.
-okf_version: "0.1"
-tags:
-  - iso27001
-timestamp: 2026-01-01 00:00:00.000000000 Z
-iso27001:
-  doc_id: the-information-security-management-system-overview
-  seq: 21
-  version: 0.1.0
-  kind: text
-  classification: Confidential
-  schema: the-information-security-management-system-overview.schema.yaml
-  data:
-resource:
+description: |
+  #### What you use this for
+  Plain-language tour of how security is governed: policies, loops, roles, and improvement.
+  
+  #### When it counts
+  Onboarding staff, briefing leadership, orienting external reviewers.
+  
+  #### Connected artefacts
+  - `is-01-information-security-policy`
+  - `documented-isms-scope`
+  - `0c-iso-27001-implementation-checklist`
+  
+  #### Review rhythm
+  **Annual**; after reorganisation or major control set change.
+  
+  #### First move
+  Explain the system in one page as if to a smart colleague outside IT.
 ---
 
 # Legal Representative

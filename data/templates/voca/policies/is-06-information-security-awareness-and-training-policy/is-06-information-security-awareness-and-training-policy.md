@@ -1,23 +1,22 @@
 ---
 type: ISO27001 Policy
 title: IS 06 Information Security Awareness and Training Policy
-description:
-  Commits to educating staff on security responsibilities and measuring
-  effectiveness. Launch it with your awareness programme. Track completion and refresh
-  training when threats or policies change.
-okf_version: "0.1"
-tags:
-  - iso27001
-timestamp: 2026-01-01 00:00:00.000000000 Z
-iso27001:
-  doc_id: is-06-information-security-awareness-and-training-policy
-  seq: 43
-  version: 0.1.0
-  kind: text
-  classification: Confidential
-  schema: is-06-information-security-awareness-and-training-policy.schema.yaml
-  data:
-resource:
+description: |
+  #### What you use this for
+  Commitment to train staff and measure whether security culture sticks.
+  
+  #### When it counts
+  Launch with awareness programme; track completion.
+  
+  #### Connected artefacts
+  - `competency-matrix`
+  - `communication-plan`
+  
+  #### Review rhythm
+  **Annual**; refresh content when threats or policies change.
+  
+  #### First move
+  Schedule one mandatory 30-minute session with attendance proof.
 ---
 
 # Information Security Awareness and Training Policy

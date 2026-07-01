@@ -23,15 +23,29 @@ RSpec.describe 'project export', type: :request do
     get "/projects/#{slug}/export", { format: 'md' }
     expect(last_response.status).to eq(200)
     expect(last_response.headers['Content-Type']).to include('text/markdown')
-    expect(last_response.headers['Content-Disposition']).to include("#{slug}-export.md")
-    expect(last_response.body).to include('Export Test export')
+    expect(last_response.headers['Content-Disposition']).to include('export-test-v0.0.0.md')
+    expect(last_response.body).to include('Export Test v0.0.0 export')
+  end
+
+  it 'includes bumped project version in export filename and title' do
+    2.times do
+      post "/projects/#{slug}/docs/organisation-overview",
+           about_us: "About #{SecureRandom.hex(2)}",
+           document_changes: 'minor edit',
+           significant_change: '0'
+    end
+
+    get "/projects/#{slug}/export", { format: 'html' }
+    expect(last_response.status).to eq(200)
+    expect(last_response.headers['Content-Disposition']).to include('export-test-v0.0.2.html')
+    expect(last_response.body).to include('<h1>Export Test v0.0.2</h1>')
   end
 
   it 'downloads print-ready html' do
     get "/projects/#{slug}/export", { format: 'html' }
     expect(last_response.status).to eq(200)
     expect(last_response.headers['Content-Type']).to include('text/html')
-    expect(last_response.headers['Content-Disposition']).to include("#{slug}-export.html")
+    expect(last_response.headers['Content-Disposition']).to include('export-test-v0.0.0.html')
     expect(last_response.body.length).to be > 500
     expect(last_response.body).to include(
       '<!DOCTYPE html>',
@@ -56,7 +70,7 @@ RSpec.describe 'project export', type: :request do
 
     expect(last_response.status).to eq(200)
     expect(last_response.headers['Content-Type']).to include('application/pdf')
-    expect(last_response.headers['Content-Disposition']).to include("#{slug}-export.pdf")
+    expect(last_response.headers['Content-Disposition']).to include('export-test-v0.0.0.pdf')
     expect(last_response.body).to start_with('%PDF-1.4')
     expect(ExportPdfRenderer).to have_received(:render) do |html, display_url:, title:, export_date:, **|
       expect(html).to include('data-export="isoo-html-v3"', 'class="export-pdf"')
@@ -87,12 +101,13 @@ RSpec.describe 'project export', type: :request do
 
   it 'filters html export by scope' do
     demo_slug = create_seeded_demo!
+    manifest = ProjectManifest.load(File.join(App::DATA_PATH, 'projects', demo_slug))
     get "/projects/#{demo_slug}/export", { format: 'html' }
     full_count = last_response.body.scan('class="export-doc"').size
 
     get "/projects/#{demo_slug}/export", { format: 'html', scope: 'basic' }
     expect(last_response.status).to eq(200)
-    expect(last_response.headers['Content-Disposition']).to include('-export-basic.html')
+    expect(last_response.headers['Content-Disposition']).to include("#{manifest.export_basename}-basic.html")
     basic_count = last_response.body.scan('class="export-doc"').size
 
     expect(basic_count).to be < full_count

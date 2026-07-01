@@ -118,10 +118,16 @@ class App < Roda
     rack_session['flash'] = { 'message' => message, 'type' => 'error' }
   end
 
-  def commit_and_redirect!(r, path, commit_message:, toast_key:, **toast_args)
+  def commit_and_redirect!(r, path, commit_message:, toast_key:, significant: false, bump_project_version: true,
+                           **toast_args)
+    bump_project_version!(significant: significant) if bump_project_version
     self.class.git.commit(commit_message)
     flash_success(toast_key, **toast_args)
     r.redirect(path)
+  end
+
+  def bump_project_version!(significant:)
+    @manifest.bump_version!(significant: significant)
   end
 
   def http_error!(status, detail: nil, detail_key: nil, **i18n_opts)
@@ -327,15 +333,15 @@ class App < Roda
     when 'html'
       response['Content-Type'] = 'text/html; charset=utf-8'
       response['Content-Disposition'] = export_attachment(slug, 'html', scope: scope)
-      export_html_bundle(exporter.html_entries, title: @manifest.name, display_url: export_html_url)
+      export_html_bundle(exporter.html_entries, title: @manifest.export_title, display_url: export_html_url)
     when 'pdf'
       response['Content-Type'] = 'application/pdf'
       response['Content-Disposition'] = export_attachment(slug, 'pdf', scope: scope)
       ExportPdfRenderer.render(
-        export_html_bundle(exporter.html_entries, title: @manifest.name, pdf_export: true,
+        export_html_bundle(exporter.html_entries, title: @manifest.export_title, pdf_export: true,
                                                   display_url: export_html_url),
         display_url: export_html_url,
-        title: @manifest.name,
+        title: @manifest.export_title,
         logo_data_uri: export_logo_data_uri,
         export_date: Time.now.utc.strftime('%Y-%m-%d')
       )
@@ -364,15 +370,17 @@ class App < Roda
     when 'html'
       response['Content-Type'] = 'text/html; charset=utf-8'
       response['Content-Disposition'] = doc_export_attachment(slug, doc_id, 'html')
-      export_html_bundle(exporter.html_entries_for_doc(doc_id), title: title, display_url: export_url)
+      export_html_bundle(exporter.html_entries_for_doc(doc_id), title: export_doc_title(title),
+                                                              display_url: export_url)
     when 'pdf'
       response['Content-Type'] = 'application/pdf'
       response['Content-Disposition'] = doc_export_attachment(slug, doc_id, 'pdf')
       ExportPdfRenderer.render(
-        export_html_bundle(exporter.html_entries_for_doc(doc_id), title: title, pdf_export: true,
+        export_html_bundle(exporter.html_entries_for_doc(doc_id), title: export_doc_title(title),
+                                                                  pdf_export: true,
                                                                   display_url: export_url),
         display_url: export_url,
-        title: title,
+        title: export_doc_title(title),
         logo_data_uri: export_logo_data_uri,
         export_date: Time.now.utc.strftime('%Y-%m-%d')
       )
@@ -381,6 +389,10 @@ class App < Roda
       response['Content-Disposition'] = doc_export_attachment(slug, doc_id, 'md')
       exporter.export_markdown_doc(doc_id)
     end
+  end
+
+  def export_doc_title(doc_title)
+    "#{@manifest.export_title} — #{doc_title}"
   end
 
   def export_html_bundle(entries, title:, display_url: nil, pdf_export: false)
@@ -396,7 +408,7 @@ class App < Roda
   end
 
   def export_html_document(exporter, pdf_export: false)
-    export_html_bundle(exporter.html_entries, title: @manifest.name, pdf_export: pdf_export,
+    export_html_bundle(exporter.html_entries, title: @manifest.export_title, pdf_export: pdf_export,
                                               display_url: '')
   end
 
@@ -423,11 +435,11 @@ class App < Roda
 
   def export_attachment(slug, ext, scope: 'full')
     suffix = scope == 'full' ? '' : "-#{scope}"
-    %(attachment; filename="#{slug}-export#{suffix}.#{ext}")
+    %(attachment; filename="#{@manifest.export_basename}#{suffix}.#{ext}")
   end
 
   def doc_export_attachment(slug, doc_id, ext)
-    %(attachment; filename="#{slug}-#{doc_id}.#{ext}")
+    %(attachment; filename="#{@manifest.export_basename}-#{doc_id}.#{ext}")
   end
 
   def set_doc_export_nav(slug, doc)
@@ -540,7 +552,8 @@ class App < Roda
     )
     commit_and_redirect!(r, "/projects/#{slug}/docs/#{doc_id}/fullscreen",
                          commit_message: "#{doc_id} v#{version}: #{changes}",
-                         toast_key: 'toast.table_saved')
+                         toast_key: 'toast.table_saved',
+                         significant: r.params['significant_change'] == '1')
   rescue TableDocumentStore::ValidationError => e
     flash_error(e.message)
     r.redirect("/projects/#{slug}/docs/#{doc_id}/fullscreen")
@@ -637,7 +650,8 @@ class App < Roda
     @manifest.soft_delete_annex!(doc_id)
     commit_and_redirect!(r, "/projects/#{slug}/docs/#{doc_id}",
                          commit_message: "#{doc_id}: excluded from export",
-                         toast_key: 'toast.annex_excluded')
+                         toast_key: 'toast.annex_excluded',
+                         significant: false)
   end
 
   def restore_annex_to_export(r, slug, doc_id)
@@ -650,7 +664,8 @@ class App < Roda
     @manifest.restore_annex!(doc_id)
     commit_and_redirect!(r, "/projects/#{slug}/docs/#{doc_id}",
                          commit_message: "#{doc_id}: restored to export",
-                         toast_key: 'toast.annex_restored')
+                         toast_key: 'toast.annex_restored',
+                         significant: false)
   end
 
   def record_annex_lifecycle_change(slug, _doc_id, changes:)
@@ -698,7 +713,8 @@ class App < Roda
     @manifest.update_annex!(doc_id, 'title' => title, 'description' => description)
     commit_and_redirect!(r, "/projects/#{slug}/docs/#{doc_id}",
                          commit_message: "#{doc_id} v#{version}: #{changes}",
-                         toast_key: 'toast.annex_saved')
+                         toast_key: 'toast.annex_saved',
+                         significant: r.params['significant_change'] == '1')
   end
 
   def handle_table_rows(r, slug, doc_id)
@@ -708,17 +724,20 @@ class App < Roda
       store.soft_delete(@doc_path, row_id)
       commit_and_redirect!(r, table_redirect_path(slug, doc_id, r),
                            commit_message: "#{doc_id}: table row",
-                           toast_key: 'toast.row_deleted')
+                           toast_key: 'toast.row_deleted',
+                           significant: false)
     elsif row_id != '' && r.params['_method'] == 'patch'
       store.update_row(@doc_path, row_id, r.params)
       commit_and_redirect!(r, table_redirect_path(slug, doc_id, r, row_id: row_id),
                            commit_message: "#{doc_id}: table row",
-                           toast_key: 'toast.row_updated')
+                           toast_key: 'toast.row_updated',
+                           significant: false)
     else
       row = store.add_row(@doc_path, r.params)
       commit_and_redirect!(r, table_redirect_path(slug, doc_id, r, row_id: row['_row_id']),
                            commit_message: "#{doc_id}: table row",
-                           toast_key: 'toast.row_added')
+                           toast_key: 'toast.row_added',
+                           significant: false)
     end
   rescue TableDocumentStore::ValidationError => e
     flash_error(e.message)
@@ -779,6 +798,8 @@ class App < Roda
       changes: changes
     )
 
+    bump_project_version!(significant: r.params['significant_change'] == '1')
+
     self.class.git.commit("annex #{aid} upload")
     flash_success('toast.file_uploaded')
     r.redirect("/projects/#{slug}/docs/#{doc_id}")
@@ -837,7 +858,8 @@ class App < Roda
 
     commit_and_redirect!(r, "/projects/#{slug}/docs/#{doc_id}",
                          commit_message: "#{doc_id} v#{version}: #{changes}",
-                         toast_key: kind == 'table' ? 'toast.table_saved' : 'toast.document_saved')
+                         toast_key: kind == 'table' ? 'toast.table_saved' : 'toast.document_saved',
+                         significant: significant)
   end
 
   def document_presence_heartbeat(_r, slug, doc_id)

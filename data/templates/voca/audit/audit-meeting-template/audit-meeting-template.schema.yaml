@@ -44,6 +44,19 @@ sections:
   editable: true
   field_type: textarea
   required: false
-description: Agenda and notes structure for opening and closing audit meetings with
-  auditees. Use at the start and end of each audit engagement. Sets expectations,
-  confirms scope, and communicates findings formally.
+description: |
+  #### What you use this for
+  Opening and closing meeting notes with auditees.
+  
+  #### When it counts
+  Start and end of each audit engagement.
+  
+  #### Connected artefacts
+  - `audit-report-template`
+  - `1b-audit-template-iso-27002-2013-and-2022-version-pre-mapped`
+  
+  #### Review rhythm
+  **Per engagement**.
+  
+  #### First move
+  Confirm scope and evidence expectations in the opening meeting.

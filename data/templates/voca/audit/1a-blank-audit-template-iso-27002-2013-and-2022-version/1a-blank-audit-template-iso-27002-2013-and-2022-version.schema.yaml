@@ -65,6 +65,19 @@ _internal:
   type: uuid
 - key: _deleted_at
   type: datetime
-description: Empty checklist for planning and conducting internal audits against Annex
-  A controls. Use it when you want full flexibility to map questions yourself. Suitable
-  for experienced auditors tailoring scope per engagement.
+description: |
+  #### What you use this for
+  Blank audit worksheet — you map questions to controls yourself.
+  
+  #### When it counts
+  Custom engagements or experienced auditors who bring their own structure.
+  
+  #### Connected artefacts
+  - `audit-plan-iso-27002-2013-and-2022-version`
+  - `audit-report-template`
+  
+  #### Review rhythm
+  **Per audit**; template **annual**.
+  
+  #### First move
+  Copy the sheet per audit and name the lead auditor upfront.

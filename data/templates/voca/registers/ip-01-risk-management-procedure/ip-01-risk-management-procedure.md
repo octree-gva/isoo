@@ -1,23 +1,23 @@
 ---
 type: ISO27001 Procedure
 title: IP 01 RIsk Management Procedure
-description:
-  Step-by-step method for identifying assets, threats, vulnerabilities,
-  and treatments. Follow it for initial and periodic risk assessments. Outputs feed
-  your risk register and Statement of Applicability.
-okf_version: "0.1"
-tags:
-  - iso27001
-timestamp: 2026-01-01 00:00:00.000000000 Z
-iso27001:
-  doc_id: ip-01-risk-management-procedure
-  seq: 73
-  version: 0.1.0
-  kind: text
-  classification: Confidential
-  schema: ip-01-risk-management-procedure.schema.yaml
-  data:
-resource:
+description: |
+  #### What you use this for
+  Repeatable steps to find assets, threats, weaknesses, and treatments.
+  
+  #### When it counts
+  Initial and periodic risk assessments.
+  
+  #### Connected artefacts
+  - `is-04-risk-management-policy`
+  - `isms-risk-register`
+  - `statement-of-applicability-iso-27002-2022-and-2013`
+  
+  #### Review rhythm
+  **Annual** full pass; **ad hoc** when context shifts.
+  
+  #### First move
+  Run the procedure on one business process, not the entire company.
 ---
 
 # Purpose

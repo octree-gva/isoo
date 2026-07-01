@@ -25,7 +25,7 @@ class ProjectExporter
 
   def export_markdown
     link_resolver = link_resolver_for
-    out = "# #{@manifest.name} #{IsooI18n.t('export.markdown_suffix')}\n\n"
+    out = "# #{@manifest.export_title} #{IsooI18n.t('export.markdown_suffix')}\n\n"
     entries.each do |entry|
       out += export_markdown_entry(entry, link_resolver)
     end

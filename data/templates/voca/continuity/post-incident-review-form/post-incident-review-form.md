@@ -1,23 +1,22 @@
 ---
 type: ISO27001 Document
 title: Post Incident Review Form
-description:
-  Structured debrief after incidents or continuity activations. Complete
-  it within days of closure while memories are fresh. Drives corrective actions into
-  your improvement process.
-okf_version: "0.1"
-tags:
-  - iso27001
-timestamp: 2026-01-01 00:00:00.000000000 Z
-iso27001:
-  doc_id: post-incident-review-form
-  seq: 87
-  version: 0.1.0
-  kind: text
-  classification: Confidential
-  schema: post-incident-review-form.schema.yaml
-  data:
-resource:
+description: |
+  #### What you use this for
+  Blameless debrief after incidents or plan activations.
+  
+  #### When it counts
+  Within days of stand-down while facts are fresh.
+  
+  #### Connected artefacts
+  - `incident-and-corrective-action-log`
+  - `is-15-continual-improvement-policy`
+  
+  #### Review rhythm
+  **Per event**.
+  
+  #### First move
+  Capture timeline before debating root cause.
 ---
 
 # What Happened?

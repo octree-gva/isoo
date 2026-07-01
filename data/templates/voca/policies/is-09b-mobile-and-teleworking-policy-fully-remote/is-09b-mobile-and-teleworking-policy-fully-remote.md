@@ -1,23 +1,22 @@
 ---
 type: ISO27001 Policy
 title: IS 09b Mobile and Teleworking Policy - fully remote
-description:
-  Security rules for organisations where most staff work remotely. Use
-  this if remote-first is your operating model. Address home offices, travel, and
-  endpoint protection explicitly.
-okf_version: "0.1"
-tags:
-  - iso27001
-timestamp: 2026-01-01 00:00:00.000000000 Z
-iso27001:
-  doc_id: is-09b-mobile-and-teleworking-policy-fully-remote
-  seq: 47
-  version: 0.1.0
-  kind: text
-  classification: Confidential
-  schema: is-09b-mobile-and-teleworking-policy-fully-remote.schema.yaml
-  data:
-resource:
+description: |
+  #### What you use this for
+  Security expectations when distributed work is the default.
+  
+  #### When it counts
+  Remote-first teams — home office, travel, and endpoint rules explicit.
+  
+  #### Connected artefacts
+  - `is-09a-mobile-and-teleworking-policy-office-based`
+  - `is-20-physical-and-environmental-security-policy`
+  
+  #### Review rhythm
+  **Annual**.
+  
+  #### First move
+  Define minimum home network and device posture without over-policing.
 ---
 
 # Mobile and Teleworking Policy

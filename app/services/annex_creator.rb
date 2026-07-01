@@ -28,6 +28,7 @@ class AnnexCreator
     }
     write_annex_files(project_root, entry, author)
     manifest.add_annex!(entry)
+    manifest.bump_version!(significant: false)
     @git&.commit("#{doc_id}: create annex")
     doc_id
   end

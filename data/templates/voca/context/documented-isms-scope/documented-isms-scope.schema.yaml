@@ -72,8 +72,22 @@ sections:
   editable: true
   field_type: textarea
   required: false
-description: Defines exactly what your ISMS covers—locations, systems, teams, and
-  exclusions. Draft it once you understand your context and refine it before certification.
-  Keep it aligned with your risk register and SoA so auditors see a consistent boundary.
+description: |
+  #### What you use this for
+  The signed boundary of what the management system covers: sites, services, teams, and explicit exclusions.
+  
+  #### When it counts
+  Before certification and whenever you add a product line, region, or major outsource.
+  
+  #### Connected artefacts
+  - `context-of-organisation`
+  - `statement-of-applicability-iso-27002-2022-and-2013`
+  - `isms-risk-register`
+  
+  #### Review rhythm
+  **Annual** sign-off; out-of-cycle when scope arguments change.
+  
+  #### First move
+  Write one paragraph a regulator could quote — then list exclusions with reasons.
 export_tags:
 - basic

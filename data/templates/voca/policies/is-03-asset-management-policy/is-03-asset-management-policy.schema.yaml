@@ -113,6 +113,19 @@ sections:
   editable: true
   field_type: textarea
   required: false
-description: Requirements for identifying, owning, and protecting information assets
-  throughout their lifecycle. Adopt it when you stand up asset registers. Ensures
-  inventory, classification, and disposal are handled consistently.
+description: |
+  #### What you use this for
+  Lifecycle rules for information assets: identify, own, protect, dispose.
+  
+  #### When it counts
+  When standing up asset registers.
+  
+  #### Connected artefacts
+  - `physical-and-virtual-assets-register`
+  - `software-license-assets-register`
+  
+  #### Review rhythm
+  **Annual**.
+  
+  #### First move
+  Require an owner field on every new system request.

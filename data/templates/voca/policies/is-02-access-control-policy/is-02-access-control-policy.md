@@ -1,23 +1,23 @@
 ---
 type: ISO27001 Policy
 title: IS 02 Access Control Policy
-description:
-  Rules for who may access information and systems, and under what conditions.
-  Finalise it before implementing RBAC and access workflows. Auditors will test whether
-  daily practice matches these rules.
-okf_version: "0.1"
-tags:
-  - iso27001
-timestamp: 2026-01-01 00:00:00.000000000 Z
-iso27001:
-  doc_id: is-02-access-control-policy
-  seq: 39
-  version: 0.1.0
-  kind: text
-  classification: Confidential
-  schema: is-02-access-control-policy.schema.yaml
-  data:
-resource:
+description: |
+  #### What you use this for
+  Rules for physical and logical access: who may see what, and how requests are approved.
+  
+  #### When it counts
+  Before RBAC tables and access workflows go live.
+  
+  #### Connected artefacts
+  - `role-based-access-control`
+  - `access-request-form`
+  - `starter-leaver-mover-system-access-process`
+  
+  #### Review rhythm
+  **Annual**; review after access-related incidents.
+  
+  #### First move
+  Define “privileged access” in one sentence your team recognises.
 ---
 
 # Access Control Policy

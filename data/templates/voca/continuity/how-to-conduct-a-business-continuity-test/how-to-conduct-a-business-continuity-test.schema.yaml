@@ -157,6 +157,19 @@ sections:
   editable: true
   field_type: textarea
   required: false
-description: Practical guide for planning, running, and evaluating BC exercises. Follow
-  it before your first tabletop or live test. Helps facilitators keep tests realistic
-  and measurable.
+description: |
+  #### What you use this for
+  Facilitator guide: plan, run, and score continuity exercises.
+  
+  #### When it counts
+  Before your first tabletop or technical drill.
+  
+  #### Connected artefacts
+  - `business-continuity-test-template`
+  - `business-continuity-plan-scenario`
+  
+  #### Review rhythm
+  **Annual** refresh of the guide.
+  
+  #### First move
+  Run a 60-minute tabletop with coffee — low stakes, real learning.

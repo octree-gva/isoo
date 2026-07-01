@@ -99,6 +99,20 @@ sections:
   editable: true
   field_type: textarea
   required: false
-description: Step-by-step method for identifying assets, threats, vulnerabilities,
-  and treatments. Follow it for initial and periodic risk assessments. Outputs feed
-  your risk register and Statement of Applicability.
+description: |
+  #### What you use this for
+  Repeatable steps to find assets, threats, weaknesses, and treatments.
+  
+  #### When it counts
+  Initial and periodic risk assessments.
+  
+  #### Connected artefacts
+  - `is-04-risk-management-policy`
+  - `isms-risk-register`
+  - `statement-of-applicability-iso-27002-2022-and-2013`
+  
+  #### Review rhythm
+  **Annual** full pass; **ad hoc** when context shifts.
+  
+  #### First move
+  Run the procedure on one business process, not the entire company.

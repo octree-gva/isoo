@@ -1,23 +1,20 @@
 ---
 type: ISO27001 Register
 title: 0C - ISO 27001 Implementation Checklist
-description:
-  A step-by-step roadmap for building your ISMS from scratch. Work through
-  it in order during onboarding to avoid missing mandatory artefacts like scope, risk
-  assessment, and the Statement of Applicability. Tick items off as you publish documents
-  and gather evidence.
-okf_version: "0.1"
-tags:
-  - iso27001
-  - register
-timestamp: 2026-01-01 00:00:00.000000000 Z
-iso27001:
-  doc_id: 0c-iso-27001-implementation-checklist
-  seq: 10
-  version: 0.1.0
-  kind: table
-  classification: Confidential
-  schema: 0c-iso-27001-implementation-checklist.schema.yaml
-  data: 0c-iso-27001-implementation-checklist.csv
-resource:
+description: |
+  #### What you use this for
+  A phased workplan so a small team does not skip scope, risk treatment, or control justification.
+  
+  #### When it counts
+  First months of building the management system; revisit before stage‑1 / stage‑2 audits.
+  
+  #### Connected artefacts
+  - `isms-management-plan`
+  - `the-information-security-management-system-overview`
+  
+  #### Review rhythm
+  **During build** (tick as you go); refresh the checklist itself when you rebaseline the programme.
+  
+  #### First move
+  Pick the next open row and assign a name + date — not the whole sheet at once.
 ---

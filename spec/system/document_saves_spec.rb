@@ -14,6 +14,9 @@ RSpec.describe 'document saves', type: :request do
          significant_change: '1'
     expect(last_response.status).to eq(302)
 
+    manifest = ProjectManifest.load(File.join(App::DATA_PATH, 'projects', slug))
+    expect(manifest.version).to eq('0.1.0')
+
     get "/projects/#{slug}/docs/organisation-overview"
     expect(last_response.body).to include('Updated about')
   end

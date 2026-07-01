@@ -51,9 +51,22 @@ sections:
   editable: true
   field_type: textarea
   required: false
-description: Use this to capture who your organisation is, what it does, and how it
-  is structured. Complete it early in your ISMS journey so auditors and your team
-  share the same baseline. Update it when ownership, locations, or core services change.
+description: |
+  #### What you use this for
+  A short portrait of the organisation: what you do, where you operate, and how teams fit together.
+  
+  #### When it counts
+  Fill this in before scope, risk work, or policies — everyone should share the same picture of the business.
+  
+  #### Connected artefacts
+  - `context-of-organisation`
+  - `documented-isms-scope`
+  
+  #### Review rhythm
+  **Yearly**, or when ownership, sites, or core services change.
+  
+  #### First move
+  Answer “what would a new director need to know in ten minutes?” and stop there.
 export_tags:
 - basic
 - soi

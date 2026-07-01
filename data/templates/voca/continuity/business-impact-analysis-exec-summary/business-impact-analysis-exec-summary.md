@@ -1,23 +1,22 @@
 ---
 type: ISO27001 Document
 title: Business Impact Analysis Exec Summary
-description:
-  Executive-readable summary of BIA results for leadership decisions and
-  funding. Produce it after the detailed BIA is complete. Use it in management review
-  to justify continuity investments.
-okf_version: "0.1"
-tags:
-  - iso27001
-timestamp: 2026-01-01 00:00:00.000000000 Z
-iso27001:
-  doc_id: business-impact-analysis-exec-summary
-  seq: 83
-  version: 0.1.0
-  kind: text
-  classification: Confidential
-  schema: business-impact-analysis-exec-summary.schema.yaml
-  data:
-resource:
+description: |
+  #### What you use this for
+  Leadership-friendly summary of impact analysis for funding and priorities.
+  
+  #### When it counts
+  After detailed BIA — input to management review.
+  
+  #### Connected artefacts
+  - `business-impact-assessment`
+  - `business-continuity-objectives-and-strategy`
+  
+  #### Review rhythm
+  **Annual** with BIA.
+  
+  #### First move
+  One slide: worst plausible outage, cost of downtime, top dependency.
 ---
 
 # Introduction

@@ -29,6 +29,21 @@ _internal:
   type: uuid
 - key: _deleted_at
   type: datetime
-description: Inventory of vendors with access to your data or critical services, plus
-  risk tier and review dates. Build it during procurement onboarding. Reassess suppliers
-  when contracts renew or incidents occur.
+description: |
+  #### What you use this for
+  Vendors with data or operational dependency — tier, owner, review dates.
+  
+  #### When it counts
+  Onboarding suppliers; renewals and incidents trigger reassessment.
+  
+  #### Connected artefacts
+  - `is-14-third-party-supplier-security-policy`
+  - `legal-and-contractual-requirements-register`
+  
+  #### Review rhythm
+  **Annual** minimum; **quarterly** for tier‑1.
+  
+  #### First move
+  Your CRM, finance, and SSO vendor lists are the seed data.
+
+  ![Risk pyramid](/img/isoo_vendor_trust_tiers.png)

@@ -1,23 +1,22 @@
 ---
 type: ISO27001 Policy
 title: IS 19 Secure Development Policy
-description:
-  Security requirements for software you build or materially customise.
-  Adopt it before SDLC hardening or DevSecOps tooling. Covers coding standards, testing,
-  and separation of environments.
-okf_version: "0.1"
-tags:
-  - iso27001
-timestamp: 2026-01-01 00:00:00.000000000 Z
-iso27001:
-  doc_id: is-19-secure-development-policy
-  seq: 57
-  version: 0.1.0
-  kind: text
-  classification: Confidential
-  schema: is-19-secure-development-policy.schema.yaml
-  data:
-resource:
+description: |
+  #### What you use this for
+  Security expectations for software you build or heavily customise.
+  
+  #### When it counts
+  Before SDLC gates, CI security checks, or prod access for developers.
+  
+  #### Connected artefacts
+  - `operations-security-manual-v1`
+  - `is-13-change-management-policy`
+  
+  #### Review rhythm
+  **Annual**.
+  
+  #### First move
+  Require security review on one class of change (auth, payments, PII).
 ---
 
 # Secure Development Policy

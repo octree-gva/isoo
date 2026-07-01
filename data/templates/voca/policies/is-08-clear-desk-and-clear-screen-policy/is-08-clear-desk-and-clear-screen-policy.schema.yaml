@@ -113,6 +113,19 @@ sections:
   editable: true
   field_type: textarea
   required: false
-description: Requires physical and screen privacy to reduce unauthorised disclosure.
-  Roll it out in office and remote settings. Simple to audit visually—make sure facilities
-  and culture support compliance.
+description: |
+  #### What you use this for
+  Reduce casual exposure: tidy desks, locked screens, clean shared spaces.
+  
+  #### When it counts
+  Office and remote — easy to observe, easy to neglect.
+  
+  #### Connected artefacts
+  - `is-07-acceptable-use-policy`
+  - `is-09a-mobile-and-teleworking-policy-office-based`
+  
+  #### Review rhythm
+  **Annual**.
+  
+  #### First move
+  Set auto-lock timeout and tell people in plain language.

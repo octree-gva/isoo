@@ -3,6 +3,8 @@
 require 'fileutils'
 require 'yaml'
 
+require_relative 'project_version_bump'
+
 class ProjectCreator
   SEED_TABLE_CSVS = %w[
     isms-rasci-matrix-full.csv
@@ -34,6 +36,7 @@ class ProjectCreator
     encrypt_confidential(dest, author)
     transform_manifest_for_forms(dest)
     transform_manifest_for_annexes(dest)
+    ensure_manifest_version!(dest)
     commit_project_create(slug)
     { slug: slug, name: name }
   end
@@ -89,6 +92,18 @@ class ProjectCreator
       lines = File.readlines(csv, encoding: 'UTF-8')
       File.write(csv, lines[0], encoding: 'UTF-8') if lines.any?
     end
+  end
+
+  def ensure_manifest_version!(dest)
+    manifest_path = File.join(dest, 'manifest.yaml')
+    return unless File.file?(manifest_path)
+
+    data = YAML.safe_load_file(manifest_path) || {}
+    normalized = ProjectVersionBump.normalize_version(data['version'])
+    return if data['version'].is_a?(String) && data['version'] == normalized
+
+    data['version'] = normalized
+    File.write(manifest_path, data.to_yaml)
   end
 
   def transform_manifest_for_forms(dest)

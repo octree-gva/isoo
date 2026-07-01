@@ -14,4 +14,18 @@ RSpec.describe MarkdownRenderer do
   it 'returns empty string for blank input' do
     expect(described_class.to_html('   ')).to eq('')
   end
+
+  it 'renders list items with inline mailto links as a single li' do
+    md = <<~MD
+      ### The Rights of Data Subjects
+
+      - SAMPLE Access via [privacy@example.org](mailto:privacy@example.org) within timelines.
+    MD
+    html = described_class.to_html(md)
+
+    expect(html).to include('<ul>')
+    expect(html).to match(
+      %r{<li>SAMPLE Access via <a href="mailto:privacy@example\.org">privacy@example\.org</a> within timelines\.</li>}
+    )
+  end
 end

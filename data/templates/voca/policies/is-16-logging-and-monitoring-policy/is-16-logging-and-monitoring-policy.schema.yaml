@@ -134,6 +134,19 @@ sections:
   editable: true
   field_type: textarea
   required: false
-description: Defines what events you log, retention periods, and who reviews alerts.
-  Implement alongside SIEM or log aggregation. Supports incident detection and forensic
-  investigations.
+description: |
+  #### What you use this for
+  What you log, how long you keep it, who watches alerts.
+  
+  #### When it counts
+  With SIEM/log stack design.
+  
+  #### Connected artefacts
+  - `operations-security-manual-v1`
+  - `threat-intelligence-process`
+  
+  #### Review rhythm
+  **Annual**; tune retention when storage costs bite.
+  
+  #### First move
+  List three events you must be able to reconstruct after an incident.

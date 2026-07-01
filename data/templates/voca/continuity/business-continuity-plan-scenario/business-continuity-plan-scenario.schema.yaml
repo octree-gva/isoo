@@ -19,6 +19,19 @@ sections:
   field_type: textarea
   required: false
   description: Steps to follow when this scenario occurs.
-description: A narrative scenario describing a disruption used to stress-test your
-  BCP. Develop scenarios that reflect plausible threats to your organisation. Use
-  them in tabletop exercises with leadership and IT.
+description: |
+  #### What you use this for
+  Narrative disruption story to stress-test the master plan.
+  
+  #### When it counts
+  Tabletops with leadership and IT.
+  
+  #### Connected artefacts
+  - `business-continuity-plan`
+  - `how-to-conduct-a-business-continuity-test`
+  
+  #### Review rhythm
+  **Rotate yearly** — avoid repeating the same fire drill.
+  
+  #### First move
+  Pick a scenario your team worries about but has not rehearsed.

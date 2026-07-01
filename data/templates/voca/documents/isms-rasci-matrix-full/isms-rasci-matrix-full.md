@@ -1,22 +1,22 @@
 ---
 type: ISO27001 Register
 title: ISMS RASCI Matrix - FULL
-description:
-  An expanded RACI covering detailed ISMS tasks and control ownership.
-  Develop it once basic accountability is clear and you need finer delegation. Keep
-  it synced with job descriptions and process documents.
-okf_version: "0.1"
-tags:
-  - iso27001
-  - register
-timestamp: 2026-01-01 00:00:00.000000000 Z
-iso27001:
-  doc_id: isms-rasci-matrix-full
-  seq: 25
-  version: 0.1.0
-  kind: table
-  classification: Confidential
-  schema: isms-rasci-matrix-full.schema.yaml
-  data: isms-rasci-matrix-full.csv
-resource:
+description: |
+  #### What you use this for
+  Detailed responsibility map across controls and recurring tasks.
+  
+  #### When it counts
+  When the basic matrix is too coarse for delegation and evidence collection.
+  
+  #### Connected artefacts
+  - `isms-rasci-matrix-basic-accountability-matrix`
+  - `competency-matrix`
+  
+  #### Review rhythm
+  **Quarterly** spot-check against reality.
+  
+  #### First move
+  Import rows from the basic matrix before adding new lines.
+
+  ![Explanation of RASCI matrix](/img/isoo_rasci_table.png)
 ---
