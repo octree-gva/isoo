@@ -375,14 +375,17 @@ class App < Roda
     when 'pdf'
       response['Content-Type'] = 'application/pdf'
       response['Content-Disposition'] = doc_export_attachment(slug, doc_id, 'pdf')
+      html_entries = exporter.html_entries_for_doc(doc_id)
+      owner_line = html_entries.first&.fetch('owner_footer_line', nil)
       ExportPdfRenderer.render(
-        export_html_bundle(exporter.html_entries_for_doc(doc_id), title: export_doc_title(title),
-                                                                  pdf_export: true,
-                                                                  display_url: export_url),
+        export_html_bundle(html_entries, title: export_doc_title(title),
+                                              pdf_export: true,
+                                              display_url: export_url),
         display_url: export_url,
         title: export_doc_title(title),
         logo_data_uri: export_logo_data_uri,
-        export_date: Time.now.utc.strftime('%Y-%m-%d')
+        export_date: Time.now.utc.strftime('%Y-%m-%d'),
+        owner_line: owner_line
       )
     else
       response['Content-Type'] = 'text/markdown; charset=utf-8'
@@ -541,6 +544,11 @@ class App < Roda
                                       significant: r.params['significant_change'] == '1')
     date = Time.now.utc.strftime('%Y-%m-%d')
     rows_params = r.params['rows'] || {}
+    owner = DocumentOwner.extract_params(r.params)
+    schema = YAML.safe_load(@store.read(OkfPaths.schema(@doc_path)))
+    DocumentOwner.validate_table_owner!(owner, schema: schema)
+
+    owner_to_apply = DocumentOwner.schema_has_owner?(schema) ? owner : nil
 
     TableDocumentStore.new(@store).save_fullscreen(
       @doc_path,
@@ -548,13 +556,17 @@ class App < Roda
       version: version,
       date: date,
       author: author_name,
-      changes: changes
+      changes: changes,
+      owner: owner_to_apply
     )
     commit_and_redirect!(r, "/projects/#{slug}/docs/#{doc_id}/fullscreen",
                          commit_message: "#{doc_id} v#{version}: #{changes}",
                          toast_key: 'toast.table_saved',
                          significant: r.params['significant_change'] == '1')
   rescue TableDocumentStore::ValidationError => e
+    flash_error(e.message)
+    r.redirect("/projects/#{slug}/docs/#{doc_id}/fullscreen")
+  rescue ArgumentError => e
     flash_error(e.message)
     r.redirect("/projects/#{slug}/docs/#{doc_id}/fullscreen")
   end
@@ -848,18 +860,28 @@ class App < Roda
 
     case kind
     when 'text'
+      schema = YAML.safe_load(@store.read(OkfPaths.schema(@doc_path)))
+      DocumentOwner.validate_text_fields!(r.params, schema: schema)
       TextDocumentStore.new(@store).save(@doc_path, fields: r.params, version: version,
                                                     date: date, author: author_name, changes: changes)
     when 'table'
+      owner = DocumentOwner.extract_params(r.params)
+      schema = YAML.safe_load(@store.read(OkfPaths.schema(@doc_path)))
+      DocumentOwner.validate_table_owner!(owner, schema: schema)
       rows = TableDocumentStore.new(@store).read(@doc_path)[:rows]
+      owner_to_apply = DocumentOwner.schema_has_owner?(schema) ? owner : nil
       TableDocumentStore.new(@store).save_rows(@doc_path, rows: rows, version: version,
-                                                          date: date, author: author_name, changes: changes)
+                                                          date: date, author: author_name, changes: changes,
+                                                          owner: owner_to_apply)
     end
 
     commit_and_redirect!(r, "/projects/#{slug}/docs/#{doc_id}",
                          commit_message: "#{doc_id} v#{version}: #{changes}",
                          toast_key: kind == 'table' ? 'toast.table_saved' : 'toast.document_saved',
                          significant: significant)
+  rescue ArgumentError => e
+    flash_error(e.message)
+    r.redirect("/projects/#{slug}/docs/#{doc_id}")
   end
 
   def document_presence_heartbeat(_r, slug, doc_id)

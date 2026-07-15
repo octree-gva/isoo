@@ -1,3 +1,4 @@
+---
 schema_version: '1'
 kind: text
 sections:
@@ -113,19 +114,33 @@ sections:
   editable: true
   field_type: textarea
   required: false
+- level: h2
+  key: owner_name
+  label: Document owner
+  role: body
+  editable: true
+  field_type: text
+  required: true
+- level: h2
+  key: owner_email
+  label: Owner email
+  role: body
+  editable: true
+  field_type: email
+  required: true
 description: |
   #### What you use this for
   Commitment to train staff and measure whether security culture sticks.
-  
+
   #### When it counts
   Launch with awareness programme; track completion.
-  
+
   #### Connected artefacts
   - `competency-matrix`
   - `communication-plan`
-  
+
   #### Review rhythm
   **Annual**; refresh content when threats or policies change.
-  
+
   #### First move
   Schedule one mandatory 30-minute session with attendance proof.

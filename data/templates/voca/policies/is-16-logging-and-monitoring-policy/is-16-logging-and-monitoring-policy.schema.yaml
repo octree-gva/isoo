@@ -1,3 +1,4 @@
+---
 schema_version: '1'
 kind: text
 sections:
@@ -134,19 +135,33 @@ sections:
   editable: true
   field_type: textarea
   required: false
+- level: h2
+  key: owner_name
+  label: Document owner
+  role: body
+  editable: true
+  field_type: text
+  required: true
+- level: h2
+  key: owner_email
+  label: Owner email
+  role: body
+  editable: true
+  field_type: email
+  required: true
 description: |
   #### What you use this for
   What you log, how long you keep it, who watches alerts.
-  
+
   #### When it counts
   With SIEM/log stack design.
-  
+
   #### Connected artefacts
   - `operations-security-manual-v1`
   - `threat-intelligence-process`
-  
+
   #### Review rhythm
   **Annual**; tune retention when storage costs bite.
-  
+
   #### First move
   List three events you must be able to reconstruct after an incident.

@@ -19,19 +19,33 @@ sections:
   field_type: textarea
   required: false
   description: Steps to follow when this scenario occurs.
+- level: h2
+  key: owner_name
+  label: Document owner
+  role: body
+  editable: true
+  field_type: text
+  required: true
+- level: h2
+  key: owner_email
+  label: Owner email
+  role: body
+  editable: true
+  field_type: email
+  required: true
 description: |
   #### What you use this for
   Narrative disruption story to stress-test the master plan.
-  
+
   #### When it counts
   Tabletops with leadership and IT.
-  
+
   #### Connected artefacts
   - `business-continuity-plan`
   - `how-to-conduct-a-business-continuity-test`
-  
+
   #### Review rhythm
   **Rotate yearly** — avoid repeating the same fire drill.
-  
+
   #### First move
   Pick a scenario your team worries about but has not rehearsed.

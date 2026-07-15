@@ -22,9 +22,11 @@ RSpec.describe 'documents', type: :request do
                      ])
 
     post "/projects/#{slug}/docs/organisation-overview",
-         about_us: 'We are a test org',
-         document_changes: 'filled about us',
-         significant_change: '0'
+         owner_params.merge(
+           about_us: 'We are a test org',
+           document_changes: 'filled about us',
+           significant_change: '0'
+         )
     expect(last_response.status).to eq(302)
     follow_redirect!
     expect_rendered_page!(
@@ -37,9 +39,11 @@ RSpec.describe 'documents', type: :request do
   it 'persists markdown formatting from text document fields' do
     markdown = "**bold** and *italic*\n\n- first\n- second"
     post "/projects/#{slug}/docs/organisation-overview",
-         about_us: markdown,
-         document_changes: 'markdown formatting test',
-         significant_change: '0'
+         owner_params.merge(
+           about_us: markdown,
+           document_changes: 'markdown formatting test',
+           significant_change: '0'
+         )
     expect(last_response.status).to eq(302)
     follow_redirect!
     expect_rendered_page!(label: 'organisation overview markdown',

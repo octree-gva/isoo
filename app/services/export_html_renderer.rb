@@ -28,6 +28,7 @@ class ExportHtmlRenderer
     @pdf_export = pdf_export
     @export_date = export_date.to_s.strip
     @export_date = Time.now.utc.strftime('%Y-%m-%d') if @export_date.empty?
+    @running_owner_line = @entries.size == 1 ? @entries.first['owner_footer_line'].to_s.strip : ''
   end
 
   def render
@@ -73,11 +74,15 @@ class ExportHtmlRenderer
         #{logo}
       </div>
       <div class="export-print-footer" aria-hidden="true">
-        <span class="export-print-footer__title">#{esc(@title)}</span>
+        <span class="export-print-footer__title">#{esc(running_footer_left)}</span>
         <span class="export-print-footer__date">#{esc(@export_date)}</span>
         <span class="export-print-footer__page"></span>
       </div>
     HTML
+  end
+
+  def running_footer_left
+    @running_owner_line.empty? ? @title : @running_owner_line
   end
 
   def cover
@@ -190,6 +195,12 @@ class ExportHtmlRenderer
                  end
 
     annex_html = entry['annex_assets_html'].to_s.strip
+    owner_footer = entry['owner_footer_line'].to_s.strip
+    owner_html = if owner_footer.empty?
+                   ''
+                 else
+                   %(<footer class="export-doc-owner">#{esc(owner_footer)}</footer>)
+                 end
 
     <<~HTML
       <article class="#{doc_class}" id="#{doc_id}">
@@ -203,6 +214,7 @@ class ExportHtmlRenderer
         #{body_html}
         #{table_html}
         #{annex_html}
+        #{owner_html}
       </article>
     HTML
   end

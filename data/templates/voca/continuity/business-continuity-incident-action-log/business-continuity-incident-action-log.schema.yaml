@@ -32,6 +32,14 @@ columns:
   label: Risk
   type: textarea
   description: Associated risks.
+- key: owner_name
+  label: Document owner
+  type: text
+  required: true
+- key: owner_email
+  label: Owner email
+  type: email
+  required: true
 _internal:
 - key: _row_id
   type: uuid
@@ -40,16 +48,16 @@ _internal:
 description: |
   #### What you use this for
   Timestamped actions during a live continuity event.
-  
+
   #### When it counts
   When the plan is activated.
-  
+
   #### Connected artefacts
   - `business-continuity-plan`
   - `post-incident-review-form`
-  
+
   #### Review rhythm
   **Per activation**; review entries in debrief.
-  
+
   #### First move
   Assign a scribe role before the next tabletop.

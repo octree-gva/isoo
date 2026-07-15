@@ -9,7 +9,7 @@ module ProjectHelpers
     slug
   end
 
-  def seed_test_annexes!(slug)
-    DemoSeeder.new(data_root: App::DATA_PATH).seed_annexes(slug: slug, author: 'spec@isoo.local')
+  def owner_params
+    { owner_name: 'Test Owner', owner_email: 'owner@example.com' }
   end
 end

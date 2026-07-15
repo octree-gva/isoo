@@ -18,13 +18,14 @@ class ExportPdfRenderer
 
   HEADER_LOGO_HEIGHT = '6mm'
 
-  def self.render(html, display_url:, title:, logo_data_uri: '', export_date: nil)
+  def self.render(html, display_url:, title:, logo_data_uri: '', export_date: nil, owner_line: nil)
     export_date = export_date.to_s.strip
     export_date = Time.now.utc.strftime('%Y-%m-%d') if export_date.empty?
+    owner_line = owner_line.to_s.strip
 
     pdf_options = PDF_OPTIONS.merge(
       header_template: header_template(title: title, logo_data_uri: logo_data_uri),
-      footer_template: footer_template(title: title, export_date: export_date)
+      footer_template: footer_template(title: title, export_date: export_date, owner_line: owner_line)
     )
 
     FerrumPdf.render_pdf(
@@ -51,11 +52,13 @@ class ExportPdfRenderer
     HTML
   end
 
-  def self.footer_template(title:, export_date:)
+  def self.footer_template(title:, export_date:, owner_line: nil)
     chrome_padding = ExportPrintCss.chrome_header_footer_style
+    left = owner_line.to_s.strip
+    left = title if left.empty?
     <<~HTML
       <div style="font-size:8px;line-height:1.2;font-family:'IBM Plex Sans',sans-serif;width:100%;#{chrome_padding};box-sizing:border-box;display:grid;grid-template-columns:1fr 1fr 1fr;align-items:center;border-top:1px solid #ccc;color:#555;">
-        <span style="text-align:left;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">#{esc(title)}</span>
+        <span style="text-align:left;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">#{esc(left)}</span>
         <span style="text-align:center;white-space:nowrap;">#{esc(export_date)}</span>
         <span style="text-align:right;white-space:nowrap;"><span class="pageNumber"></span>/<span class="totalPages"></span></span>
       </div>

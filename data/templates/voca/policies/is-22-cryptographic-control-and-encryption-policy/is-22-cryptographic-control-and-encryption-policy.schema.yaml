@@ -1,3 +1,4 @@
+---
 schema_version: '1'
 kind: text
 sections:
@@ -141,19 +142,33 @@ sections:
   editable: true
   field_type: textarea
   required: false
+- level: h2
+  key: owner_name
+  label: Document owner
+  role: body
+  editable: true
+  field_type: text
+  required: true
+- level: h2
+  key: owner_email
+  label: Owner email
+  role: body
+  editable: true
+  field_type: email
+  required: true
 description: |
   #### What you use this for
   When encryption is required in transit and at rest, and which standards apply.
-  
+
   #### When it counts
   Align with classification and regulatory minima.
-  
+
   #### Connected artefacts
   - `is-21-cryptographic-key-management-policy`
   - `is-18-information-transfer-policy`
-  
+
   #### Review rhythm
   **Annual**.
-  
+
   #### First move
   State defaults (TLS 1.2+, AES-256) and how to request an exception.

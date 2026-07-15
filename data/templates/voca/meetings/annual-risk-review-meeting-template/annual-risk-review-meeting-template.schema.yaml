@@ -45,20 +45,34 @@ sections:
   editable: true
   field_type: textarea
   required: false
+- level: h2
+  key: owner_name
+  label: Document owner
+  role: body
+  editable: true
+  field_type: text
+  required: true
+- level: h2
+  key: owner_email
+  label: Owner email
+  role: body
+  editable: true
+  field_type: email
+  required: true
 description: |
   #### What you use this for
   Agenda shell for leadership to revisit risk appetite, treatments, and open exposures.
-  
+
   #### When it counts
   Once per year before management review or recertification planning.
-  
+
   #### Connected artefacts
   - `isms-risk-register`
   - `managment-review-team-meeting-agenda-template`
   - `ip-01-risk-management-procedure`
-  
+
   #### Review rhythm
   **Per meeting** (archive notes); template itself **annual**.
-  
+
   #### First move
   Attach the current risk register and only discuss rows that moved since last time.

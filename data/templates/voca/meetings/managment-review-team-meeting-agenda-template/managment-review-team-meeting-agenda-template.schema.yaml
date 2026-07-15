@@ -45,20 +45,34 @@ sections:
   editable: true
   field_type: textarea
   required: false
+- level: h2
+  key: owner_name
+  label: Document owner
+  role: body
+  editable: true
+  field_type: text
+  required: true
+- level: h2
+  key: owner_email
+  label: Owner email
+  role: body
+  editable: true
+  field_type: email
+  required: true
 description: |
   #### What you use this for
   Structured inputs and outputs for top management’s ISMS review (clause 9.3).
-  
+
   #### When it counts
   At least once per year; extra session after serious incidents or scope changes.
-  
+
   #### Connected artefacts
   - `is-01-information-security-policy`
   - `audit-report-template`
   - `incident-and-corrective-action-log`
-  
+
   #### Review rhythm
   **Annual** minimum; year one often **quarterly**.
-  
+
   #### First move
   Pre-fill incident, audit, and KPI sections — the meeting should decide actions, not hunt data.

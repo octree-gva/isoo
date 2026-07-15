@@ -44,21 +44,35 @@ sections:
   editable: true
   field_type: textarea
   required: false
+- level: h2
+  key: owner_name
+  label: Document owner
+  role: body
+  editable: true
+  field_type: text
+  required: true
+- level: h2
+  key: owner_email
+  label: Owner email
+  role: body
+  editable: true
+  field_type: email
+  required: true
 description: |
   #### What you use this for
   Capture internal and external factors that shape security priorities (clause 4.1 context).
-  
+
   #### When it counts
   Initial scoping, then whenever the market, regulation, or tech stack shifts materially.
-  
+
   #### Connected artefacts
   - `organisation-overview`
   - `legal-and-contractual-requirements-register`
   - `isms-risk-register`
-  
+
   #### Review rhythm
   **At least annually**; add an extra pass after major change (funding, product pivot, new jurisdiction).
-  
+
   #### First move
   List three external pressures and three internal constraints — that is enough to start.
 export_tags:

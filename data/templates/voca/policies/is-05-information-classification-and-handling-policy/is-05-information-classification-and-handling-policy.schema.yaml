@@ -1,3 +1,4 @@
+---
 schema_version: '1'
 kind: text
 sections:
@@ -134,20 +135,34 @@ sections:
   editable: true
   field_type: textarea
   required: false
+- level: h2
+  key: owner_name
+  label: Document owner
+  role: body
+  editable: true
+  field_type: text
+  required: true
+- level: h2
+  key: owner_email
+  label: Owner email
+  role: body
+  editable: true
+  field_type: email
+  required: true
 description: |
   #### What you use this for
   Defines sensitivity levels and handling rules in transit and at rest.
-  
+
   #### When it counts
   Before labelling, DLP, or secure sharing rollouts.
-  
+
   #### Connected artefacts
   - `information-classification-summary`
   - `is-18-information-transfer-policy`
-  
+
   #### Review rhythm
   **Annual**.
-  
+
   #### First move
   Choose three labels maximum for a small team.
 export_tags:

@@ -1,3 +1,4 @@
+---
 schema_version: '1'
 kind: text
 sections:
@@ -127,19 +128,33 @@ sections:
   editable: true
   field_type: textarea
   required: false
+- level: h2
+  key: owner_name
+  label: Document owner
+  role: body
+  editable: true
+  field_type: text
+  required: true
+- level: h2
+  key: owner_email
+  label: Owner email
+  role: body
+  editable: true
+  field_type: email
+  required: true
 description: |
   #### What you use this for
   Security expectations for software you build or heavily customise.
-  
+
   #### When it counts
   Before SDLC gates, CI security checks, or prod access for developers.
-  
+
   #### Connected artefacts
   - `operations-security-manual-v1`
   - `is-13-change-management-policy`
-  
+
   #### Review rhythm
   **Annual**.
-  
+
   #### First move
   Require security review on one class of change (auth, payments, PII).

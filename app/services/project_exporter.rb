@@ -179,6 +179,8 @@ class ProjectExporter
     legend_html = table_legend_html(entry)
     assets_html = annex_assets_html(entry) + referenced_annexes_html(entry)
 
+    owner = resolve_owner(entry)
+
     {
       'doc_id' => doc['doc_id'],
       'title' => doc['title'] || doc['doc_id'],
@@ -192,7 +194,8 @@ class ProjectExporter
       'version_control_html' => entry.version_control_html,
       'annex_assets_html' => assets_html,
       'has_data_table' => !table_html.empty?,
-      'export_tier' => export_tier_name(doc)
+      'export_tier' => export_tier_name(doc),
+      'owner_footer_line' => DocumentOwner.export_line(owner)
     }
   end
 
@@ -275,6 +278,26 @@ class ProjectExporter
     schema['kind'] == 'table' ? schema : nil
   rescue Psych::SyntaxError
     nil
+  end
+
+  def resolve_owner(entry)
+    kind = entry.doc['kind'].to_s
+    if kind == 'text'
+      schema_path = OkfPaths.schema(entry.doc['path'])
+      return DocumentOwner.empty_owner unless @store.exist?(schema_path)
+
+      schema = YAML.safe_load(@store.read(schema_path)) || {}
+      fields = TextDocumentStore.new(@store).extract_fields(entry.body, schema)
+      DocumentOwner.from_fields(fields)
+    elsif kind == 'table' && entry.csv_text.to_s.strip != ''
+      rows = CSV.parse(entry.csv_text, headers: true).map(&:to_h)
+                  .reject { |row| row['_deleted_at'].to_s != '' }
+      DocumentOwner.from_rows(rows)
+    else
+      DocumentOwner.empty_owner
+    end
+  rescue Psych::SyntaxError
+    DocumentOwner.empty_owner
   end
 
   def load_audit(md_path)

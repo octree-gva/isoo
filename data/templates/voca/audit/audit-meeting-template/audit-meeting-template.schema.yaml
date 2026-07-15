@@ -1,3 +1,4 @@
+---
 schema_version: '1'
 kind: form
 response_kind: text
@@ -44,19 +45,33 @@ sections:
   editable: true
   field_type: textarea
   required: false
+- level: h2
+  key: owner_name
+  label: Document owner
+  role: body
+  editable: true
+  field_type: text
+  required: true
+- level: h2
+  key: owner_email
+  label: Owner email
+  role: body
+  editable: true
+  field_type: email
+  required: true
 description: |
   #### What you use this for
   Opening and closing meeting notes with auditees.
-  
+
   #### When it counts
   Start and end of each audit engagement.
-  
+
   #### Connected artefacts
   - `audit-report-template`
   - `1b-audit-template-iso-27002-2013-and-2022-version-pre-mapped`
-  
+
   #### Review rhythm
   **Per engagement**.
-  
+
   #### First move
   Confirm scope and evidence expectations in the opening meeting.

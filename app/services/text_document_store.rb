@@ -21,9 +21,10 @@ class TextDocumentStore
 
   def save(doc_path, fields:, version: nil, date: nil, author: nil, changes: nil, record_version: true)
     md_path = OkfPaths.md(doc_path)
+    schema = YAML.safe_load(@store.read(OkfPaths.schema(doc_path)))
+    DocumentOwner.validate_text_fields!(fields, schema: schema)
     raw = @store.read(md_path)
     meta, raw_body = FrontMatter.parse(raw)
-    schema = YAML.safe_load(@store.read(OkfPaths.schema(doc_path)))
     content = build_content_body(fields, schema)
 
     if record_version

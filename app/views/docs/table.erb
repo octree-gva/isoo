@@ -6,7 +6,9 @@
     }) %>
 
 <% table_id = "table-#{@doc['doc_id']}" %>
-<% columns = @data[:schema]['columns'] %>
+<% columns = table_data_columns(@data[:schema]) %>
+<% owner = document_owner_from_rows(@data[:rows]) %>
+<%= render('shared/_document_owner_fields', locals: { owner: owner, form_id: 'save-table-form' }) %>
 <% pk = @data[:schema]['primary_key'] %>
 
 <div class="flex justify-end mt-6">

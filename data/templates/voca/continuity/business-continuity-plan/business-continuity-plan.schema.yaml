@@ -1,21 +1,22 @@
+---
 schema_version: '1'
 kind: form
 response_kind: text
 description: |
   #### What you use this for
   Master playbook for keeping or restoring critical operations in a crisis.
-  
+
   #### When it counts
   After objectives set; exercise regularly.
-  
+
   #### Connected artefacts
   - `business-continuity-objectives-and-strategy`
   - `business-impact-assessment`
   - `communication-plan`
-  
+
   #### Review rhythm
   **Annual** review; **≥1 exercise/year**.
-  
+
   #### First move
   Verify contact tree dials real numbers — today.
 sections:
@@ -187,3 +188,17 @@ sections:
   editable: true
   field_type: textarea
   required: false
+- level: h2
+  key: owner_name
+  label: Document owner
+  role: body
+  editable: true
+  field_type: text
+  required: true
+- level: h2
+  key: owner_email
+  label: Owner email
+  role: body
+  editable: true
+  field_type: email
+  required: true

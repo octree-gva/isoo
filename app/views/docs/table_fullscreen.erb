@@ -1,5 +1,6 @@
-<% columns = @data[:schema]['columns'] %>
+<% columns = table_data_columns(@data[:schema]) %>
 <% pk = @data[:schema]['primary_key'] %>
+<% owner = document_owner_from_rows(@data[:rows]) %>
 <% table_id = "table-fullscreen-#{@doc['doc_id']}" %>
 <% fullscreen_path = "/projects/#{@slug}/docs/#{@doc['doc_id']}/fullscreen" %>
 
@@ -34,6 +35,7 @@
         data-draft-mode="table"
         data-draft-baseline="<%= json_attr(table_form_draft_baseline(@data[:rows])) %>"
         data-leave-save-modal="save_table_modal">
+    <%= render('shared/_document_owner_fields', locals: { owner: owner }) %>
     <% if @data[:rows].empty? %>
       <p id="<%= table_id %>-empty" class="table-fullscreen-empty" role="status"><%= t('table.empty') %></p>
     <% else %>
@@ -46,6 +48,7 @@
           <thead>
             <tr>
               <% columns.each do |col| %>
+                <% next if DocumentOwner.owner_key?(col['key']) %>
                 <th scope="col" id="<%= table_id %>-col-<%= col['key'] %>" title="<%= col['description'] %>"
                     class="whitespace-pre-line"><%= col['label'] %></th>
               <% end %>
@@ -58,6 +61,7 @@
               <% row_prefix = "rows[#{row['_row_id']}]" %>
               <tr>
                 <% columns.each do |col| %>
+                  <% next if DocumentOwner.owner_key?(col['key']) %>
                   <td headers="<%= table_id %>-col-<%= col['key'] %>" title="<%= col['description'] %>"
                       class="<%= ' doc-table-cell--switch' if col['type'] == 'switch' %>">
                     <%= render('shared/_table_cell_input_compact', locals: {

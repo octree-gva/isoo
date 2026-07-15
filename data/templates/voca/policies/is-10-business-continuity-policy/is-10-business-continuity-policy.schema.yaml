@@ -1,3 +1,4 @@
+---
 schema_version: '1'
 kind: text
 sections:
@@ -120,19 +121,33 @@ sections:
   editable: true
   field_type: textarea
   required: false
+- level: h2
+  key: owner_name
+  label: Document owner
+  role: body
+  editable: true
+  field_type: text
+  required: true
+- level: h2
+  key: owner_email
+  label: Owner email
+  role: body
+  editable: true
+  field_type: email
+  required: true
 description: |
   #### What you use this for
   Executive commitment to keep critical activities running through disruption.
-  
+
   #### When it counts
   Before detailed continuity planning and impact analysis.
-  
+
   #### Connected artefacts
   - `business-continuity-plan`
   - `business-impact-assessment`
-  
+
   #### Review rhythm
   **Annual**.
-  
+
   #### First move
   Name the activities that must survive a bad week — three max.

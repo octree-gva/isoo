@@ -1,3 +1,4 @@
+---
 schema_version: '1'
 kind: text
 sections:
@@ -99,19 +100,33 @@ sections:
   editable: true
   field_type: textarea
   required: false
+- level: h2
+  key: owner_name
+  label: Document owner
+  role: body
+  editable: true
+  field_type: text
+  required: true
+- level: h2
+  key: owner_email
+  label: Owner email
+  role: body
+  editable: true
+  field_type: email
+  required: true
 description: |
   #### What you use this for
   What is backed up, how often, where copies live, and how restores are proven.
-  
+
   #### When it counts
   Pair with backup tooling and DR playbooks.
-  
+
   #### Connected artefacts
   - `disaster-recovery-scenario-plans`
   - `is-13-change-management-policy`
-  
+
   #### Review rhythm
   **Annual** policy; **restore tests** at least yearly for critical data.
-  
+
   #### First move
   Run one restore drill and write down what broke.

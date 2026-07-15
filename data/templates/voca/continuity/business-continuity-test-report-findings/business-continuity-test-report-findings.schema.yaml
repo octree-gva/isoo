@@ -41,19 +41,33 @@ sections:
   field_type: text
   required: false
   description: Optional cross-reference (risk register ID, incident log, etc.).
+- level: h2
+  key: owner_name
+  label: Document owner
+  role: body
+  editable: true
+  field_type: text
+  required: true
+- level: h2
+  key: owner_email
+  label: Owner email
+  role: body
+  editable: true
+  field_type: email
+  required: true
 description: |
   #### What you use this for
   Detailed gap list from continuity tests — strengths and fixes.
-  
+
   #### When it counts
   Attach to formal test report; track until closed.
-  
+
   #### Connected artefacts
   - `business-continuity-test-report-template`
   - `incident-and-corrective-action-log`
-  
+
   #### Review rhythm
   **Per test**; open items **monthly** until done.
-  
+
   #### First move
   Assign an owner and date to every finding before the room disperses.

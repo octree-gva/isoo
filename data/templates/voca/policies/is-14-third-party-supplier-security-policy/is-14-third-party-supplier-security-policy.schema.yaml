@@ -1,3 +1,4 @@
+---
 schema_version: '1'
 kind: text
 sections:
@@ -113,19 +114,33 @@ sections:
   editable: true
   field_type: textarea
   required: false
+- level: h2
+  key: owner_name
+  label: Document owner
+  role: body
+  editable: true
+  field_type: text
+  required: true
+- level: h2
+  key: owner_email
+  label: Owner email
+  role: body
+  editable: true
+  field_type: email
+  required: true
 description: |
   #### What you use this for
   Security expectations for vendors who touch your data or operations.
-  
+
   #### When it counts
   Procurement and contract negotiation.
-  
+
   #### Connected artefacts
   - `third-party-supplier-register`
   - `is-26-cloud-service-policy`
-  
+
   #### Review rhythm
   **Annual**; reassess on renewal or incident.
-  
+
   #### First move
   Tier your top five vendors by data access — review deepest tier first.

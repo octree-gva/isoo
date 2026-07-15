@@ -1,3 +1,4 @@
+---
 schema_version: '1'
 kind: text
 sections:
@@ -127,19 +128,33 @@ sections:
   editable: true
   field_type: textarea
   required: false
+- level: h2
+  key: owner_name
+  label: Document owner
+  role: body
+  editable: true
+  field_type: text
+  required: true
+- level: h2
+  key: owner_email
+  label: Owner email
+  role: body
+  editable: true
+  field_type: email
+  required: true
 description: |
   #### What you use this for
   Method and appetite for identifying, analysing, treating, and monitoring risk.
-  
+
   #### When it counts
   Before first formal risk assessment.
-  
+
   #### Connected artefacts
   - `ip-01-risk-management-procedure`
   - `isms-risk-register`
-  
+
   #### Review rhythm
   **Annual**; after major risk events.
-  
+
   #### First move
   Write how management accepts residual risk — one paragraph.

@@ -1,3 +1,4 @@
+---
 schema_version: '1'
 kind: text
 sections:
@@ -134,19 +135,33 @@ sections:
   editable: true
   field_type: textarea
   required: false
+- level: h2
+  key: owner_name
+  label: Document owner
+  role: body
+  editable: true
+  field_type: text
+  required: true
+- level: h2
+  key: owner_email
+  label: Owner email
+  role: body
+  editable: true
+  field_type: email
+  required: true
 description: |
   #### What you use this for
   Security expectations when distributed work is the default.
-  
+
   #### When it counts
   Remote-first teams — home office, travel, and endpoint rules explicit.
-  
+
   #### Connected artefacts
   - `is-09a-mobile-and-teleworking-policy-office-based`
   - `is-20-physical-and-environmental-security-policy`
-  
+
   #### Review rhythm
   **Annual**.
-  
+
   #### First move
   Define minimum home network and device posture without over-policing.

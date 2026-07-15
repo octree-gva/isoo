@@ -1,3 +1,4 @@
+---
 schema_version: '1'
 kind: text
 sections:
@@ -155,19 +156,33 @@ sections:
   editable: true
   field_type: textarea
   required: false
+- level: h2
+  key: owner_name
+  label: Document owner
+  role: body
+  editable: true
+  field_type: text
+  required: true
+- level: h2
+  key: owner_email
+  label: Owner email
+  role: body
+  editable: true
+  field_type: email
+  required: true
 description: |
   #### What you use this for
   How production changes are requested, reviewed, deployed, and recorded.
-  
+
   #### When it counts
   Before change volume makes informal fixes dangerous.
-  
+
   #### Connected artefacts
   - `change-log`
   - `operations-security-manual-v1`
-  
+
   #### Review rhythm
   **Annual**.
-  
+
   #### First move
   Define what counts as emergency change and who may approve it.

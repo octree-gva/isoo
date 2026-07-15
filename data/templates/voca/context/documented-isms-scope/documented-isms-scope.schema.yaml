@@ -72,21 +72,35 @@ sections:
   editable: true
   field_type: textarea
   required: false
+- level: h2
+  key: owner_name
+  label: Document owner
+  role: body
+  editable: true
+  field_type: text
+  required: true
+- level: h2
+  key: owner_email
+  label: Owner email
+  role: body
+  editable: true
+  field_type: email
+  required: true
 description: |
   #### What you use this for
   The signed boundary of what the management system covers: sites, services, teams, and explicit exclusions.
-  
+
   #### When it counts
   Before certification and whenever you add a product line, region, or major outsource.
-  
+
   #### Connected artefacts
   - `context-of-organisation`
   - `statement-of-applicability-iso-27002-2022-and-2013`
   - `isms-risk-register`
-  
+
   #### Review rhythm
   **Annual** sign-off; out-of-cycle when scope arguments change.
-  
+
   #### First move
   Write one paragraph a regulator could quote — then list exclusions with reasons.
 export_tags:

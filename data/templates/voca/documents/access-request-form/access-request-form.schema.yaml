@@ -1,3 +1,4 @@
+---
 schema_version: '1'
 kind: text
 sections:
@@ -50,20 +51,34 @@ sections:
   editable: true
   field_type: textarea
   required: false
+- level: h2
+  key: owner_name
+  label: Document owner
+  role: body
+  editable: true
+  field_type: text
+  required: true
+- level: h2
+  key: owner_email
+  label: Owner email
+  role: body
+  editable: true
+  field_type: email
+  required: true
 description: |
   #### What you use this for
   Standard request + approval trail for new or changed system access.
-  
+
   #### When it counts
   Every access change — replaces ad hoc chat approvals.
-  
+
   #### Connected artefacts
   - `is-02-access-control-policy`
   - `role-based-access-control`
   - `starter-leaver-mover-access-register`
-  
+
   #### Review rhythm
   Template **annual**; each submission kept per records policy.
-  
+
   #### First move
   Publish the form where people already ask for access (ticket template, intranet).

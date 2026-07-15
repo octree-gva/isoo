@@ -44,8 +44,10 @@ RSpec.describe 'table fullscreen', type: :request do
     expect(row_id).not_to be_nil
 
     post "/projects/#{slug}/docs/#{doc_id}/fullscreen",
-         rows: { row_id => { 'standard' => 'ISO 27001', 'requirement' => 'Updated', 'applicability' => 'All' } },
-         document_changes: 'fullscreen save'
+         owner_params.merge(
+           rows: { row_id => { 'standard' => 'ISO 27001', 'requirement' => 'Updated', 'applicability' => 'All' } },
+           document_changes: 'fullscreen save'
+         )
     expect(last_response.status).to eq(302)
     expect(last_response.headers['Location']).to include('/fullscreen')
 

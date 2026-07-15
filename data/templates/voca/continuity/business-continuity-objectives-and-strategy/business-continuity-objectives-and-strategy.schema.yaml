@@ -107,19 +107,33 @@ sections:
   editable: true
   field_type: textarea
   required: false
+- level: h2
+  key: owner_name
+  label: Document owner
+  role: body
+  editable: true
+  field_type: text
+  required: true
+- level: h2
+  key: owner_email
+  label: Owner email
+  role: body
+  editable: true
+  field_type: email
+  required: true
 description: |
   #### What you use this for
   Recovery targets and strategic choices (prevent, respond, recover).
-  
+
   #### When it counts
   After BIA numbers exist — guides plan structure.
-  
+
   #### Connected artefacts
   - `business-impact-assessment`
   - `is-10-business-continuity-policy`
-  
+
   #### Review rhythm
   **Annual**.
-  
+
   #### First move
   Agree RTO/RPO for one service, not the entire catalogue.

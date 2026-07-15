@@ -1,3 +1,4 @@
+---
 schema_version: '1'
 kind: form
 response_kind: text
@@ -58,19 +59,33 @@ sections:
   field_type: textarea
   required: false
   description: Outcome of the test (success or failure).
+- level: h2
+  key: owner_name
+  label: Document owner
+  role: body
+  editable: true
+  field_type: text
+  required: true
+- level: h2
+  key: owner_email
+  label: Owner email
+  role: body
+  editable: true
+  field_type: email
+  required: true
 description: |
   #### What you use this for
   Additional scenario material for training and tests.
-  
+
   #### When it counts
   Supplement primary scenarios; variety builds muscle memory.
-  
+
   #### Connected artefacts
   - `business-continuity-test-template`
   - `business-continuity-plan-scenario`
-  
+
   #### Review rhythm
   **When threat landscape shifts**.
-  
+
   #### First move
   Adapt a recent industry incident into a tabletop inject.

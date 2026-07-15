@@ -135,19 +135,33 @@ sections:
   editable: true
   field_type: textarea
   required: false
+- level: h2
+  key: owner_name
+  label: Document owner
+  role: body
+  editable: true
+  field_type: text
+  required: true
+- level: h2
+  key: owner_email
+  label: Owner email
+  role: body
+  editable: true
+  field_type: email
+  required: true
 description: |
   #### What you use this for
   Acceptable use of AI tools: data boundaries, oversight, vendor risk.
-  
+
   #### When it counts
   Before generative AI is everywhere in workflows.
-  
+
   #### Connected artefacts
   - `is-07-acceptable-use-policy`
   - `dp-01-data-protection-policy`
-  
+
   #### Review rhythm
   **Annual** minimum; **quarterly** while tooling shifts fast.
-  
+
   #### First move
   Ban pasting customer/employee data into public models — say it plainly.

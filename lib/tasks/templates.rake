@@ -4,6 +4,14 @@ require 'bundler/setup'
 require_relative '../../app/app'
 
 namespace :isoo do
+  desc 'Add owner_name and owner_email fields to template schemas and table CSVs'
+  task migrate_owner_fields: :environment do
+    template_id = ENV.fetch('TEMPLATE_ID', 'voca')
+    bundle = File.join(App::TEMPLATES_PATH, template_id)
+    migrator = OwnerFieldsMigrator.new(bundle).migrate!
+    puts "Updated #{migrator.updated_schemas} schema(s) and #{migrator.updated_csvs} CSV(s) in #{bundle}"
+  end
+
   desc 'Validate OKF template bundle under data/templates (schemas, manifest, table CSV headers)'
   task validate_templates: :environment do
     template_id = ENV.fetch('TEMPLATE_ID', 'voca')

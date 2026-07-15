@@ -10,7 +10,11 @@
   </select>
 <% when 'text' %>
   <input class="input input-bordered w-full text-base" type="text" id="<%= input_id %>" name="<%= sec['key'] %>"
-         value="<%= value %>"<%= attrs %>>
+         value="<%= value %>"<%= attrs %><%= ' required' if sec['required'] %>>
+<% when 'email' %>
+  <input class="input input-bordered w-full text-base" type="email" id="<%= input_id %>" name="<%= sec['key'] %>"
+         value="<%= value %>"<%= attrs %><%= ' required' if sec['required'] %>
+         autocomplete="email" inputmode="email">
 <% when 'switch' %>
   <input type="hidden" name="<%= sec['key'] %>" value="0">
   <input type="checkbox" id="<%= input_id %>" name="<%= sec['key'] %>" value="1"

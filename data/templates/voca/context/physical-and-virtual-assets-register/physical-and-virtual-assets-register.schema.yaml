@@ -104,6 +104,14 @@ columns:
   label: Destruction Certificate Number
   type: text
   description: Certificate reference when asset is disposed.
+- key: owner_name
+  label: Document owner
+  type: text
+  required: true
+- key: owner_email
+  label: Owner email
+  type: email
+  required: true
 _internal:
 - key: _row_id
   type: uuid
@@ -112,18 +120,18 @@ _internal:
 description: |
   #### What you use this for
   Inventory of infrastructure (on‑prem, cloud, SaaS) with owners and business use.
-  
+
   #### When it counts
   Alongside first risk pass; keep current as you adopt or retire systems.
-  
+
   #### Connected artefacts
   - `is-03-asset-management-policy`
   - `software-license-assets-register`
   - `isms-risk-register`
-  
+
   #### Review rhythm
   **Quarterly** owner check; **monthly** for production-critical rows.
-  
+
   #### First move
   Export what IT already knows (CMDB, cloud console) — do not start from a blank grid.
 export_tags:

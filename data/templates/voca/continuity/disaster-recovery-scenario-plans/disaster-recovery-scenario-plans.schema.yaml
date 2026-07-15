@@ -1,3 +1,4 @@
+---
 schema_version: '1'
 kind: form
 response_kind: text
@@ -50,20 +51,34 @@ sections:
   field_type: textarea
   required: false
   description: Recovery point objective for this scenario.
+- level: h2
+  key: owner_name
+  label: Document owner
+  role: body
+  editable: true
+  field_type: text
+  required: true
+- level: h2
+  key: owner_email
+  label: Owner email
+  role: body
+  editable: true
+  field_type: email
+  required: true
 description: |
   #### What you use this for
   Technical recovery steps for named failure modes (site loss, ransomware, etc.).
-  
+
   #### When it counts
   For systems the BIA marked critical.
-  
+
   #### Connected artefacts
   - `is-11-backup-policy`
   - `business-continuity-plan`
   - `disaster-recovery-scenario-test-template`
-  
+
   #### Review rhythm
   **Annual**; after infra changes.
-  
+
   #### First move
   One scenario for your single most important database.

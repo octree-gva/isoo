@@ -1,3 +1,4 @@
+---
 schema_version: '1'
 kind: form
 response_kind: text
@@ -16,19 +17,33 @@ sections:
   editable: true
   field_type: textarea
   required: false
+- level: h2
+  key: owner_name
+  label: Document owner
+  role: body
+  editable: true
+  field_type: text
+  required: true
+- level: h2
+  key: owner_email
+  label: Owner email
+  role: body
+  editable: true
+  field_type: email
+  required: true
 description: |
   #### What you use this for
   Checklist and script so exercises run the same way each time.
-  
+
   #### When it counts
   Every planned exercise.
-  
+
   #### Connected artefacts
   - `how-to-conduct-a-business-continuity-test`
   - `business-continuity-plan`
-  
+
   #### Review rhythm
   **Per exercise**; template **annual**.
-  
+
   #### First move
   Define success criteria before sending calendar invites.

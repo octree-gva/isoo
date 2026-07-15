@@ -93,21 +93,35 @@ sections:
   editable: true
   field_type: textarea
   required: false
+- level: h2
+  key: owner_name
+  label: Document owner
+  role: body
+  editable: true
+  field_type: text
+  required: true
+- level: h2
+  key: owner_email
+  label: Owner email
+  role: body
+  editable: true
+  field_type: email
+  required: true
 description: |
   #### What you use this for
   Workflow when people **join, leave, or change role** — HR signal to IT action.
-  
+
   #### When it counts
   From first hire; late offboarding is one of the most tested controls.
-  
+
   #### Connected artefacts
   - `starter-leaver-mover-access-register`
   - `access-request-form`
   - `is-02-access-control-policy`
-  
+
   #### Review rhythm
   **Annual** process review; execute **per HR event**.
-  
+
   #### First move
   Time how long deprovisioning takes today — set a target.
 export_tags:

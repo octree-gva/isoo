@@ -74,6 +74,14 @@ columns:
   - Approved
   - Actioned
   - Closed
+- key: owner_name
+  label: Document owner
+  type: text
+  required: true
+- key: owner_email
+  label: Owner email
+  type: email
+  required: true
 _internal:
 - key: _row_id
   type: uuid
@@ -82,17 +90,17 @@ _internal:
 description: |
   #### What you use this for
   Evidence log tying HR lifecycle events to access changes.
-  
+
   #### When it counts
   Each join/leave/role change; proves timely provisioning and removal.
-  
+
   #### Connected artefacts
   - `starter-leaver-mover-system-access-process`
   - `is-02-access-control-policy`
-  
+
   #### Review rhythm
   **Per event** entry; **quarterly** reconciliation against HRIS.
-  
+
   #### First move
   Backfill the last three leavers and verify accounts are gone.
 export_tags:

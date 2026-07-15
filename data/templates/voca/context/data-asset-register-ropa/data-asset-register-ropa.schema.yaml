@@ -118,6 +118,14 @@ columns:
   label: Date last assessed
   type: date
   description: Date of last DPIA or ROPA review.
+- key: owner_name
+  label: Document owner
+  type: text
+  required: true
+- key: owner_email
+  label: Owner email
+  type: email
+  required: true
 _internal:
 - key: _row_id
   type: uuid
@@ -126,18 +134,18 @@ _internal:
 description: |
   #### What you use this for
   Record what personal data you process, why, where it lives, and how long you keep it (privacy inventory / ROPA).
-  
+
   #### When it counts
   Before scaling processing; update when you launch features that touch identity or health/financial data.
-  
+
   #### Connected artefacts
   - `dp-01-data-protection-policy`
   - `dp-02-data-retention-policy`
   - `physical-and-virtual-assets-register`
-  
+
   #### Review rhythm
   **Quarterly** with product/legal; **within 30 days** of a new processing purpose.
-  
+
   #### First move
   Document one real customer or employee data flow end to end.
 export_tags:

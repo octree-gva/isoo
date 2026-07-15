@@ -1,3 +1,4 @@
+---
 schema_version: '1'
 kind: text
 sections:
@@ -169,20 +170,34 @@ sections:
   editable: true
   field_type: textarea
   required: false
+- level: h2
+  key: owner_name
+  label: Document owner
+  role: body
+  editable: true
+  field_type: text
+  required: true
+- level: h2
+  key: owner_email
+  label: Owner email
+  role: body
+  editable: true
+  field_type: email
+  required: true
 description: |
   #### What you use this for
   Rules for physical and logical access: who may see what, and how requests are approved.
-  
+
   #### When it counts
   Before RBAC tables and access workflows go live.
-  
+
   #### Connected artefacts
   - `role-based-access-control`
   - `access-request-form`
   - `starter-leaver-mover-system-access-process`
-  
+
   #### Review rhythm
   **Annual**; review after access-related incidents.
-  
+
   #### First move
   Define “privileged access” in one sentence your team recognises.

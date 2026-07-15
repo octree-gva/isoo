@@ -5,6 +5,7 @@ require_relative '../support/demo_smoke_helpers'
 
 RSpec.describe 'project export', type: :request do
   include DemoSmokeHelpers
+  include ProjectHelpers
 
   let(:slug) { "export-test-#{SecureRandom.hex(3)}" }
 
@@ -30,15 +31,33 @@ RSpec.describe 'project export', type: :request do
   it 'includes bumped project version in export filename and title' do
     2.times do
       post "/projects/#{slug}/docs/organisation-overview",
-           about_us: "About #{SecureRandom.hex(2)}",
-           document_changes: 'minor edit',
-           significant_change: '0'
+           owner_params.merge(
+             about_us: "About #{SecureRandom.hex(2)}",
+             document_changes: 'minor edit',
+             significant_change: '0'
+           )
     end
 
     get "/projects/#{slug}/export", { format: 'html' }
     expect(last_response.status).to eq(200)
     expect(last_response.headers['Content-Disposition']).to include('export-test-v0.0.2.html')
     expect(last_response.body).to include('<h1>Export Test v0.0.2</h1>')
+  end
+
+  it 'includes owner footer on exported documents when owner is set' do
+    post "/projects/#{slug}/docs/organisation-overview",
+         owner_params.merge(
+           about_us: 'Owned content',
+           document_changes: 'set owner',
+           significant_change: '0'
+         )
+    expect(last_response.status).to eq(302)
+
+    get "/projects/#{slug}/docs/organisation-overview/export", { format: 'html' }
+    expect(last_response.status).to eq(200)
+    expect(last_response.body).to include('export-doc-owner')
+    expect(last_response.body).to include('Test Owner')
+    expect(last_response.body).to include('owner@example.com')
   end
 
   it 'downloads print-ready html' do

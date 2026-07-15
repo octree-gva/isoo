@@ -67,6 +67,14 @@ columns:
   label: Residual Risk
   type: textarea
   description: Remaining risk after controls.
+- key: owner_name
+  label: Document owner
+  type: text
+  required: true
+- key: owner_email
+  label: Owner email
+  type: email
+  required: true
 _internal:
 - key: _row_id
   type: uuid
@@ -75,16 +83,16 @@ _internal:
 description: |
   #### What you use this for
   Trace material changes to ISMS documents and critical configurations.
-  
+
   #### When it counts
   Every significant policy or infrastructure change.
-  
+
   #### Connected artefacts
   - `is-13-change-management-policy`
   - `information-security-management-system-document-tracker`
-  
+
   #### Review rhythm
   **Per change** entry; **quarterly** review in management meeting.
-  
+
   #### First move
   Log the last three production changes you remember — backfill.

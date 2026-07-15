@@ -142,20 +142,34 @@ sections:
   editable: true
   field_type: textarea
   required: false
+- level: h2
+  key: owner_name
+  label: Document owner
+  role: body
+  editable: true
+  field_type: text
+  required: true
+- level: h2
+  key: owner_email
+  label: Owner email
+  role: body
+  editable: true
+  field_type: email
+  required: true
 description: |
   #### What you use this for
   Board-level commitment: objectives, scope, and governance for protecting information.
-  
+
   #### When it counts
   Approve before other security policies; communicate to all staff.
-  
+
   #### Connected artefacts
   - `the-information-security-management-system-overview`
   - `managment-review-team-meeting-agenda-template`
-  
+
   #### Review rhythm
   **Annual** sign-off; sooner after major incident or reorg.
-  
+
   #### First move
   One page maximum — link detail out to topic policies.
 export_tags:

@@ -93,21 +93,35 @@ sections:
   editable: true
   field_type: textarea
   required: false
+- level: h2
+  key: owner_name
+  label: Document owner
+  role: body
+  editable: true
+  field_type: text
+  required: true
+- level: h2
+  key: owner_email
+  label: Owner email
+  role: body
+  editable: true
+  field_type: email
+  required: true
 description: |
   #### What you use this for
   How long categories of data are kept and how deletion/anonymisation works.
-  
+
   #### When it counts
   Alongside privacy inventory; applies to backups and archives too.
-  
+
   #### Connected artefacts
   - `data-asset-register-ropa`
   - `dp-01-data-protection-policy`
   - `is-11-backup-policy`
-  
+
   #### Review rhythm
   **Annual**; update when product retention or law shifts.
-  
+
   #### First move
   Pick customer data and employee data — set realistic retention per category.
 export_tags:

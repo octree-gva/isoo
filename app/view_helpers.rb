@@ -64,6 +64,14 @@ module ViewHelpers
     { 'rows' => mapped }
   end
 
+  def table_data_columns(schema)
+    DocumentOwner.data_columns(schema)
+  end
+
+  def document_owner_from_rows(rows)
+    DocumentOwner.from_rows(rows)
+  end
+
   def table_switch_on?(value, col = nil)
     ::TableSwitch.on?(value, col)
   end

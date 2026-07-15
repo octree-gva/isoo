@@ -37,19 +37,33 @@ sections:
   editable: true
   field_type: textarea
   required: false
+- level: h2
+  key: owner_name
+  label: Document owner
+  role: body
+  editable: true
+  field_type: text
+  required: true
+- level: h2
+  key: owner_email
+  label: Owner email
+  role: body
+  editable: true
+  field_type: email
+  required: true
 description: |
   #### What you use this for
   Leadership-friendly summary of impact analysis for funding and priorities.
-  
+
   #### When it counts
   After detailed BIA — input to management review.
-  
+
   #### Connected artefacts
   - `business-impact-assessment`
   - `business-continuity-objectives-and-strategy`
-  
+
   #### Review rhythm
   **Annual** with BIA.
-  
+
   #### First move
   One slide: worst plausible outage, cost of downtime, top dependency.

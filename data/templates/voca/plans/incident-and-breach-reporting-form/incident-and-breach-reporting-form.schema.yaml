@@ -1,21 +1,35 @@
 ---
 schema_version: '1'
 kind: text
-sections: []
+sections:
+- level: h2
+  key: owner_name
+  label: Document owner
+  role: body
+  editable: true
+  field_type: text
+  required: true
+- level: h2
+  key: owner_email
+  label: Owner email
+  role: body
+  editable: true
+  field_type: email
+  required: true
 description: |
   #### What you use this for
   Simple channel for staff to report odd events and suspected breaches.
-  
+
   #### When it counts
   Always available — training beats fine print.
-  
+
   #### Connected artefacts
   - `is-24-significant-incident-policy-and-collection-of-evidence`
   - `incident-and-corrective-action-log`
-  
+
   #### Review rhythm
   Template **annual**; submissions **per event**.
-  
+
   #### First move
   Put the link in onboarding and the office wiki — test it monthly.
 export_tags:

@@ -454,6 +454,16 @@ table.export-table th {
     white-space: nowrap;
   }
 
+  .export-doc-owner {
+    margin-top: 1.5rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--export-border);
+    font-size: 9pt;
+    color: var(--export-muted);
+    break-inside: avoid-page;
+    page-break-inside: avoid;
+  }
+
   .export-cover {
     break-after: page;
     min-height: auto;

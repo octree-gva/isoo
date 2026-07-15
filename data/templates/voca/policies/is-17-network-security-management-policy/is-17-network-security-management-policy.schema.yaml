@@ -1,3 +1,4 @@
+---
 schema_version: '1'
 kind: text
 sections:
@@ -127,19 +128,33 @@ sections:
   editable: true
   field_type: textarea
   required: false
+- level: h2
+  key: owner_name
+  label: Document owner
+  role: body
+  editable: true
+  field_type: text
+  required: true
+- level: h2
+  key: owner_email
+  label: Owner email
+  role: body
+  editable: true
+  field_type: email
+  required: true
 description: |
   #### What you use this for
   Segmentation, perimeter, wireless, and remote access principles.
-  
+
   #### When it counts
   Align with network diagrams and cloud security groups.
-  
+
   #### Connected artefacts
   - `operations-security-manual-v1`
   - `is-26-cloud-service-policy`
-  
+
   #### Review rhythm
   **Annual**; after architecture migrations.
-  
+
   #### First move
   Sketch trust zones on one whiteboard photo — policy follows diagram.

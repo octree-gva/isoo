@@ -24,6 +24,14 @@ columns:
   label: Supplier Review
   type: review_date
   description: Date of next supplier review.
+- key: owner_name
+  label: Document owner
+  type: text
+  required: true
+- key: owner_email
+  label: Owner email
+  type: email
+  required: true
 _internal:
 - key: _row_id
   type: uuid
@@ -32,17 +40,17 @@ _internal:
 description: |
   #### What you use this for
   Vendors with data or operational dependency — tier, owner, review dates.
-  
+
   #### When it counts
   Onboarding suppliers; renewals and incidents trigger reassessment.
-  
+
   #### Connected artefacts
   - `is-14-third-party-supplier-security-policy`
   - `legal-and-contractual-requirements-register`
-  
+
   #### Review rhythm
   **Annual** minimum; **quarterly** for tier‑1.
-  
+
   #### First move
   Your CRM, finance, and SSO vendor lists are the seed data.
 

@@ -1,3 +1,4 @@
+---
 schema_version: '1'
 kind: text
 sections:
@@ -127,18 +128,32 @@ sections:
   editable: true
   field_type: textarea
   required: false
+- level: h2
+  key: owner_name
+  label: Document owner
+  role: body
+  editable: true
+  field_type: text
+  required: true
+- level: h2
+  key: owner_email
+  label: Owner email
+  role: body
+  editable: true
+  field_type: email
+  required: true
 description: |
   #### What you use this for
   Generation, storage, rotation, and destruction of cryptographic keys.
-  
+
   #### When it counts
   When you operate keys in-house (not only cloud-managed).
-  
+
   #### Connected artefacts
   - `is-22-cryptographic-control-and-encryption-policy`
-  
+
   #### Review rhythm
   **Annual**.
-  
+
   #### First move
   Inventory where keys live — KMS, HSM, `.env`, password managers.

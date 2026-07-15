@@ -121,20 +121,34 @@ sections:
   editable: true
   field_type: textarea
   required: false
+- level: h2
+  key: owner_name
+  label: Document owner
+  role: body
+  editable: true
+  field_type: text
+  required: true
+- level: h2
+  key: owner_email
+  label: Owner email
+  role: body
+  editable: true
+  field_type: email
+  required: true
 description: |
   #### What you use this for
   How you collect, judge, and act on relevant threat information.
-  
+
   #### When it counts
   Once monitoring and incident basics exist.
-  
+
   #### Connected artefacts
   - `threat-intelligence-report-template`
   - `is-16-logging-and-monitoring-policy`
   - `isms-risk-register`
-  
+
   #### Review rhythm
   **Annual** process; intake **ongoing**.
-  
+
   #### First move
   Subscribe to two free feeds your stack actually cares about (vendor + sector).

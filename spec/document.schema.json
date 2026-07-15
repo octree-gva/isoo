@@ -28,7 +28,7 @@
           "editable": { "type": "boolean" },
           "field_type": {
             "type": "string",
-            "enum": ["text", "textarea", "date", "checkbox", "switch", "dropdown"]
+            "enum": ["text", "textarea", "date", "checkbox", "switch", "dropdown", "email"]
           },
           "required": { "type": "boolean" }
         }
@@ -45,7 +45,7 @@
           "label": { "type": "string" },
           "type": {
             "type": "string",
-            "enum": ["text", "textarea", "date", "review_date", "number", "link", "checkbox", "switch", "dropdown"]
+            "enum": ["text", "textarea", "date", "review_date", "number", "link", "checkbox", "switch", "dropdown", "email"]
           },
           "required": { "type": "boolean" },
           "default": { "type": ["boolean", "string", "number"] },

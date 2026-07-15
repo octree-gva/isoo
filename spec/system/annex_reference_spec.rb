@@ -12,9 +12,11 @@ RSpec.describe 'annex bbcode references', type: :request do
 
   it 'shows referenced-in on the asset detail page' do
     post "/projects/#{slug}/docs/organisation-overview",
-         about_us: "Network layout: [ANNEX #{annex_doc_id}].",
-         document_changes: 'Added annex reference',
-         significant_change: '0'
+         owner_params.merge(
+           about_us: "Network layout: [ANNEX #{annex_doc_id}].",
+           document_changes: 'Added annex reference',
+           significant_change: '0'
+         )
     expect(last_response.status).to eq(302)
 
     expect_get_page!("/projects/#{slug}/docs/#{annex_doc_id}", 'annex detail with references',

@@ -1,3 +1,4 @@
+---
 schema_version: '1'
 kind: text
 sections:
@@ -92,19 +93,33 @@ sections:
   editable: true
   field_type: textarea
   required: false
+- level: h2
+  key: owner_name
+  label: Document owner
+  role: body
+  editable: true
+  field_type: text
+  required: true
+- level: h2
+  key: owner_email
+  label: Owner email
+  role: body
+  editable: true
+  field_type: email
+  required: true
 description: |
   #### What you use this for
   Major incident criteria, escalation, and forensic evidence handling.
-  
+
   #### When it counts
   Before incident forms and playbooks go live.
-  
+
   #### Connected artefacts
   - `incident-and-breach-reporting-form`
   - `post-incident-review-form`
-  
+
   #### Review rhythm
   **Annual**; after any serious event.
-  
+
   #### First move
   Define “significant” with examples your exec team recognises.

@@ -1,3 +1,4 @@
+---
 schema_version: '1'
 kind: text
 sections:
@@ -134,19 +135,33 @@ sections:
   editable: true
   field_type: textarea
   required: false
+- level: h2
+  key: owner_name
+  label: Document owner
+  role: body
+  editable: true
+  field_type: text
+  required: true
+- level: h2
+  key: owner_email
+  label: Owner email
+  role: body
+  editable: true
+  field_type: email
+  required: true
 description: |
   #### What you use this for
   Security expectations when most work happens on-site with occasional remote days.
-  
+
   #### When it counts
   Hybrid workplaces — pick this or the remote-first variant, not both.
-  
+
   #### Connected artefacts
   - `is-09b-mobile-and-teleworking-policy-fully-remote`
   - `is-17-network-security-management-policy`
-  
+
   #### Review rhythm
   **Annual**.
-  
+
   #### First move
   State VPN, device, and visitor rules for “work from home Friday”.

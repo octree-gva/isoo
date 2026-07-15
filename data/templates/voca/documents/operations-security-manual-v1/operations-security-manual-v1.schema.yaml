@@ -1,3 +1,4 @@
+---
 schema_version: '1'
 kind: text
 sections:
@@ -211,21 +212,35 @@ sections:
   editable: true
   field_type: textarea
   required: false
+- level: h2
+  key: owner_name
+  label: Document owner
+  role: body
+  editable: true
+  field_type: text
+  required: true
+- level: h2
+  key: owner_email
+  label: Owner email
+  role: body
+  editable: true
+  field_type: email
+  required: true
 description: |
   #### What you use this for
   Runbook for IT/support: how controls actually work day to day.
-  
+
   #### When it counts
   After policies exist — bridges “what we said” and “what we do”.
-  
+
   #### Connected artefacts
   - `is-16-logging-and-monitoring-policy`
   - `is-11-backup-policy`
   - `is-13-change-management-policy`
-  
+
   #### Review rhythm
   **Annual**; patch after tooling or on-call process changes.
-  
+
   #### First move
   Document one routine (backup restore, access grant) exactly as performed today.
 export_tags:

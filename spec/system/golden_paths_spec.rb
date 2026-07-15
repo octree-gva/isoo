@@ -4,6 +4,8 @@ require_relative '../spec_helper'
 require 'securerandom'
 
 RSpec.describe 'golden paths', type: :request do
+  include ProjectHelpers
+
   def create_project!(name: 'Golden Path Co', slug: nil)
     slug ||= "golden-#{SecureRandom.hex(3)}"
     post '/projects', name: name, slug: slug
@@ -34,9 +36,11 @@ RSpec.describe 'golden paths', type: :request do
                      include_markers: ['has-page-footer'])
 
     post "/projects/#{slug}/docs/organisation-overview",
-         about_us: 'Golden path: we ship secure open source.',
-         document_changes: 'Filled about us for golden path test',
-         significant_change: '0'
+         owner_params.merge(
+           about_us: 'Golden path: we ship secure open source.',
+           document_changes: 'Filled about us for golden path test',
+           significant_change: '0'
+         )
     expect(last_response.status).to eq(302)
     follow_redirect_and_expect_page!('organisation overview after save',
                                      include_markers: ['Golden path: we ship secure open source.'])
@@ -63,8 +67,10 @@ RSpec.describe 'golden paths', type: :request do
                      include_markers: ['GDPR', 'data-wizard-prefill='])
 
     post "/projects/#{slug}/docs/legal-and-contractual-requirements-register",
-         document_changes: 'Added GDPR row for golden path test',
-         significant_change: '0'
+         owner_params.merge(
+           document_changes: 'Added GDPR row for golden path test',
+           significant_change: '0'
+         )
     expect(last_response.status).to eq(302)
 
     store = ClassifiedFileStore.new(FileStore.new(File.join(App::DATA_PATH, 'projects', slug)))
@@ -91,9 +97,11 @@ RSpec.describe 'golden paths', type: :request do
     expect_get_page!("/projects/#{slug}/docs/#{response_id}", 'audit form response')
 
     post "/projects/#{slug}/docs/#{response_id}",
-         key_findings_summary: 'Golden path audit: no critical findings.',
-         document_changes: 'Recorded initial audit summary',
-         significant_change: '0'
+         owner_params.merge(
+           key_findings_summary: 'Golden path audit: no critical findings.',
+           document_changes: 'Recorded initial audit summary',
+           significant_change: '0'
+         )
     expect(last_response.status).to eq(302)
 
     expect_get_page!("/projects/#{slug}/docs/#{response_id}", 'saved audit form response',

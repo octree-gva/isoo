@@ -9,9 +9,11 @@ RSpec.describe 'document saves', type: :request do
 
   it 'saves text with version bump' do
     post "/projects/#{slug}/docs/organisation-overview",
-         about_us: 'Updated about',
-         document_changes: 'about us',
-         significant_change: '1'
+         owner_params.merge(
+           about_us: 'Updated about',
+           document_changes: 'about us',
+           significant_change: '1'
+         )
     expect(last_response.status).to eq(302)
 
     manifest = ProjectManifest.load(File.join(App::DATA_PATH, 'projects', slug))

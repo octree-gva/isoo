@@ -27,6 +27,14 @@ columns:
   label: Support Named Person
   type: text
   description: Person providing resources or expertise to support the task.
+- key: owner_name
+  label: Document owner
+  type: text
+  required: true
+- key: owner_email
+  label: Owner email
+  type: email
+  required: true
 _internal:
 - key: _row_id
   type: uuid
@@ -35,16 +43,16 @@ _internal:
 description: |
   #### What you use this for
   Detailed responsibility map across controls and recurring tasks.
-  
+
   #### When it counts
   When the basic matrix is too coarse for delegation and evidence collection.
-  
+
   #### Connected artefacts
   - `isms-rasci-matrix-basic-accountability-matrix`
   - `competency-matrix`
-  
+
   #### Review rhythm
   **Quarterly** spot-check against reality.
-  
+
   #### First move
   Import rows from the basic matrix before adding new lines.

@@ -1,0 +1,19 @@
+<%# locals: owner:, form_id: nil %>
+<% owner_name = owner[DocumentOwner.owner_name_key] %>
+<% owner_email = owner[DocumentOwner.owner_email_key] %>
+<% form_attr = form_id ? %( form="#{form_id}") : '' %>
+
+<section class="mt-6 space-y-4" aria-labelledby="document-owner-heading">
+  <h2 id="document-owner-heading" class="text-2xl"><%= t('owner.heading') %></h2>
+  <label class="form-control" for="document-owner-name">
+    <span class="label-text text-lg mb-2"><%= t('owner.name_label') %></span>
+    <input class="input input-bordered w-full text-base" type="text" id="document-owner-name"
+           name="<%= DocumentOwner.owner_name_key %>" value="<%= owner_name %>" required<%= form_attr %>>
+  </label>
+  <label class="form-control" for="document-owner-email">
+    <span class="label-text text-lg mb-2"><%= t('owner.email_label') %></span>
+    <input class="input input-bordered w-full text-base" type="email" id="document-owner-email"
+           name="<%= DocumentOwner.owner_email_key %>" value="<%= owner_email %>" required
+           autocomplete="email" inputmode="email"<%= form_attr %>>
+  </label>
+</section>

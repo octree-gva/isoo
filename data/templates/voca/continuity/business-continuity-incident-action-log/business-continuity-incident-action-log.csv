@@ -1,1 +1,1 @@
-ref,action_date_and_time,who_performed_action,what_was_done_decision_made,external_reference_number,corrective_action,risk,_row_id,_deleted_at
+ref,action_date_and_time,who_performed_action,what_was_done_decision_made,external_reference_number,corrective_action,risk,owner_name,owner_email,_row_id,_deleted_at

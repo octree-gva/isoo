@@ -1,3 +1,4 @@
+---
 schema_version: '1'
 kind: form
 response_kind: text
@@ -79,19 +80,33 @@ sections:
   editable: true
   field_type: textarea
   required: false
+- level: h2
+  key: owner_name
+  label: Document owner
+  role: body
+  editable: true
+  field_type: text
+  required: true
+- level: h2
+  key: owner_email
+  label: Owner email
+  role: body
+  editable: true
+  field_type: email
+  required: true
 description: |
   #### What you use this for
   Blameless debrief after incidents or plan activations.
-  
+
   #### When it counts
   Within days of stand-down while facts are fresh.
-  
+
   #### Connected artefacts
   - `incident-and-corrective-action-log`
   - `is-15-continual-improvement-policy`
-  
+
   #### Review rhythm
   **Per event**.
-  
+
   #### First move
   Capture timeline before debating root cause.

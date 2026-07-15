@@ -1,3 +1,4 @@
+---
 schema_version: '1'
 kind: text
 sections:
@@ -157,19 +158,33 @@ sections:
   editable: true
   field_type: textarea
   required: false
+- level: h2
+  key: owner_name
+  label: Document owner
+  role: body
+  editable: true
+  field_type: text
+  required: true
+- level: h2
+  key: owner_email
+  label: Owner email
+  role: body
+  editable: true
+  field_type: email
+  required: true
 description: |
   #### What you use this for
   Facilitator guide: plan, run, and score continuity exercises.
-  
+
   #### When it counts
   Before your first tabletop or technical drill.
-  
+
   #### Connected artefacts
   - `business-continuity-test-template`
   - `business-continuity-plan-scenario`
-  
+
   #### Review rhythm
   **Annual** refresh of the guide.
-  
+
   #### First move
   Run a 60-minute tabletop with coffee — low stakes, real learning.

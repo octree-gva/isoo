@@ -27,6 +27,14 @@ columns:
   label: General Notes
   type: textarea
   description: Additional notes.
+- key: owner_name
+  label: Document owner
+  type: text
+  required: true
+- key: owner_email
+  label: Owner email
+  type: email
+  required: true
 _internal:
 - key: _row_id
   type: uuid
@@ -35,17 +43,17 @@ _internal:
 description: |
   #### What you use this for
   Master index of controlled docs: version, owner, review date, status.
-  
+
   #### When it counts
   From day one — stale documents are a common review finding.
-  
+
   #### Connected artefacts
   - `is-23-document-and-record-policy`
   - `change-log`
-  
+
   #### Review rhythm
   **Monthly** glance; **quarterly** owner confirmations.
-  
+
   #### First move
   Register every policy you already have, even if version is “draft”.
 export_tags:

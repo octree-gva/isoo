@@ -61,6 +61,11 @@
            data-row-field="<%= col['key'] %>" class="checkbox checkbox-primary checkbox-lg">
     <span class="label-text text-lg"><%= col['label'] %></span>
   </label>
+<% when 'email' %>
+  <input type="email" class="input input-bordered w-full" id="<%= input_id %>" name="<%= col['key'] %>"
+         data-row-field="<%= col['key'] %>" <%= attrs %>
+         autocomplete="email" inputmode="email"
+         placeholder="<%= placeholder %>">
 <% else %>
   <input type="text" class="input input-bordered w-full" id="<%= input_id %>" name="<%= col['key'] %>"
          data-row-field="<%= col['key'] %>" <%= attrs %>

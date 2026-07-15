@@ -45,6 +45,10 @@
     <input type="checkbox" id="<%= field_id %>" name="<%= input_name %>" value="1"
            class="checkbox checkbox-primary checkbox-sm"<%= ' checked' if cell_value == '1' %>>
   </label>
+<% when 'email' %>
+  <input type="email" class="input input-bordered input-xs w-full min-w-[8rem]"
+         id="<%= field_id %>" name="<%= input_name %>" value="<%= cell_value %>"
+         autocomplete="email" inputmode="email">
 <% else %>
   <input type="text" class="input input-bordered input-xs w-full min-w-[6rem]"
          id="<%= field_id %>" name="<%= input_name %>" value="<%= cell_value %>">

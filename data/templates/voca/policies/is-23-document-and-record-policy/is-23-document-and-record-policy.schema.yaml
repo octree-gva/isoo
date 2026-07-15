@@ -1,3 +1,4 @@
+---
 schema_version: '1'
 kind: text
 sections:
@@ -134,19 +135,33 @@ sections:
   editable: true
   field_type: textarea
   required: false
+- level: h2
+  key: owner_name
+  label: Document owner
+  role: body
+  editable: true
+  field_type: text
+  required: true
+- level: h2
+  key: owner_email
+  label: Owner email
+  role: body
+  editable: true
+  field_type: email
+  required: true
 description: |
   #### What you use this for
   Creation, approval, versioning, distribution, and retention of ISMS records.
-  
+
   #### When it counts
   Early — gives teeth to the document tracker and change log.
-  
+
   #### Connected artefacts
   - `information-security-management-system-document-tracker`
   - `change-log`
-  
+
   #### Review rhythm
   **Annual**.
-  
+
   #### First move
   Define who may approve a policy version — one role, one backup.

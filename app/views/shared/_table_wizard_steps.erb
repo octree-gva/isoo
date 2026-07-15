@@ -1,4 +1,5 @@
 <% columns.each_with_index do |col, index| %>
+  <% next if DocumentOwner.owner_key?(col['key']) %>
   <% input_id = "#{id_prefix}-#{col['key']}" %>
   <% field_type = col['type'] || 'text' %>
   <div class="mt-4" data-wizard-step="<%= index + 1 %>"<%= ' hidden' unless index.zero? %>>

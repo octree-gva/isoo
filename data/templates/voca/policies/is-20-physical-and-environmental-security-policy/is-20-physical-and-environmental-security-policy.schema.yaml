@@ -1,3 +1,4 @@
+---
 schema_version: '1'
 kind: text
 sections:
@@ -127,18 +128,32 @@ sections:
   editable: true
   field_type: textarea
   required: false
+- level: h2
+  key: owner_name
+  label: Document owner
+  role: body
+  editable: true
+  field_type: text
+  required: true
+- level: h2
+  key: owner_email
+  label: Owner email
+  role: body
+  editable: true
+  field_type: email
+  required: true
 description: |
   #### What you use this for
   Protect premises, equipment, and environment (access, power, fire, etc.).
-  
+
   #### When it counts
   Any office, closet, or co-lo you control.
-  
+
   #### Connected artefacts
   - `physical-and-virtual-assets-register`
-  
+
   #### Review rhythm
   **Annual**; walk-through after office moves.
-  
+
   #### First move
   Document how visitors get in and who escorts them.

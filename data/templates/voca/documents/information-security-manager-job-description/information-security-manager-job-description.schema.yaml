@@ -23,20 +23,34 @@ sections:
   editable: true
   field_type: textarea
   required: false
+- level: h2
+  key: owner_name
+  label: Document owner
+  role: body
+  editable: true
+  field_type: text
+  required: true
+- level: h2
+  key: owner_email
+  label: Owner email
+  role: body
+  editable: true
+  field_type: email
+  required: true
 description: |
   #### What you use this for
   Defines authority and duties of the person accountable for the management system.
-  
+
   #### When it counts
   Before claiming formal ISMS ownership; revisit when reporting lines change.
-  
+
   #### Connected artefacts
   - `isms-rasci-matrix-basic-accountability-matrix`
   - `the-information-security-management-system-overview`
-  
+
   #### Review rhythm
   **Annual** or on restructure.
-  
+
   #### First move
   Name the role holder and one escalation path to the board.
 export_tags:

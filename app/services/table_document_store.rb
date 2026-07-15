@@ -31,8 +31,9 @@ class TableDocumentStore
       version_control_rows: version_control_rows }
   end
 
-  def save_rows(doc_path, rows:, version:, date:, author:, changes:)
+  def save_rows(doc_path, rows:, version:, date:, author:, changes:, owner: nil)
     doc = read(doc_path)
+    rows = apply_owner_to_rows(rows, owner) if owner
     write_csv(doc, rows, author)
     bump_md(doc, version, date, author, changes)
   end
@@ -48,6 +49,7 @@ class TableDocumentStore
     doc = read(doc_path)
     all = @store.exist?(doc[:csv_path]) ? load_all_rows(doc[:csv_path]) : []
     row = row_attrs(doc, attrs).merge('_row_id' => SecureRandom.uuid, '_deleted_at' => '')
+    row = row.merge(DocumentOwner.from_rows(all)) if all.any?
     all << row
     write_csv(doc, all, nil)
     row
@@ -81,10 +83,19 @@ class TableDocumentStore
     write_csv(doc, all, author)
   end
 
-  def save_fullscreen(doc_path, rows_params:, version:, date:, author:, changes:)
+  def save_fullscreen(doc_path, rows_params:, version:, date:, author:, changes:, owner: nil)
     update_rows_from_params(doc_path, rows_params, author: author)
+    apply_owner!(doc_path, owner) if owner
     doc = read(doc_path)
     bump_md(doc, version, date, author, changes)
+  end
+
+  def apply_owner!(doc_path, owner)
+    return unless owner
+
+    doc = read(doc_path)
+    all = load_all_rows(doc[:csv_path])
+    write_csv(doc, apply_owner_to_rows(all, owner), nil)
   end
 
   def find_row(doc_path, row_id)
@@ -115,6 +126,11 @@ class TableDocumentStore
       raise ValidationError, IsooI18n.t('table.review_date_must_be_future') if date <= Date.today
     when 'switch'
       row[key] = '0' if value.nil? || value.to_s.strip.empty?
+    when 'email'
+      v = value.to_s.strip
+      return if v.empty?
+
+      raise ValidationError, IsooI18n.t('owner.email_invalid') unless v.match?(DocumentOwner::EMAIL_PATTERN)
     end
   end
 
@@ -155,6 +171,10 @@ class TableDocumentStore
     else
       @store.write(path, content)
     end
+  end
+
+  def apply_owner_to_rows(rows, owner)
+    DocumentOwner.propagate_to_rows(rows, owner)
   end
 
   def confidential_store?(store)

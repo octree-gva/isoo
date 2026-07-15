@@ -175,6 +175,14 @@ en:
     stay: Stay on page
     leave: Leave without saving
     save: Save changes
+  owner:
+    heading: Document owner
+    name_label: Document owner
+    email_label: Owner email
+    name_required: A document owner name is required.
+    email_required: A document owner email is required.
+    email_invalid: Enter a valid email address for the document owner.
+    export_footer: "This document is owned and maintained by %{name} <%{email}>"
   draft:
     restored: Unsaved draft restored.
   wizard:

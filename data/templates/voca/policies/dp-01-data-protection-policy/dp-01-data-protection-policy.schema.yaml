@@ -1,3 +1,4 @@
+---
 schema_version: '1'
 kind: text
 sections:
@@ -267,21 +268,35 @@ sections:
   editable: true
   field_type: textarea
   required: false
+- level: h2
+  key: owner_name
+  label: Document owner
+  role: body
+  editable: true
+  field_type: text
+  required: true
+- level: h2
+  key: owner_email
+  label: Owner email
+  role: body
+  editable: true
+  field_type: email
+  required: true
 description: |
   #### What you use this for
   Organisation-wide rules for lawful, fair, transparent personal data processing.
-  
+
   #### When it counts
   Before processing at scale; staff acknowledgement required.
-  
+
   #### Connected artefacts
   - `data-asset-register-ropa`
   - `dp-02-data-retention-policy`
   - `is-05-information-classification-and-handling-policy`
-  
+
   #### Review rhythm
   **Annual**; immediate review when law or processing model changes.
-  
+
   #### First move
   State lawful bases you actually rely on — do not copy a generic list.
 export_tags:

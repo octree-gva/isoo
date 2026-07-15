@@ -26,7 +26,7 @@ class ExportContent
     table = CSV.parse(csv_text, headers: true)
     return '' if table.empty?
 
-    headers = table.headers.compact.map(&:to_s).reject { |h| INTERNAL_COLUMNS.include?(h) }
+    headers = table.headers.compact.map(&:to_s).reject { |h| INTERNAL_COLUMNS.include?(h) || DocumentOwner.owner_key?(h) }
     return '' if headers.empty?
 
     columns_by_key = column_index(schema)
@@ -50,7 +50,7 @@ class ExportContent
     table = CSV.parse(csv_text, headers: true)
     return '' if table.empty?
 
-    raw_headers = table.headers.compact.map(&:to_s).reject { |h| INTERNAL_COLUMNS.include?(h) }
+    raw_headers = table.headers.compact.map(&:to_s).reject { |h| INTERNAL_COLUMNS.include?(h) || DocumentOwner.owner_key?(h) }
     return '' if raw_headers.empty?
 
     columns = schema ? legend_columns(schema, raw_headers) : raw_headers.map { |key| { 'key' => key, 'label' => key } }
@@ -268,7 +268,9 @@ class ExportContent
     columns_by_key = (schema['columns'] || []).to_h do |col|
       [col['key'].to_s, col]
     end
-    headers = Array(csv_headers).compact.map(&:to_s).reject { |h| INTERNAL_COLUMNS.include?(h) }
+    headers = Array(csv_headers).compact.map(&:to_s).reject do |h|
+      INTERNAL_COLUMNS.include?(h) || DocumentOwner.owner_key?(h)
+    end
     headers.filter_map do |key|
       columns_by_key[key] || { 'key' => key, 'label' => key, 'description' => '' }
     end

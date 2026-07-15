@@ -17,19 +17,33 @@ sections:
   editable: true
   field_type: textarea
   required: false
+- level: h2
+  key: owner_name
+  label: Document owner
+  role: body
+  editable: true
+  field_type: text
+  required: true
+- level: h2
+  key: owner_email
+  label: Owner email
+  role: body
+  editable: true
+  field_type: email
+  required: true
 description: |
   #### What you use this for
   Executive summary of test goals, results, and follow-ups.
-  
+
   #### When it counts
   Immediately after each exercise.
-  
+
   #### Connected artefacts
   - `business-continuity-test-template`
   - `managment-review-team-meeting-agenda-template`
-  
+
   #### Review rhythm
   **Per exercise**.
-  
+
   #### First move
   List what surprised the room — that is the valuable part.
