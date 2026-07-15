@@ -1,0 +1,375 @@
+(function () {
+  var DEFAULT_EXCLUDED = ['document_changes', 'significant_change'];
+  var DEBOUNCE_MS = 400;
+
+  function t(key, fallback) {
+    var node = window.I18n;
+    if (!node) return fallback;
+    var parts = key.split('.');
+    for (var i = 0; i < parts.length; i++) {
+      node = node[parts[i]];
+      if (node == null) return fallback;
+    }
+    return typeof node === 'string' ? node : fallback;
+  }
+
+  function parseRowFieldName(name) {
+    var match = /^rows\[([^\]]+)\]\[([^\]]+)\]$/.exec(name);
+    if (!match) return null;
+    return { rowId: match[1], colKey: match[2] };
+  }
+
+  function fieldValue(el) {
+    if (el.type === 'checkbox') {
+      return el.checked ? el.value || '1' : '0';
+    }
+    return el.value;
+  }
+
+  function setFieldValue(el, value) {
+    if (el.type === 'checkbox') {
+      el.checked = ['1', 'true', 'yes', 'on'].includes(String(value).toLowerCase());
+    } else if (el.matches('[data-markdown-editor]') && window.IsooMarkdownEditor) {
+      window.IsooMarkdownEditor.setValue(el, value);
+    } else {
+      el.value = value || '';
+    }
+  }
+
+  function collectElements(form) {
+    var elements = [];
+    Array.prototype.forEach.call(form.elements, function (el) {
+      if (el.name) elements.push(el);
+    });
+    if (form.id) {
+      document.querySelectorAll('[form="' + form.id + '"]').forEach(function (el) {
+        if (el.name) elements.push(el);
+      });
+    }
+    return elements;
+  }
+
+  function captureTextState(form, excluded) {
+    var state = {};
+    var elements = collectElements(form);
+    var checkboxNames = {};
+    elements.forEach(function (el) {
+      if (el.type === 'checkbox' && el.name) checkboxNames[el.name] = true;
+    });
+    elements.forEach(function (el) {
+      if (!el.name || excluded[el.name]) return;
+      if (el.type === 'hidden' && checkboxNames[el.name]) return;
+      state[el.name] = fieldValue(el);
+    });
+    return state;
+  }
+
+  function captureTableState(form) {
+    var rows = {};
+    form.querySelectorAll('input, textarea, select').forEach(function (el) {
+      var parsed = parseRowFieldName(el.name);
+      if (!parsed) return;
+      var checkbox = form.querySelector('[name="' + el.name + '"][type="checkbox"]');
+      if (el.type === 'hidden' && checkbox) return;
+      if (!rows[parsed.rowId]) rows[parsed.rowId] = {};
+      rows[parsed.rowId][parsed.colKey] = fieldValue(el);
+    });
+    return { rows: rows };
+  }
+
+  function captureFormState(form, excluded, mode) {
+    if (mode === 'table') return captureTableState(form);
+    return captureTextState(form, excluded);
+  }
+
+  function applyTextState(form, state) {
+    if (!state) return;
+    Object.keys(state).forEach(function (name) {
+      var els = collectElements(form).filter(function (el) {
+        return el.name === name;
+      });
+      var target = els.find(function (el) {
+        return el.type === 'checkbox';
+      }) || els[0];
+      if (!target) return;
+      setFieldValue(target, state[name]);
+    });
+  }
+
+  function applyTableState(form, state) {
+    if (!state || !state.rows) return;
+    Object.keys(state.rows).forEach(function (rowId) {
+      var cols = state.rows[rowId];
+      Object.keys(cols).forEach(function (colKey) {
+        var name = 'rows[' + rowId + '][' + colKey + ']';
+        var els = form.querySelectorAll('[name="' + name + '"]');
+        var target = null;
+        for (var i = 0; i < els.length; i++) {
+          if (els[i].type === 'checkbox') {
+            target = els[i];
+            break;
+          }
+        }
+        if (!target && els.length) target = els[0];
+        if (target) setFieldValue(target, cols[colKey]);
+      });
+    });
+  }
+
+  function applyFormState(form, state, mode) {
+    if (mode === 'table') applyTableState(form, state);
+    else applyTextState(form, state);
+    if (window.IsooMarkdownEditor) window.IsooMarkdownEditor.mountVisible(form);
+  }
+
+  function statesEqual(a, b) {
+    return JSON.stringify(a) === JSON.stringify(b);
+  }
+
+  function parseBaseline(raw) {
+    try {
+      return JSON.parse(raw);
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function excludedMap(form) {
+    var map = {};
+    DEFAULT_EXCLUDED.forEach(function (name) {
+      map[name] = true;
+    });
+    var extra = form.getAttribute('data-draft-exclude');
+    if (extra) {
+      extra.split(',').forEach(function (name) {
+        name = name.trim();
+        if (name) map[name] = true;
+      });
+    }
+    return map;
+  }
+
+  function showToast(message) {
+    var existing = document.querySelector('[data-toast-draft]');
+    if (existing) existing.remove();
+
+    var wrap = document.createElement('div');
+    wrap.className = 'toast toast-top toast-end z-[60] pointer-events-none';
+    wrap.setAttribute('role', 'status');
+    wrap.setAttribute('aria-live', 'polite');
+    wrap.setAttribute('data-toast-draft', '1');
+
+    var alert = document.createElement('div');
+    alert.className =
+      'alert alert-info shadow-lg max-w-md pointer-events-auto flex items-start gap-3';
+
+    var icon = document.createElement('i');
+    icon.className = 'ri-information-line text-xl shrink-0';
+    icon.setAttribute('aria-hidden', 'true');
+
+    var text = document.createElement('span');
+    text.className = 'flex-1 text-base';
+    text.textContent = message;
+
+    var dismiss = document.createElement('button');
+    dismiss.type = 'button';
+    dismiss.className = 'btn btn-ghost btn-xs btn-circle shrink-0';
+    dismiss.setAttribute('aria-label', t('toast.dismiss', 'Dismiss notification'));
+    dismiss.innerHTML = '<i class="ri-close-line" aria-hidden="true"></i>';
+
+    alert.appendChild(icon);
+    alert.appendChild(text);
+    alert.appendChild(dismiss);
+    wrap.appendChild(alert);
+    document.body.appendChild(wrap);
+
+    function dismissToast() {
+      wrap.style.opacity = '0';
+      wrap.style.transition = 'opacity 0.3s ease';
+      window.setTimeout(function () {
+        wrap.remove();
+      }, 300);
+    }
+
+    dismiss.addEventListener('click', dismissToast);
+    window.setTimeout(dismissToast, 5000);
+  }
+
+  function bind(form) {
+    var storageKey = form.getAttribute('data-form-draft');
+    if (!storageKey) return;
+
+    var mode = form.getAttribute('data-draft-mode') || 'text';
+    var saveModalId = form.getAttribute('data-leave-save-modal') || 'save_modal';
+    var leaveModal = document.getElementById('leave_modal');
+    var baseline = parseBaseline(form.getAttribute('data-draft-baseline')) || {};
+    var excluded = excludedMap(form);
+    var pendingHref = null;
+    var debounceTimer = null;
+
+    function currentState() {
+      return captureFormState(form, excluded, mode);
+    }
+
+    function isDirty() {
+      return !statesEqual(currentState(), baseline);
+    }
+
+    function persistDraft() {
+      if (!isDirty()) {
+        try {
+          localStorage.removeItem(storageKey);
+        } catch (e) {
+          /* ignore */
+        }
+        return;
+      }
+      try {
+        localStorage.setItem(storageKey, JSON.stringify(currentState()));
+      } catch (e) {
+        /* quota or private mode */
+      }
+    }
+
+    function schedulePersist() {
+      if (debounceTimer) window.clearTimeout(debounceTimer);
+      debounceTimer = window.setTimeout(persistDraft, DEBOUNCE_MS);
+    }
+
+    function clearDraft() {
+      try {
+        localStorage.removeItem(storageKey);
+      } catch (e) {
+        /* ignore */
+      }
+    }
+
+    function restoreDraft() {
+      var raw;
+      try {
+        raw = localStorage.getItem(storageKey);
+      } catch (e) {
+        return false;
+      }
+      if (!raw) return false;
+
+      var draft;
+      try {
+        draft = JSON.parse(raw);
+      } catch (e) {
+        clearDraft();
+        return false;
+      }
+
+      if (!draft || statesEqual(draft, baseline)) {
+        clearDraft();
+        return false;
+      }
+
+      applyFormState(form, draft, mode);
+      return true;
+    }
+
+    function shouldGuardNavigation() {
+      if (!isDirty()) return false;
+      var openDialog = document.querySelector('dialog[open]');
+      if (openDialog && openDialog.id === saveModalId) return false;
+      return true;
+    }
+
+    function navigateAway(href) {
+      clearDraft();
+      window.location.href = href;
+    }
+
+    function openLeaveModal(href) {
+      pendingHref = href;
+      if (leaveModal && typeof leaveModal.showModal === 'function') {
+        leaveModal.showModal();
+      } else if (window.confirm(t('leave_modal.description', 'You have unsaved changes.'))) {
+        navigateAway(href);
+      }
+    }
+
+    function bindLeaveModal() {
+      if (!leaveModal || leaveModal.dataset.leaveBound) return;
+      leaveModal.dataset.leaveBound = '1';
+
+      var stayBtn = leaveModal.querySelector('[data-leave-stay]');
+      var discardBtn = leaveModal.querySelector('[data-leave-discard]');
+      var saveBtn = leaveModal.querySelector('[data-leave-save]');
+
+      if (stayBtn) {
+        stayBtn.addEventListener('click', function () {
+          pendingHref = null;
+          leaveModal.close();
+        });
+      }
+
+      if (discardBtn) {
+        discardBtn.addEventListener('click', function () {
+          var href = pendingHref;
+          pendingHref = null;
+          leaveModal.close();
+          if (href) navigateAway(href);
+        });
+      }
+
+      if (saveBtn) {
+        saveBtn.addEventListener('click', function () {
+          pendingHref = null;
+          leaveModal.close();
+          var saveDialog = document.getElementById(saveModalId);
+          if (saveDialog && typeof saveDialog.showModal === 'function') {
+            saveDialog.showModal();
+            if (window.IsooMarkdownEditor) window.IsooMarkdownEditor.mountVisible(saveDialog);
+          }
+        });
+      }
+
+      leaveModal.addEventListener('close', function () {
+        pendingHref = null;
+      });
+    }
+
+    function onLinkClick(event) {
+      if (!shouldGuardNavigation()) return;
+
+      var link = event.target.closest('a[href]');
+      if (!link) return;
+      if (link.target === '_blank' || link.hasAttribute('download')) return;
+
+      var href = link.getAttribute('href');
+      if (!href || href.charAt(0) === '#') return;
+      if (link.hasAttribute('data-leave-allowed')) return;
+
+      event.preventDefault();
+      event.stopPropagation();
+      openLeaveModal(link.href);
+    }
+
+    if (restoreDraft()) {
+      showToast(t('draft.restored', 'Unsaved draft restored.'));
+    }
+
+    form.addEventListener('input', schedulePersist);
+    form.addEventListener('change', schedulePersist);
+    form.addEventListener('submit', function () {
+      if (debounceTimer) window.clearTimeout(debounceTimer);
+      clearDraft();
+    });
+
+    window.addEventListener('beforeunload', function (event) {
+      if (!isDirty()) return;
+      event.preventDefault();
+      event.returnValue = '';
+    });
+
+    document.addEventListener('click', onLinkClick, true);
+    bindLeaveModal();
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('[data-form-draft]').forEach(bind);
+  });
+})();

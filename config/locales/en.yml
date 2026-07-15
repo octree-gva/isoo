@@ -169,6 +169,14 @@ en:
     changes_label: Document changes
     changes_placeholder: What did you change?
     significant: Significant change?
+  leave_modal:
+    title: Leave without saving?
+    description: You have unsaved changes that are not stored on the server yet.
+    stay: Stay on page
+    leave: Leave without saving
+    save: Save changes
+  draft:
+    restored: Unsaved draft restored.
   wizard:
     next: Next
     prev: Previous

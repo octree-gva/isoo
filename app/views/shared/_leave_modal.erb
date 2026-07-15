@@ -1,0 +1,21 @@
+<dialog id="leave_modal" class="modal" aria-labelledby="leave_modal_title" aria-describedby="leave_modal_desc">
+  <div class="modal-box bg-white">
+    <h2 id="leave_modal_title" class="text-2xl font-semibold"><%= t('leave_modal.title') %></h2>
+    <p id="leave_modal_desc" class="mt-3 text-lg opacity-80"><%= t('leave_modal.description') %></p>
+    <div class="modal-action flex flex-col sm:flex-row gap-2 mt-6">
+      <button type="button" class="btn btn-primary w-full sm:w-auto" data-leave-stay>
+        <%= t('leave_modal.stay') %>
+      </button>
+      <button type="button" class="btn btn-outline w-full sm:w-auto" data-leave-save>
+        <i class="ri-save-line" aria-hidden="true"></i>
+        <%= t('leave_modal.save') %>
+      </button>
+      <button type="button" class="btn btn-outline btn-error w-full sm:w-auto" data-leave-discard>
+        <%= t('leave_modal.leave') %>
+      </button>
+    </div>
+  </div>
+  <form method="dialog" class="modal-backdrop">
+    <button type="submit" data-leave-stay><%= t('leave_modal.stay') %></button>
+  </form>
+</dialog>

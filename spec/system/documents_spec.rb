@@ -14,7 +14,11 @@ RSpec.describe 'documents', type: :request do
                        'class="page-footer',
                        'text_wizard_modal',
                        'data-wizard-title-base="Organisation Overview"',
-                       'Run wizard'
+                       'Run wizard',
+                       'data-form-draft=',
+                       'data-draft-baseline=',
+                       'id="leave_modal"',
+                       '/js/form-draft.js'
                      ])
 
     post "/projects/#{slug}/docs/organisation-overview",

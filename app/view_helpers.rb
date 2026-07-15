@@ -48,6 +48,22 @@ module ViewHelpers
     ::JsonAttr.encode(value)
   end
 
+  def text_form_draft_baseline(fields, document_title: nil)
+    baseline = fields.transform_keys(&:to_s)
+    baseline['document_title'] = document_title if document_title
+    baseline
+  end
+
+  def table_form_draft_baseline(rows)
+    mapped = rows.each_with_object({}) do |row, acc|
+      row_id = row['_row_id']
+      next if row_id.to_s.empty?
+
+      acc[row_id] = row.except('_row_id').transform_keys(&:to_s)
+    end
+    { 'rows' => mapped }
+  end
+
   def table_switch_on?(value, col = nil)
     ::TableSwitch.on?(value, col)
   end

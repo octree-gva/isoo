@@ -30,6 +30,9 @@ run_app bundle exec rubocop
 echo "==> Security (Brakeman + bundler-audit)"
 run_app bundle exec rake security:scan
 
+echo "==> Form draft (Node)"
+node scripts/form-draft.test.mjs
+
 echo "==> RSpec"
 docker compose up -d memcached
 docker compose run --rm --no-deps -e AUTH_DISABLED=1 app bundle exec rspec

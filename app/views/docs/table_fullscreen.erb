@@ -28,7 +28,12 @@
 </header>
 
 <main class="table-fullscreen-main" id="main-content" tabindex="-1">
-  <form id="fullscreen-table-form" method="post" action="<%= fullscreen_path %>" aria-labelledby="table-fullscreen-heading">
+  <form id="fullscreen-table-form" method="post" action="<%= fullscreen_path %>"
+        aria-labelledby="table-fullscreen-heading"
+        data-form-draft="isoo:draft:<%= @slug %>:<%= @doc['doc_id'] %>"
+        data-draft-mode="table"
+        data-draft-baseline="<%= json_attr(table_form_draft_baseline(@data[:rows])) %>"
+        data-leave-save-modal="save_table_modal">
     <% if @data[:rows].empty? %>
       <p id="<%= table_id %>-empty" class="table-fullscreen-empty" role="status"><%= t('table.empty') %></p>
     <% else %>
@@ -124,3 +129,5 @@
       return_to: 'fullscreen',
       save_form_id: 'fullscreen-table-form'
     }) %>
+
+<%= render('shared/_leave_modal') %>

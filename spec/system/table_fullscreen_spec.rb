@@ -13,8 +13,13 @@ RSpec.describe 'table fullscreen', type: :request do
     expect(last_response.body).to include('fullscreen-table-form')
     expect(last_response.body).to include('table-fullscreen-footer')
     expect(last_response.body).to include('/js/markdown-editor.js')
+    expect(last_response.body).to include('/js/form-draft.js')
+    expect(last_response.body).to include('data-form-draft=')
+    expect(last_response.body).to include('data-draft-baseline=')
+    expect(last_response.body).to include('id="leave_modal"')
+    expect(last_response.body).to include('window.I18n = ')
     expect(last_response.body).to include('New row')
-    expect(last_response.body).not_to include('Document Version Control')
+    expect(last_response.body).not_to include('id="version-control-heading"')
   end
 
   it 'shows version control on the table details page only' do
@@ -46,7 +51,7 @@ RSpec.describe 'table fullscreen', type: :request do
 
     get "/projects/#{slug}/docs/#{doc_id}/fullscreen"
     expect(last_response.body).to include('ISO 27001')
-    expect(last_response.body).not_to include('Document Version Control')
+    expect(last_response.body).not_to include('id="version-control-heading"')
 
     get "/projects/#{slug}/docs/#{doc_id}"
     expect(last_response.body).to include('Document Version Control', 'fullscreen save')

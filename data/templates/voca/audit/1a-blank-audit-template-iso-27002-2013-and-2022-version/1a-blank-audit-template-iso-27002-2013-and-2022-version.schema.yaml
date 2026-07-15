@@ -4,62 +4,59 @@ kind: form
 response_kind: table
 primary_key: level_of_compliance
 columns:
-- key: level_of_compliance
-  label: LEVEL OF COMPLIANCE
+- key: last_accessed_at
+  label: DATE LAST ACCESSED
+  type: date
+  description: Last time this has been accessed
+- key: iso_reference_version
+  label: Reference Version
+  type: text
+  description: To what document this line does refers to
+- key: clause_or_annex_control
+  label: CLAUSE / ANNEX CONTROL
+  type: text
+  description: ISO 27001 Clause or ISO 27001 Annex A Control
+- key: title
+  label: TITLE
+  type: text
+  description: ISO 27001 Clause / ISO 27001 Annex A Control title
+- key: control_objective
+  label: CONTROL OBJECTIVE
+  type: textarea
+  description: What is the objective for the ISO 27001 Clause / ISO 27001 Annex A Control
+- key: evaluation_method
+  label: EVALUATION METHOD
   type: dropdown
-  description: Overall compliance level for this audit area.
+  description: How do we evaluate this ISO 27001 Clause / ISO 27001 Annex A Control
+  options: 
+  - Interview
+  - Observation of process and activities
+  - Review of documents and records
+- key: positive_evidence_record
+  label: POSITIVE EVIDENCE RECORD
+  type: textarea
+  description: Evidence record annexed
+- key: negative_evidence_record
+  label: NEGATIVE EVIDENCE RECORD
+  type: textarea
+  description: Evidence record annexed
+- key: audit_rating
+  label: AUDIT RATING
+  type: dropdown
+  description: How the audit do rate this ISO 27001 Clause / ISO 27001 Annex A Control.
   options:
   - Compliant
-  - Partially compliant
-  - Non-compliant
-  - Not applicable
-  - Not assessed
-- key: number_of_controls
-  label: NUMBER OF CONTROLS
-  type: number
-  description: Number of controls assessed.
-- key: level_of_compliance_2
-  label: LEVEL OF COMPLIANCE
-  type: dropdown
-  description: Compliance level (column 2).
-  options:
-  - Compliant
-  - Partially compliant
-  - Non-compliant
-  - Not applicable
-  - Not assessed
-- key: number_of_controls_2
-  label: NUMBER OF CONTROLS
-  type: number
-  description: Number of controls assessed (column 2).
-- key: level_of_compliance_3
-  label: LEVEL OF COMPLIANCE
-  type: dropdown
-  description: Compliance level (column 3).
-  options:
-  - Compliant
-  - Partially compliant
-  - Non-compliant
-  - Not applicable
-  - Not assessed
-- key: number_of_controls_3
-  label: NUMBER OF CONTROLS
-  type: number
-  description: Number of controls assessed (column 3).
-- key: level_of_compliance_4
-  label: LEVEL OF COMPLIANCE
-  type: dropdown
-  description: Compliance level (column 4).
-  options:
-  - Compliant
-  - Partially compliant
-  - Non-compliant
-  - Not applicable
-  - Not assessed
-- key: number_of_controls_4
-  label: NUMBER OF CONTROLS
-  type: number
-  description: Number of controls assessed (column 4).
+  - Observation
+  - Minor Nonconformity
+  - Major Nonconformity
+  - Not audited
+- key: interview_person
+  label: WHO WAS AUDITED
+  type: text
+  description: Name of the person interviewed.
+- key: interview_date
+  type: text
+  description: When was the interview.
 _internal:
 - key: _row_id
   type: uuid
@@ -79,5 +76,3 @@ description: |
   #### Review rhythm
   **Per audit**; template **annual**.
   
-  #### First move
-  Copy the sheet per audit and name the lead auditor upfront.
