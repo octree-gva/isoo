@@ -12,8 +12,8 @@ namespace :isoo do
   desc 'Create demo project with sample documents and table rows for presentations'
   task seed: :environment do
     data = App::DATA_PATH
-    git = GitService.new(data)
-    creator = ProjectCreator.new(data_root: data, template_id: Container.template_id, git: git)
+    storage = Container.storage
+    creator = ProjectCreator.new(data_root: data, template_id: Container.template_id, git: storage)
     slug = ENV.fetch('SEED_PROJECT_SLUG', 'demo')
     name = ENV.fetch('SEED_PROJECT_NAME', 'Acme Open Source')
     author = ENV.fetch('SEED_AUTHOR', 'seed@isoo.local')
@@ -32,7 +32,7 @@ namespace :isoo do
       puts "Created project #{slug}"
     end
 
-    result = DemoSeeder.new(data_root: data, git: git).populate(
+    result = DemoSeeder.new(data_root: data, git: storage).populate(
       slug: slug,
       author: author,
       force: ENV['SEED_FORCE'] == '1'

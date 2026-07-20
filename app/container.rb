@@ -11,6 +11,10 @@ class Container
     @cache ||= CacheStore.build
   end
 
+  def self.storage
+    @storage ||= StorageBackend.build(data_path: data_path)
+  end
+
   def self.git
     @git ||= GitService.new(data_path)
   end
@@ -33,7 +37,7 @@ class Container
   end
 
   def self.projects
-    @projects ||= ProjectCreator.new(data_root: data_path, template_id: template_id, git: git)
+    @projects ||= ProjectCreator.new(data_root: data_path, template_id: template_id, git: storage)
   end
 
   def self.classified_store(project_root, scope: nil)
@@ -53,6 +57,7 @@ class Container
     @cache = nil
     @presence_store = nil
     @git = nil
+    @storage = nil
     @projects = nil
   end
 end

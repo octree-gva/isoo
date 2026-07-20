@@ -1,18 +1,22 @@
 ---
 sidebar_position: 13
 title: Git integration
-description: Local commits, optional remote mirror, and sync
+description: Nested git backend, optional remote mirror, and sync
 ---
 
 # Git integration
 
 **Audience:** platform teams responsible for backup, DR, and change auditing of ISOO data.
 
-All project content lives under `$DATA_PATH` (default `tmp/data/`). ISOO maintains a **nested git repository** there, separate from the application source repo. Template bundles stay in `data/templates/` (this repo).
+ISOO supports four exclusive storage backends via `STORAGE_BACKEND`: `local`, `git`, `webdav`, and `s3`. This page covers **`STORAGE_BACKEND=git`**.
 
-## Local commits (always on)
+All project content is edited under `$DATA_PATH` (default `tmp/data/`). With the git backend, ISOO maintains a **nested git repository** there (separate from the application source repo). Template bundles stay in `data/templates/` (this repo).
 
-Every write commits to the data repo under `$DATA_PATH`:
+For `local`, data stays only on disk under `DATA_PATH` with no nested commits. See [Configuration](./configuration.md).
+
+## Local commits (git backend)
+
+When `STORAGE_BACKEND=git`, every write commits to the data repo under `$DATA_PATH`:
 
 - Document save (text, table, form response)
 - Table row add/update/soft-delete
@@ -38,9 +42,10 @@ cd tmp/data && git log --oneline
 
 ## Optional remote push
 
-Set both:
+Set:
 
 ```bash
+STORAGE_BACKEND=git
 GIT_REMOTE_URL=git@github.com:acme/isoo-data.git
 GIT_FORCE_PUSH=1
 ```
@@ -56,7 +61,7 @@ Use a **dedicated data repository**—not a branch others push to. The app assum
 
 ## Sync from remote
 
-When `GIT_REMOTE_URL` is set, the header shows **Sync**:
+When `STORAGE_BACKEND=git` **and** `GIT_REMOTE_URL` is set, the header shows **Sync**:
 
 1. Refuses if the data repo has uncommitted changes (`dirty`)
 2. `git fetch origin`

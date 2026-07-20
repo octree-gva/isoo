@@ -5,6 +5,9 @@ require_relative '../spec_helper'
 RSpec.describe 'git sync', type: :request do
   around do |example|
     old_remote = ENV.fetch('GIT_REMOTE_URL', nil)
+    old_backend = ENV.fetch('STORAGE_BACKEND', nil)
+    ENV['STORAGE_BACKEND'] = 'git'
+    Container.reset!
     example.run
   ensure
     if old_remote
@@ -12,6 +15,12 @@ RSpec.describe 'git sync', type: :request do
     else
       ENV.delete('GIT_REMOTE_URL')
     end
+    if old_backend
+      ENV['STORAGE_BACKEND'] = old_backend
+    else
+      ENV.delete('STORAGE_BACKEND')
+    end
+    Container.reset!
   end
 
   it 'returns 404 when remote sync is not configured' do
@@ -20,7 +29,15 @@ RSpec.describe 'git sync', type: :request do
     expect(last_response.status).to eq(404)
   end
 
-  it 'shows sync button when GIT_REMOTE_URL is set' do
+  it 'returns 404 when STORAGE_BACKEND is not git' do
+    ENV['STORAGE_BACKEND'] = 'local'
+    ENV['GIT_REMOTE_URL'] = 'git@example.com:acme/isoo-data.git'
+    Container.reset!
+    post '/git/sync'
+    expect(last_response.status).to eq(404)
+  end
+
+  it 'shows sync button when STORAGE_BACKEND=git and GIT_REMOTE_URL is set' do
     ENV['GIT_REMOTE_URL'] = 'git@example.com:acme/isoo-data.git'
     get '/projects'
     expect(last_response.status).to eq(200)

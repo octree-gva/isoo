@@ -42,7 +42,7 @@
       </a>
     </nav>
     <div class="flex-none gap-2 flex items-center shrink-0" role="navigation" aria-label="<%= t('a11y.user_nav') %>">
-      <% if GitService.remote_sync_enabled? %>
+      <% if StorageBackend.git? && GitService.remote_sync_enabled? %>
         <form method="post" action="/git/sync" class="inline">
           <button type="submit" class="btn btn-ghost btn-sm" aria-label="<%= t('git.sync_label') %>">
             <i class="ri-refresh-line" aria-hidden="true"></i>

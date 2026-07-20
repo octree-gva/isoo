@@ -4,6 +4,7 @@ source 'https://rubygems.org'
 
 ruby '~> 3.4.0'
 
+gem 'aws-sdk-s3', '~> 1.0'
 gem 'commonmarker', '~> 2.0'
 gem 'csv'
 gem 'dalli', '~> 3.2'

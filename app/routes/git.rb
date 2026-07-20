@@ -6,9 +6,9 @@ module RoutesGit
   end
 
   def git_sync(r)
-    return r.halt([404, {}, [t('errors.404.title')]]) unless GitService.remote_sync_enabled?
+    return r.halt([404, {}, [t('errors.404.title')]]) unless StorageBackend.git? && GitService.remote_sync_enabled?
 
-    result = self.class.git.pull
+    result = self.class.storage.pull!
     rack_session['flash'] = git_sync_flash(result)
     invalidate_after_git_pull if result[:status] == :ok
     r.redirect(env['HTTP_REFERER'] || '/projects')

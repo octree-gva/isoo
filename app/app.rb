@@ -59,9 +59,14 @@ class App < Roda
   TEMPLATES_PATH = DataLayout::TEMPLATES_PATH
 
   DataLayout.ensure!
+  Container.storage.check! unless ENV['SKIP_STORAGE_CHECK'] == '1'
 
   def self.git
     Container.git
+  end
+
+  def self.storage
+    Container.storage
   end
 
   def self.projects
@@ -121,7 +126,7 @@ class App < Roda
   def commit_and_redirect!(r, path, commit_message:, toast_key:, significant: false, bump_project_version: true,
                            **toast_args)
     bump_project_version!(significant: significant) if bump_project_version
-    self.class.git.commit(commit_message)
+    self.class.storage.flush!(commit_message)
     flash_success(toast_key, **toast_args)
     r.redirect(path)
   end
@@ -264,7 +269,7 @@ class App < Roda
   end
 
   def create_annex(r, slug)
-    doc_id = AnnexCreator.new(data_root: DATA_PATH, git: self.class.git).create(
+    doc_id = AnnexCreator.new(data_root: DATA_PATH, git: self.class.storage).create(
       project_slug: slug,
       author: author_name,
       title: r.params['title'],
@@ -311,7 +316,7 @@ class App < Roda
   end
 
   def create_form_response(r, slug, form_id)
-    FormResponseCreator.new(data_root: DATA_PATH, template_id: template_id_for(@manifest), git: self.class.git).create(
+    FormResponseCreator.new(data_root: DATA_PATH, template_id: template_id_for(@manifest), git: self.class.storage).create(
       project_slug: slug,
       form_id: form_id,
       author: author_name
@@ -812,7 +817,7 @@ class App < Roda
 
     bump_project_version!(significant: r.params['significant_change'] == '1')
 
-    self.class.git.commit("annex #{aid} upload")
+    self.class.storage.flush!("annex #{aid} upload")
     flash_success('toast.file_uploaded')
     r.redirect("/projects/#{slug}/docs/#{doc_id}")
   end
