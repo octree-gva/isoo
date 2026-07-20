@@ -262,6 +262,8 @@
     }
 
     function navigateAway(href) {
+      // Same bypass as submit: form is still dirty in the DOM until unload.
+      submitting = true;
       clearDraft();
       window.location.href = href;
     }
