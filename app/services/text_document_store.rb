@@ -37,6 +37,7 @@ class TextDocumentStore
       body = content
     end
 
+    DocumentOwner.write_to_meta!(meta, DocumentOwner.from_fields(fields))
     meta['timestamp'] = Time.now.utc.iso8601
     write_md(md_path, FrontMatter.dump(meta, body), meta, author: author)
   end

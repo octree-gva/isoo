@@ -45,8 +45,77 @@ module DocumentOwner # rubocop:disable Metrics/ModuleLength
     }
   end
 
+  def from_meta(meta)
+    iso = meta.is_a?(Hash) ? meta['iso27001'] : nil
+    return empty_owner unless iso.is_a?(Hash)
+
+    {
+      owner_name_key => iso[owner_name_key].to_s.strip,
+      owner_email_key => iso[owner_email_key].to_s.strip
+    }
+  end
+
+  # Prefer owner stored on rows/fields; fall back to front-matter (empty tables / missing sections).
+  def from_document(meta: nil, rows: nil, fields: nil)
+    if fields
+      from_fields_owner = from_fields(fields)
+      return from_fields_owner if present?(from_fields_owner)
+    end
+    if rows
+      from_rows_owner = from_rows(rows)
+      return from_rows_owner if present?(from_rows_owner)
+    end
+
+    from_meta(meta)
+  end
+
+  def present?(owner)
+    owner && (owner[owner_name_key].to_s.strip != '' || owner[owner_email_key].to_s.strip != '')
+  end
+
+  def write_to_meta!(meta, owner)
+    return meta unless owner
+
+    meta = meta.is_a?(Hash) ? meta : {}
+    meta['iso27001'] = (meta['iso27001'] || {}).merge(
+      owner_name_key => owner[owner_name_key].to_s.strip,
+      owner_email_key => owner[owner_email_key].to_s.strip
+    )
+    meta
+  end
+
   def empty_owner
     { owner_name_key => '', owner_email_key => '' }
+  end
+
+  def export_contact(owner)
+    name = owner[owner_name_key].to_s.strip
+    email = owner[owner_email_key].to_s.strip
+    return '' if name.empty?
+
+    email.empty? ? name : "#{name} <#{email}>"
+  end
+
+  def export_line(owner)
+    contact = export_contact(owner)
+    return '' if contact.empty?
+
+    IsooI18n.t('owner.export_footer', name: owner[owner_name_key].to_s.strip,
+                                      email: owner[owner_email_key].to_s.strip)
+  end
+
+  def export_maintained_line(owner)
+    return '' unless present?(owner) && owner[owner_name_key].to_s.strip != ''
+
+    IsooI18n.t('owner.export_maintained', name: owner[owner_name_key].to_s.strip,
+                                          email: owner[owner_email_key].to_s.strip)
+  end
+
+  def export_ownership_body(owner)
+    return '' unless present?(owner) && owner[owner_name_key].to_s.strip != ''
+
+    IsooI18n.t('owner.export_ownership_body', name: owner[owner_name_key].to_s.strip,
+                                              email: owner[owner_email_key].to_s.strip)
   end
 
   def validate!(owner)
@@ -111,14 +180,6 @@ module DocumentOwner # rubocop:disable Metrics/ModuleLength
         'required' => true
       }
     ]
-  end
-
-  def export_line(owner)
-    name = owner[owner_name_key].to_s.strip
-    email = owner[owner_email_key].to_s.strip
-    return '' if name.empty?
-
-    IsooI18n.t('owner.export_footer', name: name, email: email)
   end
 
   def text_document?(schema)

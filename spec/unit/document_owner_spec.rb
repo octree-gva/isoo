@@ -30,6 +30,13 @@ RSpec.describe DocumentOwner do
     expect(line).to include('<hadrien@octree.ch>')
   end
 
+  it 'formats maintained and ownership export lines' do
+    owner = { 'owner_name' => 'Hadrien', 'owner_email' => 'hadrien@octree.ch' }
+    expect(described_class.export_maintained_line(owner)).to include('owned by Hadrien')
+    expect(described_class.export_ownership_body(owner)).to include('suitability and adequacy')
+    expect(described_class.export_ownership_body(owner)).to include('Clause 7.5')
+  end
+
   it 'reads owner from the first populated table row' do
     rows = [
       { 'owner_name' => '', 'owner_email' => '' },
@@ -39,5 +46,21 @@ RSpec.describe DocumentOwner do
       'owner_name' => 'Alex',
       'owner_email' => 'alex@example.com'
     )
+  end
+
+  it 'falls back to front-matter owner when rows are empty' do
+    meta = { 'iso27001' => { 'owner_name' => 'Ada', 'owner_email' => 'ada@example.com' } }
+    expect(described_class.from_document(meta: meta, rows: [])).to eq(
+      'owner_name' => 'Ada',
+      'owner_email' => 'ada@example.com'
+    )
+  end
+
+  it 'writes owner into front-matter iso27001' do
+    meta = { 'iso27001' => { 'version' => '0.1.0' } }
+    described_class.write_to_meta!(meta, 'owner_name' => 'Ada', 'owner_email' => 'ada@example.com')
+    expect(meta.dig('iso27001', 'version')).to eq('0.1.0')
+    expect(meta.dig('iso27001', 'owner_name')).to eq('Ada')
+    expect(meta.dig('iso27001', 'owner_email')).to eq('ada@example.com')
   end
 end

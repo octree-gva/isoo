@@ -8,12 +8,12 @@
   <label class="form-control" for="document-owner-name">
     <span class="label-text text-lg mb-2"><%= t('owner.name_label') %></span>
     <input class="input input-bordered w-full text-base" type="text" id="document-owner-name"
-           name="<%= DocumentOwner.owner_name_key %>" value="<%= owner_name %>" required<%= form_attr %>>
+           name="<%= DocumentOwner.owner_name_key %>" value="<%= owner_name %>" required<%= draft_track_attr %><%= form_attr %>>
   </label>
   <label class="form-control" for="document-owner-email">
     <span class="label-text text-lg mb-2"><%= t('owner.email_label') %></span>
     <input class="input input-bordered w-full text-base" type="email" id="document-owner-email"
-           name="<%= DocumentOwner.owner_email_key %>" value="<%= owner_email %>" required
+           name="<%= DocumentOwner.owner_email_key %>" value="<%= owner_email %>" required<%= draft_track_attr %>
            autocomplete="email" inputmode="email"<%= form_attr %>>
   </label>
 </section>

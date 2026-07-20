@@ -1,6 +1,5 @@
 <% columns = table_data_columns(@data[:schema]) %>
 <% pk = @data[:schema]['primary_key'] %>
-<% owner = document_owner_from_rows(@data[:rows]) %>
 <% table_id = "table-fullscreen-#{@doc['doc_id']}" %>
 <% fullscreen_path = "/projects/#{@slug}/docs/#{@doc['doc_id']}/fullscreen" %>
 
@@ -33,9 +32,8 @@
         aria-labelledby="table-fullscreen-heading"
         data-form-draft="isoo:draft:<%= @slug %>:<%= @doc['doc_id'] %>"
         data-draft-mode="table"
-        data-draft-baseline="<%= json_attr(table_form_draft_baseline(@data[:rows])) %>"
+        data-draft-baseline="<%= json_attr(table_form_draft_baseline(@data[:rows], columns: columns)) %>"
         data-leave-save-modal="save_table_modal">
-    <%= render('shared/_document_owner_fields', locals: { owner: owner }) %>
     <% if @data[:rows].empty? %>
       <p id="<%= table_id %>-empty" class="table-fullscreen-empty" role="status"><%= t('table.empty') %></p>
     <% else %>

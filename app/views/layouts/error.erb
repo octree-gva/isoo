@@ -49,6 +49,9 @@
       border-radius: 0.75rem;
       padding: 2rem;
     }
+    .error-card--wide {
+      max-width: 48rem;
+    }
     .error-code {
       font-size: 3rem;
       font-weight: 700;
@@ -73,6 +76,38 @@
       border: 1px solid #ffd8c2;
       color: var(--text);
       font-size: 0.95rem;
+      word-break: break-word;
+    }
+    .error-backtrace {
+      margin-top: 1.25rem;
+    }
+    .error-backtrace__header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      margin-bottom: 0.5rem;
+    }
+    .error-backtrace__title {
+      margin: 0;
+      font-size: 1rem;
+      font-weight: 600;
+    }
+    .error-backtrace__pre {
+      margin: 0;
+      max-height: 20rem;
+      overflow: auto;
+      padding: 0.75rem 1rem;
+      border-radius: 0.5rem;
+      border: 1px solid var(--border);
+      background: #fafafa;
+      font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+      font-size: 0.8rem;
+      line-height: 1.45;
+      white-space: pre-wrap;
+      word-break: break-word;
+      user-select: text;
     }
     .error-actions {
       margin-top: 1.5rem;
@@ -92,11 +127,17 @@
       color: var(--text);
       text-decoration: none;
       font-weight: 500;
+      font: inherit;
+      cursor: pointer;
     }
     .error-btn--primary {
       background: var(--accent);
       border-color: var(--accent);
       color: #fff;
+    }
+    .error-btn--copy {
+      min-height: 2.25rem;
+      font-size: 0.9rem;
     }
   </style>
 </head>

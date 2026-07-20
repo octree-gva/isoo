@@ -1,8 +1,9 @@
 <%# locals: sec, value, input_id, attrs: '' %>
 <% field_type = sec['field_type'] || 'textarea' %>
+<% track = draft_track_attr %>
 <% case field_type %>
 <% when 'dropdown' %>
-  <select class="select select-bordered w-full text-base" id="<%= input_id %>" name="<%= sec['key'] %>"<%= attrs %>>
+  <select class="select select-bordered w-full text-base" id="<%= input_id %>" name="<%= sec['key'] %>"<%= track %><%= attrs %>>
     <option value=""><%= t('table.select_placeholder') %></option>
     <% Array(sec['options']).each do |option| %>
       <option value="<%= option %>"<%= ' selected' if value.to_s == option.to_s %>><%= option %></option>
@@ -10,21 +11,21 @@
   </select>
 <% when 'text' %>
   <input class="input input-bordered w-full text-base" type="text" id="<%= input_id %>" name="<%= sec['key'] %>"
-         value="<%= value %>"<%= attrs %><%= ' required' if sec['required'] %>>
+         value="<%= value %>"<%= track %><%= attrs %><%= ' required' if sec['required'] %>>
 <% when 'email' %>
   <input class="input input-bordered w-full text-base" type="email" id="<%= input_id %>" name="<%= sec['key'] %>"
-         value="<%= value %>"<%= attrs %><%= ' required' if sec['required'] %>
+         value="<%= value %>"<%= track %><%= attrs %><%= ' required' if sec['required'] %>
          autocomplete="email" inputmode="email">
 <% when 'switch' %>
   <input type="hidden" name="<%= sec['key'] %>" value="0">
   <input type="checkbox" id="<%= input_id %>" name="<%= sec['key'] %>" value="1"
-         class="toggle toggle-success toggle-lg"<%= ' checked' if table_switch_on?(value, sec) %><%= attrs %>>
+         class="toggle toggle-success toggle-lg"<%= track %><%= ' checked' if table_switch_on?(value, sec) %><%= attrs %>>
 <% else %>
   <%= render('shared/_markdown_textarea', locals: {
         input_id: input_id,
         name: sec['key'],
         value: value,
         rows: 6,
-        attrs: attrs
+        attrs: "#{track}#{attrs}"
       }) %>
 <% end %>

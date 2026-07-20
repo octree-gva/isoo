@@ -235,6 +235,29 @@ input[type="button"],
   color: #2c2c2b;
   width: 98%;
   max-width: 98%;
+  min-height: 465px;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-box > form,
+.modal-box > [data-modal-wizard] {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-height: 0;
+  width: 100%;
+}
+
+.modal-box > form > [data-modal-wizard] {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+.modal-box .modal-action {
+  margin-top: auto;
 }
 
 @media (min-width: 1024px) {

@@ -10,13 +10,13 @@
       class="space-y-6 mt-8" aria-labelledby="doc-heading"
       data-form-draft="isoo:draft:<%= @slug %>:<%= @doc['doc_id'] %>"
       data-draft-mode="text"
-      data-draft-baseline="<%= json_attr(text_form_draft_baseline(@data[:fields], document_title: form_response ? @doc['title'] : nil)) %>"
+      data-draft-baseline="<%= json_attr(text_form_draft_baseline(@data[:fields], document_title: form_response ? @doc['title'] : nil, sections: @data[:schema]['sections'])) %>"
       data-leave-save-modal="save_modal">
   <% if form_response %>
     <label class="form-control" for="document_title">
       <span class="label-text text-lg mb-2"><%= t('forms.document_title_label') %></span>
       <input class="input input-bordered w-full text-base" type="text" id="document_title"
-             name="document_title" value="<%= @doc['title'] %>" required>
+             name="document_title" value="<%= @doc['title'] %>" required<%= draft_track_attr %>>
     </label>
   <% end %>
   <% @data[:schema]['sections'].each do |sec| %>

@@ -55,9 +55,12 @@ RSpec.describe 'project export', type: :request do
 
     get "/projects/#{slug}/docs/organisation-overview/export", { format: 'html' }
     expect(last_response.status).to eq(200)
-    expect(last_response.body).to include('export-doc-owner')
-    expect(last_response.body).to include('Test Owner')
+    expect(last_response.body).to include('This documented information is owned by Test Owner')
     expect(last_response.body).to include('owner@example.com')
+    expect(last_response.body).to include('Document Ownership')
+    expect(last_response.body).to include('suitability and adequacy')
+    expect(last_response.body).to include('Clause 7.5')
+    expect(last_response.body).to include('export-doc-ownership')
   end
 
   it 'downloads print-ready html' do

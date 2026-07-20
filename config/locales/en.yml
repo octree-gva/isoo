@@ -10,6 +10,7 @@ en:
       exported_on: "Exported on %{at}"
       confidential_line1: This document contains confidential information.
       confidential_line2: Do not share it outside your organization.
+      maintained_by: "This documented information is owned by %{name} <%{email}>."
     toc:
       heading: Table of contents
       summary: "%{count} documents"
@@ -20,6 +21,7 @@ en:
     document:
       version: "Version %{version}"
       data_heading: Data
+      ownership_heading: Document Ownership
     assets:
       heading: Assets
       referenced_heading: Referenced annex assets
@@ -182,7 +184,9 @@ en:
     name_required: A document owner name is required.
     email_required: A document owner email is required.
     email_invalid: Enter a valid email address for the document owner.
-    export_footer: "This document is owned and maintained by %{name} <%{email}>"
+    export_footer: "%{name} <%{email}>"
+    export_maintained: "This documented information is owned by %{name} <%{email}>."
+    export_ownership_body: "%{name} <%{email}> is the document owner and is accountable for the suitability and adequacy of this documented information, including its review, approval, and control of changes (ISO/IEC 27001:2022 Clause 7.5)."
   draft:
     restored: Unsaved draft restored.
   wizard:
@@ -344,6 +348,9 @@ en:
     '500':
       title: Server error
       message: Something went wrong on our side. Try again later.
+      backtrace_heading: Stack trace
+      copy_backtrace: Copy stack trace
+      copied: Copied
     '502':
       title: Bad gateway
       message: A required upstream service is unavailable. Try again later.

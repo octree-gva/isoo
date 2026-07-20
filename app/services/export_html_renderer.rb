@@ -92,10 +92,19 @@ class ExportHtmlRenderer
         <p>#{esc(IsooI18n.t('export.cover.exported_on', at: @generated_at))}</p>
         <p>
           #{esc(IsooI18n.t('export.cover.confidential_line1'))}<br />
-          <strong>#{esc(IsooI18n.t('export.cover.confidential_line2'))}</strong>
+          #{cover_maintained_html}<strong>#{esc(IsooI18n.t('export.cover.confidential_line2'))}</strong>
         </p>
       </section>
     HTML
+  end
+
+  def cover_maintained_html
+    return '' unless @entries.size == 1
+
+    line = @entries.first['owner_maintained_line'].to_s.strip
+    return '' if line.empty?
+
+    "#{esc(line)}<br />\n          "
   end
 
   def table_of_contents
@@ -195,12 +204,8 @@ class ExportHtmlRenderer
                  end
 
     annex_html = entry['annex_assets_html'].to_s.strip
-    owner_footer = entry['owner_footer_line'].to_s.strip
-    owner_html = if owner_footer.empty?
-                   ''
-                 else
-                   %(<footer class="export-doc-owner">#{esc(owner_footer)}</footer>)
-                 end
+    owner_intro = document_owner_intro(entry)
+    owner_section = document_ownership_section(entry)
 
     <<~HTML
       <article class="#{doc_class}" id="#{doc_id}">
@@ -210,12 +215,42 @@ class ExportHtmlRenderer
             #{meta}
           </div>
         </header>
+        #{owner_intro}
         #{version_html}
         #{body_html}
         #{table_html}
         #{annex_html}
-        #{owner_html}
+        #{owner_section}
       </article>
+    HTML
+  end
+
+  def document_owner_intro(entry)
+    # Single-doc exports already show ownership on the cover page.
+    return '' if @entries.size == 1
+
+    line = entry['owner_maintained_line'].to_s.strip
+    return '' if line.empty?
+
+    <<~HTML
+      <p class="export-doc-owner-lede">
+        #{esc(IsooI18n.t('export.cover.confidential_line1'))}<br />
+        #{esc(line)}<br />
+        <strong>#{esc(IsooI18n.t('export.cover.confidential_line2'))}</strong>
+      </p>
+    HTML
+  end
+
+  def document_ownership_section(entry)
+    heading = entry['owner_ownership_heading'].to_s.strip
+    body = entry['owner_ownership_body'].to_s.strip
+    return '' if heading.empty? || body.empty?
+
+    <<~HTML
+      <section class="export-doc-ownership" aria-label="#{esc(heading)}">
+        <h2>#{esc(heading)}</h2>
+        <p>#{esc(body)}</p>
+      </section>
     HTML
   end
 end

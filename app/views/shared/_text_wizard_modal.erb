@@ -46,9 +46,8 @@
               <input class="input input-bordered w-full text-base" type="text" id="<%= field_id %>"
                      data-text-wizard-field="<%= sec['key'] %>"<%= attrs %>>
             <% when 'switch' %>
-              <input type="hidden" name="<%= sec['key'] %>" value="0" form="text_save_form">
-              <input type="checkbox" id="<%= field_id %>" name="<%= sec['key'] %>" value="1"
-                     data-text-wizard-field="<%= sec['key'] %>" form="text_save_form"
+              <input type="checkbox" id="<%= field_id %>" value="1"
+                     data-text-wizard-field="<%= sec['key'] %>"
                      class="toggle toggle-success toggle-lg"<%= attrs %>>
             <% else %>
               <textarea class="textarea textarea-bordered w-full" id="<%= field_id %>" rows="8"

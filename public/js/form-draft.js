@@ -1,5 +1,4 @@
 (function () {
-  var DEFAULT_EXCLUDED = ['document_changes', 'significant_change'];
   var DEBOUNCE_MS = 400;
 
   function t(key, fallback) {
@@ -23,7 +22,7 @@
     if (el.type === 'checkbox') {
       return el.checked ? el.value || '1' : '0';
     }
-    return el.value;
+    return el.value == null ? '' : el.value;
   }
 
   function setFieldValue(el, value) {
@@ -36,83 +35,68 @@
     }
   }
 
-  function collectElements(form) {
-    var elements = [];
-    Array.prototype.forEach.call(form.elements, function (el) {
-      if (el.name) elements.push(el);
-    });
-    if (form.id) {
-      document.querySelectorAll('[form="' + form.id + '"]').forEach(function (el) {
-        if (el.name) elements.push(el);
-      });
-    }
-    return elements;
+  function trackedFields(root) {
+    return root.querySelectorAll('[data-draft-track]');
   }
 
-  function captureTextState(form, excluded) {
-    var state = {};
-    var elements = collectElements(form);
-    var checkboxNames = {};
-    elements.forEach(function (el) {
-      if (el.type === 'checkbox' && el.name) checkboxNames[el.name] = true;
+  function updateFieldDirty(el) {
+    var pristine = el.getAttribute('data-pristine');
+    if (pristine == null) pristine = '';
+    var dirty = fieldValue(el) !== pristine;
+    el.setAttribute('data-dirty', dirty ? 'true' : 'false');
+    return dirty;
+  }
+
+  function snapshotPristine(form) {
+    trackedFields(form).forEach(function (el) {
+      el.setAttribute('data-pristine', fieldValue(el));
+      el.setAttribute('data-dirty', 'false');
     });
-    elements.forEach(function (el) {
-      if (!el.name || excluded[el.name]) return;
-      if (el.type === 'hidden' && checkboxNames[el.name]) return;
+  }
+
+  function refreshDirty(form) {
+    trackedFields(form).forEach(updateFieldDirty);
+  }
+
+  function formIsDirty(form) {
+    return !!form.querySelector('[data-draft-track][data-dirty="true"]');
+  }
+
+  function captureTrackedState(form, mode) {
+    if (mode === 'table') {
+      var rows = {};
+      trackedFields(form).forEach(function (el) {
+        var parsed = parseRowFieldName(el.name || '');
+        if (!parsed) return;
+        if (!rows[parsed.rowId]) rows[parsed.rowId] = {};
+        rows[parsed.rowId][parsed.colKey] = fieldValue(el);
+      });
+      return { rows: rows };
+    }
+
+    var state = {};
+    trackedFields(form).forEach(function (el) {
+      if (!el.name) return;
       state[el.name] = fieldValue(el);
     });
     return state;
   }
 
-  function captureTableState(form) {
-    var rows = {};
-    form.querySelectorAll('input, textarea, select').forEach(function (el) {
-      var parsed = parseRowFieldName(el.name);
-      if (!parsed) return;
-      var checkbox = form.querySelector('[name="' + el.name + '"][type="checkbox"]');
-      if (el.type === 'hidden' && checkbox) return;
-      if (!rows[parsed.rowId]) rows[parsed.rowId] = {};
-      rows[parsed.rowId][parsed.colKey] = fieldValue(el);
-    });
-    return { rows: rows };
-  }
-
-  function captureFormState(form, excluded, mode) {
-    if (mode === 'table') return captureTableState(form);
-    return captureTextState(form, excluded);
-  }
-
   function applyTextState(form, state) {
     if (!state) return;
-    Object.keys(state).forEach(function (name) {
-      var els = collectElements(form).filter(function (el) {
-        return el.name === name;
-      });
-      var target = els.find(function (el) {
-        return el.type === 'checkbox';
-      }) || els[0];
-      if (!target) return;
-      setFieldValue(target, state[name]);
+    trackedFields(form).forEach(function (el) {
+      if (!el.name || !Object.prototype.hasOwnProperty.call(state, el.name)) return;
+      setFieldValue(el, state[el.name]);
     });
   }
 
   function applyTableState(form, state) {
     if (!state || !state.rows) return;
-    Object.keys(state.rows).forEach(function (rowId) {
-      var cols = state.rows[rowId];
-      Object.keys(cols).forEach(function (colKey) {
-        var name = 'rows[' + rowId + '][' + colKey + ']';
-        var els = form.querySelectorAll('[name="' + name + '"]');
-        var target = null;
-        for (var i = 0; i < els.length; i++) {
-          if (els[i].type === 'checkbox') {
-            target = els[i];
-            break;
-          }
-        }
-        if (!target && els.length) target = els[0];
-        if (target) setFieldValue(target, cols[colKey]);
-      });
+    trackedFields(form).forEach(function (el) {
+      var parsed = parseRowFieldName(el.name || '');
+      if (!parsed || !state.rows[parsed.rowId]) return;
+      if (!Object.prototype.hasOwnProperty.call(state.rows[parsed.rowId], parsed.colKey)) return;
+      setFieldValue(el, state.rows[parsed.rowId][parsed.colKey]);
     });
   }
 
@@ -120,33 +104,11 @@
     if (mode === 'table') applyTableState(form, state);
     else applyTextState(form, state);
     if (window.IsooMarkdownEditor) window.IsooMarkdownEditor.mountVisible(form);
+    refreshDirty(form);
   }
 
   function statesEqual(a, b) {
     return JSON.stringify(a) === JSON.stringify(b);
-  }
-
-  function parseBaseline(raw) {
-    try {
-      return JSON.parse(raw);
-    } catch (e) {
-      return null;
-    }
-  }
-
-  function excludedMap(form) {
-    var map = {};
-    DEFAULT_EXCLUDED.forEach(function (name) {
-      map[name] = true;
-    });
-    var extra = form.getAttribute('data-draft-exclude');
-    if (extra) {
-      extra.split(',').forEach(function (name) {
-        name = name.trim();
-        if (name) map[name] = true;
-      });
-    }
-    return map;
   }
 
   function showToast(message) {
@@ -202,20 +164,42 @@
     var mode = form.getAttribute('data-draft-mode') || 'text';
     var saveModalId = form.getAttribute('data-leave-save-modal') || 'save_modal';
     var leaveModal = document.getElementById('leave_modal');
-    var baseline = parseBaseline(form.getAttribute('data-draft-baseline')) || {};
-    var excluded = excludedMap(form);
     var pendingHref = null;
     var debounceTimer = null;
+    var submitting = false;
 
-    function currentState() {
-      return captureFormState(form, excluded, mode);
-    }
+    snapshotPristine(form);
 
     function isDirty() {
-      return !statesEqual(currentState(), baseline);
+      return formIsDirty(form);
+    }
+
+    function currentState() {
+      return captureTrackedState(form, mode);
+    }
+
+    function pristineState() {
+      var state;
+      if (mode === 'table') {
+        state = { rows: {} };
+        trackedFields(form).forEach(function (el) {
+          var parsed = parseRowFieldName(el.name || '');
+          if (!parsed) return;
+          if (!state.rows[parsed.rowId]) state.rows[parsed.rowId] = {};
+          state.rows[parsed.rowId][parsed.colKey] = el.getAttribute('data-pristine') || '';
+        });
+        return state;
+      }
+      state = {};
+      trackedFields(form).forEach(function (el) {
+        if (!el.name) return;
+        state[el.name] = el.getAttribute('data-pristine') || '';
+      });
+      return state;
     }
 
     function persistDraft() {
+      refreshDirty(form);
       if (!isDirty()) {
         try {
           localStorage.removeItem(storageKey);
@@ -261,7 +245,7 @@
         return false;
       }
 
-      if (!draft || statesEqual(draft, baseline)) {
+      if (!draft || statesEqual(draft, pristineState())) {
         clearDraft();
         return false;
       }
@@ -271,7 +255,7 @@
     }
 
     function shouldGuardNavigation() {
-      if (!isDirty()) return false;
+      if (submitting || !isDirty()) return false;
       var openDialog = document.querySelector('dialog[open]');
       if (openDialog && openDialog.id === saveModalId) return false;
       return true;
@@ -348,19 +332,41 @@
       openLeaveModal(link.href);
     }
 
+    function onFieldEdit(event) {
+      var el = event.target;
+      if (!el) return;
+      if (!el.hasAttribute || !el.hasAttribute('data-draft-track')) {
+        el = el.closest ? el.closest('[data-draft-track]') : null;
+      }
+      if (!el) return;
+      var belongs =
+        form.contains(el) || (form.id && el.getAttribute('form') === form.id);
+      if (!belongs) return;
+      updateFieldDirty(el);
+      schedulePersist();
+    }
+
     if (restoreDraft()) {
       showToast(t('draft.restored', 'Unsaved draft restored.'));
     }
 
-    form.addEventListener('input', schedulePersist);
-    form.addEventListener('change', schedulePersist);
+    form.addEventListener('input', onFieldEdit);
+    form.addEventListener('change', onFieldEdit);
+    if (form.id) {
+      document.querySelectorAll('[data-draft-track][form="' + form.id + '"]').forEach(function (el) {
+        el.addEventListener('input', onFieldEdit);
+        el.addEventListener('change', onFieldEdit);
+      });
+    }
+
     form.addEventListener('submit', function () {
+      submitting = true;
       if (debounceTimer) window.clearTimeout(debounceTimer);
-      clearDraft();
+      // Keep draft until the next successful page render clears it via pristine match.
     });
 
     window.addEventListener('beforeunload', function (event) {
-      if (!isDirty()) return;
+      if (submitting || !isDirty()) return;
       event.preventDefault();
       event.returnValue = '';
     });

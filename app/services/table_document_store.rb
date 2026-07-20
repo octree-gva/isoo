@@ -35,7 +35,7 @@ class TableDocumentStore
     doc = read(doc_path)
     rows = apply_owner_to_rows(rows, owner) if owner
     write_csv(doc, rows, author)
-    bump_md(doc, version, date, author, changes)
+    bump_md(doc, version, date, author, changes, owner: owner)
   end
 
   def soft_delete(doc_path, row_id)
@@ -49,7 +49,8 @@ class TableDocumentStore
     doc = read(doc_path)
     all = @store.exist?(doc[:csv_path]) ? load_all_rows(doc[:csv_path]) : []
     row = row_attrs(doc, attrs).merge('_row_id' => SecureRandom.uuid, '_deleted_at' => '')
-    row = row.merge(DocumentOwner.from_rows(all)) if all.any?
+    owner = DocumentOwner.from_document(meta: doc[:meta], rows: all)
+    row = row.merge(owner) if owner[DocumentOwner.owner_name_key] != '' || owner[DocumentOwner.owner_email_key] != ''
     all << row
     write_csv(doc, all, nil)
     row
@@ -87,7 +88,7 @@ class TableDocumentStore
     update_rows_from_params(doc_path, rows_params, author: author)
     apply_owner!(doc_path, owner) if owner
     doc = read(doc_path)
-    bump_md(doc, version, date, author, changes)
+    bump_md(doc, version, date, author, changes, owner: owner)
   end
 
   def apply_owner!(doc_path, owner)
@@ -145,11 +146,12 @@ class TableDocumentStore
     write_file(doc[:csv_path], content, doc[:meta], author)
   end
 
-  def bump_md(doc, version, date, author, changes)
+  def bump_md(doc, version, date, author, changes, owner: nil)
     raw = @store.read(doc[:md_path])
     meta, body = FrontMatter.parse(raw)
     meta['iso27001'] ||= {}
     meta['iso27001']['version'] = version
+    DocumentOwner.write_to_meta!(meta, owner) if owner
     meta['timestamp'] = Time.now.utc.iso8601
     body = VersionControlWriter.append_row(body, version: version, date: date, author: author, changes: changes)
     write_file(doc[:md_path], FrontMatter.dump(meta, body), meta, author)

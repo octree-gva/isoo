@@ -125,4 +125,31 @@ RSpec.describe TableDocumentStore do
       expect(body).to include('bulk edit')
     end
   end
+
+  it 'persists owner on an empty table via front matter' do
+    Dir.mktmpdir do |tmp|
+      store = FileStore.new(tmp)
+      store.write('tables/t/t.md', FrontMatter.dump({ 'iso27001' => { 'version' => '0.1.0' } }, "# Table\n"))
+      store.write('tables/t/t.schema.yaml', {
+        'kind' => 'table',
+        'columns' => [
+          { 'key' => 'name', 'label' => 'Name' },
+          { 'key' => 'owner_name', 'label' => 'Document owner', 'type' => 'text' },
+          { 'key' => 'owner_email', 'label' => 'Owner email', 'type' => 'email' }
+        ]
+      }.to_yaml)
+      store.write('tables/t/t.csv', "name,owner_name,owner_email,_row_id,_deleted_at\n")
+
+      tds = TableDocumentStore.new(store)
+      owner = { 'owner_name' => 'Ada', 'owner_email' => 'ada@example.com' }
+      tds.save_rows('tables/t', rows: [], version: '0.2.0', date: '2026-03-01', author: 'x',
+                                 changes: 'set owner', owner: owner)
+
+      expect(tds.read('tables/t')[:rows]).to be_empty
+      meta, = FrontMatter.parse(store.read('tables/t/t.md'))
+      expect(meta.dig('iso27001', 'owner_name')).to eq('Ada')
+      expect(meta.dig('iso27001', 'owner_email')).to eq('ada@example.com')
+      expect(DocumentOwner.from_document(meta: meta, rows: [])).to eq(owner)
+    end
+  end
 end

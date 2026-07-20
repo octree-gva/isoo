@@ -1,9 +1,55 @@
-<article class="error-card" role="alert" aria-labelledby="error-title">
+<article class="error-card<% if @error_show_backtrace %> error-card--wide<% end %>" role="alert" aria-labelledby="error-title">
   <p class="error-code" aria-hidden="true"><%= @error_status %></p>
   <h1 id="error-title" class="error-title"><%= escape_html(@error_title) %></h1>
   <p class="error-message"><%= escape_html(@error_message) %></p>
   <% if @error_detail && !@error_detail.to_s.strip.empty? %>
     <p class="error-detail"><%= escape_html(@error_detail) %></p>
+  <% end %>
+  <% if @error_show_backtrace && @error_backtrace && !@error_backtrace.empty? %>
+    <%
+      trace_text = ([@error_detail.to_s] + @error_backtrace).reject(&:empty?).join("\n")
+    %>
+    <div class="error-backtrace" data-error-backtrace>
+      <div class="error-backtrace__header">
+        <h2 class="error-backtrace__title"><%= escape_html(t('errors.500.backtrace_heading')) %></h2>
+        <button type="button" class="error-btn error-btn--copy" data-copy-backtrace
+                data-copied-label="<%= escape_html(t('errors.500.copied')) %>">
+          <%= escape_html(t('errors.500.copy_backtrace')) %>
+        </button>
+      </div>
+      <pre class="error-backtrace__pre" id="error-backtrace-text" tabindex="0"><%= escape_html(trace_text) %></pre>
+    </div>
+    <script>
+      (function () {
+        var btn = document.querySelector('[data-copy-backtrace]');
+        var pre = document.getElementById('error-backtrace-text');
+        if (!btn || !pre) return;
+        var label = btn.textContent;
+        var copied = btn.getAttribute('data-copied-label') || 'Copied';
+        btn.addEventListener('click', function () {
+          var text = pre.textContent || '';
+          function done() {
+            btn.textContent = copied;
+            window.setTimeout(function () { btn.textContent = label; }, 2000);
+          }
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(text).then(done).catch(function () {
+              var range = document.createRange();
+              range.selectNodeContents(pre);
+              var sel = window.getSelection();
+              sel.removeAllRanges();
+              sel.addRange(range);
+            });
+          } else {
+            var range = document.createRange();
+            range.selectNodeContents(pre);
+            var sel = window.getSelection();
+            sel.removeAllRanges();
+            sel.addRange(range);
+          }
+        });
+      })();
+    </script>
   <% end %>
   <div class="error-actions">
     <% if @error_status == 401 || @error_status == 403 %>

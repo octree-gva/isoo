@@ -29,6 +29,19 @@ RSpec.describe 'document saves', type: :request do
     expect(last_response.status).to eq(302)
   end
 
+  it 'persists table owner on an empty document' do
+    post "/projects/#{slug}/docs/statement-of-applicability-iso-27002-2022-and-2013",
+         owner_name: 'Ada Lovelace',
+         owner_email: 'ada@example.com',
+         document_changes: 'set owner on empty soa',
+         significant_change: '0'
+    expect(last_response.status).to eq(302)
+
+    get "/projects/#{slug}/docs/statement-of-applicability-iso-27002-2022-and-2013"
+    expect(last_response.body).to include('value="Ada Lovelace"')
+    expect(last_response.body).to include('value="ada@example.com"')
+  end
+
   it 'updates a table row via wizard patch' do
     post "/projects/#{slug}/docs/legal-and-contractual-requirements-register/rows",
          standard: 'GDPR', requirement: 'Comply', applicability: 'All'

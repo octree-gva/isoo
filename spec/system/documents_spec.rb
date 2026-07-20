@@ -17,6 +17,7 @@ RSpec.describe 'documents', type: :request do
                        'Run wizard',
                        'data-form-draft=',
                        'data-draft-baseline=',
+                       'data-draft-track',
                        'id="leave_modal"',
                        '/js/form-draft.js'
                      ])
@@ -72,6 +73,18 @@ RSpec.describe 'documents', type: :request do
                        'class="toggle toggle-success'
                      ],
                      exclude_markers: ['<tbody>'])
+  end
+
+  it 'opens the ROPA register on a new project' do
+    expect_get_page!("/projects/#{slug}/docs/data-asset-register-ropa",
+                     'empty ropa register',
+                     include_markers: [
+                       'id="document-owner-name"',
+                       'id="document-owner-email"',
+                       'id="save_table_modal"',
+                       'data-draft-track'
+                     ],
+                     exclude_markers: ['wrong number of arguments', 'error-backtrace'])
   end
 
   it 'opens a table with switch columns' do

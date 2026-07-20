@@ -20,6 +20,14 @@ RSpec.describe 'table fullscreen', type: :request do
     expect(last_response.body).to include('window.I18n = ')
     expect(last_response.body).to include('New row')
     expect(last_response.body).not_to include('id="version-control-heading"')
+    expect(last_response.body).not_to include('id="document-owner-name"')
+    expect(last_response.body).not_to include('id="document-owner-heading"')
+  end
+
+  it 'shows document owner on the standard table page only' do
+    get "/projects/#{slug}/docs/#{doc_id}"
+    expect(last_response.body).to include('id="document-owner-name"')
+    expect(last_response.body).to include('id="document-owner-email"')
   end
 
   it 'shows version control on the table details page only' do
@@ -44,10 +52,8 @@ RSpec.describe 'table fullscreen', type: :request do
     expect(row_id).not_to be_nil
 
     post "/projects/#{slug}/docs/#{doc_id}/fullscreen",
-         owner_params.merge(
-           rows: { row_id => { 'standard' => 'ISO 27001', 'requirement' => 'Updated', 'applicability' => 'All' } },
-           document_changes: 'fullscreen save'
-         )
+         rows: { row_id => { 'standard' => 'ISO 27001', 'requirement' => 'Updated', 'applicability' => 'All' } },
+         document_changes: 'fullscreen save'
     expect(last_response.status).to eq(302)
     expect(last_response.headers['Location']).to include('/fullscreen')
 

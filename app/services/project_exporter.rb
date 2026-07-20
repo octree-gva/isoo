@@ -195,7 +195,10 @@ class ProjectExporter
       'annex_assets_html' => assets_html,
       'has_data_table' => !table_html.empty?,
       'export_tier' => export_tier_name(doc),
-      'owner_footer_line' => DocumentOwner.export_line(owner)
+      'owner_footer_line' => DocumentOwner.export_line(owner),
+      'owner_maintained_line' => DocumentOwner.export_maintained_line(owner),
+      'owner_ownership_heading' => DocumentOwner.present?(owner) ? IsooI18n.t('export.document.ownership_heading') : '',
+      'owner_ownership_body' => DocumentOwner.export_ownership_body(owner)
     }
   end
 
@@ -288,11 +291,15 @@ class ProjectExporter
 
       schema = YAML.safe_load(@store.read(schema_path)) || {}
       fields = TextDocumentStore.new(@store).extract_fields(entry.body, schema)
-      DocumentOwner.from_fields(fields)
-    elsif kind == 'table' && entry.csv_text.to_s.strip != ''
-      rows = CSV.parse(entry.csv_text, headers: true).map(&:to_h)
+      DocumentOwner.from_document(meta: entry.meta, fields: fields)
+    elsif kind == 'table'
+      rows = if entry.csv_text.to_s.strip != ''
+               CSV.parse(entry.csv_text, headers: true).map(&:to_h)
                   .reject { |row| row['_deleted_at'].to_s != '' }
-      DocumentOwner.from_rows(rows)
+             else
+               []
+             end
+      DocumentOwner.from_document(meta: entry.meta, rows: rows)
     else
       DocumentOwner.empty_owner
     end

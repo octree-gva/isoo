@@ -7,7 +7,7 @@
 
 <% table_id = "table-#{@doc['doc_id']}" %>
 <% columns = table_data_columns(@data[:schema]) %>
-<% owner = document_owner_from_rows(@data[:rows]) %>
+<% owner = document_owner_from_rows(@data[:rows], @data[:meta]) %>
 <%= render('shared/_document_owner_fields', locals: { owner: owner, form_id: 'save-table-form' }) %>
 <% pk = @data[:schema]['primary_key'] %>
 

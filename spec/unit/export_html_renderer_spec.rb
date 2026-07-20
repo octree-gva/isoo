@@ -53,6 +53,36 @@ RSpec.describe ExportHtmlRenderer do
     expect(html).not_to include('<div class="export-print-header"')
   end
 
+  it 'renders owner maintained line on cover and ownership section for a single document' do
+    html = described_class.render(
+      title: 'Demo — Agenda 1',
+      generated_at: '2026-07-20 16:38 UTC',
+      entries: [{
+        'doc_id' => 'agenda-1',
+        'title' => 'Agenda 1',
+        'group' => 'Meetings',
+        'version' => '0.1.0',
+        'body_html' => '<p>Notes</p>',
+        'table_html' => '',
+        'version_control_html' => '',
+        'annex_assets_html' => '',
+        'has_data_table' => false,
+        'owner_maintained_line' => 'This documented information is owned by Hadrien Froger <hadrien@octree.ch>.',
+        'owner_ownership_heading' => 'Document Ownership',
+        'owner_ownership_body' =>
+          'Hadrien Froger <hadrien@octree.ch> is the document owner and is accountable for the suitability and adequacy of this documented information, including its review, approval, and control of changes (ISO/IEC 27001:2022 Clause 7.5).'
+      }],
+      print_css: 'body { color: #000; }'
+    )
+
+    expect(html).to include('This document contains confidential information.')
+    expect(html).to include('This documented information is owned by Hadrien Froger')
+    expect(html).to include('Do not share it outside your organization.')
+    expect(html).to include('Document Ownership')
+    expect(html).to include('suitability and adequacy')
+    expect(html).to include('export-doc-ownership')
+  end
+
   it 'renders full-page section dividers before annex and form documents' do
     html = described_class.render(
       title: 'Demo',

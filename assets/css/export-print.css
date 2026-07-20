@@ -454,7 +454,9 @@ table.export-table th {
     white-space: nowrap;
   }
 
-  .export-doc-owner {
+  .export-doc-owner,
+  .export-doc-owner-lede,
+  .export-doc-ownership {
     margin-top: 1.5rem;
     padding-top: 0.75rem;
     border-top: 1px solid var(--export-border);
@@ -462,6 +464,24 @@ table.export-table th {
     color: var(--export-muted);
     break-inside: avoid-page;
     page-break-inside: avoid;
+  }
+
+  .export-doc-owner-lede {
+    margin-top: 0.75rem;
+    margin-bottom: 1rem;
+    border-top: 0;
+    padding-top: 0;
+    color: var(--export-text);
+  }
+
+  .export-doc-ownership h2 {
+    font-size: 12pt;
+    margin: 0 0 0.5rem;
+    color: var(--export-text);
+  }
+
+  .export-doc-ownership p {
+    margin: 0;
   }
 
   .export-cover {

@@ -23,6 +23,21 @@ export function fieldValue(field) {
 }
 
 /**
+ * @param {string} current
+ * @param {string} pristine
+ */
+export function fieldIsDirty(current, pristine) {
+  return String(current ?? '') !== String(pristine ?? '')
+}
+
+/**
+ * @param {Array<{ dirty?: boolean }>} fields
+ */
+export function anyFieldDirty(fields) {
+  return fields.some((field) => field.dirty === true)
+}
+
+/**
  * @param {Array<{ name: string, type?: string, checked?: boolean, value?: string }>} entries
  * @param {Set<string>} excluded
  */

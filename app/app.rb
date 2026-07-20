@@ -36,19 +36,27 @@ class App < Roda
     when IsooHttpError
       @error_status = e.status
       @error_detail = e.detail
+      @error_exception = nil
+      @error_backtrace = nil
     else
       warn "[App] #{e.class}: #{e.message}\n#{e.backtrace&.first(8)&.join("\n")}"
       @error_status = 500
-      @error_detail = nil
+      @error_detail = "#{e.class}: #{e.message}"
+      @error_exception = e
+      @error_backtrace = Array(e.backtrace)
     end
     @error_title = t("errors.#{@error_status}.title")
     @error_message = t("errors.#{@error_status}.message")
+    @error_show_backtrace = @error_status == 500 && show_error_backtrace?
     response.status = @error_status
     view('errors/show', layout: 'layouts/error')
   end
   plugin :not_found do
     @error_status = 404
     @error_detail = nil
+    @error_exception = nil
+    @error_backtrace = nil
+    @error_show_backtrace = false
     @error_title = t('errors.404.title')
     @error_message = t('errors.404.message')
     response.status = 404
@@ -77,6 +85,10 @@ class App < Roda
     return { 'email' => 'dev@local', 'name' => IsooI18n.t('auth.dev_user_name') } if ENV['AUTH_DISABLED'] == '1'
 
     @current_user ||= env['isoo.user']
+  end
+
+  def show_error_backtrace?
+    ENV.fetch('RACK_ENV', 'development') != 'production' || ENV['SHOW_ERROR_BACKTRACE'] == '1'
   end
 
   def author_name
@@ -549,12 +561,8 @@ class App < Roda
                                       significant: r.params['significant_change'] == '1')
     date = Time.now.utc.strftime('%Y-%m-%d')
     rows_params = r.params['rows'] || {}
-    owner = DocumentOwner.extract_params(r.params)
-    schema = YAML.safe_load(@store.read(OkfPaths.schema(@doc_path)))
-    DocumentOwner.validate_table_owner!(owner, schema: schema)
 
-    owner_to_apply = DocumentOwner.schema_has_owner?(schema) ? owner : nil
-
+    # Fullscreen edits rows only; document owner is edited on the standard table page.
     TableDocumentStore.new(@store).save_fullscreen(
       @doc_path,
       rows_params: rows_params,
@@ -562,7 +570,7 @@ class App < Roda
       date: date,
       author: author_name,
       changes: changes,
-      owner: owner_to_apply
+      owner: nil
     )
     commit_and_redirect!(r, "/projects/#{slug}/docs/#{doc_id}/fullscreen",
                          commit_message: "#{doc_id} v#{version}: #{changes}",

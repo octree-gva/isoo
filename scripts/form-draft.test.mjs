@@ -1,8 +1,10 @@
 import assert from 'node:assert/strict'
 import {
   DEFAULT_EXCLUDED,
+  anyFieldDirty,
   captureTableState,
   captureTextState,
+  fieldIsDirty,
   fieldValue,
   isDirty,
   parseRowFieldName,
@@ -15,6 +17,12 @@ assert.equal(parseRowFieldName('about_us'), null)
 assert.equal(fieldValue({ type: 'checkbox', checked: true, value: '1' }), '1')
 assert.equal(fieldValue({ type: 'checkbox', checked: false, value: '1' }), '0')
 assert.equal(fieldValue({ type: 'text', value: 'hello' }), 'hello')
+
+assert.equal(fieldIsDirty('saved', 'saved'), false)
+assert.equal(fieldIsDirty('edited', 'saved'), true)
+assert.equal(fieldIsDirty('1', '0'), true)
+assert.equal(anyFieldDirty([{ dirty: false }, { dirty: false }]), false)
+assert.equal(anyFieldDirty([{ dirty: false }, { dirty: true }]), true)
 
 const textEntries = [
   { name: 'about_us', type: 'textarea', value: 'draft text' },
