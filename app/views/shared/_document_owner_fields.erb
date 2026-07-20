@@ -1,7 +1,7 @@
 <%# locals: owner:, form_id: nil %>
 <% owner_name = owner[DocumentOwner.owner_name_key] %>
 <% owner_email = owner[DocumentOwner.owner_email_key] %>
-<% form_attr = form_id ? %( form="#{form_id}") : '' %>
+<% form_attr = defined?(form_id) && form_id ? %( form="#{form_id}") : '' %>
 
 <section class="mt-6 space-y-4" aria-labelledby="document-owner-heading">
   <h2 id="document-owner-heading" class="text-2xl"><%= t('owner.heading') %></h2>

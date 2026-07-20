@@ -8,6 +8,11 @@ require 'yaml'
 class DemoSeeder
   MARKER = '.demo_seeded'
 
+  SEED_OWNER = {
+    'owner_name' => 'ISOO Demo',
+    'owner_email' => 'demo@isoo.local'
+  }.freeze
+
   TEXT_DOCS = {
     'context/organisation-overview' => {
       'about_us' => <<~TEXT.strip,
@@ -183,7 +188,7 @@ class DemoSeeder
 
       TextDocumentStore.new(store).save(
         doc_path,
-        fields: fields,
+        fields: SEED_OWNER.merge(fields),
         record_version: false
       )
     end
@@ -197,7 +202,7 @@ class DemoSeeder
       existing = tds.read(doc_path)[:rows]
       next if existing.any?
 
-      rows.each { |row| tds.add_row(doc_path, row) }
+      rows.each { |row| tds.add_row(doc_path, SEED_OWNER.merge(row)) }
     end
   end
 

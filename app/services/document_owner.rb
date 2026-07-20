@@ -2,9 +2,9 @@
 
 require_relative '../i18n'
 
-module DocumentOwner
+module DocumentOwner # rubocop:disable Metrics/ModuleLength
   KEYS = %w[owner_name owner_email].freeze
-  EMAIL_PATTERN = %r{\A[^@\s]+@[^@\s]+\.[^@\s]+\z}
+  EMAIL_PATTERN = /\A[^@\s]+@[^@\s]+\.[^@\s]+\z/
 
   module_function
 
@@ -28,7 +28,7 @@ module DocumentOwner
   end
 
   def from_fields(fields)
-    fields = fields || {}
+    fields ||= {}
     {
       owner_name_key => fields[owner_name_key].to_s.strip,
       owner_email_key => fields[owner_email_key].to_s.strip

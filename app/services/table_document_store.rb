@@ -31,7 +31,7 @@ class TableDocumentStore
       version_control_rows: version_control_rows }
   end
 
-  def save_rows(doc_path, rows:, version:, date:, author:, changes:, owner: nil)
+  def save_rows(doc_path, rows:, version:, date:, author:, changes:, owner: nil) # rubocop:disable Metrics/ParameterLists
     doc = read(doc_path)
     rows = apply_owner_to_rows(rows, owner) if owner
     write_csv(doc, rows, author)
@@ -83,7 +83,7 @@ class TableDocumentStore
     write_csv(doc, all, author)
   end
 
-  def save_fullscreen(doc_path, rows_params:, version:, date:, author:, changes:, owner: nil)
+  def save_fullscreen(doc_path, rows_params:, version:, date:, author:, changes:, owner: nil) # rubocop:disable Metrics/ParameterLists
     update_rows_from_params(doc_path, rows_params, author: author)
     apply_owner!(doc_path, owner) if owner
     doc = read(doc_path)
@@ -127,10 +127,7 @@ class TableDocumentStore
     when 'switch'
       row[key] = '0' if value.nil? || value.to_s.strip.empty?
     when 'email'
-      v = value.to_s.strip
-      return if v.empty?
-
-      raise ValidationError, IsooI18n.t('owner.email_invalid') unless v.match?(DocumentOwner::EMAIL_PATTERN)
+      validate_email!(value)
     end
   end
 
@@ -171,6 +168,13 @@ class TableDocumentStore
     else
       @store.write(path, content)
     end
+  end
+
+  def validate_email!(value)
+    v = value.to_s.strip
+    return if v.empty?
+
+    raise ValidationError, IsooI18n.t('owner.email_invalid') unless v.match?(DocumentOwner::EMAIL_PATTERN)
   end
 
   def apply_owner_to_rows(rows, owner)

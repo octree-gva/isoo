@@ -15,7 +15,7 @@ class OwnerFieldsMigrator
   attr_reader :updated_schemas, :updated_csvs
 
   def migrate!
-    Dir.glob(File.join(@root, '**', '*.schema.yaml')).sort.each do |schema_path|
+    Dir.glob(File.join(@root, '**', '*.schema.yaml')).each do |schema_path|
       migrate_schema_file(schema_path)
     end
     self
