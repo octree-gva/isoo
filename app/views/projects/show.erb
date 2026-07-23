@@ -68,6 +68,11 @@
             <div class="ml-2 flex flex-wrap gap-0 flex-col">
               <span id="doc-label-<%= doc['doc_id'] %>" class="text-lg sm:text-xl break-words"><%= doc_title %></span>
               <div>
+                <% owner_email = doc['owner_email'].to_s.strip %>
+                <% user_email = current_user&.dig('email').to_s.strip %>
+                <% if !owner_email.empty? && !user_email.empty? && owner_email.casecmp?(user_email) %>
+                  <span class="badge badge-primary badge-md shrink-0"><%= t('owner.dashboard_badge') %></span>
+                <% end %>
                 <%= render('shared/_dashboard_export_tags', locals: { tag_ids: doc['export_tags'] }) %>
               </div>
             </div>
@@ -136,6 +141,7 @@
           </label>
         <% end %>
       </fieldset>
+      <%= render('shared/_export_lang_fieldset') %>
       <fieldset class="space-y-3">
         <legend class="label-text text-lg font-medium mb-2"><%= t('projects.export_modal.format_label') %></legend>
         <label class="label cursor-pointer justify-start gap-4 min-h-[2.75rem]">

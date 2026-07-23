@@ -5,6 +5,7 @@ require 'yaml'
 require 'cgi'
 
 require_relative '../i18n'
+require_relative 'deepl_translator'
 require_relative 'project_exporter_annex_references'
 
 class ProjectExporter
@@ -15,12 +16,13 @@ class ProjectExporter
   EXPORT_TIER_ANNEX = 1
   EXPORT_TIER_FORM_RESPONSE = 2
 
-  def initialize(project_root, store: nil, slug: nil, export_scope: 'full')
+  def initialize(project_root, store: nil, slug: nil, export_scope: 'full', export_lang: 'en')
     @root = project_root
     @store = store || ClassifiedFileStore.new(FileStore.new(project_root))
     @manifest = ProjectManifest.load(project_root)
     @slug = slug || File.basename(project_root)
     @export_scope = export_scope.to_s.empty? ? 'full' : export_scope.to_s
+    @export_lang = export_lang.to_s.downcase == 'fr' ? 'fr' : 'en'
   end
 
   def export_markdown
@@ -141,6 +143,7 @@ class ProjectExporter
     body = VersionControlWriter.strip_block(raw_body)
     body = ExportContent.strip_leading_version_rows(body)
     body = ExportContent.strip_schema_section(body)
+    body = translate_export_body(body, doc: doc, meta: meta)
 
     csv_text = nil
     csv = OkfPaths.csv(path)
@@ -157,7 +160,7 @@ class ProjectExporter
 
   def export_markdown_entry(entry, link_resolver)
     doc = entry.doc
-    title = doc['title'] || doc['doc_id']
+    title = export_title(doc, meta: entry.meta)
     out = "# #{title}\n\n"
     body = export_body_markdown(entry, link_resolver)
     out += "#{body}\n\n" unless body.strip.empty?
@@ -183,7 +186,7 @@ class ProjectExporter
 
     {
       'doc_id' => doc['doc_id'],
-      'title' => doc['title'] || doc['doc_id'],
+      'title' => export_title(doc, meta: entry.meta),
       'seq' => DocumentSequence.resolve(doc, meta: entry.meta, store: @store),
       'group' => export_group(doc),
       'classification' => entry.meta.dig('iso27001', 'classification'),
@@ -313,5 +316,26 @@ class ProjectExporter
     @store.audit(md_path) || {}
   rescue Psych::SyntaxError
     {}
+  end
+
+  def french_export?
+    @export_lang == 'fr' && DeepLTranslator.configured?
+  end
+
+  def export_title(doc, meta:)
+    title = doc['title'] || doc['doc_id']
+    return title unless french_export?
+
+    DeepLTranslator.translate(title, context: translation_context(doc, meta))
+  end
+
+  def translate_export_body(body, doc:, meta:)
+    return body unless french_export?
+
+    DeepLTranslator.translate(body, context: translation_context(doc, meta))
+  end
+
+  def translation_context(doc, meta)
+    DeepLTranslator.context_for(doc: doc, meta: meta, project_name: @manifest.name)
   end
 end

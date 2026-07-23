@@ -86,6 +86,9 @@ en:
       format_md: Markdown (.md)
       format_html: HTML (.html, print-ready)
       format_pdf: PDF (.pdf)
+      lang_label: Language
+      lang_en: English
+      lang_fr: French (DeepL)
       scope_label: Export scope
       scope_full: Full export
       submit: Download export
@@ -181,6 +184,7 @@ en:
     heading: Document owner
     name_label: Document owner
     email_label: Owner email
+    dashboard_badge: owner
     name_required: A document owner name is required.
     email_required: A document owner email is required.
     email_invalid: Enter a valid email address for the document owner.

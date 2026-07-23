@@ -128,6 +128,10 @@ module ViewHelpers
     end
   end
 
+  def deepl_configured?
+    DeepLTranslator.configured?
+  end
+
   def dashboard_export_tag_labels(tag_ids)
     registry = @export_tag_registry || ExportTagRegistry.empty
     Array(tag_ids).map { |id| registry.label_for(id) }.reject(&:empty?)

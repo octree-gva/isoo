@@ -15,7 +15,7 @@ RSpec.describe MarkdownExporter do
       File.write(File.join(tmp, 'docs', 'd1', 'd1.md'), FrontMatter.dump({}, "# Content\n"))
 
       body = MarkdownExporter.new(tmp).export
-      expect(body).to include('Test export')
+      expect(body).to include('Test v0.0.0 export')
       expect(body).to include('Doc 1')
       expect(body).to include('Content')
     end

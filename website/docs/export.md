@@ -22,6 +22,13 @@ To export **one document only** (text, table, form response, or annex page), ope
 
 PDF generation requires Chrome in the container (`CHROME_NO_SANDBOX=1` in Docker). See [Configuration](./configuration.md).
 
+## Language {#language}
+
+When `DEEPL_API_KEY` is set, export modals (full project and single document) offer **English** or **French (DeepL)**. French exports machine-translate document titles and body text via the [DeepL API](https://www.deepl.com/pro-api), using document metadata (project name, doc id, title, classification, version) as translation context.
+
+Without `DEEPL_API_KEY`, the language selector is hidden and `lang=fr` on export URLs has no effect.
+
+
 ## Scopes
 
 | Scope | Documents included |

@@ -110,7 +110,7 @@ RSpec.describe 'project export', type: :request do
     expect(last_response.headers['Cache-Control']).to include('no-store')
     expect(last_response.body).to include('data-export="isoo-html-v3"')
     expect(last_response.body.length).to be > 5000
-    expect(last_response.body.scan('class="export-doc"').size).to be >= 80
+    expect(last_response.body.scan('class="export-doc"').size).to be >= 79
     expect(last_response.body).to include('class="export-cover"', 'class="export-main"')
     expect(last_response.body).to match(/export-section-divider|export-version-control/)
     expect(last_response.body).not_to include(

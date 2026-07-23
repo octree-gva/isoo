@@ -302,7 +302,8 @@ class App < Roda
   def enrich_doc_meta(slug, doc)
     meta = doc_meta(slug, doc['path'])
     doc.merge('version' => meta.dig('iso27001', 'version'), 'resource' => meta['resource'],
-              'classification' => meta.dig('iso27001', 'classification'))
+              'classification' => meta.dig('iso27001', 'classification'),
+              'owner_email' => DocumentOwner.from_meta(meta)['owner_email'])
   end
 
   def enrich_dashboard_doc(slug, doc)
@@ -340,11 +341,14 @@ class App < Roda
   def render_project_export(r, slug, project_root)
     format = export_format_param(r.params['format'])
     scope = export_scope_param(r.params['scope'], project_root)
-    exporter = ProjectExporter.new(project_root, store: @store, slug: slug, export_scope: scope)
+    lang = export_lang_param(r.params['lang'])
+    exporter = ProjectExporter.new(project_root, store: @store, slug: slug, export_scope: scope,
+                                                  export_lang: lang)
     response['Cache-Control'] = 'no-store, no-cache, must-revalidate'
     response['Pragma'] = 'no-cache'
 
     export_html_url = "#{r.base_url}/projects/#{slug}/export?format=html&scope=#{scope}"
+    export_html_url += "&lang=#{lang}" if lang == 'fr'
 
     case format
     when 'html'
@@ -375,31 +379,31 @@ class App < Roda
     http_error!(404) unless doc
 
     format = export_format_param(r.params['format'])
-    exporter = ProjectExporter.new(project_root, store: @store, slug: slug)
+    lang = export_lang_param(r.params['lang'])
+    exporter = ProjectExporter.new(project_root, store: @store, slug: slug, export_lang: lang)
     title = doc['title'] || doc_id
     http_error!(404) if exporter.entry_for(doc_id).nil?
 
     response['Cache-Control'] = 'no-store, no-cache, must-revalidate'
     response['Pragma'] = 'no-cache'
     export_url = "#{r.base_url}/projects/#{slug}/docs/#{doc_id}/export?format=html"
+    export_url += "&lang=#{lang}" if lang == 'fr'
+    html_entries = exporter.html_entries_for_doc(doc_id)
+    export_title = export_doc_title(html_entries.first&.fetch('title') || title)
 
     case format
     when 'html'
       response['Content-Type'] = 'text/html; charset=utf-8'
       response['Content-Disposition'] = doc_export_attachment(slug, doc_id, 'html')
-      export_html_bundle(exporter.html_entries_for_doc(doc_id), title: export_doc_title(title),
-                                                              display_url: export_url)
+      export_html_bundle(html_entries, title: export_title, display_url: export_url)
     when 'pdf'
       response['Content-Type'] = 'application/pdf'
       response['Content-Disposition'] = doc_export_attachment(slug, doc_id, 'pdf')
-      html_entries = exporter.html_entries_for_doc(doc_id)
       owner_line = html_entries.first&.fetch('owner_footer_line', nil)
       ExportPdfRenderer.render(
-        export_html_bundle(html_entries, title: export_doc_title(title),
-                                              pdf_export: true,
-                                              display_url: export_url),
+        export_html_bundle(html_entries, title: export_title, pdf_export: true, display_url: export_url),
         display_url: export_url,
-        title: export_doc_title(title),
+        title: export_title,
         logo_data_uri: export_logo_data_uri,
         export_date: Time.now.utc.strftime('%Y-%m-%d'),
         owner_line: owner_line
@@ -451,6 +455,12 @@ class App < Roda
     return scope if registry.known?(scope)
 
     'full'
+  end
+
+  def export_lang_param(value)
+    return 'en' unless DeepLTranslator.configured?
+
+    value.to_s.strip.downcase == 'fr' ? 'fr' : 'en'
   end
 
   def export_attachment(slug, ext, scope: 'full')

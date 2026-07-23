@@ -1,0 +1,13 @@
+<% if deepl_configured? %>
+  <fieldset class="space-y-3">
+    <legend class="label-text text-lg font-medium mb-2"><%= t('projects.export_modal.lang_label') %></legend>
+    <label class="label cursor-pointer justify-start gap-4 min-h-[2.75rem]">
+      <input type="radio" name="lang" value="en" class="radio radio-primary" checked>
+      <span class="label-text text-lg"><%= t('projects.export_modal.lang_en') %></span>
+    </label>
+    <label class="label cursor-pointer justify-start gap-4 min-h-[2.75rem]">
+      <input type="radio" name="lang" value="fr" class="radio radio-primary">
+      <span class="label-text text-lg"><%= t('projects.export_modal.lang_fr') %></span>
+    </label>
+  </fieldset>
+<% end %>

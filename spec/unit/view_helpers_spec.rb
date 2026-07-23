@@ -3,6 +3,26 @@
 require_relative '../spec_helper'
 
 RSpec.describe ViewHelpers do
+  around do |example|
+    original = ENV.fetch('DEEPL_API_KEY', nil)
+    ENV.delete('DEEPL_API_KEY')
+    example.run
+  ensure
+    if original.nil?
+      ENV.delete('DEEPL_API_KEY')
+    else
+      ENV['DEEPL_API_KEY'] = original
+    end
+  end
+
+  describe '#deepl_configured?' do
+    it 'reflects DEEPL_API_KEY presence' do
+      expect(deepl_configured?).to be(false)
+      ENV['DEEPL_API_KEY'] = 'test-key'
+      expect(deepl_configured?).to be(true)
+    end
+  end
+
   include described_class
 
   describe '#text_form_draft_baseline' do

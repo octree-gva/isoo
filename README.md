@@ -196,6 +196,11 @@ On app startup, `bin/setup-zitadel-smtp` configures MailCatcher via the Zitadel 
 
 Copy `.env.example` to `.env` to override defaults. Any OIDC provider works if endpoints follow OpenID discovery.
 
+### French export (optional)
+
+Set `DEEPL_API_KEY` to enable **French (DeepL)** in export modals. When unset, exports are English only and `lang=fr` is ignored. See [export documentation](https://voca.github.io/isoo/export).
+
+
 ## Observability
 
 The Docker image runs the app under [PM2](https://pm2.keymetrics.io/) (`pm2-runtime` + `ecosystem.config.cjs` → Puma).

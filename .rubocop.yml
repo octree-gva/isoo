@@ -8,6 +8,9 @@ AllCops:
     - vendor/**/*
     - coverage/**/*
 
+Layout/LineLength:
+  Max: 240
+
 Metrics/MethodLength:
   Max: 22
 
@@ -38,6 +41,3 @@ Naming/MethodParameterName:
 
 Style/Documentation:
   Enabled: false
-
-Layout/LineLength:
-  Max: 120

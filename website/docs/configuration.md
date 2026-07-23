@@ -149,3 +149,11 @@ Details: [Seeding](./seeding.md).
 - [Authentication](./authentication.md)
 - [Git integration](./git-integration.md)
 - [Install](./install.md)
+
+## Export translation (DeepL)
+
+| Variable | Required | Default | Description |
+|----------|----------|---------|-------------|
+| `DEEPL_API_KEY` | no | *(unset)* | DeepL API key for **French (DeepL)** export. When empty or absent, export modals hide the language selector and `lang=fr` is ignored. |
+
+See [Project export](./export.md#language).

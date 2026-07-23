@@ -24,8 +24,6 @@ stages:
 
 .docker:
   image: docker:25.0.5-git
-  tags:
-    - vocacity
   before_script:
     - docker compose build app
 
@@ -74,8 +72,6 @@ publish:
   extends: .publish_rules
   stage: publish
   image: docker:25.0.5-git
-  tags:
-    - vocacity
   before_script:
     - mkdir -p ~/.docker
     - |

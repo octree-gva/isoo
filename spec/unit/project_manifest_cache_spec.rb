@@ -10,7 +10,7 @@ RSpec.describe ProjectManifest do
 
   before do
     allow(Container).to receive(:cache).and_return(cache)
-    File.write(path, { 'name' => 'Demo', 'documents' => [] }.to_yaml)
+    File.write(path, { 'name' => 'Demo', 'version' => '0.0.0', 'documents' => [] }.to_yaml)
   end
 
   after { FileUtils.rm_rf(root) }
