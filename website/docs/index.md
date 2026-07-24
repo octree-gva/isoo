@@ -13,7 +13,7 @@ ISOO is a self-hosted web application for managing **ISO 27001 documentation** a
 
 | Component | Role |
 |-----------|------|
-| **ISOO app** | Ruby/Roda application (Puma), port **9292** by default |
+| **ISOO app** | Ruby/Roda application (Puma), port **`PORT`** (default **9292**) |
 | **Zitadel** | OIDC identity provider (Docker Compose default) |
 | **PostgreSQL** | Zitadel database |
 | **Memcached** | Optional cache for manifest reads and document presence |

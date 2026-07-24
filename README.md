@@ -19,13 +19,13 @@ For **production with an external IdP** (no bundled Zitadel): set all `OIDC_*` i
 
 | URL | Service |
 | --- | --- |
-| http://localhost:9292 | ISOO (Zitadel login) |
+| http://localhost:9292 | ISOO (Zitadel login; use `$PORT` if set) |
 | http://localhost:8080 | Zitadel console |
 | http://localhost:1080 | MailCatcher (dev email) |
 
 Default Zitadel admin: `admin@zitadel.localhost` / `Password1!`
 
-Open http://localhost:9292/projects/demo after logging in — seeded with sample text and table rows.
+Open http://localhost:9292/projects/demo after logging in — seeded with sample text and table rows. Set `PORT` in `.env` to change the app listen/publish port (default `9292`); keep `OIDC_REDIRECT_URI` in sync — see [Configuration](website/docs/configuration.md).
 
 `SEED_RESET=1` recreates the demo project; `SEED_FORCE=1` re-applies demo content. Seeding removes any other projects under `tmp/data/projects/` (or `$DATA_PATH/projects/`).
 
@@ -34,7 +34,9 @@ Set `AUTH_DISABLED=1` in `.env` to skip login (e.g. for tests).
 **Local development only** — skip Zitadel and auth:
 
 ```bash
-docker compose run --rm --no-deps -e AUTH_DISABLED=1 -p 9292:9292 app bundle exec rackup -o 0.0.0.0 -p 9292
+PORT="${PORT:-9292}"
+docker compose run --rm --no-deps -e AUTH_DISABLED=1 -e PORT -p "${PORT}:${PORT}" \
+  app bundle exec rackup -o 0.0.0.0 -p "$PORT"
 ```
 
 Git still records changes under `data/`; no remote is required (see [Data and Git](#data-and-git) below).

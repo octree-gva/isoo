@@ -11,7 +11,7 @@ description: Deploy ISOO with Docker Compose
 ## Prerequisites
 
 - Docker and Docker Compose
-- Ports **9292** (app), **8080** (Zitadel console), **1080** (MailCatcher, dev only)
+- Free ports for the app (**`PORT`**, default **9292**), Zitadel console (**8080**), and MailCatcher (**1080**, dev only). Set `PORT` in `.env` to change the app listen/publish port — see [Configuration](./configuration.md).
 
 ## Quickstart
 
@@ -30,13 +30,13 @@ For production with a **remote** IdP, set all `OIDC_*` in `.env` and run `docker
 
 | URL | Service |
 |-----|---------|
-| http://localhost:9292 | ISOO |
+| http://localhost:9292 | ISOO (or `http://localhost:$PORT` when `PORT` is set) |
 | http://localhost:8080 | Zitadel console |
 | http://localhost:1080 | MailCatcher (dev email) |
 
 Default Zitadel admin (dev only): `admin@zitadel.localhost` / `Password1!`
 
-After seeding, open http://localhost:9292/projects/demo .
+After seeding, open http://localhost:9292/projects/demo (replace `9292` if you set `PORT`).
 
 ## Data git repository
 
@@ -60,7 +60,9 @@ No remote is required. See [Git integration](./git-integration.md) for optional 
 For local development without Zitadel:
 
 ```bash
-docker compose run --rm --no-deps -e AUTH_DISABLED=1 -p 9292:9292 app bundle exec rackup -o 0.0.0.0 -p 9292
+PORT="${PORT:-9292}"
+docker compose run --rm --no-deps -e AUTH_DISABLED=1 -e PORT -p "${PORT}:${PORT}" \
+  app bundle exec rackup -o 0.0.0.0 -p "$PORT"
 ```
 
 ## Validate templates

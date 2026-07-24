@@ -11,13 +11,15 @@ services:
       dockerfile: Dockerfile
     restart: unless-stopped
     ports:
-      - "9292:9292"
+      - "${PORT:-9292}:${PORT:-9292}"
     volumes:
       - .:/app
       - ./tmp/data:/app/tmp/data
     environment:
       AUTH_DISABLED: ${AUTH_DISABLED:-0}
       RACK_ENV: ${RACK_ENV:-development}
+      PORT: ${PORT:-9292}
+      BIND: ${BIND:-0.0.0.0}
       DATA_PATH: /app/tmp/datai
       MEMCACHE_SERVER: ${MEMCACHE_SERVER:-memcached:11211}
       MEMCACHE_NAMESPACE: ${MEMCACHE_NAMESPACE:-isoo}
@@ -28,7 +30,7 @@ services:
       OIDC_ISSUER_INTERNAL: ${OIDC_ISSUER_INTERNAL:-http://zitadel:8080}
       OIDC_CLIENT_ID: ${OIDC_CLIENT_ID:-}
       OIDC_CLIENT_SECRET: ${OIDC_CLIENT_SECRET:-}
-      OIDC_REDIRECT_URI: ${OIDC_REDIRECT_URI:-http://localhost:9292/auth/callback}
+      OIDC_REDIRECT_URI: ${OIDC_REDIRECT_URI:-http://localhost:${PORT:-9292}/auth/callback}
       SESSION_SECRET: ${SESSION_SECRET:-dev-session-secret-for-local-docker-development-only-must-be-at-least-sixty-four-bytes}
       GIT_REMOTE_URL: ${GIT_REMOTE_URL:-}
       GIT_FORCE_PUSH: ${GIT_FORCE_PUSH:-}
@@ -53,7 +55,7 @@ services:
       mailcatcher:
         condition: service_started
     healthcheck:
-      test: ['CMD', 'curl', '-f', 'http://localhost:9292/health/ready']
+      test: ['CMD-SHELL', 'curl -f "http://localhost:$${PORT:-9292}/health/ready"']
       interval: 30s
       timeout: 5s
       retries: 3

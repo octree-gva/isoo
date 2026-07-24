@@ -71,7 +71,7 @@ Details: [Git integration](./git-integration.md).
 | Variable | Required | Default | Description |
 |----------|----------|---------|-------------|
 | `RACK_ENV` | no | `development` | `production` enables template view caching. |
-| `PORT` | no | `9292` | Puma listen port. |
+| `PORT` | no | `9292` | Puma listen port. Compose publishes host:`PORT`→container:`PORT` and healthchecks this port. |
 | `BIND` | no | `0.0.0.0` | Puma bind address. |
 | `RACK_MAX_THREADS` | no | `5` | Puma thread pool. |
 | `WEB_CONCURRENCY` | no | `0` | Puma workers (`0` = single process). |
@@ -96,7 +96,7 @@ Details: [Authentication](./authentication.md). Step-by-step Zitadel example: [Z
 | `OIDC_ISSUER_INTERNAL` | no | `http://zitadel:8080` | **Server-side** issuer host for token exchange inside Docker network. |
 | `OIDC_CLIENT_ID` | yes* | auto via entrypoint | OAuth client ID. Written to `docker/zitadel/oidc.env` on first boot. |
 | `OIDC_CLIENT_SECRET` | yes* | auto via entrypoint | OAuth client secret. |
-| `OIDC_REDIRECT_URI` | yes* | `http://localhost:9292/auth/callback` | Must match IdP app registration exactly. |
+| `OIDC_REDIRECT_URI` | yes* | `http://localhost:9292/auth/callback` (Compose default uses `$PORT`) | Must match IdP app registration exactly. |
 
 \* Not required when `AUTH_DISABLED=1`. With Docker Compose + Zitadel, client credentials are provisioned automatically unless you override for an external IdP.
 

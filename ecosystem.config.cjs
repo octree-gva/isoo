@@ -13,8 +13,8 @@ module.exports = {
       min_uptime: '5s',
       kill_timeout: 5000,
       env: {
-        PORT: '9292',
-        BIND: '0.0.0.0',
+        PORT: process.env.PORT || '9292',
+        BIND: process.env.BIND || '0.0.0.0',
         RACK_ENV: process.env.RACK_ENV || 'development',
       },
     },
