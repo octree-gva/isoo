@@ -83,7 +83,7 @@ The repository bundles Zitadel, Postgres, MailCatcher, and ISOO. On first boot t
 
 ```bash
 docker compose build
-docker compose up -d
+docker compose --profile local-idp up -d
 ```
 
 | URL | Purpose |
@@ -151,7 +151,7 @@ OIDC_REDIRECT_URI=https://isoo.example.com/auth/callback
 
 Restart the ISOO app after changing these values.
 
-With Docker Compose, you can put overrides in `.env` instead of relying on `docker/zitadel/oidc.env`. If you use an external Zitadel, disable auto-setup by providing all `OIDC_*` values yourself and set `AUTH_DISABLED=0`.
+With Docker Compose, put external IdP values in `.env`. When `OIDC_CLIENT_ID` and `OIDC_CLIENT_SECRET` are set, the entrypoint skips bundled Zitadel bootstrap and does not load `docker/zitadel/oidc.env`. Start **without** `--profile local-idp` so Postgres/Zitadel containers are not started.
 
 ### 4. Verify discovery and login
 

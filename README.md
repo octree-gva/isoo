@@ -10,10 +10,12 @@ Storage follows [OKF v0.1](https://github.com/GoogleCloudPlatform/knowledge-cata
 docker compose build
 docker compose run --rm --no-deps -e AUTH_DISABLED=1 app ruby bin/init-data-git
 docker compose run --rm --no-deps -e AUTH_DISABLED=1 app bundle exec rake isoo:seed
-docker compose up -d
+docker compose --profile local-idp up -d
 ```
 
 First boot may take ~1–2 minutes while Zitadel initializes and the app registers its OIDC client.
+
+For **production with an external IdP** (no bundled Zitadel): set all `OIDC_*` in `.env`, omit `--profile local-idp`, then `docker compose up -d`. See [Zitadel docs](website/docs/zitadel.md).
 
 | URL | Service |
 | --- | --- |
@@ -178,7 +180,7 @@ Without `GIT_REMOTE_URL` (or with `GIT_FORCE_PUSH` unset), nothing is pushed; lo
 
 ## Auth (Zitadel + OIDC)
 
-`docker compose up -d` starts ISOO, Zitadel, Postgres, and MailCatcher. The app entrypoint waits for Zitadel, creates the OIDC application if needed, and loads `docker/zitadel/oidc.env`.
+`docker compose --profile local-idp up -d` starts ISOO, Zitadel, Postgres, and MailCatcher. The app entrypoint waits for Zitadel, creates the OIDC application if needed, and loads `docker/zitadel/oidc.env`. With a remote IdP, set `OIDC_*` in `.env` and start without the `local-idp` profile — bootstrap is skipped when client credentials are already set.
 
 Zitadel sends mail to [MailCatcher](https://mailcatcher.me/). Open http://localhost:1080 for verification and password-reset emails.
 
@@ -225,7 +227,7 @@ docker compose logs app --tail 30
 docker compose logs zitadel --tail 30
 ```
 
-The app starts Puma immediately; Zitadel SMTP/OIDC setup runs in the background. Login works once Zitadel is healthy and `docker/zitadel/oidc.env` exists. For local work without auth: `AUTH_DISABLED=1 docker compose up -d app`.
+The app starts Puma immediately; bundled Zitadel SMTP/OIDC setup runs in the background when credentials are not pre-set. Login works once Zitadel is healthy and `docker/zitadel/oidc.env` exists (local-idp profile). For local work without auth: `AUTH_DISABLED=1 docker compose up -d app`.
 
 ## Security checks
 

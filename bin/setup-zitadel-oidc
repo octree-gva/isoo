@@ -27,7 +27,7 @@ for _ in $(seq 1 "$max_wait"); do
 done
 
 if ! curl -sf "${ZITADEL_URL}/debug/ready" >/dev/null 2>&1; then
-  echo "Zitadel is not ready. Start it with: docker compose up -d zitadel zitadel-db" >&2
+  echo "Zitadel is not ready. Start it with: docker compose --profile local-idp up -d zitadel zitadel-db" >&2
   exit 0
 fi
 

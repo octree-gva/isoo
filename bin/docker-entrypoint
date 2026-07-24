@@ -4,26 +4,32 @@ set -euo pipefail
 cd /app
 
 if [[ "${AUTH_DISABLED:-0}" != "1" ]]; then
-  OIDC_ENV=docker/zitadel/oidc.env
-  if [[ -f "$OIDC_ENV" ]]; then
-    set -a
-    # shellcheck source=/dev/null
-    source "$OIDC_ENV"
-    set +a
-  fi
+  # External / preconfigured IdP: trust Compose/.env credentials; do not clobber with oidc.env
+  # or wait on bundled Zitadel bootstrap (PAT + /debug/ready).
+  if [[ -n "${OIDC_CLIENT_ID:-}" && -n "${OIDC_CLIENT_SECRET:-}" ]]; then
+    :
+  else
+    OIDC_ENV=docker/zitadel/oidc.env
+    if [[ -f "$OIDC_ENV" ]]; then
+      set -a
+      # shellcheck source=/dev/null
+      source "$OIDC_ENV"
+      set +a
+    fi
 
-  # Configure Zitadel in the background so Puma starts without waiting on SMTP/OIDC setup.
-  (
-    ZITADEL_URL="${OIDC_ISSUER_INTERNAL:-http://zitadel:8080}" \
-      OIDC_ISSUER="${OIDC_ISSUER:-http://localhost:8080}" \
-      ./bin/setup-zitadel-smtp || true
-    if [[ ! -f "$OIDC_ENV" ]] || ! grep -q '^OIDC_CLIENT_ID=.\+' "$OIDC_ENV" 2>/dev/null; then
+    # Configure bundled Zitadel in the background so Puma starts without waiting on SMTP/OIDC setup.
+    (
       ZITADEL_URL="${OIDC_ISSUER_INTERNAL:-http://zitadel:8080}" \
         OIDC_ISSUER="${OIDC_ISSUER:-http://localhost:8080}" \
-        ENV_FILE="$OIDC_ENV" \
-        ./bin/setup-zitadel-oidc || true
-    fi
-  ) &
+        ./bin/setup-zitadel-smtp || true
+      if [[ ! -f "$OIDC_ENV" ]] || ! grep -q '^OIDC_CLIENT_ID=.\+' "$OIDC_ENV" 2>/dev/null; then
+        ZITADEL_URL="${OIDC_ISSUER_INTERNAL:-http://zitadel:8080}" \
+          OIDC_ISSUER="${OIDC_ISSUER:-http://localhost:8080}" \
+          ENV_FILE="$OIDC_ENV" \
+          ./bin/setup-zitadel-oidc || true
+      fi
+    ) &
+  fi
 fi
 
 exec "$@"

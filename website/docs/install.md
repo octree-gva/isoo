@@ -21,10 +21,12 @@ From the ISOO repository root:
 docker compose build
 docker compose run --rm --no-deps -e AUTH_DISABLED=1 app ruby bin/init-data-git
 docker compose run --rm --no-deps -e AUTH_DISABLED=1 app bundle exec rake isoo:seed
-docker compose up -d
+docker compose --profile local-idp up -d
 ```
 
 First boot can take **1–2 minutes** while Zitadel initializes and the entrypoint registers the OIDC client (`docker/zitadel/oidc.env`).
+
+For production with a **remote** IdP, set all `OIDC_*` in `.env` and run `docker compose up -d` **without** `--profile local-idp`. See [Zitadel (example IdP)](./zitadel.md).
 
 | URL | Service |
 |-----|---------|
