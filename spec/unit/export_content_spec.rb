@@ -119,6 +119,21 @@ RSpec.describe ExportContent do
     expect(html).to include('Active', '1')
   end
 
+  it 'renders markdown links in textarea columns as clickable anchors' do
+    schema = {
+      'kind' => 'table',
+      'columns' => [
+        { 'key' => 'name', 'label' => 'Name' },
+        { 'key' => 'notes', 'label' => 'Notes', 'type' => 'textarea' }
+      ]
+    }
+    csv = "name,notes,_row_id\nRow,\"See [register](https://example.com/docs).\",rid-1\n"
+
+    html = described_class.csv_to_html(csv, schema: schema)
+
+    expect(html).to include('<a href="https://example.com/docs">register</a>')
+  end
+
   it 'omits deleted rows from markdown tables' do
     csv = "name,value,_row_id,_deleted_at\nActive,1,rid-1,\nGone,2,rid-2,2026-01-01T00:00:00Z\n"
 

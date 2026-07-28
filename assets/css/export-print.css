@@ -167,6 +167,11 @@ body {
   text-decoration: none;
 }
 
+a {
+  color: #0563c1;
+  text-decoration: underline;
+}
+
 .export-main {
   margin-top: 2rem;
 }
@@ -291,7 +296,8 @@ body {
 }
 
 .export-body a {
-  color: var(--export-accent);
+  color: #0563c1;
+  text-decoration: underline;
 }
 
 .export-table-wrap {
@@ -605,8 +611,8 @@ table.export-table th {
   }
 
   a {
-    color: var(--export-text);
-    text-decoration: none;
+    color: #0563c1;
+    text-decoration: underline;
   }
 
   a[href^="http"]::after {
