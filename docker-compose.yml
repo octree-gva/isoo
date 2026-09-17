@@ -20,7 +20,7 @@ services:
       RACK_ENV: ${RACK_ENV:-development}
       PORT: ${PORT:-9292}
       BIND: ${BIND:-0.0.0.0}
-      DATA_PATH: /app/tmp/datai
+      DATA_PATH: /app/tmp/data
       MEMCACHE_SERVER: ${MEMCACHE_SERVER:-memcached:11211}
       MEMCACHE_NAMESPACE: ${MEMCACHE_NAMESPACE:-isoo}
       SESSION_IDLE_TIMEOUT_SECONDS: ${SESSION_IDLE_TIMEOUT_SECONDS:-7200}
