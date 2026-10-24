@@ -81,14 +81,23 @@
 }
 
 html {
+  box-sizing: border-box;
   -webkit-text-size-adjust: 100%;
 }
 
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
 body {
+  margin: 0;
   font-family: "IBM Plex Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
   line-height: 1.5;
   color: #2c2c2b;
   font-size: 1rem;
+  background: #fff;
 }
 
 .page-gutter {
