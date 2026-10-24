@@ -1,9 +1,9 @@
 /* Print-ready export layout — single HTML file, all documents, print to PDF */
 
 :root {
-  --export-text: #1a1a1a;
-  --export-muted: #555;
-  --export-border: #ccc;
+  --export-text: #2c2c2b;
+  --export-muted: #737373;
+  --export-border: #d4d4d4;
   --export-accent: #ff661a;
   font-family: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
   font-size: 11pt;
@@ -168,7 +168,7 @@ body {
 }
 
 a {
-  color: #0563c1;
+  color: #2c2c2b;
   text-decoration: underline;
 }
 
@@ -276,27 +276,27 @@ a {
 }
 .export-body blockquote {
   margin: 0.75rem 0;
-  padding-left: 1rem;
-  border-left: 3px solid var(--export-border);
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--export-border);
   break-inside: avoid;
 }
 
 .export-body pre,
 .export-body code {
-  font-family: ui-monospace, "Cascadia Code", monospace;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   font-size: 0.9em;
 }
 
 .export-body pre {
   padding: 0.75rem;
-  background: #f4f6f8;
+  background: #fafafa;
   border: 1px solid var(--export-border);
   overflow-x: auto;
   break-inside: avoid;
 }
 
 .export-body a {
-  color: #0563c1;
+  color: #2c2c2b;
   text-decoration: underline;
 }
 
@@ -314,7 +314,7 @@ a {
 .export-table-legend {
   margin: 0 0 1rem;
   break-inside: avoid;
-  background: #fcffd5;
+  background: #fffbeb;
   padding: 1rem;
   border-radius: 10px;
   font-size: 11px;
@@ -368,7 +368,7 @@ table.export-table tr {
 }
 
 table.export-table th {
-  background: #f4f6f8;
+  background: #fafafa;
   font-weight: 600;
 }
 
@@ -611,7 +611,7 @@ table.export-table th {
   }
 
   a {
-    color: #0563c1;
+    color: #2c2c2b;
     text-decoration: underline;
   }
 

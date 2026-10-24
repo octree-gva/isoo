@@ -20,7 +20,8 @@ class AnnexDocumentStore
     write(doc_path, data[:meta], data[:body], author: author)
   end
 
-  def save_metadata(doc_path, title:, description:, version:, date:, author:, changes:, export_tags: nil)
+  def save_metadata(doc_path, title:, description:, version:, date:, author:, changes:, export_tags: nil,
+                    withheld: nil)
     data = read(doc_path)
     meta = data[:meta]
     meta['title'] = title
@@ -28,6 +29,7 @@ class AnnexDocumentStore
     meta['timestamp'] = Time.now.utc.iso8601
     meta['iso27001'] ||= {}
     meta['iso27001']['version'] = version
+    DocumentWithhold.write_to_meta!(meta, withheld) unless withheld.nil?
     body = VersionControlWriter.append_row(data[:body], version: version, date: date, author: author,
                                                         changes: changes)
     write(doc_path, meta, body, author: author)

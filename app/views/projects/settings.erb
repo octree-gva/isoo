@@ -1,0 +1,163 @@
+<%= render('shared/_back_nav', locals: { href: "/projects/#{@slug}", label: t('a11y.back_to_project', name: @manifest.name) }) %>
+
+<h1 id="settings-heading"><%= t('settings.heading') %></h1>
+<p class="mt-2 text-lg text-muted max-w-3xl"><%= t('settings.intro') %></p>
+
+<div role="tablist" class="tabs tabs-bordered mt-8" aria-label="<%= t('settings.tabs_label') %>">
+  <a role="tab"
+     href="/projects/<%= @slug %>/settings?tab=general"
+     class="tab<%= @settings_tab == 'general' ? ' tab-active' : '' %>"
+     <%= @settings_tab == 'general' ? 'aria-selected="true"' : 'aria-selected="false"' %>>
+    <%= t('settings.tab_general') %>
+  </a>
+  <a role="tab"
+     href="/projects/<%= @slug %>/settings?tab=mcp"
+     class="tab<%= @settings_tab == 'mcp' ? ' tab-active' : '' %>"
+     <%= @settings_tab == 'mcp' ? 'aria-selected="true"' : 'aria-selected="false"' %>>
+    <%= t('settings.tab_mcp') %>
+  </a>
+</div>
+
+<% if @settings_tab == 'general' %>
+  <section class="mt-8" aria-labelledby="settings-general-heading">
+    <h2 id="settings-general-heading" class="sr-only"><%= t('settings.tab_general') %></h2>
+    <form method="post" action="/projects/<%= @slug %>/settings/general" class="space-y-4 max-w-xl">
+      <label class="form-control" for="settings-name">
+        <span class="label-text text-lg mb-2"><%= t('settings.name_label') %></span>
+        <input class="input input-bordered w-full" type="text" id="settings-name" name="name" required
+               value="<%= @manifest.name %>">
+      </label>
+      <label class="form-control" for="settings-description">
+        <span class="label-text text-lg mb-2"><%= t('settings.description_label') %></span>
+        <textarea class="textarea textarea-bordered w-full min-h-28" id="settings-description"
+                  name="description" rows="4"><%= @manifest.description %></textarea>
+      </label>
+      <div class="form-control">
+        <span class="label-text text-lg mb-2"><%= t('settings.version_label') %></span>
+        <p class="text-lg font-mono" aria-readonly="true"><%= @manifest.version %></p>
+        <p class="text-sm text-muted mt-1"><%= t('settings.version_hint') %></p>
+      </div>
+      <button type="submit" class="btn btn-primary">
+        <i class="ri-save-line" aria-hidden="true"></i>
+        <%= t('settings.save_general') %>
+      </button>
+    </form>
+  </section>
+<% else %>
+  <section class="mt-8" aria-labelledby="settings-mcp-heading">
+    <h2 id="settings-mcp-heading" class="sr-only"><%= t('settings.tab_mcp') %></h2>
+
+    <form method="post" action="/projects/<%= @slug %>/settings/mcp" class="max-w-xl">
+      <label class="label cursor-pointer justify-start gap-3" for="settings-mcp-enabled">
+        <input type="checkbox" class="checkbox checkbox-primary" id="settings-mcp-enabled"
+               name="enabled" value="1" <%= @mcp_enabled ? 'checked' : '' %>>
+        <span class="label-text text-lg"><%= t('settings.mcp_enabled_label') %></span>
+      </label>
+      <p class="text-sm text-muted mt-2"><%= t('settings.mcp_enabled_hint') %></p>
+      <button type="submit" class="btn btn-outline btn-sm mt-4">
+        <i class="ri-save-line" aria-hidden="true"></i>
+        <%= t('settings.save_mcp') %>
+      </button>
+    </form>
+
+    <% if @plain_token %>
+      <div class="alert alert-warning mt-8" role="status">
+        <div>
+          <p class="font-medium"><%= t('mcp.token_once_title', name: @plain_token_name) %></p>
+          <p class="mt-2 text-sm"><%= t('mcp.token_once_hint') %></p>
+          <pre class="mt-3 p-3 bg-base-200 rounded text-sm break-all whitespace-pre-wrap font-mono"><%= @plain_token %></pre>
+          <p class="mt-2 font-mono text-sm break-all"><%= t('mcp.endpoint_label') %>: <%= @mcp_endpoint %></p>
+        </div>
+      </div>
+    <% end %>
+
+    <div class="mt-10">
+      <h3 id="mcp-create-heading" class="text-2xl"><%= t('mcp.create_heading') %></h3>
+      <p class="mt-2 text-muted"><%= t('mcp.intro') %></p>
+      <form method="post" action="/projects/<%= @slug %>/settings/mcp/accesses" class="mt-4 space-y-4 max-w-xl">
+        <label class="form-control" for="mcp-name">
+          <span class="label-text text-lg mb-2"><%= t('mcp.name_label') %></span>
+          <input class="input input-bordered w-full" type="text" id="mcp-name" name="name" required
+                 placeholder="<%= t('mcp.name_placeholder') %>">
+        </label>
+        <label class="form-control" for="mcp-audience">
+          <span class="label-text text-lg mb-2"><%= t('mcp.audience_label') %></span>
+          <select class="select select-bordered w-full" id="mcp-audience" name="audience" required>
+            <option value="full"><%= t('mcp.audience_full') %></option>
+            <% @export_tag_registry.tags_for('document').each do |tag| %>
+              <option value="<%= tag['id'] %>"><%= tag['label'] %></option>
+            <% end %>
+          </select>
+        </label>
+        <label class="form-control" for="mcp-mode">
+          <span class="label-text text-lg mb-2"><%= t('mcp.mode_label') %></span>
+          <select class="select select-bordered w-full" id="mcp-mode" name="mode" required>
+            <option value="read"><%= t('mcp.mode_read') %></option>
+            <option value="read_write"><%= t('mcp.mode_read_write') %></option>
+          </select>
+        </label>
+        <label class="form-control" for="mcp-expires">
+          <span class="label-text text-lg mb-2"><%= t('mcp.expires_label') %></span>
+          <input class="input input-bordered w-full" type="number" id="mcp-expires" name="expires_in_days"
+                 value="90" min="1" max="365">
+        </label>
+        <button type="submit" class="btn btn-primary">
+          <i class="ri-key-2-line" aria-hidden="true"></i>
+          <%= t('mcp.create') %>
+        </button>
+        <% unless @mcp_enabled %>
+          <p class="text-sm text-muted"><%= t('settings.mcp_disabled_create_hint') %></p>
+        <% end %>
+      </form>
+    </div>
+
+    <div class="mt-10">
+      <h3 id="mcp-list-heading" class="text-2xl"><%= t('mcp.list_heading') %></h3>
+      <% if @mcp_accesses.empty? %>
+        <p class="empty-note" role="status"><%= t('mcp.empty') %></p>
+      <% else %>
+        <div class="overflow-x-auto mt-4">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col"><%= t('mcp.col_name') %></th>
+                <th scope="col"><%= t('mcp.col_audience') %></th>
+                <th scope="col"><%= t('mcp.col_mode') %></th>
+                <th scope="col"><%= t('mcp.col_expires') %></th>
+                <th scope="col"><%= t('mcp.col_status') %></th>
+                <th scope="col"><%= t('a11y.row_actions') %></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @mcp_accesses.each do |access| %>
+                <tr>
+                  <td><%= access.name %></td>
+                  <td><%= access.audience == 'full' ? t('mcp.audience_full') : @export_tag_registry.label_for(access.audience) %></td>
+                  <td><%= access.read_write? ? t('mcp.mode_read_write') : t('mcp.mode_read') %></td>
+                  <td><%= access.expires_at %></td>
+                  <td>
+                    <% if access.active? %>
+                      <span class="badge badge-success"><%= t('mcp.status_active') %></span>
+                    <% else %>
+                      <span class="badge badge-ghost"><%= t('mcp.status_inactive') %></span>
+                    <% end %>
+                  </td>
+                  <td>
+                    <% if access.active? %>
+                      <form method="post" action="/projects/<%= @slug %>/settings/mcp/accesses/<%= access.id %>/revoke">
+                        <button type="submit" class="btn btn-outline btn-error btn-sm"
+                                onclick="return confirm('<%= t('mcp.revoke_confirm') %>')">
+                          <%= t('mcp.revoke') %>
+                        </button>
+                      </form>
+                    <% end %>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      <% end %>
+    </div>
+  </section>
+<% end %>

@@ -48,6 +48,7 @@ Each page describes **one capability** from an operator and power-user perspecti
 13. [Review](./review.md) — stale documents and expired review dates
 14. [Git integration](./git-integration.md) — commits, optional remote sync
 15. [Collaboration](./collaboration.md) — what ISOO does **not** provide
+16. [MCP access](./mcp.md) — Project settings MCP tab, Streamable HTTP for Open WebUI (bearer scopes + withhold)
 
 ## Build this site locally
 

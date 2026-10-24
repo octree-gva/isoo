@@ -35,6 +35,9 @@
           }) %>
     </label>
   <% end %>
+  <%= render('shared/_withhold_fieldset', locals: {
+        checked: DocumentWithhold.from_meta(@data[:meta])
+      }) %>
   <dialog id="save_modal" class="modal" aria-labelledby="save_modal_title" aria-describedby="save_modal_desc">
     <div class="modal-box bg-white">
       <div data-modal-wizard>
@@ -86,9 +89,9 @@
       }) %>
 <% end %>
 
-<footer class="page-footer fixed bottom-0 inset-x-0 z-40 border-t border-neutral-200 bg-white/95 backdrop-blur-sm px-4 py-3"
+<footer class="page-footer fixed bottom-0 inset-x-0 z-40 border-t border-neutral-200 bg-white page-gutter py-3"
         role="toolbar" aria-label="<%= t('a11y.document_actions') %>">
-  <div class="mx-auto flex flex-wrap gap-3 justify-end max-w-3xl">
+  <div class="mx-auto flex w-full flex-wrap gap-3 justify-end max-w-3xl">
     <% if wizard_sections.any? %>
       <button type="button" class="btn btn-outline w-full sm:w-auto" data-wizard-open="text_wizard_modal"
               aria-haspopup="dialog" aria-controls="text_wizard_modal">

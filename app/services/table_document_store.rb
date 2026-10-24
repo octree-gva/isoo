@@ -31,11 +31,11 @@ class TableDocumentStore
       version_control_rows: version_control_rows }
   end
 
-  def save_rows(doc_path, rows:, version:, date:, author:, changes:, owner: nil) # rubocop:disable Metrics/ParameterLists
+  def save_rows(doc_path, rows:, version:, date:, author:, changes:, owner: nil, withheld: nil) # rubocop:disable Metrics/ParameterLists
     doc = read(doc_path)
     rows = apply_owner_to_rows(rows, owner) if owner
     write_csv(doc, rows, author)
-    bump_md(doc, version, date, author, changes, owner: owner)
+    bump_md(doc, version, date, author, changes, owner: owner, withheld: withheld)
   end
 
   def soft_delete(doc_path, row_id)
@@ -84,11 +84,11 @@ class TableDocumentStore
     write_csv(doc, all, author)
   end
 
-  def save_fullscreen(doc_path, rows_params:, version:, date:, author:, changes:, owner: nil) # rubocop:disable Metrics/ParameterLists
+  def save_fullscreen(doc_path, rows_params:, version:, date:, author:, changes:, owner: nil, withheld: nil) # rubocop:disable Metrics/ParameterLists
     update_rows_from_params(doc_path, rows_params, author: author)
     apply_owner!(doc_path, owner) if owner
     doc = read(doc_path)
-    bump_md(doc, version, date, author, changes, owner: owner)
+    bump_md(doc, version, date, author, changes, owner: owner, withheld: withheld)
   end
 
   def apply_owner!(doc_path, owner)
@@ -146,12 +146,13 @@ class TableDocumentStore
     write_file(doc[:csv_path], content, doc[:meta], author)
   end
 
-  def bump_md(doc, version, date, author, changes, owner: nil)
+  def bump_md(doc, version, date, author, changes, owner: nil, withheld: nil) # rubocop:disable Metrics/ParameterLists
     raw = @store.read(doc[:md_path])
     meta, body = FrontMatter.parse(raw)
     meta['iso27001'] ||= {}
     meta['iso27001']['version'] = version
     DocumentOwner.write_to_meta!(meta, owner) if owner
+    DocumentWithhold.write_to_meta!(meta, withheld) unless withheld.nil?
     meta['timestamp'] = Time.now.utc.iso8601
     body = VersionControlWriter.append_row(body, version: version, date: date, author: author, changes: changes)
     write_file(doc[:md_path], FrontMatter.dump(meta, body), meta, author)

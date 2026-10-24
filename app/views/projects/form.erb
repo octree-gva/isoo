@@ -3,12 +3,12 @@
 <h1 id="form-heading"><%= @form['title'] || @form['doc_id'] %></h1>
 <% form_hint = @form_description.to_s.strip %>
 <% if form_hint.empty? %>
-  <p id="form-hint" class="opacity-80 mt-2 text-lg max-w-3xl"><%= t('forms.hint') %></p>
+  <p id="form-hint" class="text-muted mt-2 text-lg max-w-3xl"><%= t('forms.hint') %></p>
 <% else %>
       <%= render('shared/_markdown_description', locals: {
             text: form_hint,
             id: 'form-hint',
-            description_class: 'markdown-description opacity-80 mt-2 text-lg max-w-3xl'
+            description_class: 'markdown-description text-muted mt-2 text-lg max-w-3xl'
           }) %>
 <% end %>
 
@@ -21,12 +21,20 @@
   </button>
 </form>
 
+<form method="post" action="/projects/<%= @slug %>/forms/<%= @form['doc_id'] %>/withhold" class="mt-6">
+  <%= render('shared/_withhold_fieldset', locals: { checked: @form_withheld }) %>
+  <button type="submit" class="btn btn-outline btn-sm mt-3">
+    <i class="ri-save-line" aria-hidden="true"></i>
+    <%= t('withhold.save') %>
+  </button>
+</form>
+
 <section class="mt-8" aria-labelledby="form-responses-heading">
   <h2 id="form-responses-heading" class="text-2xl"><%= t('forms.responses_heading') %></h2>
   <ul id="form-responses" class="mt-4 space-y-3">
     <% responses = @form.fetch('responses', []) %>
     <% if responses.empty? %>
-      <li class="opacity-80 py-4 text-lg" role="status"><%= t('forms.empty') %></li>
+      <li class="empty-note" role="status"><%= t('forms.empty') %></li>
     <% end %>
     <% responses.each do |response| %>
       <% response_title = response['title'] || response['doc_id'] %>

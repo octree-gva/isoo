@@ -19,7 +19,8 @@ class TextDocumentStore
       version_control_rows: version_control_rows }
   end
 
-  def save(doc_path, fields:, version: nil, date: nil, author: nil, changes: nil, record_version: true)
+  def save(doc_path, fields:, version: nil, date: nil, author: nil, changes: nil, record_version: true,
+           withheld: nil)
     md_path = OkfPaths.md(doc_path)
     schema = YAML.safe_load(@store.read(OkfPaths.schema(doc_path)))
     DocumentOwner.validate_text_fields!(fields, schema: schema)
@@ -38,6 +39,16 @@ class TextDocumentStore
     end
 
     DocumentOwner.write_to_meta!(meta, DocumentOwner.from_fields(fields))
+    DocumentWithhold.write_to_meta!(meta, withheld) unless withheld.nil?
+    meta['timestamp'] = Time.now.utc.iso8601
+    write_md(md_path, FrontMatter.dump(meta, body), meta, author: author)
+  end
+
+  def set_withheld(doc_path, withheld:, author: 'system')
+    md_path = OkfPaths.md(doc_path)
+    raw = @store.read(md_path)
+    meta, body = FrontMatter.parse(raw)
+    DocumentWithhold.write_to_meta!(meta, withheld)
     meta['timestamp'] = Time.now.utc.iso8601
     write_md(md_path, FrontMatter.dump(meta, body), meta, author: author)
   end

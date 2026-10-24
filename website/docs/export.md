@@ -51,6 +51,10 @@ Assign tags on annex metadata checkboxes or via `rake isoo:sync_export_tags` for
 
 **Excluded annexes** (`_deleted_at` on manifest) are omitted from every scope, including full.
 
+### Withhold {#withhold}
+
+Documents can be marked **Withhold from exports and MCP** on the document (or form) page. Withheld documents are omitted from **every** export scope, including full, and from single-document export. A withheld form also withholds its answers. Withhold is independent of ISO classification (`Confidential` / `Secret` still encrypt at rest and remain exportable unless withheld).
+
 ### Annex references and scoped export
 
 Documents can embed annex assets via `[ANNEX doc-id]` BBCode in textareas. When a document **in** a scoped export contains such a reference, the referenced asset is **still embedded** in that document’s export even if the annex has no matching export tag. See [Document export — Annex references](./document-export.md#annex-references).

@@ -16,12 +16,20 @@ require_relative 'session_idle'
 require_relative 'errors'
 require_relative 'routes/observability'
 require_relative 'routes/git'
+require_relative 'routes/mcp'
+require_relative 'routes/project_settings'
 Dir[File.join(__dir__, 'services', '*.rb')].each { |f| require f }
 
 class App < Roda
   include ViewHelpers
   include RoutesObservability
   include RoutesGit
+  include RoutesMcp
+  include RoutesProjectSettings
+
+  def self.mcp_rate_limiter
+    McpRateLimiter.instance
+  end
 
   plugin :render,
          views: File.join(__dir__, 'views'),
@@ -195,6 +203,8 @@ class App < Roda
     r.get('reviews') { render_project_reviews }
     r.get('export') { render_project_export(r, slug, project_root) }
     r.get('export.md') { r.redirect("/projects/#{slug}/export?format=md") }
+    r.on('mcp') { routes_mcp(r, slug) }
+    r.on('settings') { routes_project_settings(r, slug) }
     r.on('annexes') do
       r.is do
         r.get { render_project_annexes(slug) }
@@ -324,8 +334,19 @@ class App < Roda
     http_error!(404) unless @form
 
     @form_description = FormDescription.resolve(@form, store: @store, data_root: DATA_PATH)
+    @form_withheld = DocumentWithhold.from_params('withheld' => @form['withheld'])
     r.get { view('projects/form') }
     r.post('responses') { create_form_response(r, slug, form_id) }
+    r.post('withhold') { save_form_withhold(r, slug, form_id) }
+  end
+
+  def save_form_withhold(r, slug, form_id)
+    withheld = DocumentWithhold.from_params(r.params)
+    DocumentWithhold.set_form_withheld!(@manifest, form_id, withheld: withheld)
+    commit_and_redirect!(r, "/projects/#{slug}/forms/#{form_id}",
+                         commit_message: "#{form_id}: withhold #{withheld}",
+                         toast_key: 'toast.form_withhold_saved',
+                         significant: false)
   end
 
   def create_form_response(r, slug, form_id)
@@ -473,6 +494,8 @@ class App < Roda
   end
 
   def set_doc_export_nav(slug, doc)
+    return if DocumentWithhold.document_withheld?(doc, store: @store, manifest: @manifest)
+
     @doc_export = {
       'doc_id' => doc['doc_id'],
       'title' => doc['title'] || doc['doc_id'],
@@ -652,6 +675,7 @@ class App < Roda
       @back_label = t('annexes.folder_label')
       @content_class = 'max-w-3xl has-page-footer'
       doc_header(meta, @doc)
+      @doc_withheld = DocumentWithhold.from_meta(meta)
       set_doc_export_nav(slug, @doc)
       view('docs/annex')
     else
@@ -735,6 +759,7 @@ class App < Roda
     date = Time.now.utc.strftime('%Y-%m-%d')
     registry = ExportTagRegistry.for_project(File.join(DATA_PATH, 'projects', slug))
     export_tags = ExportTagsParam.normalize(r.params['export_tags'], registry: registry)
+    withheld = DocumentWithhold.from_params(r.params)
     AnnexDocumentStore.new(@store).save_metadata(
       @doc_path,
       title: title,
@@ -743,7 +768,8 @@ class App < Roda
       date: date,
       author: author_name,
       changes: changes,
-      export_tags: export_tags
+      export_tags: export_tags,
+      withheld: withheld
     )
     @manifest.update_annex!(doc_id, 'title' => title, 'description' => description)
     commit_and_redirect!(r, "/projects/#{slug}/docs/#{doc_id}",
@@ -880,13 +906,15 @@ class App < Roda
     meta = doc_meta(slug, @doc_path)
     version = SemverBump.next_version(meta.dig('iso27001', 'version'), significant: significant)
     date = Time.now.utc.strftime('%Y-%m-%d')
+    withheld = DocumentWithhold.from_params(r.params)
 
     case kind
     when 'text'
       schema = YAML.safe_load(@store.read(OkfPaths.schema(@doc_path)))
       DocumentOwner.validate_text_fields!(r.params, schema: schema)
       TextDocumentStore.new(@store).save(@doc_path, fields: r.params, version: version,
-                                                    date: date, author: author_name, changes: changes)
+                                                    date: date, author: author_name, changes: changes,
+                                                    withheld: withheld)
     when 'table'
       owner = DocumentOwner.extract_params(r.params)
       schema = YAML.safe_load(@store.read(OkfPaths.schema(@doc_path)))
@@ -895,7 +923,7 @@ class App < Roda
       owner_to_apply = DocumentOwner.schema_has_owner?(schema) ? owner : nil
       TableDocumentStore.new(@store).save_rows(@doc_path, rows: rows, version: version,
                                                           date: date, author: author_name, changes: changes,
-                                                          owner: owner_to_apply)
+                                                          owner: owner_to_apply, withheld: withheld)
     end
 
     commit_and_redirect!(r, "/projects/#{slug}/docs/#{doc_id}",

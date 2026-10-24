@@ -1,0 +1,14 @@
+<%# locals: checked:, form_id: (optional) %>
+<% checked_flag = locals.fetch(:checked, false) %>
+<% form_attr = locals[:form_id] ? %( form="#{locals[:form_id]}") : '' %>
+<fieldset class="mt-6 border border-neutral-200 rounded-lg p-4">
+  <legend class="label-text text-lg font-medium px-1"><%= t('withhold.legend') %></legend>
+  <label class="label cursor-pointer justify-start gap-4 min-h-[2.75rem] items-start">
+    <input type="checkbox" name="withheld" value="1" class="checkbox checkbox-primary checkbox-lg mt-1"
+           <%= 'checked' if checked_flag %><%= form_attr %>>
+    <span class="label-text text-base">
+      <span class="font-medium"><%= t('withhold.label') %></span>
+      <span class="block text-muted mt-1"><%= t('withhold.hint') %></span>
+    </span>
+  </label>
+</fieldset>

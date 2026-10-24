@@ -64,7 +64,7 @@
 <section class="mt-8" aria-labelledby="annex-referenced-in-heading">
   <h2 id="annex-referenced-in-heading" class="text-2xl"><%= t('annex.referenced_in_heading') %></h2>
   <% if @annex_referenced_in.empty? %>
-    <p class="mt-2 text-lg opacity-80"><%= t('annex.referenced_in_empty') %></p>
+    <p class="mt-2 text-lg text-muted"><%= t('annex.referenced_in_empty') %></p>
   <% else %>
     <div class="overflow-x-auto mt-4">
       <table class="table table-zebra">
@@ -114,6 +114,9 @@
   <%= render('shared/_export_tags_fieldset', locals: {
         options: @export_tag_options,
         selected: @doc_export_tags
+      }) %>
+  <%= render('shared/_withhold_fieldset', locals: {
+        checked: @doc_withheld
       }) %>
 </form>
 
@@ -168,7 +171,7 @@
           action="/projects/<%= @slug %>/docs/<%= @doc['doc_id'] %>/annex"
           enctype="multipart/form-data">
       <h2 id="upload_annex_modal_title" class="font-bold text-2xl"><%= t('annex.upload_heading') %></h2>
-      <p id="upload_annex_modal_desc" class="mt-2 text-lg opacity-80"><%= t('annex.file_label') %></p>
+      <p id="upload_annex_modal_desc" class="mt-2 text-lg text-muted"><%= t('annex.file_label') %></p>
       <label class="form-control w-full mt-4" for="annex-file">
         <span class="label-text text-lg mb-2 sr-only"><%= t('annex.file_label') %></span>
         <input type="file" id="annex-file" name="file" class="file-input file-input-bordered w-full" required>
@@ -269,9 +272,9 @@
   </dialog>
 <% end %>
 
-<footer class="page-footer fixed bottom-0 inset-x-0 z-40 border-t border-neutral-200 bg-white/95 backdrop-blur-sm px-4 py-3"
+<footer class="page-footer fixed bottom-0 inset-x-0 z-40 border-t border-neutral-200 bg-white page-gutter py-3"
         role="toolbar" aria-label="<%= t('a11y.document_actions') %>">
-  <div class="mx-auto flex flex-wrap gap-3 justify-end max-w-3xl">
+  <div class="mx-auto flex w-full flex-wrap gap-3 justify-end max-w-3xl">
     <button type="button" class="btn btn-outline w-full sm:w-auto" data-wizard-open="save_annex_metadata_modal"
             aria-haspopup="dialog" aria-controls="save_annex_metadata_modal">
       <i class="ri-save-line" aria-hidden="true"></i>

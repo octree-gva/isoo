@@ -1,0 +1,128 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-24T16:45:00+01:00",
+  "title": "Design System: ISOO",
+  "extensions": {
+    "colorMeta": {
+      "primary": {
+        "role": "primary",
+        "displayName": "Signal orange",
+        "canonical": "#ff661a",
+        "tonalRamp": ["#4a1600", "#7a2800", "#a83a00", "#d44c0a", "#ff661a", "#ff8a4d", "#ffb088", "#ffe0d0"]
+      },
+      "primary-hover": {
+        "role": "primary",
+        "displayName": "Pressed orange",
+        "canonical": "#e04d00"
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Carbon ink",
+        "canonical": "#2c2c2b",
+        "tonalRamp": ["#2c2c2b", "#454543", "#5e5e5c", "#737373", "#8a8a88", "#a3a3a3", "#d4d4d4", "#fafafa"]
+      },
+      "paper": { "role": "neutral", "displayName": "Paper", "canonical": "#ffffff" },
+      "muted": { "role": "neutral", "displayName": "Muted", "canonical": "#737373" },
+      "border": { "role": "neutral", "displayName": "Rule", "canonical": "#d4d4d4" },
+      "on-ink": { "role": "success", "displayName": "On", "canonical": "#166534" },
+      "off-ink": { "role": "error", "displayName": "Off", "canonical": "#991b1b" },
+      "warning-ink": { "role": "warning", "displayName": "Warning", "canonical": "#92400e" }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Page title." },
+      "headline": { "displayName": "Headline", "purpose": "Section and dialog title." },
+      "title": { "displayName": "Title", "purpose": "Subsection." },
+      "body": { "displayName": "Body", "purpose": "Reading, fields, and hints." },
+      "label": { "displayName": "Label", "purpose": "Buttons and the skip link." }
+    },
+    "shadows": [],
+    "motion": [
+      { "name": "skip-link", "value": "transform 0.2s", "purpose": "Skip link enters on focus." }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "lg", "value": "1024px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Signal orange fill, paper label, pressed orange on hover.",
+      "html": "<button class=\"ds-btn\">Save</button>",
+      "css": ".ds-btn { background: #ff661a; color: #fff; border: 1px solid #ff661a; border-radius: 10px; min-height: 2.75rem; padding: 0.625rem 1.25rem; font-family: VG5000, sans-serif; font-size: 1rem; font-weight: 400; letter-spacing: 1.2px; text-transform: uppercase; cursor: pointer; } .ds-btn:hover, .ds-btn:focus-visible { background: #e04d00; border-color: #e04d00; outline: 3px solid #ff661a; outline-offset: 2px; }"
+    },
+    {
+      "name": "Outline button",
+      "kind": "button",
+      "refersTo": "button-outline",
+      "description": "Paper fill, ink border. Surface fill on hover.",
+      "html": "<button class=\"ds-btn-outline\">Open</button>",
+      "css": ".ds-btn-outline { background: #fff; color: #2c2c2b; border: 1px solid #2c2c2b; border-radius: 10px; min-height: 2.75rem; padding: 0.625rem 1rem; font-family: VG5000, sans-serif; font-size: 1rem; letter-spacing: 1.2px; text-transform: uppercase; cursor: pointer; } .ds-btn-outline:hover, .ds-btn-outline:focus-visible { background: #fafafa; outline: 3px solid #ff661a; outline-offset: 2px; }"
+    },
+    {
+      "name": "Text field",
+      "kind": "input",
+      "refersTo": "text-field",
+      "description": "Paper field, rule border, muted placeholder.",
+      "html": "<label class=\"ds-field\">Name<input name=\"name\" placeholder=\"Project name\"></label>",
+      "css": ".ds-field { display: grid; gap: 0.5rem; font-family: \"IBM Plex Sans\", sans-serif; color: #2c2c2b; font-size: 1rem; } .ds-field input { min-height: 2.75rem; padding: 0.75rem 1rem; border: 1px solid #d4d4d4; border-radius: 0.5rem; background: #fff; color: #2c2c2b; font: inherit; } .ds-field input::placeholder { color: #737373; } .ds-field input:focus { outline: 3px solid #ff661a; outline-offset: 2px; }"
+    },
+    {
+      "name": "Header",
+      "kind": "nav",
+      "refersTo": "button-outline",
+      "description": "Paper bar, VG5000 wordmark, ghost action.",
+      "html": "<header class=\"ds-bar\"><span class=\"ds-mark\">ISOO</span><button type=\"button\">Export</button></header>",
+      "css": ".ds-bar { display: flex; align-items: center; justify-content: space-between; min-height: 3.5rem; padding: 0 1.5rem; background: #fff; border-bottom: 1px solid #d4d4d4; } .ds-mark { font-family: VG5000, sans-serif; font-size: 1.5rem; color: #2c2c2b; } .ds-bar button { background: transparent; border: 0; color: #2c2c2b; font-family: VG5000, sans-serif; letter-spacing: 1.2px; text-transform: uppercase; min-height: 2.75rem; cursor: pointer; } .ds-bar button:hover { background: #fafafa; }"
+    },
+    {
+      "name": "Warning alert",
+      "kind": "custom",
+      "refersTo": "alert-warning",
+      "description": "Warning wash and warning ink. No shadow.",
+      "html": "<p class=\"ds-alert\" role=\"status\">Someone else has this document open.</p>",
+      "css": ".ds-alert { margin: 0; padding: 0.875rem 1rem; background: #fffbeb; color: #92400e; border: 1px solid #fcd34d; border-radius: 0.5rem; font-family: \"IBM Plex Sans\", sans-serif; font-size: 1rem; line-height: 1.5; }"
+    },
+    {
+      "name": "On badge",
+      "kind": "chip",
+      "refersTo": "badge-on",
+      "description": "State chip for an on switch.",
+      "html": "<span class=\"ds-badge\">On</span>",
+      "css": ".ds-badge { display: inline-flex; align-items: center; padding: 0.25rem 0.75rem; background: #dcfce7; color: #166534; border: 1px solid #166534; border-radius: 0.5rem; font-family: \"IBM Plex Sans\", sans-serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The field manual",
+    "overview": "Visitor mode is Operate. ISOO is the desk where someone writes, reviews, and exports an ISO 27001 documentation set. The page is a paper sheet with a carbon ink rule and one signal-orange action. VG5000 labels the controls. IBM Plex Sans carries the reading. The palette and the two faces are the implemented system. Status green, red, and amber already live on switches, withheld rows, and the co-editing banner. They mark state. They are not a second brand.",
+    "keyCharacteristics": [
+      "Signal orange (#ff661a), carbon ink (#2c2c2b), paper (#ffffff)",
+      "VG5000 for titles and buttons, IBM Plex Sans for reading and tables",
+      "10px control corners, 8px surfaces, 1px rules, no drop shadow",
+      "Controls at least 2.75rem, focus ring 3px orange"
+    ],
+    "rules": [
+      { "name": "The One Orange Rule", "body": "Signal orange is the only brand accent. Green, red, and amber appear only as state.", "section": "colors" },
+      { "name": "The Solid Control Rule", "body": "Hover changes the fill. It does not drop the whole control to partial opacity.", "section": "colors" },
+      { "name": "The Two Face Rule", "body": "Titles, buttons, and captions use VG5000. Reading, tables, fields, and hints use IBM Plex Sans. Do not load Inter, Arial, or a system face as the voice. The fallback stack exists only when the files fail to load.", "section": "typography" },
+      { "name": "The Real Weight Rule", "body": "VG5000 is drawn at 400. Do not apply a bold utility to it. IBM Plex Sans may use 600 on table headers and field labels.", "section": "typography" },
+      { "name": "The Flat Rule", "body": "No drop shadow and no blurred glass. A menu, a toast, a table panel, and a footer separate themselves with a border.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do keep signal orange, carbon ink, paper, VG5000, and IBM Plex Sans when adding a screen.",
+      "Do use daisyUI classes already on these pages: btn, btn-primary, btn-outline, btn-ghost, input, textarea, select, checkbox, radio, modal, badge, alert, navbar.",
+      "Do give every new control a hover, a 3px orange focus ring, and a disabled state when it can be disabled.",
+      "Do use muted (#737373) for hints."
+    ],
+    "donts": [
+      "Don't introduce a second brand color, a gradient, a drop shadow, or a glass blur.",
+      "Don't set secondary text with opacity-70 or opacity-80.",
+      "Don't faux-bold VG5000.",
+      "Don't size a page title like a poster. Display stops at 2.25rem.",
+      "Don't swap the faces for Inter, Arial, or system-ui as the designed voice.",
+      "Don't build a page as a grid of icon tiles."
+    ]
+  }
+}

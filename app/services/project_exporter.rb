@@ -57,7 +57,7 @@ class ProjectExporter
     end
 
     sort_within_tiers(collected)
-    filter_by_export_scope(collected)
+    filter_withheld(filter_by_export_scope(collected))
   end
 
   def html_entries
@@ -82,11 +82,19 @@ class ProjectExporter
   def entry_for(doc_id)
     doc = @manifest.resolve_document(doc_id)
     return nil unless doc
+    return nil if DocumentWithhold.document_withheld?(doc, store: @store, manifest: @manifest)
 
     load_entry(doc)
   end
 
   private
+
+  def filter_withheld(entries)
+    entries.reject do |entry|
+      DocumentWithhold.document_withheld?(entry.doc, store: @store, manifest: @manifest) ||
+        DocumentWithhold.from_meta(entry.meta)
+    end
+  end
 
   def sort_within_tiers(collected)
     collected.sort_by do |entry|

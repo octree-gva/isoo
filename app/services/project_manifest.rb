@@ -45,6 +45,19 @@ class ProjectManifest
     data['name']
   end
 
+  def description
+    data['description'].to_s
+  end
+
+  def update_general!(name:, description:)
+    name = name.to_s.strip
+    raise ArgumentError, 'name required' if name.empty?
+
+    data['name'] = name
+    data['description'] = description.to_s.strip
+    save!
+  end
+
   def version
     ProjectVersionBump.normalize_version(data['version'])
   end

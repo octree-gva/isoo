@@ -1,0 +1,10 @@
+{
+  "detector": {
+    "extensions": [
+      { "ext": ".erb", "engine": "html" }
+    ],
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": []
+  }
+}

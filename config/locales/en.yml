@@ -110,6 +110,23 @@ en:
       button: Search
       results_heading: "%{count} result(s) for “%{query}”"
       no_results: No documents match your search.
+  settings:
+    button: Settings
+    open_named: "Settings for %{name}"
+    heading: Project settings
+    intro: Project identity and MCP access for this workspace.
+    tabs_label: Settings sections
+    tab_general: General
+    tab_mcp: MCP
+    name_label: Project name
+    description_label: Description
+    version_label: Current version
+    version_hint: Updated automatically when documents change. Read-only here.
+    save_general: Save general settings
+    save_mcp: Save MCP settings
+    mcp_enabled_label: MCP enabled
+    mcp_enabled_hint: When off, the MCP endpoint rejects all bearer tokens for this project.
+    mcp_disabled_create_hint: MCP is disabled. Enable it above before using tokens with Open WebUI.
   docs:
     export: Export
     export_named: "Export %{name}"
@@ -129,6 +146,11 @@ en:
       changes_col: Document Changes
       first_created: Document first created
       updated: Updated
+  withhold:
+    legend: Export and MCP
+    label: Withhold from exports and MCP
+    hint: When checked, this document is omitted from every project export and from MCP access. It remains editable in the app.
+    save: Save withhold setting
   table:
     empty: No rows yet. Use New row below to add your first entry.
     select_placeholder: Select an option
@@ -274,6 +296,35 @@ en:
     run_wizard_named: "Run wizard for %{name}"
     wizard_modal_desc: Step through each field to complete this response.
     document_title_label: Document title
+  mcp:
+    button: MCP access
+    open_named: "MCP access for %{name}"
+    heading: MCP access
+    intro: Create bearer tokens for Open WebUI (Streamable HTTP). Each token has one audience and either read or read-write mode. Paste the token once into Admin → Integrations → MCP → Auth = Bearer.
+    create_heading: Credentials
+    list_heading: Existing credentials
+    empty: No MCP credentials yet.
+    name_label: Name
+    name_placeholder: e.g. Open WebUI SOI read
+    audience_label: Audience
+    audience_full: Full project (non-withheld)
+    mode_label: Mode
+    mode_read: Read
+    mode_read_write: Read and write
+    expires_label: Expires in (days)
+    create: Create token
+    col_name: Name
+    col_audience: Audience
+    col_mode: Mode
+    col_expires: Expires
+    col_status: Status
+    status_active: Active
+    status_inactive: Revoked or expired
+    revoke: Revoke
+    revoke_confirm: Revoke this MCP access?
+    token_once_title: "Token for “%{name}” (shown once)"
+    token_once_hint: Copy this token now. It cannot be shown again.
+    endpoint_label: MCP endpoint
   reviews:
     button: Reviews
     open_named: "Reviews for %{name}"
@@ -316,6 +367,10 @@ en:
     annex_excluded: Asset deleted from exports.
     annex_restored: Asset restored to exports.
     form_response_created: Form response created.
+    form_withhold_saved: Form withhold setting saved.
+    mcp_access_created: "MCP access “%{name}” created."
+    mcp_access_revoked: MCP access revoked.
+    project_settings_saved: Project settings saved.
     dismiss: Dismiss notification
   presence:
     editing_with_one: "%{name} is also viewing this document."

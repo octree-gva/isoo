@@ -22,7 +22,7 @@
     <% toast_type = @flash['type'] == 'error' ? 'error' : 'success' %>
     <% toast_icon = toast_type == 'error' ? 'error-warning' : 'checkbox-circle' %>
     <div class="toast toast-top toast-end z-[60] pointer-events-none" role="status" aria-live="polite" data-toast>
-      <div class="alert alert-<%= toast_type %> shadow-lg max-w-md pointer-events-auto flex items-start gap-3">
+      <div class="alert alert-<%= toast_type %> max-w-md pointer-events-auto flex items-start gap-3">
         <i class="ri-<%= toast_icon %>-line text-xl shrink-0" aria-hidden="true"></i>
         <span class="flex-1 text-base"><%= @flash['message'] %></span>
         <button type="button" class="btn btn-ghost btn-xs btn-circle shrink-0" data-toast-dismiss

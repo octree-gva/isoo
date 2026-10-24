@@ -1,7 +1,7 @@
 <%= render('shared/_back_nav', locals: { href: "/projects/#{@slug}", label: t('a11y.back_to_project', name: @manifest.name) }) %>
 
 <h1 id="annexes-heading"><%= t('annexes.folder_label') %></h1>
-<p id="annexes-hint" class="opacity-80 mt-2 text-lg"><%= t('annexes.hint') %></p>
+<p id="annexes-hint" class="text-muted mt-2 text-lg"><%= t('annexes.hint') %></p>
 
 <form class="mt-6" method="post" action="/projects/<%= @slug %>/annexes" aria-describedby="annexes-hint">
   <button class="btn btn-primary btn-sm w-full sm:w-auto" type="submit">
@@ -14,7 +14,7 @@
   <h2 id="annexes-slots-heading" class="text-2xl"><%= t('annexes.slots_heading') %></h2>
   <ul id="annexes-slots" class="mt-4 divide-y">
     <% if @annexes.empty? %>
-      <li class="opacity-80 py-4 text-lg" role="status"><%= t('annexes.empty') %></li>
+      <li class="empty-note" role="status"><%= t('annexes.empty') %></li>
     <% end %>
     <% @annexes.each do |doc| %>
       <% doc_title = doc['title'] || doc['doc_id'] %>
@@ -22,7 +22,7 @@
       <% asset_kind = doc['asset_kind'] %>
       <% excluded = AnnexStatus.excluded?(doc) %>
       <li>
-        <a class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3 py-4 hover:bg-base-200 -mx-2 px-2 rounded-lg<%= excluded ? ' opacity-60' : '' %>"
+        <a class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3 py-4 hover:bg-base-200 -mx-2 px-2 rounded-lg<%= excluded ? ' text-muted' : '' %>"
            href="<%= doc_path %>"
            aria-label="<%= t('actions.open_named', name: doc_title) %>">
           <span class="flex flex-wrap items-center gap-2 min-w-0">

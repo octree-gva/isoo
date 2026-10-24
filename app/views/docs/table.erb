@@ -9,6 +9,10 @@
 <% columns = table_data_columns(@data[:schema]) %>
 <% owner = document_owner_from_rows(@data[:rows], @data[:meta]) %>
 <%= render('shared/_document_owner_fields', locals: { owner: owner, form_id: 'save-table-form' }) %>
+<%= render('shared/_withhold_fieldset', locals: {
+      checked: DocumentWithhold.from_meta(@data[:meta]),
+      form_id: 'save-table-form'
+    }) %>
 <% pk = @data[:schema]['primary_key'] %>
 
 <div class="flex justify-end mt-6">
@@ -25,7 +29,7 @@
     <p class="text-lg"><%= t('table.empty') %></p>
   </div>
 <% else %>
-<div class="doc-table-panel rounded-lg border border-neutral-200 bg-white shadow-sm mt-6">
+<div class="doc-table-panel rounded-lg border border-neutral-200 bg-white mt-6">
     <table id="<%= table_id %>" class="doc-data-table w-full text-sm sm:text-base"
            aria-labelledby="doc-heading" aria-describedby="<%= table_id %>-caption">
       <caption id="<%= table_id %>-caption" class="sr-only">
@@ -63,7 +67,7 @@
                         aria-haspopup="menu">
                   <i class="ri-more-2-line text-lg" aria-hidden="true"></i>
                 </button>
-                <ul tabindex="0" class="dropdown-content menu bg-white rounded-box z-50 w-52 p-2 shadow-lg border border-neutral-200"
+                <ul tabindex="0" class="dropdown-content menu bg-white rounded-box z-50 w-52 p-2 border border-neutral-200"
                     role="menu" aria-label="<%= t('actions.row_menu_named', name: row_label) %>">
                   <li role="none">
                     <a href="<%= row_path %>" role="menuitem">
@@ -106,9 +110,9 @@
       show_save: true
     }) %>
 
-<footer class="page-footer fixed bottom-0 inset-x-0 z-40 border-t border-neutral-200 bg-white/95 backdrop-blur-sm px-4 py-3"
+<footer class="page-footer fixed bottom-0 inset-x-0 z-40 border-t border-neutral-200 bg-white page-gutter py-3"
         role="toolbar" aria-label="<%= t('a11y.table_actions') %>">
-  <div class="mx-auto flex flex-wrap gap-3 justify-end max-w-[96rem]">
+  <div class="mx-auto flex w-full flex-wrap gap-3 justify-end max-w-[96rem]">
     <button type="button" class="btn btn-outline w-full sm:w-auto" data-wizard-open="new_row_modal"
             aria-haspopup="dialog" aria-controls="new_row_modal">
       <i class="ri-add-line" aria-hidden="true"></i>

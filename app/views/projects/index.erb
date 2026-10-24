@@ -15,12 +15,12 @@
     <% end %>
   </ul>
 <% else %>
-  <p id="projects-empty" class="mt-8 text-lg opacity-80"><%= t('projects.empty') %></p>
+  <p id="projects-empty" class="empty-note" role="status"><%= t('projects.empty') %></p>
 <% end %>
 
-<footer class="page-footer fixed bottom-0 inset-x-0 z-40 border-t border-neutral-200 bg-white/95 backdrop-blur-sm px-4 py-3"
+<footer class="page-footer fixed bottom-0 inset-x-0 z-40 border-t border-neutral-200 bg-white page-gutter py-3"
         role="toolbar" aria-label="<%= t('a11y.page_actions') %>">
-  <div class="mx-auto flex flex-wrap gap-3 justify-end max-w-3xl">
+  <div class="mx-auto flex w-full flex-wrap gap-3 justify-end max-w-3xl">
     <button type="button" class="btn btn-primary w-full sm:w-auto" data-wizard-open="new_project_modal"
             aria-haspopup="dialog" aria-controls="new_project_modal">
       <i class="ri-add-line" aria-hidden="true"></i>
@@ -33,7 +33,7 @@
   <div class="modal-box bg-white">
     <form id="new-project-form" method="post" action="/projects">
       <h2 id="new_project_modal_title" class="font-bold text-2xl"><%= t('projects.new.title') %></h2>
-      <p class="mt-2 text-lg opacity-80"><%= t('projects.new.template_hint', name: @project_template[:name], id: @project_template[:id]) %></p>
+      <p class="mt-2 text-lg text-muted"><%= t('projects.new.template_hint', name: @project_template[:name], id: @project_template[:id]) %></p>
       <div class="mt-6 space-y-4">
         <label class="form-control w-full" for="project-name">
           <span class="label-text text-lg mb-2"><%= t('projects.new.name_label') %></span>
@@ -45,7 +45,7 @@
           <input class="input input-bordered w-full" id="project-slug" name="slug" autocomplete="off"
                  placeholder="<%= t('projects.new.slug_placeholder') %>" required
                  aria-describedby="project-slug-hint">
-          <span id="project-slug-hint" class="text-base opacity-70 mt-1"><%= t('projects.new.slug_hint') %></span>
+          <span id="project-slug-hint" class="text-base text-muted mt-1"><%= t('projects.new.slug_hint') %></span>
         </label>
       </div>
       <div class="modal-action flex-col-reverse sm:flex-row-reverse gap-2 mt-6">

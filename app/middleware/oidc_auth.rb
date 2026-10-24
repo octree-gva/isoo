@@ -11,6 +11,7 @@ require_relative '../services/error_response'
 class OidcAuth
   # Unauthenticated paths: OIDC flow, load-balancer probes, and Prometheus scraping only.
   # All project data, exports, annexes, and static assets require a valid session.
+  # MCP endpoints authenticate with bearer tokens (never browser sessions).
   OPERATIONAL_PREFIXES = ['/health'].freeze
   OPERATIONAL_EXACT = %w[/metrics].freeze
   AUTH_PATHS = %w[/auth/callback /auth/login /auth/logout].freeze
@@ -20,14 +21,16 @@ class OidcAuth
   end
 
   def call(env)
+    path = env['PATH_INFO'].to_s
+    return @app.call(env) if mcp_path?(path)
     return @app.call(env) if ENV['AUTH_DISABLED'] == '1'
-    return @app.call(env) if operational_path?(env['PATH_INFO'])
+    return @app.call(env) if operational_path?(path)
 
     session = env['rack.session'] ||= {}
-    return handle_callback(env, session) if env['PATH_INFO'] == '/auth/callback'
-    return redirect(login_url(session)) if env['PATH_INFO'] == '/auth/login'
+    return handle_callback(env, session) if path == '/auth/callback'
+    return redirect(login_url(session)) if path == '/auth/login'
 
-    if env['PATH_INFO'] == '/auth/logout'
+    if path == '/auth/logout'
       session.clear
       return redirect('/')
     end
@@ -54,6 +57,10 @@ class OidcAuth
   end
 
   private
+
+  def mcp_path?(path)
+    path.match?(%r{\A/projects/[^/]+/mcp\z})
+  end
 
   def redirect(location)
     [302, { 'location' => location, 'content-type' => 'text/html' }, []]

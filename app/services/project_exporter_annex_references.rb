@@ -61,7 +61,12 @@ module ProjectExporterAnnexReferences
 
   def resolvable_annex_references(entry)
     resolver = annex_reference_resolver
-    collect_annex_references(entry).select { |doc_id| resolver.resolve(doc_id) }
+    collect_annex_references(entry).select do |doc_id|
+      next false unless resolver.resolve(doc_id)
+
+      annex_doc = @manifest.resolve_document(doc_id)
+      !DocumentWithhold.document_withheld?(annex_doc, store: @store, manifest: @manifest)
+    end
   end
 
   def collect_annex_references(entry)

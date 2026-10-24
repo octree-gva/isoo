@@ -3,12 +3,20 @@
 <% search_results = @search_results || [] %>
 <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
   <h1 id="project-heading" class="min-w-0"><%= @manifest.name %></h1>
-  <a class="btn btn-outline btn-sm w-full sm:w-auto shrink-0"
-     href="/projects/<%= @slug %>/reviews"
-     aria-label="<%= t('reviews.open_named', name: @manifest.name) %>">
-    <i class="ri-calendar-check-line" aria-hidden="true"></i>
-    <%= t('reviews.button') %>
-  </a>
+  <div class="flex flex-col sm:flex-row gap-2 shrink-0 w-full sm:w-auto">
+    <a class="btn btn-outline btn-sm w-full sm:w-auto"
+       href="/projects/<%= @slug %>/reviews"
+       aria-label="<%= t('reviews.open_named', name: @manifest.name) %>">
+      <i class="ri-calendar-check-line" aria-hidden="true"></i>
+      <%= t('reviews.button') %>
+    </a>
+    <a class="btn btn-outline btn-sm w-full sm:w-auto"
+       href="/projects/<%= @slug %>/settings"
+       aria-label="<%= t('settings.open_named', name: @manifest.name) %>">
+      <i class="ri-settings-3-line" aria-hidden="true"></i>
+      <%= t('settings.button') %>
+    </a>
+  </div>
 </div>
 
 <form method="get" action="/projects/<%= @slug %>" class="mt-6" role="search">
@@ -31,7 +39,7 @@
       <%= t('projects.search.results_heading', query: search_query, count: search_results.size) %>
     </h2>
     <% if search_results.empty? %>
-      <p class="mt-3 text-lg opacity-80" role="status"><%= t('projects.search.no_results') %></p>
+      <p class="empty-note" role="status"><%= t('projects.search.no_results') %></p>
     <% else %>
       <ul id="project-search-results" class="mt-4 space-y-3">
         <% search_results.each do |hit| %>
@@ -39,9 +47,9 @@
             <a class="font-medium text-lg link link-primary break-words" href="<%= hit.url %>">
               <%= hit.title %>
             </a>
-            <span class="opacity-70 text-base"> (<%= hit.kind %>)</span>
+            <span class="text-muted text-base"> (<%= hit.kind %>)</span>
             <% if hit.snippet %>
-              <p class="mt-2 text-base opacity-80"><%= hit.snippet %></p>
+              <p class="mt-2 text-base text-muted"><%= hit.snippet %></p>
             <% end %>
           </li>
         <% end %>
@@ -54,7 +62,7 @@
   <h2 id="project-documents-heading" class="sr-only"><%= t('a11y.project_documents') %></h2>
   <ul id="project-documents" class="space-y-3">
     <% if @project_empty %>
-      <li id="project-documents-empty" class="py-8 text-lg opacity-80" role="status">
+      <li id="project-documents-empty" class="empty-note" role="status">
         <%= t('projects.documents_empty') %>
       </li>
     <% end %>
@@ -64,7 +72,7 @@
         <% doc_title = doc['title'] || doc['doc_id'] %>
         <li class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3 border-b py-4">
           <div class="min-w-0 flex-1 flex flex-wrap items-center gap-2">
-            <i class="<%= dashboard_doc_icon(doc['kind']) %> text-xl opacity-60 shrink-0" aria-hidden="true"></i>
+            <i class="<%= dashboard_doc_icon(doc['kind']) %> text-xl text-muted shrink-0" aria-hidden="true"></i>
             <div class="ml-2 flex flex-wrap gap-0 flex-col">
               <span id="doc-label-<%= doc['doc_id'] %>" class="text-lg sm:text-xl break-words"><%= doc_title %></span>
               <div>
@@ -87,7 +95,7 @@
       <% elsif item.kind == :annexes %>
         <li class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3 border-b py-4">
           <div class="min-w-0 flex-1 flex flex-wrap items-center gap-2">
-            <i class="ri-folder-line text-xl opacity-60 shrink-0" aria-hidden="true"></i>
+            <i class="ri-folder-line text-xl text-muted shrink-0" aria-hidden="true"></i>
             <span id="annexes-folder-label" class="text-lg sm:text-xl break-words"><%= t('annexes.folder_label') %></span>
           </div>
           <a class="btn btn-outline btn-sm w-full sm:w-auto shrink-0"
@@ -102,7 +110,7 @@
         <% form_title = form['title'] || form['doc_id'] %>
         <li class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3 border-b py-4">
           <div class="min-w-0 flex-1 flex flex-wrap items-center gap-2">
-            <i class="ri-folder-line text-xl opacity-60 shrink-0" aria-hidden="true"></i>
+            <i class="ri-folder-line text-xl text-muted shrink-0" aria-hidden="true"></i>
             <span id="form-label-<%= form['doc_id'] %>" class="text-lg sm:text-xl break-words"><%= form_title %></span>
             <%= render('shared/_dashboard_export_tags', locals: { tag_ids: form['export_tags'] }) %>
           </div>
@@ -121,7 +129,7 @@
 <dialog id="export_modal" class="modal" aria-labelledby="export_modal_title" aria-describedby="export_modal_desc">
   <div class="modal-box bg-white">
     <h2 id="export_modal_title" class="font-bold text-2xl"><%= t('projects.export_modal.title') %></h2>
-    <p id="export_modal_desc" class="mt-2 text-lg opacity-80"><%= t('projects.export_modal.description') %></p>
+    <p id="export_modal_desc" class="mt-2 text-lg text-muted"><%= t('projects.export_modal.description') %></p>
     <form method="get" action="/projects/<%= @slug %>/export" class="mt-6 space-y-6">
       <fieldset class="space-y-3">
         <legend class="label-text text-lg font-medium mb-2"><%= t('projects.export_modal.scope_label') %></legend>
@@ -135,7 +143,7 @@
             <span class="label-text text-lg">
               <span class="font-medium"><%= tag['label'] %></span>
               <% if tag['description'].to_s.strip != '' %>
-                <span class="block text-base opacity-70 whitespace-pre-line"><%= tag['description'] %></span>
+                <span class="block text-base text-muted whitespace-pre-line"><%= tag['description'] %></span>
               <% end %>
             </span>
           </label>
