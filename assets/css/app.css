@@ -318,7 +318,10 @@ input[type="button"],
   color: #2c2c2b;
   width: 98%;
   max-width: 98%;
-  min-height: 465px;
+  height: min(40rem, calc(100dvh - 2rem));
+  max-height: calc(100dvh - 2rem);
+  min-height: 0;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
 }
@@ -330,6 +333,7 @@ input[type="button"],
   flex: 1 1 auto;
   min-height: 0;
   width: 100%;
+  overflow: hidden;
 }
 
 .modal-box > form > [data-modal-wizard] {
@@ -337,10 +341,18 @@ input[type="button"],
   flex-direction: column;
   flex: 1 1 auto;
   min-height: 0;
+  overflow: hidden;
+}
+
+.modal-box [data-wizard-step]:not([hidden]) {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: auto;
 }
 
 .modal-box .modal-action {
-  margin-top: auto;
+  margin-top: 1rem;
+  flex-shrink: 0;
 }
 
 @media (min-width: 1024px) {
